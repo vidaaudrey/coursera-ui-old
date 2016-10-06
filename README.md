@@ -156,7 +156,9 @@ An experiment to create reusable component library using the latest front-end te
 ## Libraries
 - [Create React App] (https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
 - [Storybook](https://github.com/kadirahq/react-storybook)
-
+- [Recompose][recompose]
+- [Aphrodite][aphrodite]
+-
 ## How to Contribute
 - [Understanding Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Commit Guidelines, format and tool](https://egghead.io/lessons/javascript-how-to-write-a-javascript-library-writing-conventional-commits-with-commitizen).
@@ -208,3 +210,5 @@ We use Travis CI.
 [travis-svg]: https://img.shields.io/travis/vidaaudrey/coursera-ui.svg?style=flat-square
 [travis-url]: https://travis-ci.org/vidaaudrey/coursera-ui
 [git-wiki-as-submodule]: https://brendancleary.com/2013/03/08/including-a-github-wiki-in-a-repository-as-a-submodule/
+[recompose]: https://github.com/acdlite/recompose
+[aphrodite]: https://github.com/Khan/aphrodite
