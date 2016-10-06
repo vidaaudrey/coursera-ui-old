@@ -110,9 +110,9 @@ An experiment to create reusable component libraries using the latest front-end 
 - [ ] VideoPlayer
 - [ ] FileDrop
 - [ ] Uploaders
-    - [ ]FileUploader
-    - [ ]ImageUploader
-    - [ ]VideoUploader (need additional processing)
+    - [ ] FileUploader
+    - [ ] ImageUploader
+    - [ ] VideoUploader (need additional processing)
 - [ ] ProgressBar
 - [ ] Collapsible
 - [ ] Scrollable
