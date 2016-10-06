@@ -1,5 +1,5 @@
 # Coursera UI
-An experiment to create reusable component libraries using the latest front-end technologies.
+An experiment to create reusable component library using the latest front-end technologies.
 
 [![travis build][travis-svg]][travis-url]
 [![codecov coverage][codecov-svg]][codecov-url]
