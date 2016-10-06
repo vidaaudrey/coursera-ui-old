@@ -1,3 +1,7 @@
+[![travis build](https://img.shields.io/travis/vidaaudrey/coursera-ui.svg?style=flat-square)](https://travis-ci.org/vidaaudrey/coursera-ui)
+[![codecov coverage](https://img.shields.io/codecov/c/github/vidaaudrey/coursera-ui.svg?style=flat-square)](https://codecov.io/github/vidaaudrey/coursera-ui)
+[![version](https://img.shields.io/npm/v/coursera-ui.svg?style=flat-square)](http://npm.im/coursera-ui)
+
 An experiment to create reusable component libraries using the latest front-end technologies.
 
 
