@@ -1,4 +1,4 @@
-# Coursera UI <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
+# Coursera UI
 An experiment to create reusable component libraries using the latest front-end technologies.
 
 [![travis build][travis-svg]][travis-url]
