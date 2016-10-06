@@ -1,8 +1,6 @@
+import { helloWorld } from '../src/utils/common';
 import { expect } from 'chai';
-
-const helloWorld = () => {
-  return 'hello world!';
-};
+const { describe, it } = global;
 
 describe('helloWorld', () => {
   it('should return hello world', () => {

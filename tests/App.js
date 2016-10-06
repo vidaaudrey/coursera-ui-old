@@ -1,16 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import App from '../src/components/App';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-const App = ({ name = 'world!', handleClick }) => {
-  return (
-    <div className="rc-App">
-      <h1>Hello {name}!</h1>
-      <button onClick={() => {handleClick(name);}}> Ask {name}</button>
-    </div>
-  );
-};
+const { describe, it, before } = global;
 
 describe('App', () => {
   let wrapper;
@@ -32,4 +26,4 @@ describe('App', () => {
     wrapper.find('button').simulate('click');
     expect(stub.callCount).to.equal(1);
   });
-})
+});
