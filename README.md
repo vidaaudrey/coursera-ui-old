@@ -20,6 +20,9 @@ An experiment to create reusable component libraries using the latest front-end 
 - `npm run lint:fix` Lint and try to fix some basic linting errors
 - `npm run publish-storybook` Will publish the story at [https://vidaaudrey.github.io/coursera-ui](https://vidaaudrey.github.io/coursera-ui)
 
+- Required Global Installations
+  - `npm install -g semantic-release-cli getstorybook`
+
 ## Feature List
 
 ## Libraries
@@ -27,6 +30,21 @@ An experiment to create reusable component libraries using the latest front-end 
 - [Storybook](https://github.com/kadirahq/react-storybook)
 
 ## How to Contribute
+- [Understanding Semantic Release](https://github.com/semantic-release/semantic-release)
+- [Commit Guidelines, format and tool](https://egghead.io/lessons/javascript-how-to-write-a-javascript-library-writing-conventional-commits-with-commitizen).
+- Commit Types. Ref[Angular Git Commit Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md)
+  - feat: A new feature
+  - fix: A bug fix
+  - docs: Documentation only changes
+  style: Changes that do not affect the meaning of the code (white-space, - formatting, missing semi-colons, etc)
+  - refactor: A code change that neither fixes a bug nor adds a feature
+  - perf: A code change that improves performance
+  - test: Adding missing tests
+  chore: Changes to the build process or auxiliary tools and libraries such as - documentation generation
+
+- Scopes
+  - TODO 
+
 
 
 ### Testing

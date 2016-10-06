@@ -1,10 +1,11 @@
 {
   "name": "coursera-ui",
-  "version": "0.0.1",
+  "version": "0.0.0-semantically-released",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "commit": "git-cz",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx",
     "lintfix": "eslint src --fix",
@@ -30,6 +31,7 @@
     "babel-register": "^6.16.3",
     "chai": "^3.5.0",
     "codecov": "^1.0.1",
+    "commitizen": "^2.8.6",
     "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^2.4.1",
     "eslint": "^3.7.1",
@@ -54,10 +56,11 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "ghooks": {
-      "pre-commit": "npm run lintfix"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vidaaudrey/coursera-ui.git"
   },
   "bugs": {
     "url": "https://github.com/vidaaudrey/coursera-ui/issues"
