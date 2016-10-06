@@ -2,4 +2,5 @@ lib/
 .storybook/
 test/_helpers/
 webpack.config.js
-*.test.js
+test/
+stories/

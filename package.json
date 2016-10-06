@@ -5,17 +5,32 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint src --ext .js,.jsx .",
+    "lint": "eslint src --ext .js,.jsx",
     "lintfix": "eslint src --fix",
     "postinstalltemp": "bash .scripts/post_install.sh",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook -p 9000 -s public",
     "build-storybook": "build-storybook -s public",
-    "publish-storybook": "bash .scripts/publish_storybook.sh"
+    "publish-storybook": "bash .scripts/publish_storybook.sh",
+    "check-coverage": "istanbul check-coverage --statements 20 --branches 20 --functions 20 --lines 20",
+    "report-coverage": "codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "mocha": "mocha --require .scripts/mocha_runner --recursive test",
+    "test:w": "mocha --require .scripts/mocha_runner --recursive test -w",
+    "test-only": "npm run mocha --silent test",
+    "test": "npm run test-only && npm run lint"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
+    "airbnb-js-shims": "^1.0.1",
+    "babel-cli": "^6.16.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-airbnb": "^2.1.1",
+    "babel-register": "^6.16.3",
+    "chai": "^3.5.0",
+    "codecov": "^1.0.1",
+    "cz-conventional-changelog": "^1.2.0",
+    "enzyme": "^2.4.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-config-airbnb-flow": "^1.0.2",
@@ -23,10 +38,32 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
     "git-url-parse": "^6.0.5",
-    "react-scripts": "0.6.1"
+    "istanbul": "^0.4.5",
+    "jsdom": "^9.6.0",
+    "mocha": "^3.1.0",
+    "react-addons-test-utils": "^15.3.2",
+    "react-scripts": "0.6.1",
+    "semantic-release": "^4.3.5",
+    "sinon": "^1.17.6"
   },
   "dependencies": {
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "npm run lintfix"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/vidaaudrey/coursera-ui/issues"
+  },
+  "homepage": "https://github.com/vidaaudrey/coursera-ui#readme",
+  "license": "MIT",
+  "engines": {
+    "npm": "^3.0.0"
   }
 }
