@@ -1,9 +1,9 @@
-[![travis build](https://img.shields.io/travis/vidaaudrey/coursera-ui.svg?style=flat-square)](https://travis-ci.org/vidaaudrey/coursera-ui)
-[![codecov coverage](https://img.shields.io/codecov/c/github/vidaaudrey/coursera-ui.svg?style=flat-square)](https://codecov.io/github/vidaaudrey/coursera-ui)
-[![version](https://img.shields.io/npm/v/coursera-ui.svg?style=flat-square)](http://npm.im/coursera-ui)
-
+# Coursera UI <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 An experiment to create reusable component libraries using the latest front-end technologies.
 
+[![travis build][travis-svg]][travis-url]
+[![codecov coverage][codecov-svg]][codecov-url]
+[![version][npm-version-svg]][npm-url]
 
 ## Table of Contents
 
@@ -39,7 +39,7 @@ An experiment to create reusable component libraries using the latest front-end 
   - [ ] Shadow?
 - [ ] Fonts
 - [ ] zIndex
-- [ ] Other CommonUtils
+- [ ] Other Common Utils
     - [ ] w-100
     - [ ] floating
     - [ ] centering
@@ -53,9 +53,105 @@ An experiment to create reusable component libraries using the latest front-end 
     - [ ] invisible (!== display:none)
     - [ ] text-hide?
     - [ ] screen readers: sr-only, sr-only-focusable
-- [ ] Misc
 
 ### Components
+
+#### Basic
+- [ ] Grid, Layout
+- [ ] Typography (remove all margin tops, have 0.5rem margin bottom)
+- [ ] List
+- [ ] Table
+- [ ] Form
+  - [ ] Input
+  - [ ] Checkbox
+  - [ ] Radio
+  - [ ] Toggle
+  - [ ] Select / Dropdown
+  - [ ] Button
+  - [ ] ButtonLink
+  - [ ] Label
+  - [ ] Form
+- [ ] Link
+- [ ] Icon
+- [ ] Card
+- [ ] Divider
+- [ ] Dialog/Modal
+- [ ] Blockquote
+- [ ] Nav
+- [ ] Tag
+
+#### Extended
+- [ ] Notification
+- [ ] Jumbotron
+- [ ] Alert
+- [ ] Tooltip
+- [ ] Popover
+- [ ] Pagination
+- [ ] Tab
+- [ ] Badge
+- [ ] Loader
+- [ ] Drawer
+- [ ] HeaderPanel
+- [ ] Validated form inputs
+    - [ ] EmailInput
+    - [ ] PhoneInput
+    - [ ] AddressInput
+    - [ ] ZipInput
+    - [ ] CreditCardInput
+- [ ] List
+    - [ ] Draggable
+    - [ ] StepList
+    - [ ] Breadcrumb
+- [ ] Media
+- [ ] EditableInput
+- [ ] LoginForm
+- [ ] LogoutForm
+- [ ] CreditCard
+- [ ] VideoPlayer
+- [ ] FileDrop
+- [ ] Uploaders
+    - [ ]FileUploader
+    - [ ]ImageUploader
+    - [ ]VideoUploader (need additional processing)
+- [ ] ProgressBar
+- [ ] Collapsible
+- [ ] Scrollable
+- [ ] ShoppingCart
+- [ ] Menu
+- [ ] AutoComplete
+- [ ] Ellipsis
+- [ ] CopyToClipboard
+
+#### Animation & Transition
+
+#### Super Rich Components
+- [ ] SyntaxHighlighter
+- [ ] MarkdownViewer
+- [ ] Calendar
+- [ ] DocPreview
+
+#### Charts
+- [ ] Donut
+- [ ] Bar
+- [ ] Timeseries
+
+#### Vendor Services
+- [ ] GoogleMap
+- [ ] Transloader
+- [ ] Imgix
+
+#### Composables (align with recompose)
+- [ ] withTheme
+- [ ] withRoute
+- [ ] withApiHandler
+- [ ] withHover (add mouse over and leave to existing component)
+- [ ] mapStateToProps
+- [ ] ....
+
+#### Common States and Behaviors
+- [ ] Key interaction
+- API State: API_BEFORE_SEND, API_IN_PROGRESS, API_SUCCESS, API_ERROR
+
 
 ## Libraries
 - [Create React App] (https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
@@ -100,3 +196,11 @@ We use Travis CI.
 
 
 ## Something Missing?
+
+[package-url]: https://www.npmjs.com/package/coursera-ui
+[npm-version-svg]: https://img.shields.io/npm/v/coursera-ui.svg?style=flat-square
+[npm-url]: http://npm.im/coursera-ui
+[codecov-svg]: https://img.shields.io/codecov/c/github/vidaaudrey/coursera-ui.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/vidaaudrey/coursera-ui
+[travis-svg]: https://img.shields.io/travis/vidaaudrey/coursera-ui.svg?style=flat-square
+[travis-url]: https://travis-ci.org/vidaaudrey/coursera-ui
