@@ -8,15 +8,21 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx .",
-    "lintfix": "eslint src --fix"
+    "lintfix": "eslint src --fix",
+    "postinstalltemp": "bash .scripts/post_install.sh",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "publish-storybook": "bash .scripts/publish_storybook.sh"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-config-airbnb-flow": "^1.0.2",
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
+    "git-url-parse": "^6.0.5",
     "react-scripts": "0.6.1"
   },
   "dependencies": {
