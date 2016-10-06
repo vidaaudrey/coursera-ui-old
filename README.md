@@ -15,7 +15,7 @@ An experiment to create reusable component library using the latest front-end te
 
 ## How to Use
 - Clone the repo and run `npm install`
-- `npm run storybook` and visit http://localhost:9001 (depends on the availability) and you'll see the stories
+- `npm run storybook` and visit http://localhost:9000 (depends on the availability) and you'll see the stories
 - `npm start` Run the actual app
 - `npm run test`  Run all the tests in tests directory and eslint
 - `npm run test:only` Run tests without eslint
@@ -176,6 +176,9 @@ An experiment to create reusable component library using the latest front-end te
 - Scopes
   - TODO
 
+### Documentation
+We use git wiki to manage all our documentations. You can edit it online or within our repo's docs directory. [How to use git wiki as submodule][git-wiki-as-submodule]
+
 
 
 ### Testing
@@ -204,3 +207,4 @@ We use Travis CI.
 [codecov-url]: https://codecov.io/github/vidaaudrey/coursera-ui
 [travis-svg]: https://img.shields.io/travis/vidaaudrey/coursera-ui.svg?style=flat-square
 [travis-url]: https://travis-ci.org/vidaaudrey/coursera-ui
+[git-wiki-as-submodule]: https://brendancleary.com/2013/03/08/including-a-github-wiki-in-a-repository-as-a-submodule/

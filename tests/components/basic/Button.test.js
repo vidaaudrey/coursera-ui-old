@@ -1,29 +1,30 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from '../src/components/App';
+import {Button} from '../../../';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
 const { describe, it, before } = global;
 
-describe('App', () => {
+describe('Button', () => {
   let wrapper;
   const stub = sinon.stub();
   const mockProp = {
-    name: 'Audrey',
-    handleClick: stub,
+    children: 'Hello',
+    onClick: stub,
   };
 
   before(() => {
-    wrapper = shallow(<App {...mockProp} />);
+    wrapper = shallow(<Button {...mockProp} />);
   });
 
   it('should show the given name', () => {
-    expect(wrapper.text()).to.contain(mockProp.name);
+    expect(wrapper.text()).to.contain(mockProp.children);
   });
 
   it('should handle click', () => {
-    wrapper.find('button').simulate('click');
+    wrapper.simulate('click');
+    console.log(wrapper.debug());
     expect(stub.callCount).to.equal(1);
   });
 });

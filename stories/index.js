@@ -1,2 +1,4 @@
 import './Welcome.story';
-import './Button.story';
+import './components';
+import './prototypes';
+import './misc';

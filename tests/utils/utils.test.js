@@ -1,4 +1,4 @@
-import { helloWorld } from '../src/utils/common';
+import { helloWorld } from '../../src/utils/common';
 import { expect } from 'chai';
 const { describe, it } = global;
 
