@@ -1,7 +1,6 @@
 {
   "name": "coursera-ui",
   "version": "0.0.0-semantically-released",
-  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

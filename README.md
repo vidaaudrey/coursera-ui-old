@@ -28,6 +28,34 @@ An experiment to create reusable component libraries using the latest front-end 
   - `npm install -g semantic-release-cli getstorybook`
 
 ## Feature List
+### Utilities
+- [ ] Reset [Reboot](http://v4-alpha.getbootstrap.com/content/reboot/)
+- [ ] Colors
+- [ ] Breakpoints
+- [ ] Spacing
+- [ ] Theme
+  - [ ] Palette
+  - [ ] Gradient
+  - [ ] Shadow?
+- [ ] Fonts
+- [ ] zIndex
+- [ ] Other CommonUtils
+    - [ ] w-100
+    - [ ] floating
+    - [ ] centering
+    - [ ] text-alignment
+    - [ ] text-transform
+    - [ ] font-weight
+    - [ ] contextual-color
+    - [ ] display
+    - [ ] clearfix
+    - [ ] fixed-positioning
+    - [ ] invisible (!== display:none)
+    - [ ] text-hide?
+    - [ ] screen readers: sr-only, sr-only-focusable
+- [ ] Misc
+
+### Components
 
 ## Libraries
 - [Create React App] (https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
@@ -46,7 +74,7 @@ An experiment to create reusable component libraries using the latest front-end 
   - test: Adding missing tests
   - chore: Changes to the build process or auxiliary tools and libraries such as - documentation generation
   - build: changes that affect the build system or external dependencies
-  - ci: change to travis
+  - ci: changes to travis
   - revert: revert a previous commit
 
 - Scopes
