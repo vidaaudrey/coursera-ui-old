@@ -40,10 +40,13 @@ An experiment to create reusable component libraries using the latest front-end 
   - refactor: A code change that neither fixes a bug nor adds a feature
   - perf: A code change that improves performance
   - test: Adding missing tests
-  chore: Changes to the build process or auxiliary tools and libraries such as - documentation generation
+  - chore: Changes to the build process or auxiliary tools and libraries such as - documentation generation
+  - build: changes that affect the build system or external dependencies
+  - ci: change to travis
+  - revert: revert a previous commit
 
 - Scopes
-  - TODO 
+  - TODO
 
 
 

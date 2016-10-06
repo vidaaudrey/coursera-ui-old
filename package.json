@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx",
     "lintfix": "eslint src --fix",
-    "postinstall": "bash .scripts/post_install.sh",
+    "postinstalltemp": "bash .scripts/post_install.sh",
     "storybook": "start-storybook -p 9000 -s public",
     "build-storybook": "build-storybook -s public",
     "publish-storybook": "bash .scripts/publish_storybook.sh",
