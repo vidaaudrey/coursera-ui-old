@@ -1,0 +1,6248 @@
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+.styleguide a {
+  color: #2775d1;
+  text-decoration: none;
+}
+.styleguide a:hover {
+  text-decoration: underline;
+}
+.styleguide a.nostyle,
+a.nostyle {
+  color: inherit;
+  text-decoration: none;
+}
+.styleguide a.nostyle:hover,
+a.nostyle:hover,
+a.nostyle:focus {
+  color: inherit;
+  text-decoration: none;
+}
+a.dim,
+a.dim:hover {
+  color: rgba(0,0,0,0.54);
+  text-decoration: none;
+}
+a.dim:hover,
+a.dim:hover:hover {
+  color: #2775d1;
+  text-decoration: underline;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin,
+a.link-button {
+  font-size: 12px;
+  line-height: 14px;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-image: none;
+  border: none;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  text-decoration: none;
+  color: #fff;
+  min-width: 72px;
+  padding: 10px 20px;
+  -webkit-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -moz-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -o-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -ms-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  -ms-transition-duration: 100ms;
+  transition-duration: 100ms;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  -o-transition-delay: 0ms;
+  -ms-transition-delay: 0ms;
+  transition-delay: 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+button.primary[disabled],
+button.secondary[disabled],
+button.passive[disabled],
+button.facebook[disabled],
+button.linkedin[disabled] {
+  background-color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  color: rgba(0,0,0,0.26);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+button.primary[disabled]:hover,
+button.secondary[disabled]:hover,
+button.passive[disabled]:hover,
+button.facebook[disabled]:hover,
+button.linkedin[disabled]:hover,
+button.primary[disabled]:active,
+button.secondary[disabled]:active,
+button.passive[disabled]:active,
+button.facebook[disabled]:active,
+button.linkedin[disabled]:active,
+button.primary[disabled]:focus,
+button.secondary[disabled]:focus,
+button.passive[disabled]:focus,
+button.facebook[disabled]:focus,
+button.linkedin[disabled]:focus {
+  background: #e0e0e0 none repeat 0 0 scroll;
+}
+button.primary.cozy,
+button.secondary.cozy,
+button.passive.cozy,
+button.facebook.cozy,
+button.linkedin.cozy {
+  padding: 16px 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.comfy,
+button.secondary.comfy,
+button.passive.comfy,
+button.facebook.comfy,
+button.linkedin.comfy {
+  padding: 20px 40px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.fullbleed,
+button.secondary.fullbleed,
+button.passive.fullbleed,
+button.facebook.fullbleed,
+button.linkedin.fullbleed {
+  padding: 10px 20px;
+  width: 100%;
+}
+button.primary {
+  border: 1px solid #2073d4;
+  background-color: #2073d4;
+}
+button.primary:hover,
+button.primary:focus,
+button.primary:active {
+  background-color: #005bbe;
+}
+button.primary.comfy:not([disabled]),
+button.primary.cozy:not([disabled]) {
+  background-image: -webkit-linear-gradient(#4285f4, #2775d1);
+  background-image: -moz-linear-gradient(#4285f4, #2775d1);
+  background-image: -o-linear-gradient(#4285f4, #2775d1);
+  background-image: -ms-linear-gradient(#4285f4, #2775d1);
+  background-image: linear-gradient(#4285f4, #2775d1);
+}
+button.primary.comfy:not([disabled]):hover,
+button.primary.cozy:not([disabled]):hover,
+button.primary.comfy:not([disabled]):active,
+button.primary.cozy:not([disabled]):active,
+button.primary.comfy:not([disabled]):focus,
+button.primary.cozy:not([disabled]):focus {
+  background-image: none;
+}
+button.secondary {
+  color: #2a73cc;
+  border: 1px solid #2a73cc;
+  background-color: transparent;
+}
+button.secondary:hover,
+button.secondary:focus,
+button.secondary:active {
+  background-color: #2a73cc;
+  color: #fff;
+}
+button.passive {
+  border: 1px solid #7e778b;
+  color: #7e778b;
+  background-color: transparent;
+}
+button.passive:hover,
+button.passive:focus,
+button.passive:active {
+  border-color: #8c8c8c;
+  background-color: #8c8c8c;
+  color: #fff;
+}
+button.nostyle,
+button.button-link {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.87);
+  border: 0;
+  font-size: 1em;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+  min-width: 0;
+}
+button.nostyle:disabled,
+button.button-link:disabled {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.26);
+}
+button.facebook {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #3b5998;
+}
+button.facebook span,
+button.facebook i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.facebook i {
+  font-size: 20px;
+}
+button.facebook span,
+button.facebook i:last-child {
+  margin-left: 8px;
+}
+button.linkedin {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #2a73cc;
+}
+button.linkedin span,
+button.linkedin i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.linkedin i {
+  font-size: 20px;
+}
+button.linkedin span,
+button.linkedin i:last-child {
+  margin-left: 8px;
+}
+button.button-link {
+  color: #2775d1;
+  text-decoration: none;
+  cursor: pointer;
+}
+button.button-link:hover {
+  text-decoration: underline;
+}
+button.button-link.nostyle {
+  color: inherit;
+  text-decoration: none;
+}
+button.button-link.nostyle:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.theme-dark button.primary[disabled],
+.theme-dark button.secondary[disabled],
+.theme-dark button.passive[disabled] {
+  background-color: rgba(255,255,255,0.8);
+}
+a.link-button {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-image: none;
+  border: none;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  text-decoration: none;
+  color: #fff;
+  min-width: 72px;
+  padding: 10px 20px;
+  -webkit-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -moz-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -o-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -ms-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  -ms-transition-duration: 100ms;
+  transition-duration: 100ms;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  -o-transition-delay: 0ms;
+  -ms-transition-delay: 0ms;
+  transition-delay: 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+a.link-button:hover,
+a.link-button:active,
+a.link-button:focus {
+  text-decoration: none;
+  color: #fff;
+}
+a.link-button.cozy {
+  padding: 16px 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+a.link-button.comfy {
+  padding: 20px 40px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+a.link-button.fullbleed {
+  padding: 10px 20px;
+  width: 100%;
+}
+a.link-button.primary {
+  border: 1px solid #2073d4;
+  background-color: #2073d4;
+}
+a.link-button.primary:hover,
+a.link-button.primary:focus,
+a.link-button.primary:active {
+  background-color: #005bbe;
+}
+a.link-button.primary.cozy,
+a.link-button.primary.comfy {
+  background-image: -webkit-linear-gradient(#4285f4, #2775d1);
+  background-image: -moz-linear-gradient(#4285f4, #2775d1);
+  background-image: -o-linear-gradient(#4285f4, #2775d1);
+  background-image: -ms-linear-gradient(#4285f4, #2775d1);
+  background-image: linear-gradient(#4285f4, #2775d1);
+}
+a.link-button.primary.cozy:hover,
+a.link-button.primary.comfy:hover,
+a.link-button.primary.cozy:active,
+a.link-button.primary.comfy:active,
+a.link-button.primary.cozy:focus,
+a.link-button.primary.comfy:focus {
+  background-image: none;
+}
+a.link-button.secondary {
+  color: #2a73cc;
+  border: 1px solid #2a73cc;
+  background-color: transparent;
+}
+a.link-button.secondary:hover,
+a.link-button.secondary:focus,
+a.link-button.secondary:active {
+  background-color: #2a73cc;
+  color: #fff;
+}
+a.link-button.passive {
+  border: 1px solid #7e778b;
+  color: #7e778b;
+  background-color: transparent;
+}
+a.link-button.passive:hover,
+a.link-button.passive:focus,
+a.link-button.passive:active {
+  border-color: #8c8c8c;
+  background-color: #8c8c8c;
+  color: #fff;
+}
+a.link-button.facebook {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #3b5998;
+}
+a.link-button.facebook span,
+a.link-button.facebook i {
+  display: inline-block;
+  vertical-align: middle;
+}
+a.link-button.facebook i {
+  font-size: 20px;
+}
+a.link-button.facebook span,
+a.link-button.facebook i:last-child {
+  margin-left: 8px;
+}
+a.link-button.linkedin {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #2a73cc;
+}
+a.link-button.linkedin span,
+a.link-button.linkedin i {
+  display: inline-block;
+  vertical-align: middle;
+}
+a.link-button.linkedin i {
+  font-size: 20px;
+}
+a.link-button.linkedin span,
+a.link-button.linkedin i:last-child {
+  margin-left: 8px;
+}
+a.link-button.nostyle {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.87);
+  border: 0;
+  font-size: 1em;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+}
+a.link-button.nostyle:disabled {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.26);
+}
+@media print {
+  a:link:after,
+  a:visited:after {
+    content: "" !important;
+  }
+}
+/*
+Accessibility
+
+This is a collection of classes relevant to accessibility.
+
+To use these styles, please include this in the index.styl of your SPA (Single page application)
+/web/static/bundles/styleguide/index.styl
+
+Styleguide 13
+*/
+/*
+Screenreader-only text
+
+Use this class for text should be read by screenreaders, but not displayed visually.
+See http://a11yproject.com/posts/how-to-hide-content/ for more information.
+
+Markup:
+<span class="screenreader-only">screenreader-only</span>
+
+Styleguide 13.1
+*/
+.screenreader-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+/*
+Classes for alternative appearances
+
+Semantically, &lt;a&gt; tags should be used for elements that trigger page navigation on click.
+&lt;button&gt; tags should be used for elements that trigger some other functionality on click.
+
+However, sometimes we want to use button styling for a link, or vice versa. These classes, which are contained in other
+sections of the Styleguide, allow us to do so in an accessible manner.
+
+Styleguide 13.2
+*/
+/*
+button-link
+
+Use this class for elements that look like links, but do not trigger page navigation.
+
+For the full spec, visit <a href="section-5.html#kssref-5-1-10">Section 5.1.10</a> of the Styleguide.
+
+Markup:
+<button class="button-link"> Button that looks like a link </button>
+
+Styleguide 13.2.1
+
+*/
+/*
+link-button
+
+Use this class for elements that look like buttons, but trigger page navigation when clicked.
+
+For the full spec, visit <a href="section-12.html#kssref-12-2-1">Section 12.2.1</a> of the Styleguide.
+
+Markup:
+<a class="link-button primary"> Link that looks like a button </a>
+
+Styleguide 13.2.2
+
+*/
+/*
+Printing elements
+
+Overflow is set to `visible !important` for all elements when printing, so that we don't hide any elements that should
+be shown.
+
+Styleguide 13.2.3
+*/
+@media print {
+  * {
+    overflow: visible !important;
+  }
+}
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+.align-items-absolute-center {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.align-items-vertical-center {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.align-items-top {
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -o-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+.align-items-bottom,
+.align-items-bottom-right {
+  -webkit-box-align: end;
+  -moz-box-align: end;
+  -o-box-align: end;
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+.align-items-right,
+.align-items-bottom-right {
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -o-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+.align-self-start {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  -ms-flex-item-align: start;
+}
+.align-self-end {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  -ms-flex-item-align: end;
+}
+.align-self-stretch {
+  -webkit-align-self: stretch;
+  align-self: stretch;
+  -ms-flex-item-align: stretch;
+}
+.align-self-center {
+  -webkit-align-self: center;
+  align-self: center;
+  -ms-flex-item-align: center;
+}
+.horizontal-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.vertical-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.align-left {
+  text-align: left;
+}
+.align-horizontal-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+.align-inherit {
+  text-align: inherit;
+}
+/*
+Box Layouts
+
+This is a collection of different box based layouts for contents. Box based layouts are laying items out in a container.
+These are not used for overall page layouts nor is it a substitute for a grid system
+These can however live within any grid system.
+
+The first several options (6.1 through 6.5) are based on CSS3 Flexbox layout. The last option (6.6) can be applied
+to any block level container  and does not necessarily have to be a Flexbox container.
+
+Flexbox based layouts information:
+This is based on CSS3 Flexbox. This is NOT intended for layouts for pages.
+This is  useful for placing contents in the page in boxes (horizontal or vertical). This offers 12 column widths.
+What that means is that it offers you 12 progressing column sizes for the content.
+Flex-1 being the smallest.
+It has IE10+ support.
+
+To use these styles, you can do the following:
+1. please include /web/static/bundles/styleguide/index.styl in the index.styl of your SPA (Single page application)
+2. If you want to consume it within a styl file, get the variables file from
+/web/static/bundles/styleguide/variables
+
+Styleguide 6
+*/
+/*
+Horizontal Box Layouts (Flexbox)
+
+Styleguide 6.1
+*/
+.flex-1 {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.flex-2 {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  -o-box-flex: 2;
+  box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+.flex-3 {
+  -webkit-box-flex: 3;
+  -moz-box-flex: 3;
+  -o-box-flex: 3;
+  box-flex: 3;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+}
+.flex-4 {
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4;
+  -o-box-flex: 4;
+  box-flex: 4;
+  -webkit-flex: 4;
+  -ms-flex: 4;
+  flex: 4;
+}
+.flex-5 {
+  -webkit-box-flex: 5;
+  -moz-box-flex: 5;
+  -o-box-flex: 5;
+  box-flex: 5;
+  -webkit-flex: 5;
+  -ms-flex: 5;
+  flex: 5;
+}
+.flex-6 {
+  -webkit-box-flex: 6;
+  -moz-box-flex: 6;
+  -o-box-flex: 6;
+  box-flex: 6;
+  -webkit-flex: 6;
+  -ms-flex: 6;
+  flex: 6;
+}
+.flex-7 {
+  -webkit-box-flex: 7;
+  -moz-box-flex: 7;
+  -o-box-flex: 7;
+  box-flex: 7;
+  -webkit-flex: 7;
+  -ms-flex: 7;
+  flex: 7;
+}
+.flex-8 {
+  -webkit-box-flex: 8;
+  -moz-box-flex: 8;
+  -o-box-flex: 8;
+  box-flex: 8;
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+}
+.flex-9 {
+  -webkit-box-flex: 9;
+  -moz-box-flex: 9;
+  -o-box-flex: 9;
+  box-flex: 9;
+  -webkit-flex: 9;
+  -ms-flex: 9;
+  flex: 9;
+}
+.flex-10 {
+  -webkit-box-flex: 10;
+  -moz-box-flex: 10;
+  -o-box-flex: 10;
+  box-flex: 10;
+  -webkit-flex: 10;
+  -ms-flex: 10;
+  flex: 10;
+}
+.flex-11 {
+  -webkit-box-flex: 11;
+  -moz-box-flex: 11;
+  -o-box-flex: 11;
+  box-flex: 11;
+  -webkit-flex: 11;
+  -ms-flex: 11;
+  flex: 11;
+}
+.flex-12 {
+  -webkit-box-flex: 12;
+  -moz-box-flex: 12;
+  -o-box-flex: 12;
+  box-flex: 12;
+  -webkit-flex: 12;
+  -ms-flex: 12;
+  flex: 12;
+}
+/*
+  Horizontal Box
+
+  Align all items within this horizontally. All items are aligned middle along the vertical axis.
+  Please use the alignment options below for other configurations.
+
+  Markup:
+  <div class="horizontal-box" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.1
+*/
+/*
+  Center Horizontal Box
+
+  Items are center on both horizontal and vertical axis
+
+  Markup:
+  <div class="horizontal-box align-items-absolute-center" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.2
+*/
+/*
+  Space between Horizontal Box
+
+  Align all items such that the empty space is equally divided between items
+
+  Markup:
+  <div class="horizontal-box align-items-spacebetween" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.3
+*/
+.horizontal-box.align-items-spacebetween {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -o-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/*
+  Space around Horizontal Box
+
+  Align all items such that the empty space is equally split around items and the rest of the space is used in between.
+
+  Markup:
+  <div class="horizontal-box align-items-spacearound" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.4
+*/
+.horizontal-box.align-items-spacearound {
+  -webkit-box-pack: distribute;
+  -moz-box-pack: distribute;
+  -o-box-pack: distribute;
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/*
+  Right Aligned Horizontal Box
+
+  Align all the items to the right.
+
+  Markup:
+  <div class="horizontal-box align-items-right" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.5
+*/
+/*
+  Top Aligned Horizontal Box
+
+  Align all the items to the top.
+
+  Markup:
+  <div class="horizontal-box align-items-top" style="background-color:#DDD; width: 95%;height:100px;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.6
+*/
+/*
+  Vertically Middle Aligned Horizontal Box
+
+  Align all the items to vertical middle
+
+  Markup:
+  <div class="horizontal-box align-items-vertical-center" style="background-color:#DDD; width: 95%;height:100px;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.7
+*/
+/*
+  Bottom Aligned Horizontal Box
+
+  Align all items to the bottom
+
+  Markup:
+  <div class="horizontal-box align-items-bottom" style="background-color:#DDD; width: 95%; height: 100px;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.8
+*/
+/*
+  Corner Aligned Horizontal Box
+
+  Align all items to the right and bottom
+
+  Markup:
+  <div class="horizontal-box align-items-bottom-right" style="background-color:#DDD; width: 95%;height:100px;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.1.9
+*/
+/*
+  Flexing Horizontal Box columns (Flexbox)
+
+  Flexible column arrangements for items within a flexbox. Each item within a flexbox can occupy more or less space compared
+  to the other items. The columns themselves are not rigid, but flexible with changing screensizes.
+  There are 12 levels of flexing available. To use it on columns, just specify class name flex-'n' n varies from 1-12.
+  Refer to examples below.
+
+  Styleguide 6.2
+*/
+/*
+  Flexing first item
+
+  First column occupies 2 columns and the others occupy just enough space.
+
+  Markup:
+  <div class="horizontal-box" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.2.1
+
+*/
+/*
+  Flexing middle item
+
+  Middle column occupies 2 columns and the others occupy just enough space.
+
+  Markup:
+  <div class="horizontal-box" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.2.2
+
+*/
+/*
+  Flexing all items
+
+  All columns specify how many flexing columns they want
+
+  Markup:
+  <div class="horizontal-box" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div class="flex-2" style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div class="flex-3" style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.2.3
+
+*/
+/*
+  Flexing with four items
+
+  All columns specify how many flexing columns they want
+
+  Markup:
+  <div class="horizontal-box" style="background-color:#DDD; width: 95%;padding:8px;">
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-right: 4px;"> Fourth </div>
+  </div>
+
+  Styleguide 6.2.4
+
+*/
+/*
+  Aligning individual items differently (Flexbox)
+
+  Each item specifies it's own alignments
+
+  Markup:
+  <div class="horizontal-box" style="background-color:#DDD; width: 95%;padding:8px;height:100px">
+    <div class="flex-1 align-self-start" style="background-color:white; padding: 8px; margin-right: 4px;"> First </div>
+    <div class="flex-1 align-self-center" style="background-color:white; padding: 8px; margin-right: 4px;"> Second </div>
+    <div class="flex-1 align-self-stretch" style="background-color:white; padding: 8px; margin-right: 4px;"> Third </div>
+    <div class="flex-1 align-self-end" style="background-color:white; padding: 8px; margin-right: 4px;"> Fourth </div>
+  </div>
+
+  Styleguide 6.3
+
+*/
+/*
+  Wrapping horizontal items (Flexbox)
+
+  Wraps items neatly when there are width constraints
+
+  Markup:
+  <div class="horizontal-box wrap" style="background-color:#DDD; width: 400px;padding:8px;height:100px">
+    <div style="min-width:120px;background-color:white; padding: 8px; margin-right: 4px;margin-bottom: 4px;"> First </div>
+    <div style="min-width:120px;background-color:white; padding: 8px; margin-right: 4px;margin-bottom: 4px;"> Second </div>
+    <div style="min-width:120px;background-color:white; padding: 8px; margin-right: 4px;margin-bottom: 4px;"> Third </div>
+    <div style="min-width:120px;background-color:white; padding: 8px; margin-right: 4px;margin-bottom: 4px;"> Fourth </div>
+  </div>
+
+  Styleguide 6.4
+
+*/
+.horizontal-box.wrap {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+/*
+Vertical Box Layouts (Flexbox)
+
+Styleguide 6.5
+*/
+/*
+  Default Vertical Box
+  Align all items within this vertically.
+
+  Markup:
+  <div class="vertical-box" style="background-color:#DDD; width: 95%;padding:8px; height: 300px;">
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.5.1
+*/
+/*
+  Center Align Vertical Box
+
+  Markup:
+  <div class="vertical-box align-items-vertical-center" style="background-color:#DDD; width: 95%;padding:8px; height: 300px;">
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.5.2
+*/
+/*
+  Absolute Center Vertical Box
+
+  Markup:
+  <div class="vertical-box align-items-absolute-center" style="background-color:#DDD; width: 95%;padding:8px; height: 300px;">
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> First </div>
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.5.3
+*/
+/*
+  Flexing one item in Vertical box
+
+  Markup:
+  <div class="vertical-box" style="background-color:#DDD; width: 95%;padding:8px; height: 300px;">
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> First </div>
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-bottom: 4px;"> Second </div>
+    <div style="background-color:white; padding: 8px; margin-bottom: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.5.4
+*/
+/*
+  Flexing all items in Vertical box
+
+  Markup:
+  <div class="vertical-box" style="background-color:#DDD; width: 95%;padding:8px; height: 300px;">
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-bottom: 4px;"> First </div>
+    <div class="flex-2" style="background-color:white; padding: 8px; margin-bottom: 4px;"> Second </div>
+    <div class="flex-3" style="background-color:white; padding: 8px; margin-bottom: 4px;"> Third </div>
+  </div>
+
+  Styleguide 6.5.5
+*/
+/*
+  Fullbleed body
+
+  Markup:
+  <div class="vertical-box" style="background-color:#DDD; width: 95%;padding:8px; height: 300px;">
+    <div class="flex-1" style="background-color:white; padding: 8px; margin-bottom: 4px;"> Fullbleed </div>
+  </div>
+
+  Styleguide 6.5.6
+*/
+/*
+Non-Flexbox Layouts
+
+This offers only Horizontal Alignment Options.
+There are four align options for placing block level UI elements. Block level elements
+inclyde div, section etc. Span and img are not covered directly.
+They should be contained in a div where these alignment options are applied.
+
+Below are examples of aligning divs directly and aligning images contained within divs.
+
+.align-left - Aligns the element to the left of the container
+.align-right - Aligns the element to the right of the container
+.align-horizontal-center - aligns the element to the center of the container
+.align-inherit - aligns items based on parent container alignment
+
+Markup:
+<div style="width: 95%; height: 50px; background-color:#DDD; padding: 10px; margin-bottom: 10px;">
+ <div class="{{modifier_class}}">
+   <strong>Block Text</strong>
+ </div>
+</div>
+<div style="width: 95%; height: 50px; background-color:#DDD; padding: 10px;">
+ <div class="{{modifier_class}}">
+   <img src="http://upload.wikimedia.org/wikipedia/commons/e/e5/Coursera_logo.PNG"
+    style="max-width: 100px; max-height: 30px">
+ </div>
+</div>
+
+Styleguide 6.6
+*/
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin {
+  font-size: 12px;
+  line-height: 14px;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-image: none;
+  border: none;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  text-decoration: none;
+  color: #fff;
+  min-width: 72px;
+  padding: 10px 20px;
+  -webkit-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -moz-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -o-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -ms-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  -ms-transition-duration: 100ms;
+  transition-duration: 100ms;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  -o-transition-delay: 0ms;
+  -ms-transition-delay: 0ms;
+  transition-delay: 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+button.primary[disabled],
+button.secondary[disabled],
+button.passive[disabled],
+button.facebook[disabled],
+button.linkedin[disabled] {
+  background-color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  color: rgba(0,0,0,0.26);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+button.primary[disabled]:hover,
+button.secondary[disabled]:hover,
+button.passive[disabled]:hover,
+button.facebook[disabled]:hover,
+button.linkedin[disabled]:hover,
+button.primary[disabled]:active,
+button.secondary[disabled]:active,
+button.passive[disabled]:active,
+button.facebook[disabled]:active,
+button.linkedin[disabled]:active,
+button.primary[disabled]:focus,
+button.secondary[disabled]:focus,
+button.passive[disabled]:focus,
+button.facebook[disabled]:focus,
+button.linkedin[disabled]:focus {
+  background: #e0e0e0 none repeat 0 0 scroll;
+}
+/*
+Buttons
+
+This is a collection of different button styles we can use in Learner App
+
+To use these styles, you can do the following:
+1. please include /web/static/bundles/styleguide/index.styl in the index.styl of your SPA (Single page application)
+2. If you want to consume it within a styl file, get the variables file from
+/web/static/bundles/styleguide/variables
+
+Styleguide 5
+*/
+/*
+  Buttons Categories:  In terms of function
+
+  1. Primary - Indicates the main action for the page
+  2. Secondary - Indicates any secondary actions in the page (like 'New Thread' in discussions)
+  3. Passive - Indicates the passive actions like "Cancel" or "Not Now". Will be used a lot in modals.
+  3. NoStyle - Used to represent plain text
+  4. Facebook - Used for Facebook buttons. You can use an icon to the left side as shown below
+  5. Linkedin - Used for Linkedin buttons. You can use an icon to the left side as shown below
+
+  Styleguide 5.1
+*/
+/*
+  Default Button/Primary Button
+
+   `<button class="primary">OK</button>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <button class="primary {{modifier_class}}"> Primary button </button>
+    <button class="primary {{modifier_class}}" disabled> Disabled </button>
+  </section>
+
+  Styleguide 5.1.1
+*/
+/*
+  Secondary Button
+
+   `<button class="secondary">OK</button>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <button class="secondary {{modifier_class}}"> Secondary button </button>
+    <button class="secondary {{modifier_class}}" disabled> Disabled </button>
+  </section>
+
+  Styleguide 5.1.2
+*/
+/*
+  Passive Button
+
+  This is used for passive actions like "Cancel", "Not Now" etc.
+
+   `<button class="passive">OK</button>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <button class="passive {{modifier_class}}"> Passive button </button>
+    <button class="passive {{modifier_class}}" disabled> Disabled </button>
+  </section>
+
+  Styleguide 5.1.4
+*/
+/*
+  NoStyle Button
+
+   `<button class="nostyle">OK</button>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <button class="nostyle {{modifier_class}}"> NoStyle button </button>
+    <button class="nostyle {{modifier_class}}" disabled> Disabled </button>
+  </section>
+
+  Styleguide 5.1.7
+*/
+/*
+  Facebook Button
+
+  `<button class="facebook"><i class="cif-facebook-official"></i>
+  <span>Facebook Button</span></button>`
+
+  :hover - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <button class="facebook {{modifier_class}}">
+    <i class="cif-facebook-official"></i>
+    <span>Facebook Button</span>
+  </button>
+
+  Styleguide 5.1.8
+ */
+/*
+  Linkedin Button
+
+  `<button class="linkedin"><i class="cif-linkedin-square"></i>
+  <span>Linkedin Button</span></button>`
+
+  :hover - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <button class="linkedin {{modifier_class}}">
+    <i class="cif-linkedin-square"></i>
+    <span>Linkedin Button</span>
+  </button>
+
+  Styleguide 5.1.9
+ */
+/*
+   Button Link
+
+   For accessibility purposes, use this class for elements that have the visual appearance of links, but don't trigger page navigation.
+
+   `<button class="button-link">Click me</button>`
+
+   :hover - Hover state
+   :focus - Focus state
+   :active - Active state
+
+   Markup:
+   <button class="button-link {{modifier_class}}"> Button link </button>
+
+   Styleguide 5.1.10
+  */
+button.primary.cozy,
+button.secondary.cozy,
+button.passive.cozy,
+button.facebook.cozy,
+button.linkedin.cozy {
+  padding: 16px 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.comfy,
+button.secondary.comfy,
+button.passive.comfy,
+button.facebook.comfy,
+button.linkedin.comfy {
+  padding: 20px 40px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.fullbleed,
+button.secondary.fullbleed,
+button.passive.fullbleed,
+button.facebook.fullbleed,
+button.linkedin.fullbleed {
+  padding: 10px 20px;
+  width: 100%;
+}
+button.primary {
+  border: 1px solid #2073d4;
+  background-color: #2073d4;
+}
+button.primary:hover,
+button.primary:focus,
+button.primary:active {
+  background-color: #005bbe;
+}
+button.primary.comfy:not([disabled]),
+button.primary.cozy:not([disabled]) {
+  background-image: -webkit-linear-gradient(#4285f4, #2775d1);
+  background-image: -moz-linear-gradient(#4285f4, #2775d1);
+  background-image: -o-linear-gradient(#4285f4, #2775d1);
+  background-image: -ms-linear-gradient(#4285f4, #2775d1);
+  background-image: linear-gradient(#4285f4, #2775d1);
+}
+button.primary.comfy:not([disabled]):hover,
+button.primary.cozy:not([disabled]):hover,
+button.primary.comfy:not([disabled]):active,
+button.primary.cozy:not([disabled]):active,
+button.primary.comfy:not([disabled]):focus,
+button.primary.cozy:not([disabled]):focus {
+  background-image: none;
+}
+button.secondary {
+  color: #2a73cc;
+  border: 1px solid #2a73cc;
+  background-color: transparent;
+}
+button.secondary:hover,
+button.secondary:focus,
+button.secondary:active {
+  background-color: #2a73cc;
+  color: #fff;
+}
+button.passive {
+  border: 1px solid #7e778b;
+  color: #7e778b;
+  background-color: transparent;
+}
+button.passive:hover,
+button.passive:focus,
+button.passive:active {
+  border-color: #8c8c8c;
+  background-color: #8c8c8c;
+  color: #fff;
+}
+button.nostyle,
+button.button-link {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.87);
+  border: 0;
+  font-size: 1em;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+  min-width: 0;
+}
+button.nostyle:disabled,
+button.button-link:disabled {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.26);
+}
+button.facebook {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #3b5998;
+}
+button.facebook span,
+button.facebook i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.facebook i {
+  font-size: 20px;
+}
+button.facebook span,
+button.facebook i:last-child {
+  margin-left: 8px;
+}
+button.linkedin {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #2a73cc;
+}
+button.linkedin span,
+button.linkedin i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.linkedin i {
+  font-size: 20px;
+}
+button.linkedin span,
+button.linkedin i:last-child {
+  margin-left: 8px;
+}
+button.button-link {
+  color: #2775d1;
+  text-decoration: none;
+  cursor: pointer;
+}
+button.button-link:hover {
+  text-decoration: underline;
+}
+button.button-link.nostyle {
+  color: inherit;
+  text-decoration: none;
+}
+button.button-link.nostyle:hover {
+  color: inherit;
+  text-decoration: none;
+}
+/*
+  Buttons sizes
+
+  1.Default size(Compact): Fits content with a default padding of top/bottom: 10px right/left: 20px
+  2.cozy: Has a padding of top/bottom: 18px right/left: 30px
+  3.comfy: Has a padding of 20px top/bottom and 40px left/right
+  3.Full bleed: occupies full width available. Great for mobile. Padding top/bottom: 16px, left/right: auto
+
+  Styleguide 5.2
+*/
+/*
+  All variants here
+
+   `<button class="primary cozy">OK</button><button class="fullbleed">OK</button>`
+
+  .cozy - has extra padding compared to default (18px/30px)
+  .comfy - has generous padding (20px/40px)
+  .fullbleed - occupies all width and has same room as comfy
+
+  Markup:
+  <section style="margin-top: 12px;max-width:650px">
+    <button class="primary {{modifier_class}}" style="margin-bottom:10px"> Primary Button </button>
+    <button class="secondary {{modifier_class}}" style="margin-bottom:10px"> Secondary Button </button>
+    <button class="passive {{modifier_class}}" style="margin-bottom:10px"> Passive Button </button>
+    <button class="primary {{modifier_class}}" style="margin-bottom:10px" disabled> Disabled Button </button>
+  </section>
+
+  Styleguide 5.2.1
+*/
+/*
+  Dark theme buttons
+
+  Styleguide 5.3
+*/
+/*
+  All variants here
+
+  No change in syntax
+  Usage within .theme-dark: `<button class="primary">OK</button>`
+
+  .primary - Primary button
+  .secondary - Secondary button
+  .passive - Passive action button
+
+  Markup:
+  <section style="margin-top: 12px;padding:12px;border-radius:3px" class="theme-dark">
+    <button class="{{modifier_class}}" style="margin-bottom:10px"> Button </button>
+    <button class="{{modifier_class}}" style="margin-bottom:10px" disabled> Button </button>
+  </section>
+
+  Styleguide 5.3.1
+*/
+.theme-dark button.primary[disabled],
+.theme-dark button.secondary[disabled],
+.theme-dark button.passive[disabled] {
+  background-color: rgba(255,255,255,0.8);
+}
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+/*
+Colors
+
+To use these styles, you can do the following:
+1. please include /web/static/bundles/styleguide/index.styl in the index.styl of your SPA (Single page application)
+2. If you want to consume it within a styl file, get the variables file from
+/web/static/bundles/styleguide/variables
+
+Styleguide 1
+*/
+/*
+Background Colors
+
+Default set of colors. These will be used in buttons and other components.
+Also available as background colors.
+
+Markup:
+<div><figure class="bgcolor-primary-light"></figure><label>Primary Light</label>&nbsp;
+<samp>.bgcolor-primary-light</samp>
+<samp>$color-primary-light</samp>
+</div>
+<div><figure class="bgcolor-primary"></figure><label>Primary</label>&nbsp;
+<samp>.bgcolor-primary</samp>
+<samp>.color-primary</samp>
+<samp>$color-primary</samp>
+</div>
+<div>
+<figure class="bgcolor-primary-dark"></figure><label>Primary Dark</label>
+<samp>.bgcolor-primary-dark</samp>
+<samp>.color-primary-dark</samp>
+<samp>$color-primary-dark</samp>
+</div>
+<div><figure class="bgcolor-success-light"></figure><label>Success Light</label>
+<samp>.bgcolor-success-light</samp>
+<samp>$color-success-light</samp>
+</div>
+<div><figure class="bgcolor-success"></figure><label>Success</label>
+<samp>.bgcolor-success</samp>
+<samp>.color-success</samp>
+<samp>$color-success</samp>
+</div>
+<div><figure class="bgcolor-success-dark"></figure><label>Success Dark</label>
+<samp>.bgcolor-success-dark</samp>
+<samp>.color-success-dark</samp>
+<samp>$color-success-dark</samp>
+</div>
+<div><figure class="bgcolor-warn-light"></figure><label>Warn Light</label>
+<samp>.bgcolor-warn-light</samp>
+<samp>$color-warn-light</samp>
+</div>
+<div><figure class="bgcolor-warn"></figure><label>Warn</label>
+<samp>.bgcolor-warn</samp>
+<samp>.color-warn</samp>
+<samp>$color-warn</samp>
+</div>
+<div><figure class="bgcolor-warn-dark"></figure><label>Warn Dark</label>
+<samp>.bgcolor-warn-dark</samp>
+<samp>.color-warn-dark</samp>
+<samp>$color-warn-dark</samp>
+</div>
+<div><figure class="bgcolor-danger"></figure><label>Danger</label>
+<samp>.bgcolor-danger</samp>
+<samp>$color-danger</samp>
+</div>
+<div><figure class="bgcolor-white"></figure><label>White</label>
+<samp>.bgcolor-white</samp>
+<samp>$color-white</samp>
+</div>
+<div><figure class="bgcolor-black"></figure><label>Black</label>
+<samp>.bgcolor-black</samp>
+<samp>$color-black</samp>
+</div>
+<div><figure class="bgcolor-accent-brown"></figure><label>Accent Brown</label>
+<samp>.bgcolor-accent-brown</samp>
+<samp>$color-accent-brown</samp>
+</div>
+<div><figure class="bgcolor-accent-brown-light"></figure><label>Accent Brown Light Shade</label>
+<samp>.bgcolor-accent-brown-light</samp>
+<samp>$color-accent-brown-light</samp>
+</div>
+<div><figure class="bgcolor-accent-yellow"></figure><label>Accent Yellow</label>
+<samp>.accent-bgcolor-yellow</samp>
+<samp>.accent-color-yellow</samp>
+<samp>$accent-color-yellow</samp>
+</div>
+
+Styleguide 1.1
+*/
+.bgcolor-primary-light {
+  background-color: #f6faff;
+}
+.bgcolor-primary {
+  background-color: #2a73cc;
+}
+.bgcolor-primary-dark {
+  background-color: #234b6e;
+}
+.bgcolor-success-light {
+  background-color: #ecf4e8;
+}
+.bgcolor-success {
+  background-color: #2ab573;
+}
+.bgcolor-success-dark {
+  background-color: #1f8354;
+}
+.bgcolor-warn-light {
+  background-color: #fff5c3;
+}
+.bgcolor-warn {
+  background-color: #f5a623;
+}
+.bgcolor-warn-dark {
+  background-color: #956712;
+}
+.bgcolor-danger {
+  background-color: #ff5c6e;
+}
+.bgcolor-white {
+  background-color: #fff;
+}
+.bgcolor-black {
+  background-color: #000;
+}
+.bgcolor-accent-brown {
+  background-color: #a07e46;
+}
+.bgcolor-accent-brown-light {
+  background-color: #ece9e3;
+}
+.bgcolor-accent-yellow {
+  background-color: #ffd700;
+}
+.color-primary {
+  color: #2a73cc;
+}
+.color-primary-dark {
+  color: #234b6e;
+}
+.color-success {
+  color: #2ab573;
+}
+.color-success-dark {
+  color: #1f8354;
+}
+.color-warn {
+  color: #f5a623;
+}
+.color-warn-dark {
+  color: #956712;
+}
+.color-danger {
+  color: #ff5c6e;
+}
+.color-accent-brown {
+  color: #a07e46;
+}
+.color-accent-yellow {
+  color: #ffd700;
+}
+/*
+Background Gradients
+
+We would want subtle variations of these above background colors.
+Here are variants you can use.
+
+Markup:
+<div><figure class="bgcolor-transparent"></figure><label>Transparent</label>
+<samp>.bgcolor-transparent</samp>
+<samp>$color-transparent</samp>
+</div>
+<div><figure class="bgcolor-black-g6"></figure><label>Black Gradient 6</label>
+<samp>.bgcolor-black-g6</samp>
+<samp>$color-black-g6</samp>
+</div>
+<div><figure class="bgcolor-black-g5"></figure><label>Black Gradient 5</label>
+<samp>.bgcolor-black-g5</samp>
+<samp>$color-black-g5</samp>
+</div>
+<div><figure class="bgcolor-black-g4"></figure><label>Black Gradient 4</label>
+<samp>.bgcolor-black-g4</samp>
+<samp>$color-black-g4</samp>
+</div>
+<div><figure class="bgcolor-black-g3"></figure><label>Black Gradient 3</label>
+<samp>.bgcolor-black-g3</samp>
+<samp>$color-black-g3</samp>
+</div>
+<div><figure class="bgcolor-black-g2"></figure><label>Black Gradient 2</label>
+<samp>.bgcolor-black-g2</samp>
+<samp>$color-black-g2</samp>
+</div>
+<div><figure class="bgcolor-black-g1"></figure><label>Black Gradient 1</label>
+<samp>.bgcolor-black-g1</samp>
+<samp>$color-black-g1</samp>
+</div>
+<div class="theme-dark">
+  <div><figure class="bgcolor-white-g5"></figure><label class="color-primary-text">White Gradient 5</label>
+  <samp>.bgcolor-white-g5</samp>
+  <samp>$color-white-g5</samp>
+  </div>
+  <div><figure class="bgcolor-white-g4"></figure><label class="color-primary-text">White Gradient 4</label>
+  <samp>.bgcolor-white-g4</samp>
+  <samp>$color-white-g4</samp>
+  </div>
+  <div><figure class="bgcolor-white-g3"></figure><label class="color-primary-text">White Gradient 3</label>
+  <samp>.bgcolor-white-g3</samp>
+  <samp>$color-white-g3</samp>
+  </div>
+  <div><figure class="bgcolor-white-g2"></figure><label class="color-primary-text">White Gradient 2</label>
+  <samp>.bgcolor-white-g2</samp>
+  <samp>$color-white-g2</samp>
+  </div>
+  <div><figure class="bgcolor-white-g1"></figure><label class="color-primary-text">White Gradient 1</label>
+  <samp>.bgcolor-white-g1</samp><samp>$color-white-g1</samp>
+  </div>
+</div>
+<div><figure class="bgcolor-danger-g5"></figure><label>Danger Gradient 5</label></div>
+<div><figure class="bgcolor-danger-g4"></figure><label>Danger Gradient 4</label></div>
+<div><figure class="bgcolor-danger-g3"></figure><label>Danger Gradient 3</label></div>
+<div><figure class="bgcolor-danger-g2"></figure><label>Danger Gradient 2</label></div>
+<div><figure class="bgcolor-danger-g1"></figure><label>Danger Gradient 1</label></div>
+
+Styleguide 1.2
+*/
+.bgcolor-transparent {
+  background-color: transparent;
+}
+.bgcolor-black-g1 {
+  background-color: rgba(0,0,0,0.05);
+}
+.bgcolor-black-g2 {
+  background-color: rgba(0,0,0,0.1);
+}
+.bgcolor-black-g3 {
+  background-color: rgba(0,0,0,0.255);
+}
+.bgcolor-black-g4 {
+  background-color: rgba(0,0,0,0.45);
+}
+.bgcolor-black-g5 {
+  background-color: rgba(0,0,0,0.55);
+}
+.bgcolor-black-g6 {
+  background-color: rgba(0,0,0,0.8);
+}
+.bgcolor-white-g1 {
+  background-color: rgba(255,255,255,0.05);
+}
+.bgcolor-white-g2 {
+  background-color: rgba(255,255,255,0.1);
+}
+.bgcolor-white-g3 {
+  background-color: rgba(255,255,255,0.25);
+}
+.bgcolor-white-g4 {
+  background-color: rgba(255,255,255,0.55);
+}
+.bgcolor-white-g5 {
+  background-color: rgba(255,255,255,0.8);
+}
+.bgcolor-danger-g1 {
+  background-color: #ffeaec;
+}
+.bgcolor-danger-g2 {
+  background-color: #ffb4bc;
+}
+.bgcolor-danger-g3 {
+  background-color: #ff8694;
+}
+.bgcolor-danger-g4 {
+  background-color: #ff707f;
+}
+.bgcolor-danger-g5 {
+  background-color: #f67;
+}
+/*
+Divider Colors
+
+These colors can be used on separator lines and borders.
+They can be used for underlining items as well. The colors are available as variables.
+
+Usage: `border: 1px solid $color-divider`
+
+Markup:
+<div><figure class="bgcolor-divider-light"></figure><label>Light Divider<samp>$color-divider-light</samp></label></div>
+<div><figure class="bgcolor-divider"></figure><label>Divider<samp>$color-divider</samp></label></div>
+
+Styleguide 1.3
+*/
+.bgcolor-divider {
+  background-color: rgba(0,0,0,0.12);
+}
+.bgcolor-divider-light {
+  background-color: rgba(0,0,0,0.06);
+}
+/*
+Background theme colors
+
+These are the three themes we can use from for background colors
+for pages.
+
+Markup:
+<div><figure class="theme-white"></figure><label>White theme</label>
+<samp>.theme-white</samp>
+</div>
+<div><figure class="theme-light"></figure><label>Light theme</label>
+<samp>.theme-light</samp>
+</div>
+<div><figure class="theme-dark"></figure><label>Dark theme</label>
+<samp>.theme-dark</samp>
+</div>
+
+Styleguide 1.4
+*/
+.theme-white {
+  background-color: #fff;
+}
+.theme-light {
+  background-color: #f5f5f5;
+}
+.theme-dark {
+  background-color: #202f3a;
+}
+.theme-navigation {
+  background-color: #ececec;
+}
+/*
+Text colors - white and dark themes
+
+Colors that can be used on text elements. This applies when there is a light background
+
+Markup:
+<div><label class="color-primary-text">Text</label>
+<samp>.color-primary-text</samp><samp>$color-primary-text</samp>
+</div>
+<div><label class="color-secondary-text">Secondary Text</label>
+<samp>.color-secondary-text</samp><samp>$color-secondary-text</samp>
+</div>
+<div><label class="color-hint-text">Hint Text</label>
+<samp>.color-hint-text</samp><samp>$color-hint-text</samp>
+</div>
+<div><label class="color-success-dark">Success Text</label>
+<samp>.color-success-dark</samp><samp>$color-success-dark</samp>
+</div>
+<div><label class="color-warn-dark">Warn Text</label>
+<samp>.color-warn-dark</samp><samp>$color-warn-dark</samp>
+</div>
+<div><label class="color-accent-brown">Accent Color 1</label>
+<samp>.color-accent-brown</samp><samp>$color-accent-brown</samp></div>
+<div><label class="color-active">Active</label>
+<samp>.color-active</samp><samp>$color-active</samp>
+</div>
+
+Styleguide 1.5
+*/
+.color-hint-text {
+  color: rgba(0,0,0,0.26);
+}
+.color-secondary-text {
+  color: rgba(0,0,0,0.54);
+}
+.color-primary-text {
+  color: rgba(0,0,0,0.87);
+}
+.color-disabled {
+  color: #e0e0e0;
+}
+.color-active {
+  color: #2775d1;
+}
+/*
+Dark theme text colors
+
+Text colors that can be used on the dark theme.
+
+Markup:
+<div class="theme-dark" style="padding: 4px;">
+<div><label class="color-primary-text">Text</label>
+<samp>.theme-dark  > .color-primary-text</samp>
+</div>
+<div><label class="color-secondary-text">Secondary Text</label>
+<samp>.theme-dark  > .color-secondary-text</samp>
+</div>
+<div><label class="color-disabled">Disabled</label>
+<samp>.theme-dark  > .color-disabled</samp>
+</div>
+<div><label class="color-active">active</label>
+<samp>.theme-dark  > .color-active</samp>
+</div>
+</div>
+
+Styleguide 1.6
+*/
+.theme-dark .color-primary-text {
+  color: #fff;
+}
+.theme-dark .color-secondary-text {
+  color: rgba(255,255,255,0.7);
+}
+.theme-dark .color-disabled {
+  color: rgba(255,255,255,0.3);
+}
+.theme-dark .color-active {
+  color: #2775d1;
+}
+/*
+Overlays
+
+Markup:
+<div><figure class="overlay"></figure><label>Dark overlay</label>
+<samp>.overlay</samp>
+</div>
+<div><figure class="overlay white"></figure><label>White overlay</label>
+<samp>.overlay.white</samp>
+</div>
+
+Styleguide 1.7
+*/
+.overlay {
+  background-color: rgba(0,0,0,0.83);
+}
+.overlay.white {
+  background-color: rgba(255,255,255,0.83);
+}
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+/*
+Cards
+
+To use these styles, you can do the following:
+1. please include /web/static/bundles/styleguide/index.styl in the index.styl of your SPA (Single page application)
+2. If you want to consume it within a styl file, get the variables file from
+/web/static/bundles/styleguide/variables
+
+Styleguide 3
+*/
+/*
+Style Options
+
+Cards are now categorized based on the functionality it houses. Here are the card types:
+1. *No action*: .card-no-action - Cards with no actions in them. These are generally used for regular display of information.
+2. *Rich interaction*: .card-rich-interaction - Cards that offer one or more actions within it. The card itself is not clickable or does not serves as a link.
+3. *One clicker*: .card-one-clicker - Cards that can be clicked to perform an action. These cards do not have any actions inside of them; none of the contents can provide actions.
+
+Styleguide 3.1
+*/
+/*
+Card No Action
+
+`<div class="card-no-action">Some information</div>`
+
+:hover - Hover state
+.primary - Primary card with no actions
+
+Markup:
+<div class="card--default">
+<div class="card-no-action comfy {{modifier_class}}">Vivamus elementum semper nisi. Morbi ac felis. Nullam quis ante. Suspendisse non nisl sit amet velit hendrerit rutrum. Phasellus blandit leo ut odio.</div>
+<label>Cards with no actions in them. These are generally used for regular display of information.</label>
+</div>
+
+Styleguide 3.1.1
+ */
+/*
+Card Rich Interaction
+
+`<div class="card-rich-interaction">Some information`
+`<button class="primary">Go to Lesson</button><a>Read me</a></div>`
+
+:hover - Hover state
+
+Markup:
+<div class="card--default"><div class="card-rich-interaction comfy {{modifier_class}}">
+Vivamus elementum semper nisi. Morbi ac felis. Nullam quis ante. Suspendisse non nisl sit amet velit hendrerit rutrum. Phasellus blandit leo ut odio.
+<br><br><button class="primary">Go to home</button>
+<button class="secondary">Dont do this</button>
+</div>
+<label>Cards that offer one or more actions within it. The card itself is not clickable or does not serves as a link.
+</label></div>
+
+Styleguide 3.1.2
+ */
+/*
+Card One Clicker
+
+`<div class="card-one-clicker">You have 3 new messages</div>`
+
+:hover - Hover state
+
+Markup:
+<div class="card--default">
+<div class="card-one-clicker comfy {{modifier_class}}">You have 3 new messages</div>
+<label>Cards that can be clicked to perform an action. These cards do not have any actions inside of them; none of the contents can provide actions.
+</label></div>
+
+Styleguide 3.1.3
+ */
+/*
+Selected State
+
+Cards that are selected and need to be highlighted. This offers an accent color brown border.
+This can be applied on any card (rich interaction or one-clicker).
+
+`<div class="class-rich-interaction selected">Some info</div>`
+
+Markup:
+<div class="card--default">
+<div class="card-rich-interaction selected comfy">You have 3 new messages</div>
+<label>Selected or highlighted card. Can be applied to any of the cards above.
+</label></div>
+
+Styleguide 3.2
+ */
+/*
+Modals with cards
+
+`<div class="modal card-one-clicker">Modal contents</div>`
+`<div class="modal card-rich-interaction">Modal contents</div>`
+
+There are two variants:
+1. Modals with multiple actions: .modal.card-rich-interaction
+2. Modals that can be clicked to perform an action: .modal.card-one-clicker
+
+.card-rich-interaction - rich interaction modals
+.card-one-clicker - one click modals
+
+Markup:
+<div class="card--default">
+<div class="modal comfy {{modifier_class}}">
+<h2 className="headline-3-text">Modal Title</h2>
+<p>Vivamus elementum semper nisi. Morbi ac felis. Nullam quis ante. Suspendisse non nisl sit amet velit hendrerit rutrum. Phasellus blandit leo ut odio.</p>
+</div>
+<label>Used in conjunction with modals. Offers a higher box shadow. The modal should offer multiple actions to qualify it for rich interactions.</label><samp>.modal.card-rich-interaction</samp>
+</div>
+
+Styleguide 3.3
+ */
+/*
+Spacing Options
+
+Here are the different options, the spacing shrinks as you go down this list.
+You can use this in combination with any of the cards mentioned above.
+1. Luxury
+2. Comfy
+3. Cozy
+4. Compact
+
+Markup:
+<div class="card--spacing">
+<div><div class="luxury card-rich-interaction">
+<h1 className="headline-3-text">First line</h1>
+<p>
+Etiam ultricies nisi vel augue. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Quisque id mi. Vivamus laoreet. Duis lobortis massa imperdiet quam.
+</p></div>
+<label>Generous padding of 48px all around.</label>
+<samp>.luxury.card-rich-interaction</samp>
+</div>
+<div><div class="comfy card-one-clicker"><h1 className="headline-3-text">First line</h1>
+<p>
+Etiam ultricies nisi vel augue. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Quisque id mi. Vivamus laoreet. Duis lobortis massa imperdiet quam.
+</p></div>
+<label>Comfortable padding of 30px around.</label>
+<samp>.comfy.card-one-clicker</samp>
+</div>
+<div><div class="cozy card-one-clicker"><h1 className="headline-3-text">First line</h1>
+<p>
+Etiam ultricies nisi vel augue. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Quisque id mi. Vivamus laoreet. Duis lobortis massa imperdiet quam.
+</p></div>
+<label>Generally used in mobile with a padding of 18px all around.</label>
+<samp>.cozy.card-one-clicker</samp>
+</div>
+<div><div class="compact card-rich-interaction"><h1 className="headline-3-text">First line</h1>
+<p>
+Etiam ultricies nisi vel augue. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Quisque id mi. Vivamus laoreet. Duis lobortis massa imperdiet quam.
+</p></div>
+<label>Smaller padding of 18px top and bottom and 12px left and right</label>
+<samp>.compact.card-rich-interaction</samp>
+</div>
+</div>
+
+Styleguide 3.4
+ */
+/*
+Coloring Cards
+
+Adding `secondary` to a card class will give that card a light background.
+
+Markup:
+<div class="card--default">
+<div class="card-rich-interaction secondary cozy">This is a card.</div>
+</div>
+
+Styleguide 3.5
+*/
+.card-no-action,
+.card-rich-interaction,
+.card-one-clicker,
+.card-one-clicker:hover,
+.modal.card-rich-interaction,
+.modal.card-one-clicker,
+.modal.card-one-clicker:hover,
+[class*='card-'].selected {
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+.card-rich-interaction:hover,
+.card-one-clicker:hover,
+.card-one-clicker:hover:hover,
+.modal.card-rich-interaction:hover,
+.modal.card-one-clicker:hover,
+.modal.card-one-clicker:hover:hover,
+[class*='card-'].selected:hover {
+  border: 1px solid rgba(0,0,0,0.25);
+}
+.card-one-clicker:hover {
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+}
+.modal.card-rich-interaction,
+.modal.card-one-clicker {
+  -webkit-box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.1);
+}
+.modal.card-one-clicker:hover {
+  -webkit-box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.25);
+}
+.card-one-clicker {
+  cursor: pointer;
+}
+[class*='card-'].secondary {
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.25);
+}
+[class*='card-'].secondary:hover {
+  border: 1px solid rgba(0,0,0,0.4);
+}
+[class*='card-'].secondary:hover.card-no-action {
+  border: 1px solid rgba(0,0,0,0.25);
+}
+[class*='card-'].selected {
+  border: 1px solid rgba(160,126,70,0.7);
+}
+[class*='card-'].selected:hover {
+  border: 1px solid #a07e46;
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+}
+[class*='card-'].luxury {
+  padding: 48px 48px;
+}
+[class*='card-'].comfy {
+  padding: 30px 30px;
+}
+[class*='card-'].cozy {
+  padding: 18px 18px;
+}
+[class*='card-'].compact {
+  padding: 18px 12px;
+}
+[class*='card-'] {
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+[class*='card-']:hover {
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+/*
+Device Dimensions
+
+This is a collection of the device dimension variables.
+Copied over from bootstrap.
+Please use this in your @media-queries.
+
+To use these styles, please include
+/web/static/bundles/styleguide/learnerApp/deviceDimensionVariables.styl
+
+Styleguide 14
+*/
+/*
+Media Query Variables
+
+Markup:
+<p>$smaller-than-phone</p>
+<p>$smaller-than-tablet</p>
+<p>$smaller-than-desktop</p>
+<p>$phone-or-smaller</p>
+<p>$tablet-or-smaller</p>
+<p>$desktop-or-smaller</p>
+<p>$phone-or-bigger</p>
+<p>$tablet-or-bigger</p>
+<p>$desktop-or-bigger</p>
+<p>$phone</p>
+<p>$tablet</p>
+<p>$desktop</p>
+<p>$large-desktop</p>
+
+Styleguide 14.1
+*/
+[class^="cif-"],
+[class*=" cif-"] {
+  font-family: 'coursera-iconfont';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+@-webkit-keyframes cif-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+.cif-lg {
+  font-size: 1.333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.cif-2x {
+  font-size: 2em;
+}
+.cif-3x {
+  font-size: 3em;
+}
+.cif-4x {
+  font-size: 4em;
+}
+.cif-5x {
+  font-size: 5em;
+}
+.cif-fw {
+  width: 1.285714285714286em;
+  text-align: center;
+}
+.cif-spin {
+  -webkit-animation: cif-spin 2s infinite linear;
+  -webkit-animation: cif-spin 2s infinite linear;
+  -moz-animation: cif-spin 2s infinite linear;
+  -o-animation: cif-spin 2s infinite linear;
+  -ms-animation: cif-spin 2s infinite linear;
+  animation: cif-spin 2s infinite linear;
+}
+.cif-pulse {
+  -webkit-animation: cif-spin 1s infinite steps(8);
+  -webkit-animation: cif-spin 1s infinite steps(8);
+  -moz-animation: cif-spin 1s infinite steps(8);
+  -o-animation: cif-spin 1s infinite steps(8);
+  -ms-animation: cif-spin 1s infinite steps(8);
+  animation: cif-spin 1s infinite steps(8);
+}
+.cif-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.cif-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.cif-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.cif-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(0, 1);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.cif-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(2, 1);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  -webkit-transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+.cif-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+.cif-stack-1x,
+.cif-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.cif-stack-1x {
+  line-height: inherit;
+}
+.cif-stack-2x {
+  font-size: 2em;
+}
+.cif-inverse {
+  color: #fff;
+}
+.cif-fw {
+  width: 1.285714285714286em;
+  text-align: center;
+}
+@-moz-keyframes cif-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes cif-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes cif-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes cif-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+.cif-chevron-right-thin:before {
+  content: "\e91a";
+}
+.cif-certificate-form:before {
+  content: "\e919";
+}
+.cif-person:before {
+  content: "\e918";
+}
+.cif-honors:before {
+  content: "\e90f";
+}
+.cif-tools:before {
+  content: "\e915";
+}
+.cif-graduation-hat:before {
+  content: "\e916";
+}
+.cif-check-list:before {
+  content: "\e917";
+}
+.cif-clock:before {
+  content: "\e914";
+}
+.cif-email2:before {
+  content: "\e904";
+}
+.cif-facebook2:before {
+  content: "\e905";
+}
+.cif-google-plus2:before {
+  content: "\e906";
+}
+.cif-wechat2:before {
+  content: "\e907";
+}
+.cif-caret2:before {
+  content: "\e908";
+}
+.cif-stacked-file:before {
+  content: "\e909";
+}
+.cif-practice-quiz:before {
+  content: "\e90a";
+}
+.cif-broken-file:before {
+  content: "\e90b";
+}
+.cif-full-star:before {
+  content: "\e90c";
+}
+.cif-graded-quiz:before {
+  content: "\e90d";
+}
+.cif-half-star:before {
+  content: "\e90e";
+}
+.cif-peer-review:before {
+  content: "\e911";
+}
+.cif-reading:before {
+  content: "\e912";
+}
+.cif-video:before {
+  content: "\e913";
+}
+.cif-language:before {
+  content: "\e910";
+}
+.cif-event:before {
+  content: "\e903";
+}
+.cif-circle-outline:before {
+  content: "\e902";
+}
+.cif-ellipsis-h:before {
+  content: "\e901";
+}
+.cif-doc:before {
+  content: "\e900";
+}
+.cif-unlock:before {
+  content: "\e61d";
+}
+.cif-assignment:before {
+  content: "\e643";
+}
+.cif-list-ol:before {
+  content: "\e600";
+}
+.cif-list-ul:before {
+  content: "\e601";
+}
+.cif-caret-up:before {
+  content: "\e62f";
+}
+.cif-caret-down:before {
+  content: "\e630";
+}
+.cif-linkedin-square:before {
+  content: "\e631";
+}
+.cif-times-circle-o:before {
+  content: "\e632";
+}
+.cif-chain-broken:before {
+  content: "\e633";
+}
+.cif-envelope-o:before {
+  content: "\e634";
+}
+.cif-google-plus:before {
+  content: "\e635";
+}
+.cif-twitter:before {
+  content: "\e636";
+}
+.cif-facebook:before {
+  content: "\e637";
+}
+.cif-thumbs-o-down:before {
+  content: "\e638";
+}
+.cif-thumbs-o-up:before {
+  content: "\e639";
+}
+.cif-thumbs-down:before {
+  content: "\e63a";
+}
+.cif-thumbs-up:before {
+  content: "\e63b";
+}
+.cif-flag-o:before {
+  content: "\e63c";
+}
+.cif-flag:before {
+  content: "\e63d";
+}
+.cif-check-circle-o:before {
+  content: "\e63e";
+}
+.cif-check:before {
+  content: "\e63f";
+}
+.cif-camera:before {
+  content: "\e62e";
+}
+.cif-film:before {
+  content: "\e62d";
+}
+.cif-minus:before {
+  content: "\e62a";
+}
+.cif-compress:before {
+  content: "\e62b";
+}
+.cif-captions:before {
+  content: "\e602";
+}
+.cif-expand:before {
+  content: "\e625";
+}
+.cif-refresh:before {
+  content: "\e626";
+}
+.cif-download:before {
+  content: "\e627";
+}
+.cif-file-o:before {
+  content: "\e628";
+}
+.cif-upload:before {
+  content: "\e61e";
+}
+.cif-minus-square:before {
+  content: "\e629";
+}
+.cif-plus-square:before {
+  content: "\e620";
+}
+.cif-plus:before {
+  content: "\e621";
+}
+.cif-square:before {
+  content: "\e622";
+}
+.cif-cog:before {
+  content: "\e623";
+}
+.cif-settings:before {
+  content: "\e623";
+}
+.cif-circle:before {
+  content: "\e61f";
+}
+.cif-search:before {
+  content: "\e61c";
+}
+.cif-item-doc:before {
+  content: "\e615";
+}
+.cif-warning:before {
+  content: "\f071";
+}
+.cif-circle-o:before {
+  content: "\f10c";
+}
+.cif-heart:before {
+  content: "\f004";
+}
+.cif-star:before {
+  content: "\f005";
+}
+.cif-star-o:before {
+  content: "\f006";
+}
+.cif-user:before {
+  content: "\f007";
+}
+.cif-close2:before {
+  content: "\f00d";
+}
+.cif-remove:before {
+  content: "\f00d";
+}
+.cif-times:before {
+  content: "\f00d";
+}
+.cif-clock-o:before {
+  content: "\f017";
+}
+.cif-volume-off:before {
+  content: "\f026";
+}
+.cif-volume-down:before {
+  content: "\f027";
+}
+.cif-volume-up:before {
+  content: "\f028";
+}
+.cif-bookmark:before {
+  content: "\f02e";
+}
+.cif-edit:before {
+  content: "\f044";
+}
+.cif-pencil-square-o:before {
+  content: "\f044";
+}
+.cif-play:before {
+  content: "\f04b";
+}
+.cif-pause:before {
+  content: "\f04c";
+}
+.cif-chevron-left:before {
+  content: "\f053";
+}
+.cif-chevron-right:before {
+  content: "\f054";
+}
+.cif-check-circle:before {
+  content: "\f058";
+}
+.cif-question-circle:before {
+  content: "\f059";
+}
+.cif-ban:before {
+  content: "\f05e";
+}
+.cif-arrow-left:before {
+  content: "\f060";
+}
+.cif-arrow-right:before {
+  content: "\f061";
+}
+.cif-arrow-up:before {
+  content: "\f062";
+}
+.cif-arrow-down:before {
+  content: "\f063";
+}
+.cif-calendar:before {
+  content: "\f073";
+}
+.cif-comment:before {
+  content: "\f075";
+}
+.cif-chevron-up:before {
+  content: "\f077";
+}
+.cif-chevron-down:before {
+  content: "\f078";
+}
+.cif-heart-o:before {
+  content: "\f08a";
+}
+.cif-external-link:before {
+  content: "\f08e";
+}
+.cif-certificate:before {
+  content: "\f0a3";
+}
+.cif-globe:before {
+  content: "\f0ac";
+}
+.cif-group:before {
+  content: "\f0c0";
+}
+.cif-users:before {
+  content: "\f0c0";
+}
+.cif-chain:before {
+  content: "\f0c1";
+}
+.cif-link:before {
+  content: "\f0c1";
+}
+.cif-file-text-o:before {
+  content: "\f0f6";
+}
+.cif-quote-left:before {
+  content: "\f10d";
+}
+.cif-quote-right:before {
+  content: "\f10e";
+}
+.cif-spinner:before {
+  content: "\f110";
+}
+.cif-star-half-empty:before {
+  content: "\f123";
+}
+.cif-star-half-full:before {
+  content: "\f123";
+}
+.cif-star-half-o:before {
+  content: "\f123";
+}
+.cif-chevron-circle-left:before {
+  content: "\f137";
+}
+.cif-chevron-circle-right:before {
+  content: "\f138";
+}
+.cif-chevron-circle-up:before {
+  content: "\f139";
+}
+.cif-chevron-circle-down:before {
+  content: "\f13a";
+}
+.cif-play-circle:before {
+  content: "\f144";
+}
+.cif-file-image-o:before {
+  content: "\f1c5";
+}
+.cif-file-photo-o:before {
+  content: "\f1c5";
+}
+.cif-file-picture-o:before {
+  content: "\f1c5";
+}
+.cif-circle-o-notch:before {
+  content: "\f1ce";
+}
+.cif-paper-plane:before {
+  content: "\f1d8";
+}
+.cif-send:before {
+  content: "\f1d8";
+}
+.cif-circle-thin:before {
+  content: "\f1db";
+}
+.cif-genderless:before {
+  content: "\f1db";
+}
+.cif-facebook-official:before {
+  content: "\f230";
+}
+.cif-lock:before {
+  content: "\e61a";
+}
+.cif-info:before {
+  content: "\e61b";
+}
+.cif-discussions:before {
+  content: "\e617";
+}
+.cif-checkmark:before {
+  content: "\e60a";
+}
+.cif-get-vc .path1:before {
+  content: "\e603";
+  color: #fff;
+}
+.cif-get-vc .path2:before {
+  content: "\e604";
+  margin-left: -1.0166015625em;
+  color: #fff;
+}
+.cif-get-vc .path3:before {
+  content: "\e605";
+  margin-left: -1.0166015625em;
+  color: #4187bb;
+}
+.cif-get-vc .path4:before {
+  content: "\e606";
+  margin-left: -1.0166015625em;
+  color: #4187bb;
+}
+.cif-get-vc .path5:before {
+  content: "\e607";
+  margin-left: -1.0166015625em;
+  color: #fff;
+}
+.cif-get-vc .path6:before {
+  content: "\e608";
+  margin-left: -1.0166015625em;
+  color: #fff;
+}
+.cif-get-vc .path7:before {
+  content: "\e609";
+  margin-left: -1.0166015625em;
+  color: #cad9e7;
+}
+.cif-get-vc .path8:before {
+  content: "\e640";
+  margin-left: -1.0166015625em;
+  color: #cad9e7;
+}
+.cif-get-vc .path9:before {
+  content: "\e641";
+  margin-left: -1.0166015625em;
+  color: #4187bb;
+}
+.cif-home:before {
+  content: "\e60b";
+}
+.cif-course-list:before {
+  content: "\e60c";
+}
+.cif-item-video:before {
+  content: "\e60d";
+}
+.cif-summative-incomplete .path1:before {
+  content: "\e60e";
+  color: rgba(0,0,0,0.54);
+}
+.cif-summative-incomplete .path2:before {
+  content: "\e642";
+  margin-left: -1.0419921875em;
+  color: #fff;
+}
+.cif-summative-complete .path1:before {
+  content: "\e60f";
+  color: #2ab573;
+}
+.cif-summative-complete .path2:before {
+  content: "\e610";
+  margin-left: -1em;
+  color: #2ab573;
+}
+.cif-summative-complete .path3:before {
+  content: "\e611";
+  margin-left: -1em;
+  color: #fff;
+}
+.cif-prog-assignment:before {
+  content: "\e612";
+}
+.cif-item-peer:before {
+  content: "\e613";
+}
+.cif-item-formative:before {
+  content: "\e614";
+}
+.cif-close:before {
+  content: "\e616";
+}
+.cif-cancel-hint:before {
+  content: "\e618";
+}
+.cif-back:before {
+  content: "\e619";
+}
+.cif-pin:before {
+  content: "\e624";
+}
+.cif-eye:before {
+  content: "\e62c";
+}
+/*
+Icons
+
+Collection of icon fonts.
+
+To use these styles, please include this in the index.styl of your SPA (Single page application)
+/web/static/bundles/styleguide/index.styl
+
+You could also use the React Icon component to use these icons.
+Include /bundles/iconfont/Icon.jsx.
+<Icon name={iconNameWithoutCifPrefix} className={additionalClassnames}/>
+E.g. <Icon name="pin" className="cif-lg pin-thread"/>
+Please specify the name of the icon (name below without the cif- prefix).
+
+Styleguide 8
+*/
+/*
+Icons
+
+Please require the Icon.jsx react component and follow the usage
+as mentioned against each icon.
+
+`@require "bundles/iconfont/Icon"`
+
+Use these CSS rules to adjust size and color
+- font-size
+- color
+
+.cif-eye - `<Icon name="eye" />`
+.cif-expand - `<Icon name="expand" />`
+.cif-compress - `<Icon name="compress" />`
+.cif-captions - `<Icon name="captions" />`
+.cif-film - `<Icon name="film" />`
+.cif-file-o - `<Icon name="file-o" />`
+.cif-pin - `<Icon name="pin" />`
+.cif-upload - `<Icon name="upload" />`
+.cif-download - `<Icon name="download" />`
+.cif-minus - `<Icon name="minus" />`
+.cif-plus - `<Icon name="plus" />`
+.cif-square - `<Icon name="square" />`
+.cif-plus-square - `<Icon name="plus-square" />`
+.cif-minus-square - `<Icon name="minus-square" />`
+.cif-settings - `<Icon name="settings" />`
+.cif-cog - `<Icon name="cog" />`
+.cif-heart - `<Icon name="heart" />`
+.cif-circle - `<Icon name="circle" />`
+.cif-star  - `<Icon name="star" />`
+.cif-star-o  - `<Icon name="star-o" />`
+.cif-user  - `<Icon name="user" />`
+.cif-close2  - `<Icon name="close2" />`
+.cif-remove  - `<Icon name=cif-remove" />`
+.cif-times  - `<Icon name="times" />`
+.cif-clock-o  - `<Icon name="clock-o" />`
+.cif-volume-off  - `<Icon name="volume-off" />`
+.cif-volume-down  - `<Icon name="volume-down" />`
+.cif-volume-up  - `<Icon name="volume-up" />`
+.cif-bookmark  - `<Icon name="bookmark" />`
+.cif-edit  - `<Icon name="edit" />`
+.cif-pencil-square-o  - `<Icon name="pencil-square-o" />`
+.cif-play  - `<Icon name="play" />`
+.cif-pause  - `<Icon name="pause" />`
+.cif-chevron-left  - `<Icon name="chevron-left" />`
+.cif-chevron-right  - `<Icon name="chevron-right" />`
+.cif-chevron-right-thin  - `<Icon name="chevron-right-thin" />`
+.cif-ellipsis-h - `<Icon name="ellipsis-h" />`
+.cif-check-circle  - `<Icon name="check-circle" />`
+.cif-question-circle  - `<Icon name="question-circle" />`
+.cif-ban  - `<Icon name="ban" />`
+.cif-arrow-left  - `<Icon name="arrow-left" />`
+.cif-arrow-right  - `<Icon name="arrow-right" />`
+.cif-arrow-up  - `<Icon name="arrow-up" />`
+.cif-arrow-down  - `<Icon name="arrow-down" />`
+.cif-calendar  - `<Icon name="calendar" />`
+.cif-comment  - `<Icon name="comment" />`
+.cif-chevron-up  - `<Icon name="chevron-up" />`
+.cif-chevron-down  - `<Icon name="chevron-down" />`
+.cif-heart-o  - `<Icon name="heart-o" />`
+.cif-external-link  - `<Icon name="external-link" />`
+.cif-certificate  - `<Icon name="certificate" />`
+.cif-globe  - `<Icon name="globe" />`
+.cif-group  - `<Icon name="group" />`
+.cif-users  - `<Icon name="users" />`
+.cif-chain  - `<Icon name="chain" />`
+.cif-link  - `<Icon name="link" />`
+.cif-file-text-o  - `<Icon name="file-text-o" />`
+.cif-quote-left  - `<Icon name="quote-left" />`
+.cif-quote-right  - `<Icon name="quote-right" />`
+.cif-spinner  - `<Icon name="spinner" />`
+.cif-refresh - `<Icon name="refresh" />`
+.cif-star-half-empty  - `<Icon name="star-half-empty" />`
+.cif-star-half-full  - `<Icon name="star-half-full" />`
+.cif-star-half-o  - `<Icon name="star-half-o" />`
+.cif-chevron-circle-left  - `<Icon name="chevron-circle-left" />`
+.cif-chevron-circle-right  - `<Icon name="chevron-circle-right" />`
+.cif-chevron-circle-up  - `<Icon name="chevron-circle-up" />`
+.cif-chevron-circle-down  - `<Icon name="chevron-circle-down" />`
+.cif-play-circle  - `<Icon name="play-circle" />`
+.cif-file-image-o  - `<Icon name="file-image-o" />`
+.cif-file-photo-o  - `<Icon name="file-photo-o" />`
+.cif-file-picture-o  - `<Icon name="file-picture-o" />`
+.cif-circle-o-notch  - `<Icon name="circle-o-notch" />`
+.cif-paper-plane  - `<Icon name="paper-plane" />`
+.cif-send  - `<Icon name="send" />`
+.cif-circle-thin  - `<Icon name="circle-thin" />`
+.cif-genderless  - `<Icon name="genderless" />`
+.cif-facebook-official  - `<Icon name="facebook-official" />`
+.cif-lock  - `<Icon name="lock" />`
+.cif-info  - `<Icon name="info" />`
+.cif-discussions  - `<Icon name="discussions" />`
+.cif-checkmark  - `<Icon name="checkmark" />`
+.cif-home  - `<Icon name="home" />`
+.cif-course-list  - `<Icon name="course-list" />`
+.cif-item-video  - `<Icon name="item-video" />`
+.cif-prog-assignment  - `<Icon name="prog-assignment" />`
+.cif-item-peer  - `<Icon name="item-peer" />`
+.cif-item-formative  - `<Icon name="item-formative" />`
+.cif-doc  - `<Icon name="doc" />`
+.cif-item-doc  - `<Icon name="item-doc" />`
+.cif-close  - `<Icon name="close" />`
+.cif-cancel-hint  - `<Icon name="cancel-hint" />`
+.cif-back  - `<Icon name="back" />`
+.cif-warning  - `<Icon name="warning" />`
+.cif-circle  - `<Icon name="circle" />`
+.cif-search  - `<Icon name="search" />`
+.cif-caret-up - `<Icon name="caret-up" />`
+.cif-caret-down - `<Icon name="caret-down" />`
+.cif-linkedin-square - `<Icon name="linkedin-square" />`
+.cif-google-plus - `<Icon name="google-plus" />`
+.cif-twitter - `<Icon name="twitter" />`
+.cif-facebook - `<Icon name="facebook" />`
+.cif-times-circle-o - `<Icon name="times-circle-o" />`
+.cif-chain-broken - `<Icon name="chain-broken" />`
+.cif-envelope-o - `<Icon name="envelope-o" />`
+.cif-thumbs-o-down - `<Icon name="thumbs-o-down" />`
+.cif-thumbs-o-up - `<Icon name="thumbs-o-up" />`
+.cif-thumbs-up - `<Icon name="thumbs-up" />`
+.cif-flag-o - `<Icon name="flag-o" />`
+.cif-flag - `<Icon name="flag" />`
+.cif-check-circle-o - `<Icon name="check-circle-o" />`
+.cif-check - `<Icon name="check" />`
+.cif-star - `<Icon name="star" />`
+.cif-star-o - `<Icon name="star-o" />`
+.cif-heart-o - `<Icon name="heart-o" />`
+.cif-assignment - `<Icon name="assignment" />`
+.cif-camera - `<Icon name="camera" />`
+.cif-circle-outline - `<Icon name="circle-outline" />`
+.cif-event - `<Icon name="event" />`
+.cif-tools - `<Icon name="tools" />`
+.cif-graduation-hat - `<Icon name="graduation-hat" />`
+.cif-check-list - `<Icon name="check-list" />`
+.cif-content - `<Icon name="content" />`
+.cif-clock - `<Icon name="clock" />`
+.cif-email2 - `<Icon name="email2" />`
+.cif-facebook2 - `<Icon name="facebook2" />`
+.cif-google-plus2 - `<Icon name="google-plus2" />`
+.cif-wechat2 - `<Icon name="wechat2" />`
+.cif-caret2 - `<Icon name="caret2" />`
+.cif-stacked-file - `<Icon name="stacked-file" />`
+.cif-practice-quiz - `<Icon name="practice-quiz" />`
+.cif-broken-file - `<Icon name="broken-file" />`
+.cif-full-star - `<Icon name="full-star" />`
+.cif-graded-quiz - `<Icon name="graded-quiz" />`
+.cif-half-star - `<Icon name="half-star" />`
+.cif-language - `<Icon name="language" />`
+.cif-video - `<Icon name="video" />`
+.cif-reading - `<Icon name="reading" />`
+.cif-peer-review - `<Icon name="peer-review" />`
+.cif-honors - `<Icon name="honors" />`
+.cif-person - `<Icon name="person" />`
+.cif-certificate-form - `<Icon name="certificate-form" />`
+
+Markup:
+<div class="kss-modifier--icon">
+  <i class={{modifier_class}}></i>
+</div>
+
+Styleguide 8.1
+*/
+/*
+Icons with multiple SVG paths
+
+For now, please copy the span content  from within the center div. Make sure to copy the entire span with all the different
+paths.
+
+Markup:
+<div style="margin:12px;">
+  <div>.cif-get-vc - The background is not part of the icon. Its shown to see the white icon.</div>
+  <div style="background-color:#ddd; padding: 4px;" class="kss-modifier--icon">
+    <span class="cif-get-vc"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span></span>
+  </div>
+</div>
+<div style="margin:12px;">
+  <div>.cif-summative-incomplete</div>
+  <div class="kss-modifier--icon"><span class="cif-summative-incomplete"><span class="path1"></span><span class="path2"></span></span></div>
+</div>
+<div style="margin:12px;">
+  <div>.cif-summative-complete</div>
+  <div class="kss-modifier--icon"> <span class="cif-summative-complete"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+  </div>
+</div>
+
+Styleguide 8.2
+*/
+/*
+Icons Functions
+
+These are transformations we can do on the icons.
+
+Styleguide 8.3
+*/
+/*
+Spin and pulse animations
+
+Markup:
+<div class="kss-modifier--icon">
+  <span class="cif-spinner cif-spin"/>
+</div>
+<br/><br/>
+<div class="kss-modifier--icon">
+  <span class="cif-spinner cif-pulse"/>
+</div>
+
+Styleguide 8.3.1
+*/
+/*
+Rotation and Flipping
+
+Use these to rotate and flip
+
+.cif-rotate-90 - `90deg rotation`
+.cif-rotate-180 - `180deg rotation`
+.cif-rotate-270 - `270deg rotation`
+.cif-flip-horizontal - `Flip horizontally`
+.cif-flip-vertical - `Flip vertically`
+
+Markup:
+<div class="kss-modifier--icon">
+  <span class="cif-warning {{modifier_class}}"/>
+</div>
+
+Styleguide 8.3.2
+*/
+/*
+Size based transformations
+
+Use these to adjust sizes
+
+.cif-lg - Large
+.cif-2x - 2x the size
+.cif-3x - 3x the size
+.cif-4x - 4x the size
+.cif-5x - 5x the size
+
+Markup:
+<div class="kss-modifier--icon">
+<span class="cif-heart {{modifier_class}}"/>
+</div>
+
+Styleguide 8.3.3
+*/
+/*
+Stacking icons
+
+Markup:
+cif-heart on cif-circle-thin
+<span class="cif-stack cif-2x">
+  <i class="cif-circle-thin cif-stack-2x"></i>
+  <i class="cif-heart cif-stack-1x"></i>
+</span>
+cif-users on cif-badge<br>
+<span class="cif-stack cif-lg">
+  <i class="cif-certificate cif-stack-2x"></i>
+  <i class="cif-lock cif-stack-1x cif-inverse"></i>
+</span>
+
+Styleguide 8.3.4
+*/
+/*
+Fixed Width icons
+
+Markup:
+<i class="cif-certificate cif-fw"></i>
+<i class="cif-lock cif-fw"></i>
+
+Styleguide 8.3.5
+*/
+/*
+Add new icon
+
+Did not find an icon you are looking for? You can add it to the list here.
+Before adding make sure it is something that cannot be constructed with two or more icons
+and the icon functions specified before.
+
+We use a utility called icomoon to generate icon fonts for our SVG files.
+Here are the list of steps to add to the list of icons:
+1. Go to icomoon.io/app
+2. If you are not already in "Manage Projects" section, click on the hamburger icon and select "Manage Projects"
+3. Click on "Import Project"
+4. Provide path to "static/bundles/styleguide/icons/selection.json"
+5. This will load the project (if it does not, click Load button)
+6. This will list all our current icons.
+7. To add a new icon, click on the hamburger icon to the right most corner against this project
+8. Select "Import to Set"
+9. Choose the SVG file from your file system
+10. This will be added to the beginning of the list
+11. Select the newly added image as well.
+12. Click on "Generate Font" at the very bottom of the screen
+13. Now it will display all the icons including the new one you added
+14. Hover over the new icon and click on "<Get code>"
+15. Paste the HTML to wherever you want to use it. Step 14, 15 are necessary if you have a custom SVG with multiple glyphs. Otherwise you could use the selector name in <i> and be done.
+16. At the very bottom of icomoon.io, there is a "Download Font" button. Click that and open the downloaded zip file
+17. Copy the selection.json to "static/bundles/styleguide/icons/selection.json"
+18. Copy the fonts directory to "static/bundles/styleguide/icons/fonts"
+19. Copy contents from style.css (only starting from .cif- selectors) and paste it on to
+static/bundles/styleguide/core/icons.styl.
+20. We need to now make sure the Styleguide shows your new icons. The styleguide will be used by designers as well to keep a tab on the icons in our system. Go to static/bundles/styleguide/learnerApp/icons.styl and in the comments section, please add your new icons list.
+21. Run the script "kssStyleguide/util/generatePropTypeValidator" to add the list of new icons to the icon name validation script.
+22. Fonts need to be versioned for the browser to pick up the new ones. Change the font file names with the version number updated. Go to /static/bundles/styleguide/icons/fonts. Update all the files with the new version number. e.g. coursera.v2.eot and so on.
+IMPORTANT: Due to weird arcanist bug, you cannot update the woff, ttf, svg files and also change the file names in one diph. So please update the file version numbers in a different diph, possibly after landing the changes to icons.
+
+23. Update /static/css/fontfaceDeclarations.jade and /static/css/fontfaceDeclarations.styl with the new versions in the font-face paths.
+24. Update kssStyleguide/styleguide-template/public/coursera-custom.css with the new version numbers as well on the font-face for Coursera font. Unfortunately we need this step because S3 is corrupting direct font upload and download. Todo(archana): Fix it.
+25. That is it! You are done. Now test using the new icon
+
+### Porting a fontawesome icon
+1. Icomoon pulls fontawesome icons. You can either search for the icon by name and icomoon will list it or you can go to the fontawesome bundle from icomoon and select the ones you want.
+2. Once selected, go to your project listed in icomoon (if not, please follow 1 through 6 from above).
+3. Click on the hamburger icon to the very right corner.
+4. Click on "Copy selection to set". (Make sure icons in your project are deselected or you will get a double copy)
+5. Now you can generate and download the font using the steps outlined above.
+
+Styleguide 8.4
+ */
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+.align-items-absolute-center,
+.pagination-controls-container .box {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.align-items-vertical-center,
+.search-bar .input-area {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.align-items-top {
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -o-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+.align-items-bottom,
+.align-items-bottom-right {
+  -webkit-box-align: end;
+  -moz-box-align: end;
+  -o-box-align: end;
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+.align-items-right,
+.align-items-bottom-right {
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -o-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+.align-self-start {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  -ms-flex-item-align: start;
+}
+.align-self-end {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  -ms-flex-item-align: end;
+}
+.align-self-stretch {
+  -webkit-align-self: stretch;
+  align-self: stretch;
+  -ms-flex-item-align: stretch;
+}
+.align-self-center {
+  -webkit-align-self: center;
+  align-self: center;
+  -ms-flex-item-align: center;
+}
+.horizontal-box,
+.search-bar,
+.search-bar .input-area,
+.pagination-controls-container,
+.pagination-controls-container .box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.vertical-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.align-left {
+  text-align: left;
+}
+.align-horizontal-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+.align-inherit {
+  text-align: inherit;
+}
+.pagination-controls-container .number a,
+.pagination-controls-container .arrow a {
+  color: inherit;
+  text-decoration: none;
+}
+.pagination-controls-container .number a:hover,
+.pagination-controls-container .arrow a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin,
+.search-bar .search-button {
+  font-size: 12px;
+  line-height: 14px;
+}
+.checkbox-small,
+.checkbox-large {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.55);
+}
+.checkbox-small:checked:after,
+.checkbox-large:checked:after {
+  content: '';
+/* Add a white border on the bottom and left creating an 'L' */
+  border: solid #2a73cc;
+/* Rotate the L 45 degrees to turn it into a checkmark */
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  display: block;
+  position: relative;
+  margin: auto;
+}
+.display-6-text,
+.display-5-text,
+.display-4-text,
+.display-3-text,
+.display-1-text,
+.headline-6-text,
+.headline-5-text,
+.headline-4-text,
+.headline-3-text,
+.headline-2-text,
+.headline-1-text {
+  font-weight: normal;
+}
+.display-6-text,
+.display-5-text,
+.display-4-text,
+.display-3-text,
+.headline-6-text,
+.headline-5-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.headline-4-text,
+.headline-3-text,
+.headline-2-text {
+  margin-bottom: 10px;
+}
+.display-6-text,
+.display-5-text,
+.display-3-text,
+.display-2-text {
+  font-family: 'Merriweather-Light', Georgia, serif;
+}
+.display-4-text,
+.display-1-text {
+  font-family: 'Merriweather', Georgia, serif;
+}
+.headline-6-text,
+.headline-5-text,
+.headline-2-text {
+  font-family: 'OpenSans-Light', Arial, sans-serif;
+}
+.headline-4-text,
+.headline-3-text,
+.headline-1-text {
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.display-6-text {
+  font-size: 54px;
+  line-height: 60px;
+}
+.display-5-text {
+  font-size: 42px;
+  line-height: 54px;
+}
+.display-4-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.display-3-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.display-2-text {
+  font-size: 24px;
+  line-height: 30px;
+}
+.display-1-text {
+  font-size: 20px;
+  line-height: 24px;
+}
+.headline-6-text {
+  font-size: 54px;
+  line-height: 60px;
+}
+.headline-5-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.headline-4-text {
+  font-size: 24px;
+  line-height: 30px;
+}
+.headline-3-text {
+  font-size: 22px;
+  line-height: 24px;
+}
+.headline-2-text {
+  font-size: 20px;
+  line-height: 24px;
+}
+.headline-1-text {
+  font-size: 16px;
+  line-height: 24px;
+}
+body,
+.body-1-text,
+.body-2-text,
+p,
+.search-bar .input-area .search-input,
+ul.styleguide.dropdown li button,
+ul.styleguide.dropdown li button.secondary {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.body-2-text {
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: bold;
+}
+.flex-1,
+.search-bar .input-area {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.flex-2 {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  -o-box-flex: 2;
+  box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+.flex-3 {
+  -webkit-box-flex: 3;
+  -moz-box-flex: 3;
+  -o-box-flex: 3;
+  box-flex: 3;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+}
+.flex-4 {
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4;
+  -o-box-flex: 4;
+  box-flex: 4;
+  -webkit-flex: 4;
+  -ms-flex: 4;
+  flex: 4;
+}
+.flex-5 {
+  -webkit-box-flex: 5;
+  -moz-box-flex: 5;
+  -o-box-flex: 5;
+  box-flex: 5;
+  -webkit-flex: 5;
+  -ms-flex: 5;
+  flex: 5;
+}
+.flex-6 {
+  -webkit-box-flex: 6;
+  -moz-box-flex: 6;
+  -o-box-flex: 6;
+  box-flex: 6;
+  -webkit-flex: 6;
+  -ms-flex: 6;
+  flex: 6;
+}
+.flex-7 {
+  -webkit-box-flex: 7;
+  -moz-box-flex: 7;
+  -o-box-flex: 7;
+  box-flex: 7;
+  -webkit-flex: 7;
+  -ms-flex: 7;
+  flex: 7;
+}
+.flex-8 {
+  -webkit-box-flex: 8;
+  -moz-box-flex: 8;
+  -o-box-flex: 8;
+  box-flex: 8;
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+}
+.flex-9 {
+  -webkit-box-flex: 9;
+  -moz-box-flex: 9;
+  -o-box-flex: 9;
+  box-flex: 9;
+  -webkit-flex: 9;
+  -ms-flex: 9;
+  flex: 9;
+}
+.flex-10 {
+  -webkit-box-flex: 10;
+  -moz-box-flex: 10;
+  -o-box-flex: 10;
+  box-flex: 10;
+  -webkit-flex: 10;
+  -ms-flex: 10;
+  flex: 10;
+}
+.flex-11 {
+  -webkit-box-flex: 11;
+  -moz-box-flex: 11;
+  -o-box-flex: 11;
+  box-flex: 11;
+  -webkit-flex: 11;
+  -ms-flex: 11;
+  flex: 11;
+}
+.flex-12 {
+  -webkit-box-flex: 12;
+  -moz-box-flex: 12;
+  -o-box-flex: 12;
+  box-flex: 12;
+  -webkit-flex: 12;
+  -ms-flex: 12;
+  flex: 12;
+}
+.horizontal-box.align-items-spacebetween,
+.search-bar.align-items-spacebetween,
+.search-bar .input-area.align-items-spacebetween,
+.pagination-controls-container.align-items-spacebetween,
+.pagination-controls-container .box.align-items-spacebetween {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -o-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.horizontal-box.align-items-spacearound,
+.search-bar.align-items-spacearound,
+.search-bar .input-area.align-items-spacearound,
+.pagination-controls-container.align-items-spacearound,
+.pagination-controls-container .box.align-items-spacearound {
+  -webkit-box-pack: distribute;
+  -moz-box-pack: distribute;
+  -o-box-pack: distribute;
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.horizontal-box.wrap,
+.search-bar.wrap,
+.search-bar .input-area.wrap,
+.pagination-controls-container.wrap,
+.pagination-controls-container .box.wrap {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+.caption-text,
+.pagination-controls-container .number,
+.pagination-controls-container .arrow {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.label-text {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+p {
+  margin-bottom: 10px;
+}
+.bgcolor-primary-light {
+  background-color: #f6faff;
+}
+.bgcolor-primary,
+ul.styleguide.dropdown li button:hover,
+ul.styleguide.dropdown li button.secondary:hover {
+  background-color: #2a73cc;
+}
+.bgcolor-primary-dark {
+  background-color: #234b6e;
+}
+.bgcolor-success-light {
+  background-color: #ecf4e8;
+}
+.bgcolor-success {
+  background-color: #2ab573;
+}
+.bgcolor-success-dark {
+  background-color: #1f8354;
+}
+.bgcolor-warn-light {
+  background-color: #fff5c3;
+}
+.bgcolor-warn {
+  background-color: #f5a623;
+}
+.bgcolor-warn-dark {
+  background-color: #956712;
+}
+.bgcolor-danger {
+  background-color: #ff5c6e;
+}
+.bgcolor-white {
+  background-color: #fff;
+}
+.bgcolor-black {
+  background-color: #000;
+}
+.bgcolor-accent-brown {
+  background-color: #a07e46;
+}
+.bgcolor-accent-brown-light {
+  background-color: #ece9e3;
+}
+.bgcolor-accent-yellow {
+  background-color: #ffd700;
+}
+.color-primary {
+  color: #2a73cc;
+}
+.color-primary-dark {
+  color: #234b6e;
+}
+.color-success {
+  color: #2ab573;
+}
+.color-success-dark {
+  color: #1f8354;
+}
+.color-warn {
+  color: #f5a623;
+}
+.color-warn-dark {
+  color: #956712;
+}
+.color-danger {
+  color: #ff5c6e;
+}
+.color-accent-brown {
+  color: #a07e46;
+}
+.color-accent-yellow {
+  color: #ffd700;
+}
+.bgcolor-transparent {
+  background-color: transparent;
+}
+.bgcolor-black-g1 {
+  background-color: rgba(0,0,0,0.05);
+}
+.bgcolor-black-g2 {
+  background-color: rgba(0,0,0,0.1);
+}
+.bgcolor-black-g3 {
+  background-color: rgba(0,0,0,0.255);
+}
+.bgcolor-black-g4 {
+  background-color: rgba(0,0,0,0.45);
+}
+.bgcolor-black-g5 {
+  background-color: rgba(0,0,0,0.55);
+}
+.bgcolor-black-g6 {
+  background-color: rgba(0,0,0,0.8);
+}
+.bgcolor-white-g1 {
+  background-color: rgba(255,255,255,0.05);
+}
+.bgcolor-white-g2 {
+  background-color: rgba(255,255,255,0.1);
+}
+.bgcolor-white-g3 {
+  background-color: rgba(255,255,255,0.25);
+}
+.bgcolor-white-g4 {
+  background-color: rgba(255,255,255,0.55);
+}
+.bgcolor-white-g5 {
+  background-color: rgba(255,255,255,0.8);
+}
+.bgcolor-danger-g1 {
+  background-color: #ffeaec;
+}
+.bgcolor-danger-g2 {
+  background-color: #ffb4bc;
+}
+.bgcolor-danger-g3 {
+  background-color: #ff8694;
+}
+.bgcolor-danger-g4 {
+  background-color: #ff707f;
+}
+.bgcolor-danger-g5 {
+  background-color: #f67;
+}
+.bgcolor-divider {
+  background-color: rgba(0,0,0,0.12);
+}
+.bgcolor-divider-light {
+  background-color: rgba(0,0,0,0.06);
+}
+.theme-white {
+  background-color: #fff;
+}
+.theme-light {
+  background-color: #f5f5f5;
+}
+.theme-dark {
+  background-color: #202f3a;
+}
+.theme-navigation {
+  background-color: #ececec;
+}
+.color-hint-text,
+.search-bar .input-area .cif-cancel-hint {
+  color: rgba(0,0,0,0.26);
+}
+.color-secondary-text {
+  color: rgba(0,0,0,0.54);
+}
+.color-primary-text,
+ul.styleguide.dropdown li button,
+ul.styleguide.dropdown li button.secondary {
+  color: rgba(0,0,0,0.87);
+}
+.color-disabled {
+  color: #e0e0e0;
+}
+.color-active {
+  color: #2775d1;
+}
+.theme-dark .color-primary-text {
+  color: #fff;
+}
+.theme-dark .color-secondary-text {
+  color: rgba(255,255,255,0.7);
+}
+.theme-dark .color-disabled {
+  color: rgba(255,255,255,0.3);
+}
+.theme-dark .color-active {
+  color: #2775d1;
+}
+.overlay {
+  background-color: rgba(0,0,0,0.83);
+}
+.overlay.white {
+  background-color: rgba(255,255,255,0.83);
+}
+.card-no-action,
+.card-rich-interaction,
+.card-one-clicker,
+.card-one-clicker:hover,
+.modal.card-rich-interaction,
+.modal.card-one-clicker,
+.modal.card-one-clicker:hover,
+[class*='card-'].selected,
+ul.styleguide.dropdown {
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+.card-rich-interaction:hover,
+.card-one-clicker:hover,
+.card-one-clicker:hover:hover,
+.modal.card-rich-interaction:hover,
+.modal.card-one-clicker:hover,
+.modal.card-one-clicker:hover:hover,
+[class*='card-'].selected:hover,
+ul.styleguide.dropdown:hover {
+  border: 1px solid rgba(0,0,0,0.25);
+}
+.card-one-clicker:hover {
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+}
+.modal.card-rich-interaction,
+.modal.card-one-clicker {
+  -webkit-box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.1);
+}
+.modal.card-one-clicker:hover {
+  -webkit-box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.25);
+}
+.card-one-clicker {
+  cursor: pointer;
+}
+[class*='card-'].secondary {
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.25);
+}
+[class*='card-'].secondary:hover {
+  border: 1px solid rgba(0,0,0,0.4);
+}
+[class*='card-'].secondary:hover.card-no-action {
+  border: 1px solid rgba(0,0,0,0.25);
+}
+[class*='card-'].selected {
+  border: 1px solid rgba(160,126,70,0.7);
+}
+[class*='card-'].selected:hover {
+  border: 1px solid #a07e46;
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+}
+[class*='card-'].luxury {
+  padding: 48px 48px;
+}
+[class*='card-'].comfy {
+  padding: 30px 30px;
+}
+[class*='card-'].cozy {
+  padding: 18px 18px;
+}
+[class*='card-'].compact {
+  padding: 18px 12px;
+}
+[class*='card-'] {
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+[class*='card-']:hover {
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin,
+.search-bar .search-button {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-image: none;
+  border: none;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  text-decoration: none;
+  color: #fff;
+  min-width: 72px;
+  padding: 10px 20px;
+  -webkit-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -moz-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -o-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -ms-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  -ms-transition-duration: 100ms;
+  transition-duration: 100ms;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  -o-transition-delay: 0ms;
+  -ms-transition-delay: 0ms;
+  transition-delay: 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+button.primary[disabled],
+button.secondary[disabled],
+button.passive[disabled],
+button.facebook[disabled],
+button.linkedin[disabled],
+.search-bar .search-button[disabled] {
+  background-color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  color: rgba(0,0,0,0.26);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+button.primary[disabled]:hover,
+button.secondary[disabled]:hover,
+button.passive[disabled]:hover,
+button.facebook[disabled]:hover,
+button.linkedin[disabled]:hover,
+.search-bar .search-button[disabled]:hover,
+button.primary[disabled]:active,
+button.secondary[disabled]:active,
+button.passive[disabled]:active,
+button.facebook[disabled]:active,
+button.linkedin[disabled]:active,
+.search-bar .search-button[disabled]:active,
+button.primary[disabled]:focus,
+button.secondary[disabled]:focus,
+button.passive[disabled]:focus,
+button.facebook[disabled]:focus,
+button.linkedin[disabled]:focus,
+.search-bar .search-button[disabled]:focus {
+  background: #e0e0e0 none repeat 0 0 scroll;
+}
+button.primary.cozy,
+button.secondary.cozy,
+button.passive.cozy,
+button.facebook.cozy,
+button.linkedin.cozy {
+  padding: 16px 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.comfy,
+button.secondary.comfy,
+button.passive.comfy,
+button.facebook.comfy,
+button.linkedin.comfy {
+  padding: 20px 40px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.fullbleed,
+button.secondary.fullbleed,
+button.passive.fullbleed,
+button.facebook.fullbleed,
+button.linkedin.fullbleed {
+  padding: 10px 20px;
+  width: 100%;
+}
+button.primary {
+  border: 1px solid #2073d4;
+  background-color: #2073d4;
+}
+button.primary:hover,
+button.primary:focus,
+button.primary:active {
+  background-color: #005bbe;
+}
+button.primary.comfy:not([disabled]),
+button.primary.cozy:not([disabled]) {
+  background-image: -webkit-linear-gradient(#4285f4, #2775d1);
+  background-image: -moz-linear-gradient(#4285f4, #2775d1);
+  background-image: -o-linear-gradient(#4285f4, #2775d1);
+  background-image: -ms-linear-gradient(#4285f4, #2775d1);
+  background-image: linear-gradient(#4285f4, #2775d1);
+}
+button.primary.comfy:not([disabled]):hover,
+button.primary.cozy:not([disabled]):hover,
+button.primary.comfy:not([disabled]):active,
+button.primary.cozy:not([disabled]):active,
+button.primary.comfy:not([disabled]):focus,
+button.primary.cozy:not([disabled]):focus {
+  background-image: none;
+}
+button.secondary {
+  color: #2a73cc;
+  border: 1px solid #2a73cc;
+  background-color: transparent;
+}
+button.secondary:hover,
+button.secondary:focus,
+button.secondary:active {
+  background-color: #2a73cc;
+  color: #fff;
+}
+button.passive {
+  border: 1px solid #7e778b;
+  color: #7e778b;
+  background-color: transparent;
+}
+button.passive:hover,
+button.passive:focus,
+button.passive:active {
+  border-color: #8c8c8c;
+  background-color: #8c8c8c;
+  color: #fff;
+}
+button.nostyle,
+button.button-link {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.87);
+  border: 0;
+  font-size: 1em;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+  min-width: 0;
+}
+button.nostyle:disabled,
+button.button-link:disabled {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.26);
+}
+button.facebook {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #3b5998;
+}
+button.facebook span,
+button.facebook i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.facebook i {
+  font-size: 20px;
+}
+button.facebook span,
+button.facebook i:last-child {
+  margin-left: 8px;
+}
+button.linkedin {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #2a73cc;
+}
+button.linkedin span,
+button.linkedin i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.linkedin i {
+  font-size: 20px;
+}
+button.linkedin span,
+button.linkedin i:last-child {
+  margin-left: 8px;
+}
+button.button-link {
+  color: #2775d1;
+  text-decoration: none;
+  cursor: pointer;
+}
+button.button-link:hover {
+  text-decoration: underline;
+}
+button.button-link.nostyle {
+  color: inherit;
+  text-decoration: none;
+}
+button.button-link.nostyle:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.theme-dark button.primary[disabled],
+.theme-dark button.secondary[disabled],
+.theme-dark button.passive[disabled] {
+  background-color: rgba(255,255,255,0.8);
+}
+.search-bar {
+  border: 1px solid rgba(0,0,0,0.12);
+}
+.search-bar .input-area {
+  position: relative;
+  margin-right: 4px;
+}
+.search-bar .input-area .cif-cancel-hint {
+  cursor: pointer;
+}
+.search-bar .input-area .search-input {
+  border: none;
+  padding: 7px 24px 7px 20px;
+  width: 100%;
+}
+.search-bar .input-area .search-input:focus {
+  outline: none;
+}
+.search-bar .search-button {
+  color: rgba(0,0,0,0.54);
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  min-width: 0;
+  padding: 0 12px;
+}
+.search-bar .search-button:hover {
+  background: transparent;
+  color: rgba(0,0,0,0.26);
+}
+.pagination-controls-container > * {
+  margin-left: 6px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+}
+.pagination-controls-container .ellipsis {
+  position: relative;
+  cursor: default;
+}
+.pagination-controls-container .box {
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.12);
+  background-color: #fff;
+}
+.pagination-controls-container .box:hover {
+  border-color: #2a73cc;
+  color: #2a73cc;
+}
+.pagination-controls-container .number,
+.pagination-controls-container .arrow {
+  padding-top: 2px;
+}
+.pagination-controls-container .number.current,
+.pagination-controls-container .arrow.current {
+  border-color: #2a73cc;
+  color: #fff;
+  background-color: #2a73cc;
+}
+.pagination-controls-container .arrow.arrow-disabled {
+  color: rgba(0,0,0,0.12);
+}
+.pagination-controls-container .arrow.arrow-disabled:hover {
+  border-color: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,0.12);
+  cursor: default;
+}
+ul.styleguide.dropdown {
+  min-width: 108px;
+  padding: 4px 0;
+  margin: 0;
+}
+ul.styleguide.dropdown li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+ul.styleguide.dropdown li button,
+ul.styleguide.dropdown li button.secondary {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 4px 8px;
+  text-align: left;
+  padding-left: 12px;
+}
+ul.styleguide.dropdown li button:hover,
+ul.styleguide.dropdown li button.secondary:hover {
+  color: #fff;
+}
+.checkbox-small {
+  max-width: 18px;
+  min-width: 18px;
+  max-height: 18px;
+  min-height: 18px;
+}
+.checkbox-small:checked:after {
+  border-width: 0 3px 3px 0;
+  width: 5px;
+  height: 9px;
+}
+.checkbox-large {
+  max-width: 40px;
+  min-width: 40px;
+  max-height: 40px;
+  min-height: 40px;
+}
+.checkbox-large:checked:after {
+  border-width: 0 5px 5px 0;
+  width: 9px;
+  height: 21px;
+}
+/*
+Input controls
+
+This lists styles for all input controls
+
+To use these styles, please include this in the index.styl of your SPA (Single page application)
+/web/static/bundles/styleguide/index.styl
+
+Styleguide 9
+*/
+/*
+Search
+
+Build a search box based on the example below.
+You will notice a "cif-cancel-hint". That is completely optional.
+
+You will get all the styles by default.
+Soon we will be adding a React component where you wouldn't have to copy this.
+
+Refer to [coursera.org/learn/how-to-start-a-startup/discussions] for example.
+
+Markup:
+<div class="search-bar" style="width:300px">
+  <div class="input-area">
+    <input placeholder="Search" class="search-input">
+      <i class="cif-cancel-hint"></i>
+  </div>
+  <button class="search-button">
+    <i class="cif-search"></i>
+  </button>
+</div>
+<br/>
+<div class="search-bar" style="width:300px">
+  <div class="input-area">
+    <input placeholder="Search" class="search-input">
+  </div>
+  <button class="search-button">
+    <i class="cif-search"></i>
+  </button>
+</div>
+
+Styleguide 9.1
+*/
+/*
+Pagination
+
+Build a pagination control based on the example below. You will get all the styles by default.
+Refer to react component: static/bundles/page/components/PaginationControls.jsx
+
+Refer to [coursera.org/learn/how-to-start-a-startup/discussions] for example. Scroll to bottom
+to see pagination controls.
+
+Markup:
+<div class="pagination-controls-container">
+  <div class="label-text box arrow arrow-disabled">
+    <i class="cif-chevron-left"></i>
+  </div>
+  <div class="box number current">
+    <a class="nostyle caption-text">
+    1
+    </a>
+  </div>
+  <div class="box number">
+    <a>2</a>
+  </div>
+  <div class="box number">
+    <a>3</a>
+  </div>
+  <div class="box number">
+    <a>4</a>
+  </div>
+  <span class="ellipsis">...</span>
+  <div class="box number">
+    <a>12</a>
+  </div>
+  <div class="label-text box arrow">
+    <i class="cif-chevron-right"></i>
+  </div>
+</div>
+
+Styleguide 9.2
+*/
+/*
+Dropdown 1
+
+This is the first and currently only variant for dropdown. This is used in discussions today.
+Build a dropdown based on the example below.You will get all the styles by default.
+Soon we will be adding a React component where you wouldn't have to copy this.
+
+Markup:
+<div style="width:120px;">
+  <ul class="styleguide dropdown">
+    <li>
+      <button class="secondary">Option 1</button>
+    </li>
+    <li>
+      <button class="secondary">Option 2</button>
+    </li>
+    <li>
+      <button class="secondary">Option 3</button>
+    </li>
+    <li>
+      <button class="secondary">Option 4</button>
+    </li>
+    <li>
+      <button class="secondary">Option 5</button>
+    </li>
+  </ul>
+</div>
+
+Styleguide 9.3
+*/
+/*
+Checkbox
+
+This is a css-only checkbox for the learner app. It comes in two variants, `checkbox-small` and `checkbox-large`. `checkbox-large` is appropriate for mobile versions of pages.
+
+Markup:
+<div>
+  <div>
+    <input class="checkbox-small" type="checkbox"/>
+  </div>
+  <div>
+    <input class="checkbox-large" type="checkbox"/>
+  </div>
+</div>
+
+Styleguide 9.4
+*/
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+.styleguide a {
+  color: #2775d1;
+  text-decoration: none;
+}
+.styleguide a:hover {
+  text-decoration: underline;
+}
+.styleguide a.nostyle,
+a.nostyle {
+  color: inherit;
+  text-decoration: none;
+}
+.styleguide a.nostyle:hover,
+a.nostyle:hover,
+a.nostyle:focus {
+  color: inherit;
+  text-decoration: none;
+}
+a.dim,
+a.dim:hover {
+  color: rgba(0,0,0,0.54);
+  text-decoration: none;
+}
+a.dim:hover,
+a.dim:hover:hover {
+  color: #2775d1;
+  text-decoration: underline;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin,
+a.link-button {
+  font-size: 12px;
+  line-height: 14px;
+}
+button.primary,
+button.secondary,
+button.passive,
+button.facebook,
+button.linkedin {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-image: none;
+  border: none;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  text-decoration: none;
+  color: #fff;
+  min-width: 72px;
+  padding: 10px 20px;
+  -webkit-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -moz-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -o-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -ms-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  -ms-transition-duration: 100ms;
+  transition-duration: 100ms;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  -o-transition-delay: 0ms;
+  -ms-transition-delay: 0ms;
+  transition-delay: 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+button.primary[disabled],
+button.secondary[disabled],
+button.passive[disabled],
+button.facebook[disabled],
+button.linkedin[disabled] {
+  background-color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  color: rgba(0,0,0,0.26);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+button.primary[disabled]:hover,
+button.secondary[disabled]:hover,
+button.passive[disabled]:hover,
+button.facebook[disabled]:hover,
+button.linkedin[disabled]:hover,
+button.primary[disabled]:active,
+button.secondary[disabled]:active,
+button.passive[disabled]:active,
+button.facebook[disabled]:active,
+button.linkedin[disabled]:active,
+button.primary[disabled]:focus,
+button.secondary[disabled]:focus,
+button.passive[disabled]:focus,
+button.facebook[disabled]:focus,
+button.linkedin[disabled]:focus {
+  background: #e0e0e0 none repeat 0 0 scroll;
+}
+button.primary.cozy,
+button.secondary.cozy,
+button.passive.cozy,
+button.facebook.cozy,
+button.linkedin.cozy {
+  padding: 16px 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.comfy,
+button.secondary.comfy,
+button.passive.comfy,
+button.facebook.comfy,
+button.linkedin.comfy {
+  padding: 20px 40px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+button.primary.fullbleed,
+button.secondary.fullbleed,
+button.passive.fullbleed,
+button.facebook.fullbleed,
+button.linkedin.fullbleed {
+  padding: 10px 20px;
+  width: 100%;
+}
+button.primary {
+  border: 1px solid #2073d4;
+  background-color: #2073d4;
+}
+button.primary:hover,
+button.primary:focus,
+button.primary:active {
+  background-color: #005bbe;
+}
+button.primary.comfy:not([disabled]),
+button.primary.cozy:not([disabled]) {
+  background-image: -webkit-linear-gradient(#4285f4, #2775d1);
+  background-image: -moz-linear-gradient(#4285f4, #2775d1);
+  background-image: -o-linear-gradient(#4285f4, #2775d1);
+  background-image: -ms-linear-gradient(#4285f4, #2775d1);
+  background-image: linear-gradient(#4285f4, #2775d1);
+}
+button.primary.comfy:not([disabled]):hover,
+button.primary.cozy:not([disabled]):hover,
+button.primary.comfy:not([disabled]):active,
+button.primary.cozy:not([disabled]):active,
+button.primary.comfy:not([disabled]):focus,
+button.primary.cozy:not([disabled]):focus {
+  background-image: none;
+}
+button.secondary {
+  color: #2a73cc;
+  border: 1px solid #2a73cc;
+  background-color: transparent;
+}
+button.secondary:hover,
+button.secondary:focus,
+button.secondary:active {
+  background-color: #2a73cc;
+  color: #fff;
+}
+button.passive {
+  border: 1px solid #7e778b;
+  color: #7e778b;
+  background-color: transparent;
+}
+button.passive:hover,
+button.passive:focus,
+button.passive:active {
+  border-color: #8c8c8c;
+  background-color: #8c8c8c;
+  color: #fff;
+}
+button.nostyle,
+button.button-link {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.87);
+  border: 0;
+  font-size: 1em;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+  min-width: 0;
+}
+button.nostyle:disabled,
+button.button-link:disabled {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.26);
+}
+button.facebook {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #3b5998;
+}
+button.facebook span,
+button.facebook i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.facebook i {
+  font-size: 20px;
+}
+button.facebook span,
+button.facebook i:last-child {
+  margin-left: 8px;
+}
+button.linkedin {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #2a73cc;
+}
+button.linkedin span,
+button.linkedin i {
+  display: inline-block;
+  vertical-align: middle;
+}
+button.linkedin i {
+  font-size: 20px;
+}
+button.linkedin span,
+button.linkedin i:last-child {
+  margin-left: 8px;
+}
+button.button-link {
+  color: #2775d1;
+  text-decoration: none;
+  cursor: pointer;
+}
+button.button-link:hover {
+  text-decoration: underline;
+}
+button.button-link.nostyle {
+  color: inherit;
+  text-decoration: none;
+}
+button.button-link.nostyle:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.theme-dark button.primary[disabled],
+.theme-dark button.secondary[disabled],
+.theme-dark button.passive[disabled] {
+  background-color: rgba(255,255,255,0.8);
+}
+a.link-button {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-image: none;
+  border: none;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  text-decoration: none;
+  color: #fff;
+  min-width: 72px;
+  padding: 10px 20px;
+  -webkit-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -moz-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -o-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -ms-transition-property: background-color,box-shadow(),color,opacity(n, args);
+  transition-property: background-color,box-shadow(),color,opacity(n, args);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  -ms-transition-duration: 100ms;
+  transition-duration: 100ms;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  -o-transition-delay: 0ms;
+  -ms-transition-delay: 0ms;
+  transition-delay: 0ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+/*
+Links
+
+To use these styles, you can do the following:
+1. please include /web/static/bundles/styleguide/index.styl in the index.styl of your SPA (Single page application)
+2. If you want to consume it within a styl file, get the variables file from
+/web/static/bundles/styleguide/variables
+
+Styleguide 12
+*/
+/*
+  Link Categories:  In terms of function
+
+  1.Default - Default link style which is used for primary action
+  2.link-button - Appearance exactly the same as buttons
+
+Styleguide 12.1
+*/
+/*
+
+Default link
+
+Usage:
+
+`<a>Link</a>`
+`<a class="dim">Link</a>`
+
+:hover - Hover state
+.nostyle - Not styled (color and underline)
+.nostyle:hover - Not styled (color and underline)
+.dim - Dim color scheme (color and underline)
+.dim:hover - Dim color scheme (color and underline)
+
+Markup:
+  <section style="margin-top: 12px" class="styleguide">
+    <a class="{{modifier_class}}"> Default Link </a>
+  </section>
+
+Styleguide 12.1.1
+*/
+/*
+
+Link-button Categories:  In terms of function
+
+  1. Primary - Default button style which is used for primary action
+  2. Secondary - Is used for secondary actions in a page like "New Thread" button in discussions
+  3. Passive - indicates passive actions like "cancel", "not now" or "no"
+  7. NoStyle - Used to represent plain text
+
+Styleguide 12.2.1
+
+*/
+/*
+  Primary Button Link
+
+  Usage: `<a class="link-button primary">Link</a>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <a class="link-button primary {{modifier_class}}"> Primary button </a>
+  </section>
+
+Styleguide 12.2.2
+*/
+/*
+  Secondary Button Link
+
+  Usage: `<a class="link-button secondary">Link</a>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <a class="link-button secondary {{modifier_class}}"> Second Link </a>
+  </section>
+
+Styleguide 12.2.3
+*/
+/*
+  Passive Button Link
+
+  Usage: `<a class="link-button passive">Link</a>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <a class="link-button passive {{modifier_class}}"> Passive Link </a>
+  </section>
+
+Styleguide 12.2.4
+*/
+/*
+  Facebook Button Link
+
+  `<a class="link-button facebook"><i class="cif-facebook-official"></i>
+  <span>Facebook Link</span></a>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <a class="link-button facebook {{modifier_class}}">
+    <i class="cif-facebook-official"></i>
+    <span>Facebook Button</span>
+  </a>
+
+Styleguide 12.2.8
+*/
+/*
+  Linkedin Button Link
+
+  `<a class="link-button linkedin"><i class="cif-linkedin-square"></i>
+  <span>Linkedin Button</span></a>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <a class="link-button linkedin {{modifier_class}}">
+    <i class="cif-linkedin-square"></i>
+    <span>Linkedin Button</span>
+  </a>
+
+Styleguide 12.2.9
+*/
+/*
+  NoStyle Button Link
+
+  Usage: `<a class="nostyle">Link</a>`
+
+  :hover  - Hover state
+  :focus - Focus state
+  :active - Active state
+
+  Markup:
+  <section style="margin-top: 12px">
+    <a class="link-button nostyle {{modifier_class}}"> NoStyle Link </a>
+  </section>
+
+  Styleguide 12.2.10
+*/
+/*
+  Sizes
+
+  1.Default size(Compact): Fits content with a default padding of top/bottom: 10px right/left: 20px
+  2.cozy: Has a padding of top/bottom: 18px right/left: 30px
+  3.comfy: Has a padding of 20px top/bottom and 40px left/right
+  3.Full bleed: occupies full width available. Great for mobile. Padding top/bottom: 16px, left/right: auto
+
+  Styleguide 12.3
+*/
+/*
+  All variants here
+
+   `<a class="link-button primary cozy">OK</a><a class="link-button primary fullbleed">OK</a>`
+
+  .cozy - has extra padding compared to default (18px/30px)
+  .comfy - has generous padding (20px/40px)
+  .fullbleed - occupies all width and has same room as comfy
+
+  Markup:
+  <section style="margin-top: 12px;max-width:650px">
+    <a class="link-button primary {{modifier_class}}" style="margin-bottom:10px"> Primary Link </a>
+    <a class="link-button secondary {{modifier_class}}" style="margin-bottom:10px"> Secondary Link </a>
+    <a class="link-button passive {{modifier_class}}" style="margin-bottom:10px"> Passive Link </a>
+  </section>
+
+  Styleguide 12.3.1
+*/
+a.link-button:hover,
+a.link-button:active,
+a.link-button:focus {
+  text-decoration: none;
+  color: #fff;
+}
+a.link-button.cozy {
+  padding: 16px 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+a.link-button.comfy {
+  padding: 20px 40px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'OpenSans-Semibold', Arial, sans-serif;
+}
+a.link-button.fullbleed {
+  padding: 10px 20px;
+  width: 100%;
+}
+a.link-button.primary {
+  border: 1px solid #2073d4;
+  background-color: #2073d4;
+}
+a.link-button.primary:hover,
+a.link-button.primary:focus,
+a.link-button.primary:active {
+  background-color: #005bbe;
+}
+a.link-button.primary.cozy,
+a.link-button.primary.comfy {
+  background-image: -webkit-linear-gradient(#4285f4, #2775d1);
+  background-image: -moz-linear-gradient(#4285f4, #2775d1);
+  background-image: -o-linear-gradient(#4285f4, #2775d1);
+  background-image: -ms-linear-gradient(#4285f4, #2775d1);
+  background-image: linear-gradient(#4285f4, #2775d1);
+}
+a.link-button.primary.cozy:hover,
+a.link-button.primary.comfy:hover,
+a.link-button.primary.cozy:active,
+a.link-button.primary.comfy:active,
+a.link-button.primary.cozy:focus,
+a.link-button.primary.comfy:focus {
+  background-image: none;
+}
+a.link-button.secondary {
+  color: #2a73cc;
+  border: 1px solid #2a73cc;
+  background-color: transparent;
+}
+a.link-button.secondary:hover,
+a.link-button.secondary:focus,
+a.link-button.secondary:active {
+  background-color: #2a73cc;
+  color: #fff;
+}
+a.link-button.passive {
+  border: 1px solid #7e778b;
+  color: #7e778b;
+  background-color: transparent;
+}
+a.link-button.passive:hover,
+a.link-button.passive:focus,
+a.link-button.passive:active {
+  border-color: #8c8c8c;
+  background-color: #8c8c8c;
+  color: #fff;
+}
+a.link-button.facebook {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #3b5998;
+}
+a.link-button.facebook span,
+a.link-button.facebook i {
+  display: inline-block;
+  vertical-align: middle;
+}
+a.link-button.facebook i {
+  font-size: 20px;
+}
+a.link-button.facebook span,
+a.link-button.facebook i:last-child {
+  margin-left: 8px;
+}
+a.link-button.linkedin {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  background-color: #2a73cc;
+}
+a.link-button.linkedin span,
+a.link-button.linkedin i {
+  display: inline-block;
+  vertical-align: middle;
+}
+a.link-button.linkedin i {
+  font-size: 20px;
+}
+a.link-button.linkedin span,
+a.link-button.linkedin i:last-child {
+  margin-left: 8px;
+}
+a.link-button.nostyle {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.87);
+  border: 0;
+  font-size: 1em;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+}
+a.link-button.nostyle:disabled {
+  background: transparent none repeat 0 0 scroll;
+  color: rgba(0,0,0,0.26);
+}
+/*
+Media print queries
+
+By default printed links show the URL next to the title - we have removed this behavior to make printed pages more
+understandable.
+
+Styleguide 12.3.1
+*/
+@media print {
+  a:link:after,
+  a:visited:after {
+    content: "" !important;
+  }
+}
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+/*
+Lists
+
+ List Categories:
+   1. NoStyle list - Used to represent bullet text.
+   2. InLine list - Used to represent plain text.
+
+To use these styles, please include this in the index.styl of your SPA (Single page application)
+/web/static/bundles/styleguide/index.styl
+
+Styleguide 11
+*/
+/*
+NoStyle - List Styles
+
+Markup:
+<section style="margin-top: 12px">
+  <ul class="nostyle">
+    <li>Not styled item 1</li>
+    <li>Not styled item 2</li>
+    <li>Not styled item 3</li>
+    <li>Not styled item 4</li>
+    <li>Not styled item 5</li>
+  </ul>
+  <ol class="nostyle">
+    <li>Not styled item 1</li>
+    <li>Not styled item 2</li>
+    <li>Not styled item 3</li>
+    <li>Not styled item 4</li>
+    <li>Not styled item 5</li>
+  </ol>
+</section>
+
+Styleguide 11.1
+*/
+/*
+InLine - List Styles
+
+Markup:
+<section style="margin-top: 12px">
+  <ul class="inline">
+    <li>InLine item 1</li>
+    <li>InLine item 2</li>
+    <li>InLine item 3</li>
+    <li>InLine item 4</li>
+    <li>InLine item 5</li>
+  </ul>
+  <ol class="inline">
+    <li>InLine item 1</li>
+    <li>InLine item 2</li>
+    <li>InLine item 3</li>
+    <li>InLine item 4</li>
+    <li>InLine item 5</li>
+  </ol>
+</section>
+
+Styleguide 11.2
+*/
+ol,
+ul {
+  font-size: 1em;
+  outline: 0;
+}
+ol.nostyle,
+ul.nostyle,
+ol.inline,
+ul.inline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.inline.ol,
+.inline.ul,
+.inline li {
+  display: inline;
+}
+.nostyle.ol,
+.nostyle.ul {
+  display: block;
+}
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+/*
+Pills
+
+To use these styles, please include this in the index.styl of your SPA (Single page application)
+/web/static/bundles/styleguide/index.styl
+
+Styleguide 10
+*/
+/*
+Light Pills
+
+A single-line pill container, with default stylng, for use on light backgrounds only.
+
+Markup:
+<div style="padding: 4px; background-color: white">
+  <div class="pill-light">
+    Due x date
+  </div>
+  <samp>.pill-light</samp>
+</div>
+<div style="padding: 4px; background-color: rgb(250, 250, 250)">
+  <div class="pill-light">
+    Due x date
+  </div>
+  <samp>.pill-light</samp>
+</div>
+
+Styleguide 10.1
+ */
+/*
+White Pills
+
+A single-line pill container, with light stylng and a border for use on light or dark backgrounds.
+
+Markup:
+<div style="padding: 4px; background-color: white">
+  <div class="pill-white">
+    Due x date
+  </div>
+  <samp>.pill-white</samp>
+</div>
+<div style="padding: 4px; background-color: rgb(250, 250, 250)">
+  <div class="pill-white">
+    Due x date
+  </div>
+  <samp>.pill-white</samp>
+</div>
+ <div style="padding: 4px; background-color: rgb(32, 47, 58)">
+  <div class="pill-white">
+    Due x date
+  </div>
+  <samp>.pill-white</samp>
+</div>
+
+Styleguide 10.2
+*/
+/*
+Success Pills
+
+A single-line pill container, with success styling.
+
+Markup:
+<div style="padding: 4px; background-color: white">
+    <div class="pill-success">
+      Due x date
+    </div>
+    <samp>.pill-success</samp>
+  </div>
+ <div style="padding: 4px; background-color: rgb(250, 250, 250)">
+    <div class="pill-success">
+      Due x date
+    </div>
+    <samp>.pill-success</samp>
+  </div>
+
+Styleguide 10.3
+ */
+/*
+Dark Pills
+
+A single-line pill container, with dark styling, for use on light backgrounds only.
+
+Markup:
+<div style="padding: 4px; background-color: white">
+    <div class="pill-dark">
+      Due x date
+    </div>
+    <samp>.pill-dark</samp>
+  </div>
+ <div style="padding: 4px; background-color: rgb(250, 250, 250)">
+    <div class="pill-dark">
+      Due x date
+    </div>
+    <samp>.pill-dark</samp>
+  </div>
+
+Styleguide 10.4
+ */
+.pill-light {
+  display: inline-block;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(0,0,0,0.87);
+  background-color: rgba(0,0,0,0.1);
+}
+.pill-white {
+  display: inline-block;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  border-width: 1px;
+  border-color: rgba(0,0,0,0.1);
+  border-style: solid;
+}
+.pill-success {
+  display: inline-block;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #1f8354;
+  background-color: #ecf4e8;
+}
+.pill-dark {
+  display: inline-block;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+  background-color: rgba(0,0,0,0.55);
+}
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+h1.tab-headline,
+h2.tab-headline,
+h3.tab-headline,
+h4.tab-headline,
+h5.tab-headline,
+h6.tab-headline,
+h1.tab-headline-small,
+h2.tab-headline-small,
+h3.tab-headline-small,
+h4.tab-headline-small,
+h5.tab-headline-small,
+h6.tab-headline-small {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+ul.tabs li.tab a,
+ol.tabs li.tab a,
+ul.tabs li.colored-tab a,
+ol.tabs li.colored-tab a {
+  color: inherit;
+  text-decoration: none;
+}
+ul.tabs li.tab a:hover,
+ol.tabs li.tab a:hover,
+ul.tabs li.colored-tab a:hover,
+ol.tabs li.colored-tab a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.display-6-text,
+.display-5-text,
+.display-4-text,
+.display-3-text,
+.display-1-text,
+.headline-6-text,
+.headline-5-text,
+.headline-4-text,
+.headline-3-text,
+.headline-2-text,
+.headline-1-text,
+h1.tab-headline,
+h2.tab-headline,
+h3.tab-headline,
+h4.tab-headline,
+h5.tab-headline,
+h6.tab-headline,
+h1.tab-headline-small,
+h2.tab-headline-small,
+h3.tab-headline-small,
+h4.tab-headline-small,
+h5.tab-headline-small,
+h6.tab-headline-small {
+  font-weight: normal;
+}
+.display-6-text,
+.display-5-text,
+.display-4-text,
+.display-3-text,
+.headline-6-text,
+.headline-5-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.headline-4-text,
+.headline-3-text,
+.headline-2-text,
+h1.tab-headline,
+h2.tab-headline,
+h3.tab-headline,
+h4.tab-headline,
+h5.tab-headline,
+h6.tab-headline,
+h1.tab-headline-small,
+h2.tab-headline-small,
+h3.tab-headline-small,
+h4.tab-headline-small,
+h5.tab-headline-small,
+h6.tab-headline-small {
+  margin-bottom: 10px;
+}
+.display-6-text,
+.display-5-text,
+.display-3-text,
+.display-2-text {
+  font-family: 'Merriweather-Light', Georgia, serif;
+}
+.display-4-text,
+.display-1-text {
+  font-family: 'Merriweather', Georgia, serif;
+}
+.headline-6-text,
+.headline-5-text,
+.headline-2-text {
+  font-family: 'OpenSans-Light', Arial, sans-serif;
+}
+.headline-4-text,
+.headline-3-text,
+.headline-1-text,
+h1.tab-headline,
+h2.tab-headline,
+h3.tab-headline,
+h4.tab-headline,
+h5.tab-headline,
+h6.tab-headline,
+h1.tab-headline-small,
+h2.tab-headline-small,
+h3.tab-headline-small,
+h4.tab-headline-small,
+h5.tab-headline-small,
+h6.tab-headline-small {
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.display-6-text {
+  font-size: 54px;
+  line-height: 60px;
+}
+.display-5-text {
+  font-size: 42px;
+  line-height: 54px;
+}
+.display-4-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.display-3-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.display-2-text {
+  font-size: 24px;
+  line-height: 30px;
+}
+.display-1-text {
+  font-size: 20px;
+  line-height: 24px;
+}
+.headline-6-text {
+  font-size: 54px;
+  line-height: 60px;
+}
+.headline-5-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.headline-4-text {
+  font-size: 24px;
+  line-height: 30px;
+}
+.headline-3-text,
+h1.tab-headline,
+h2.tab-headline,
+h3.tab-headline,
+h4.tab-headline,
+h5.tab-headline,
+h6.tab-headline,
+h1.tab-headline-small,
+h2.tab-headline-small,
+h3.tab-headline-small,
+h4.tab-headline-small,
+h5.tab-headline-small,
+h6.tab-headline-small {
+  font-size: 22px;
+  line-height: 24px;
+}
+.headline-2-text {
+  font-size: 20px;
+  line-height: 24px;
+}
+.headline-1-text {
+  font-size: 16px;
+  line-height: 24px;
+}
+body,
+.body-1-text,
+.body-2-text,
+p {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.body-2-text {
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: bold;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+.caption-text {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.label-text {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+p {
+  margin-bottom: 10px;
+}
+/*
+Tabs
+
+Style definitions for Tabs.
+
+To use these styles, please include this in the index.styl of your SPA (Single page application)
+/web/static/bundles/styleguide/index.styl
+
+Styleguide 7
+*/
+/*
+Default Tab
+
+Since tabs are really a horizontal list, li is used for each item.
+
+Links within the tabs will not inherit default link styles.
+
+.tabs-divider - Adds a border to the bottom of the tabs.
+
+Markup:
+<ol class="tabs {{modifier_class}}">
+  <li class="tab"> Tab1 </li>
+  <li class="tab"> Tab2 </li>
+  <li class="tab selected"> Tab3 </li>
+</ol>
+<ul class="tabs {{modifier_class}}">
+  <li class="tab"> <a> Tab1 </a> </li>
+  <li class="tab"> <a> Tab2 </a> </li>
+  <li class="tab selected"> <a> Tab3 </a> </li>
+</ul>
+
+Styleguide 7.1
+*/
+ul.tabs,
+ol.tabs {
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 767px) {
+  ul.tabs,
+  ol.tabs {
+    margin: 20px 0;
+  }
+}
+@media (min-width: 768px) {
+  ul.tabs.tabs-divider,
+  ol.tabs.tabs-divider {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+}
+@media (max-width: 767px) {
+  ul.tabs.tabs-divider,
+  ol.tabs.tabs-divider {
+    border-left: 1px solid rgba(0,0,0,0.06);
+  }
+}
+ul.tabs li.tab,
+ol.tabs li.tab,
+ul.tabs li.tab.selected,
+ol.tabs li.tab.selected,
+ul.tabs li.colored-tab,
+ol.tabs li.colored-tab,
+ul.tabs li.colored-tab.selected,
+ol.tabs li.colored-tab.selected {
+  margin: 15px 8px;
+  cursor: pointer;
+  display: inline-block;
+  list-style-type: none;
+  font-weight: bold;
+  color: rgba(0,0,0,0.54);
+}
+@media (min-width: 768px) {
+  ul.tabs li.tab:first-child,
+  ol.tabs li.tab:first-child,
+  ul.tabs li.tab.selected:first-child,
+  ol.tabs li.tab.selected:first-child,
+  ul.tabs li.colored-tab:first-child,
+  ol.tabs li.colored-tab:first-child,
+  ul.tabs li.colored-tab.selected:first-child,
+  ol.tabs li.colored-tab.selected:first-child {
+    margin-left: 0;
+  }
+  ul.tabs li.tab:last-child,
+  ol.tabs li.tab:last-child,
+  ul.tabs li.tab.selected:last-child,
+  ol.tabs li.tab.selected:last-child,
+  ul.tabs li.colored-tab:last-child,
+  ol.tabs li.colored-tab:last-child,
+  ul.tabs li.colored-tab.selected:last-child,
+  ol.tabs li.colored-tab.selected:last-child {
+    margin-right: 0;
+  }
+}
+@media (max-width: 767px) {
+  ul.tabs li.tab,
+  ol.tabs li.tab,
+  ul.tabs li.tab.selected,
+  ol.tabs li.tab.selected,
+  ul.tabs li.colored-tab,
+  ol.tabs li.colored-tab,
+  ul.tabs li.colored-tab.selected,
+  ol.tabs li.colored-tab.selected {
+    display: block;
+    margin: 15px 8px 15px 15px;
+  }
+}
+ul.tabs li.tab:hover,
+ol.tabs li.tab:hover,
+ul.tabs li.tab.selected,
+ol.tabs li.tab.selected,
+ul.tabs li.colored-tab.selected,
+ol.tabs li.colored-tab.selected {
+  color: rgba(0,0,0,0.87);
+}
+/*
+Colored Tab
+
+A variant of the default tab that uses a colored underline to
+highlight the selected tab.
+
+Links can also be used within colored tabs
+without inheriting default link styles.
+
+:hover - Colored border on hover state
+
+.tabs-divider - Adds a border to the bottom of the tabs.
+
+Markup:
+<ol class="tabs {{modifier_class}}">
+  <li class="colored-tab"> <span> Tab1 </span> </li>
+  <li class="colored-tab"> <span> Tab2 </span> </li>
+  <li class="colored-tab selected"> <span> Tab3 </span> </li>
+</ol>
+<ul class="tabs {{modifier_class}}">
+  <li class="colored-tab"> <a> Tab1 </a> </li>
+  <li class="colored-tab"> <a> Tab2 </a> </li>
+  <li class="colored-tab selected"> <a> Tab3 </a> </li>
+</ul>
+
+Styleguide 7.2
+*/
+@media (max-width: 767px) {
+  ul.tabs li.colored-tab,
+  ol.tabs li.colored-tab {
+    margin-left: 0;
+  }
+  ul.tabs li.colored-tab.selected,
+  ol.tabs li.colored-tab.selected {
+    margin-left: 0;
+  }
+}
+ul.tabs li.colored-tab *,
+ol.tabs li.colored-tab * {
+  padding: 0 8px 15px 8px;
+}
+@media (max-width: 767px) {
+  ul.tabs li.colored-tab *,
+  ol.tabs li.colored-tab * {
+    padding: 2px 8px 2px 15px;
+  }
+}
+@media (min-width: 768px) {
+  ul.tabs li.colored-tab:hover *,
+  ol.tabs li.colored-tab:hover *,
+  ul.tabs li.colored-tab.selected *,
+  ol.tabs li.colored-tab.selected * {
+    border-bottom: 1px solid #a07e46;
+  }
+}
+@media (max-width: 767px) {
+  ul.tabs li.colored-tab:hover *,
+  ol.tabs li.colored-tab:hover *,
+  ul.tabs li.colored-tab.selected *,
+  ol.tabs li.colored-tab.selected * {
+    border-left: 1px solid #a07e46;
+  }
+}
+/*
+  Headline tab
+
+  Looks like a tab but actually acts just like a headline.
+  NOTE: Please remember that tab-headline has to be a headertag followed by a span.
+  Anything else will not work.
+
+  .tab-headline-small is smaller and can be used just for headlines. span is optional with .tab-headline-small.
+
+  Usage:
+
+  `<h3 class="tab-headline"><span>Course Info</span></h3>`
+
+  `<h3 class="tab-headline-small"><span>Course Info</span></h3>`
+
+  Markup:
+  <div style="width:800px;">
+    <h3 class="tab-headline">
+      <span>Course Info</span>
+    </h3>
+    <h3 class="tab-headline-small">
+      <span>Course Info</span>
+    </h3>
+  </div>
+
+  Styleguide 7.3
+ */
+h1.tab-headline,
+h2.tab-headline,
+h3.tab-headline,
+h4.tab-headline,
+h5.tab-headline,
+h6.tab-headline {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+}
+h1.tab-headline span,
+h2.tab-headline span,
+h3.tab-headline span,
+h4.tab-headline span,
+h5.tab-headline span,
+h6.tab-headline span {
+  padding-bottom: 10px;
+  display: inline-block;
+  border-bottom: 1px solid #a07e46;
+  margin-bottom: -1px;
+}
+h1.tab-headline-small,
+h2.tab-headline-small,
+h3.tab-headline-small,
+h4.tab-headline-small,
+h5.tab-headline-small,
+h6.tab-headline-small {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  text-transform: uppercase;
+  line-height: 24px;
+  padding-bottom: 2px;
+  margin-bottom: 8px;
+  color: rgba(0,0,0,0.55);
+  font-weight: bold;
+  font-size: 14px;
+}
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+.display-6-text,
+.display-5-text,
+.display-4-text,
+.display-3-text,
+.display-1-text,
+.headline-6-text,
+.headline-5-text,
+.headline-4-text,
+.headline-3-text,
+.headline-2-text,
+.headline-1-text {
+  font-weight: normal;
+}
+.display-6-text,
+.display-5-text,
+.display-4-text,
+.display-3-text,
+.headline-6-text,
+.headline-5-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.headline-4-text,
+.headline-3-text,
+.headline-2-text {
+  margin-bottom: 10px;
+}
+.display-6-text,
+.display-5-text,
+.display-3-text,
+.display-2-text {
+  font-family: 'Merriweather-Light', Georgia, serif;
+}
+.display-4-text,
+.display-1-text {
+  font-family: 'Merriweather', Georgia, serif;
+}
+.headline-6-text,
+.headline-5-text,
+.headline-2-text {
+  font-family: 'OpenSans-Light', Arial, sans-serif;
+}
+.headline-4-text,
+.headline-3-text,
+.headline-1-text {
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.display-6-text {
+  font-size: 54px;
+  line-height: 60px;
+}
+.display-5-text {
+  font-size: 42px;
+  line-height: 54px;
+}
+.display-4-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.display-3-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.display-2-text {
+  font-size: 24px;
+  line-height: 30px;
+}
+.display-1-text {
+  font-size: 20px;
+  line-height: 24px;
+}
+.headline-6-text {
+  font-size: 54px;
+  line-height: 60px;
+}
+.headline-5-text {
+  font-size: 32px;
+  line-height: 36px;
+}
+.headline-4-text {
+  font-size: 24px;
+  line-height: 30px;
+}
+.headline-3-text {
+  font-size: 22px;
+  line-height: 24px;
+}
+.headline-2-text {
+  font-size: 20px;
+  line-height: 24px;
+}
+.headline-1-text {
+  font-size: 16px;
+  line-height: 24px;
+}
+body,
+.body-1-text,
+.body-2-text,
+p {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.body-2-text {
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: bold;
+}
+/*
+Typography
+
+To use these styles, you can do the following:
+1. please include /web/static/bundles/styleguide/index.styl in the index.styl of your SPA (Single page application)
+2. If you want to consume it within a styl file, get the variables file from
+/web/static/bundles/styleguide/variables
+
+Styleguide 2
+*/
+/*
+Sizes
+
+This list specifies the sizes for different header content and body content.
+
+For accessibility purposes, use h1-h6 in order to specify the titles from most
+ to least important, and use these selectors to style them appropriately.
+
+This list specifies the sizes for different header content and body content
+You could use the headers as is h1 through h6. USING HEADER TAGS ARE RECOMMENDED.
+There can be usecases where you need these .h1 through .h6. This should be used
+only when these need not be headers or the header hierarchy can break and you need
+to use div instead.
+
+Styleguide 2.1
+*/
+/*
+Sizes
+
+Header tags and listing body text.
+Header tags can be used as is h1-h6 or as classes .h1-.h6
+
+You can also use the selectors to get the styles. The selector tags are display-4-text, display-3-text, display-2-text,
+ display-1-text, headline-4-text, headline-3-text, headline-2-text, headline-1-text. These can be applied to any header
+ tags and even interchangeably.
+
+Markup:
+<div>
+  <div>
+    <div><div class="display-6-text" style="display:inline-block;">Display 6 Text</div><label></label>
+      <samp>.display-6-text</samp>
+    </div>
+    <div><div class="display-5-text" style="display:inline-block;">Display 5 Text</div><label></label>
+    <samp>.display-5-text</samp>
+    </div>
+    <div><div class="display-4-text" style="display:inline-block;">Display 4 Text</div><label></label>
+      <samp>.display-4-text</samp>
+    </div>
+    <div><div class="display-3-text" style="display:inline-block;">Display 3 Text</div><label></label>
+    <samp>.display-3-text</samp>
+    </div>
+    <div><div class="display-2-text" style="display:inline-block;">Display 2 Text</div><label></label>
+    <samp>.display-2-text</samp>
+    </div>
+    <div><h2 class="display-1-text" style="display:inline-block;">Display 1 Text</h2><label></label>
+    <samp>.display-1-text</samp>
+    </div>
+      <div><h3 class="headline-6-text" style="display:inline-block;">Headline 6 Text</h3><label></label>
+    <samp>.headline-6-text</samp>
+    </div>
+    <div><h3 class="headline-5-text" style="display:inline-block;">Headline 5 Text</h3><label></label>
+    <samp>.headline-5-text</samp>
+    </div>
+    <div><h3 class="headline-4-text" style="display:inline-block;">Headline 4 Text</h3><label></label>
+    <samp>.headline-4-text</samp>
+    </div>
+    <div><h4 class="headline-3-text" style="display:inline-block;">Headline 3 Text</h4><label></label>
+    <samp>.headline-3-text</samp>
+    </div>
+    <div><div class="headline-2-text" style="display:inline-block;">Headline 2 Text</div><label></label>
+    <samp>.headline-2-text</samp>
+    </div>
+    <div><h5 class="headline-1-text" style="display:inline-block;">Headline 1 Text</h5><label></label>
+    <samp>.headline-1-text</samp>
+    </div>
+  </div>
+  <div><div class="body-1-text" style="display:inline-block;">Body 1 Text or Default Body Text</div><label></label>
+  <samp>.body-1-text</samp>
+  </div>
+  <div><div class="body-2-text" style="display:inline-block;">Body 2 Text</div><label></label>
+  <samp>.body-2-text</samp>
+  </div>
+  <div><div class="caption-text" style="display:inline-block;">Caption Text</div><label></label>
+  <samp>.caption-text</samp>
+  </div>
+  <div><div class="label-text" style="display:inline-block;">Label Text</div><label></label>
+  <samp>.label-text</samp>
+  </div>
+</div>
+
+Styleguide 2.1.1
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+.caption-text {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: 'OpenSans', Arial, sans-serif;
+}
+.label-text {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/*
+Paragraph Tag
+
+Markup:
+<div>
+<p> Paragraph Text </p>
+</div>
+
+Styleguide 2.2
+*/
+p {
+  margin-bottom: 10px;
+}
+/*
+Colors
+
+The colors section elaborates specifies the list of colors that can be used with typography.
+Below are some examples of using the typography with colors.
+
+Markup:
+<div class="--div-inline">
+  <div><div class="headline-4-text color-primary-text">Headline 4 Text in Primary Color</div><label></label>
+    <samp>.headline-4-text</samp>
+    <samp>.color-primary-text</samp>
+  </div>
+  <div><div class="headline-3-text color-secondary-text">Headline 3 Text in Secondary Color</div><label></label>
+    <samp>.headline-3-text</samp>
+    <samp>.color-secondary-text</samp></div>
+  <div><div class="label-text color-hint-text">Label Text in Hint Color</div><label></label>
+    <samp>.label-text</samp>
+    <samp>.color-hint-text</samp></div>
+  <div><div class="body-1-text color-success-dark">Body 1 Text in Success Color</div><label></label>
+    <samp>.body-1-text</samp>
+    <samp>.color-success-dark</samp>
+  </div>
+  <div><div class="body-1-text color-warn-dark">Body 1 Text in Warn Color</div><label></label>
+    <samp>.body-1-text</samp>
+    <samp>.color-warn-dark</samp>
+  </div>
+</div>
+
+Styleguide 2.3
+*/
+/*
+Colors in dark theme
+
+The colors section elaborates specifies the list of colors that can be used with typography.
+Below are some examples of using the typography with colors in dark theme.
+
+Markup:
+<div class="theme-dark --div-inline">
+  <div><div class="headline-4-text color-primary-text">Headline 4 Text in Primary Color</div><label></label>
+  <samp>.headline-4-text</samp>
+  <samp>.color-primary-text</samp>
+  </div>
+  <div><div class="headline-3-text color-secondary-text">Headline 3 Text in Secondary Color</div><label></label>
+  <samp>.headline-3-text</samp>
+  <samp>.color-secondary-text</samp></div>
+</div>
+
+Styleguide 2.4
+*/
+.bt3-clearfix:before,
+.bt3-clearfix:after {
+  content: " ";
+  display: table;
+}
+.bt3-clearfix:after {
+  clear: both;
+}
+/*
+Typography variables
+*/
+/*
+COLOR variables/mixins
+ */
+/*
+Box Layouts
+*/
+/*
+Z-index
+
+This is a collection of the z-index layers available.
+
+To use these styles, please include
+/web/static/bundles/styleguide/learnerApp/z-index.styl
+
+Styleguide 4
+*/
+/*
+Z-index mixin
+
+Use these mixins in your selectors.
+
+Markup:
+<p><samp>zindex-none()</samp> Bottom-most layer - z-index of 0</p>
+<p><samp>zindex-low()</samp> Lower layer - Fixed icons, modal backdrops</p>
+<p><samp>zindex-medium()</samp> Middle layer - contents of modals</p>
+<p><samp>zindex-high()</samp> Top layer - Popovers, tooltips</p>
+<p><samp>zindex-critical()</samp> Top-most layer - Notifications, critical banners</p>
+
+
+Styleguide 4.1
+*/

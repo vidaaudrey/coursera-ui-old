@@ -49,10 +49,12 @@
     "istanbul": "^1.0.0-alpha",
     "jsdom": "^9.6.0",
     "mocha": "^3.1.0",
+    "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
     "react-scripts": "0.6.1",
     "semantic-release": "^4.3.5",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "stylus": "^0.54.5"
   },
   "dependencies": {
     "aphrodite": "^0.5.0",

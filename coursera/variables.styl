@@ -1,0 +1,432 @@
+@require './deviceDimensionVariables'
+
+/*
+Typography variables
+*/
+$font-light
+  font-weight 300
+
+$font-medium
+  font-weight 500
+
+$helvetica-neue
+  font-family 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+$type($font-size, $line-height)
+  font-size $font-size
+  line-height $line-height
+
+/*
+COLOR variables/mixins
+ */
+-black-with-alpha($alpha)
+  rgba($color-black, $alpha)
+
+-white-with-alpha($alpha)
+  rgba($color-white, $alpha)
+
+// Default colors
+$color-primary = #2A73CC
+$color-primary-light = #F6FAFF
+$color-primary-dark = #234B6E
+$color-success = #2AB573
+$color-success-dark = #1F8354
+$color-success-light = #ECF4E8
+$color-warn = #F5A623
+$color-warn-dark = #956712
+$color-warn-light = #FFF5C3
+$color-danger = #FF5C6E
+$color-white = #FFFFFF
+$color-black = #000000
+$color-transparent = transparent
+$color-facebook = #3B5998
+
+//Gradients
+$color-black-g1 = -black-with-alpha(5%)
+$color-black-g2 = -black-with-alpha(10%)
+$color-black-g3 = -black-with-alpha(25.5%)
+$color-black-g4 = -black-with-alpha(45%)
+$color-black-g5 = -black-with-alpha(55%)
+$color-black-g6 = -black-with-alpha(80%)
+$color-white-g1 = -white-with-alpha(5%)
+$color-white-g2 = -white-with-alpha(10%)
+$color-white-g3 = -white-with-alpha(25%)
+$color-white-g4 = -white-with-alpha(55%)
+$color-white-g5 = -white-with-alpha(80%)
+$color-danger-g1 = lighten($color-danger, 87%)
+$color-danger-g2 = lighten($color-danger, 54%)
+$color-danger-g3 = lighten($color-danger, 26%)
+$color-danger-g4 = lighten($color-danger, 12%)
+$color-danger-g5 = lighten($color-danger, 6%)
+
+//Divider colors
+$color-divider-light = -black-with-alpha(6%)
+$color-divider = -black-with-alpha(12%)
+//Background colors
+$color-background-white = $color-white
+$color-background-light = #F5F5F5
+$color-background-dark = #202F3A
+
+$color-hint-text = -black-with-alpha(26%)
+$color-secondary-text = -black-with-alpha(54%)
+$color-primary-text = -black-with-alpha(87%)
+
+$color-secondary-text-dark = -white-with-alpha(70%)
+
+$color-disabled = blend(rgba(#000, 12%), #FFF)
+$color-active = #2775D1
+
+$color-accent-brown = #A07E46
+$color-accent-brown-light = #ece9e3
+$color-accent-yellow = #FFD700
+
+$color-link = #428BCA
+$color-link-hover = #53AFFF
+
+/*
+Box Layouts
+*/
+box()
+  display flex         /* NEW Opera 12.1, Firefox 22+ */
+
+horizontal-spacebetween-box()
+  justify-content space-between
+  align-items center
+
+horizontal-spacearound-box()
+  justify-content space-around
+  align-items center
+
+wrap()
+  flex-wrap wrap
+
+$align-items-absolute-center
+  justify-content center
+  align-items center
+
+$align-items-vertical-center
+  align-items center
+
+$align-items-top
+  align-items flex-start
+
+$align-items-bottom
+  align-items flex-end
+
+$align-items-right
+  justify-content flex-end
+
+$align-items-bottom-right
+  @extends $align-items-bottom
+  @extends $align-items-right
+
+$align-self-start
+  align-self flex-start
+
+$align-self-end
+  align-self flex-end
+
+$align-self-stretch
+  align-self stretch
+
+$align-self-center
+  align-self center
+
+$horizontal-box
+  box()
+  flex-direction(row)
+
+$vertical-box
+  box()
+  flex-direction(column)
+
+$align-left
+  text-align left
+
+$align-horizontal-center
+  text-align center
+
+$align-right
+  text-align right
+
+$align-inherit
+  text-align inherit
+
+generate-flex-column-vars($column)
+  $flex-{$column}
+    flex $column
+
+$pill-container()
+  display inline-block
+  font-size 12px
+  height 20px
+  line-height 20px
+  border-radius 10px
+  padding-left 10px
+  padding-right 10px
+  text-overflow ellipsis
+  white-space nowrap
+
+$anchor-tag()
+  color $color-active
+  text-decoration none
+  &:hover
+    text-decoration underline
+  &.nostyle
+    color inherit
+    text-decoration none
+    &:hover
+      color inherit
+      text-decoration none
+
+$anchor-tag
+  $anchor-tag()
+
+$anchor-tag-dim
+  color $color-secondary-text
+  text-decoration none
+  &:hover
+    color $color-active
+    text-decoration underline
+
+//Buttons && Links
+$button-text
+  $type(12px, 14px)
+  c-opensans()
+
+cozycomfy-primary-button-styling()
+  background-image linear-gradient(#4285F4,  #2775D1)
+  &:hover, &:active, &:focus
+    background-image none
+
+compact-button-sizing()
+  min-width 72px
+  padding 10px 20px
+
+fullbleed-button-sizing()
+  padding 10px 20px
+  width 100%
+
+cozy-button-sizing()
+  padding 16px 30px
+  $type(14px, 18px)
+  c-opensans('Semibold')
+
+comfy-button-sizing()
+  padding 20px 40px
+  $type(18px, 24px)
+  c-opensans('Semibold')
+
+$default-button()
+  display inline-block
+  text-align center
+  vertical-align middle
+  white-space nowrap
+  background-image none
+  border none
+  opacity 1
+  text-decoration none
+  color $color-white
+  compact-button-sizing()
+  @extend $button-text
+  $transition(background-color box-shadow color opacity)
+  $user-select(none)
+  cursor pointer
+  border-radius 0
+
+$primary-button()
+  border 1px solid #2073D4
+  background-color #2073D4
+  &:hover, &:focus, &:active
+    background-color #005BBE
+
+$secondary-button()
+  color #2A73CC
+  border 1px solid #2A73CC
+  background-color transparent
+  &:hover, &:focus, &:active
+    background-color #2A73CC
+    color $color-white
+
+$passive-button()
+  border 1px solid #7E778B
+  color #7E778B
+  background-color transparent
+  &:hover, &:focus, &:active
+    border-color #8C8C8C
+    background-color #8C8C8C
+    color $color-white
+
+$nostyle-button()
+  background transparent none repeat 0 0 scroll
+  color $color-primary-text
+  border 0
+  font-size 1em
+  margin 0
+  outline 0
+  padding 0
+  text-align left
+  text-decoration none
+  text-indent 0
+  &:disabled
+    background transparent none repeat 0 0 scroll
+    color $color-hint-text
+
+$social-button()
+  padding-left 20px
+  padding-right 20px
+  color $color-white
+  span, i
+    display inline-block
+    vertical-align middle
+  i
+    font-size 20px
+  span, i:last-child
+    margin-left 8px
+
+$facebook-button()
+  $social-button()
+  background-color $color-facebook
+
+$linkedin-button()
+  $social-button()
+  background-color $color-primary
+
+// Checkboxes
+
+$checkbox
+  display inline-block
+  -webkit-appearance none
+  -moz-appearance none
+  appearance none
+  margin 0
+  padding 0
+  cursor pointer
+  background-color $color-background-light
+  border 1px solid $color-black-g5
+
+  &:checked
+
+    &:after
+      content ''
+      /* Add a white border on the bottom and left creating an 'L' */
+      border solid $color-primary
+      /* Rotate the L 45 degrees to turn it into a checkmark */
+      transform rotate(45deg)
+      box-sizing content-box
+
+      display block
+      position relative
+      margin auto
+
+$checkbox-small()
+  @extend $checkbox
+  max-width 18px
+  min-width 18px
+  max-height 18px
+  min-height 18px
+  &:checked
+    &:after
+      border-width 0 3px 3px 0
+      width 5px
+      height 9px
+
+$checkbox-large()
+  @extend $checkbox
+  max-width 40px
+  min-width 40px
+  max-height 40px
+  min-height 40px
+  &:checked
+    &:after
+      border-width 0 5px 5px 0
+      width 9px
+      height 21px
+
+// Type variables
+// Including just the header specs as variables as these can be
+// changed for responsiveness
+
+c-merriweather($variant = '')
+  if $variant
+    font-family 'Merriweather-' + $variant, Georgia, serif
+  else
+    font-family 'Merriweather', Georgia, serif
+
+c-opensans($variant = '')
+  if $variant
+    if $variant == 'bold'
+      font-family 'OpenSans', Arial, sans-serif
+      font-weight bold
+    else
+      font-family 'OpenSans-' + $variant, Arial, sans-serif
+  else
+    font-family 'OpenSans', Arial, sans-serif
+
+$display-6, $display-5, $display-4, $display-3, $display-1,
+$headline-1-text, $headline-2-text, $headline-3-text, $headline-4-text, $headline-5-text, $headline-6-text
+  font-weight normal
+
+$display-6, $display-5, $display-4, $display-3, $headline-5-text, $headline-6-text
+  margin-top 10px
+  margin-bottom 10px
+
+$headline-4-text, $headline-3-text, $headline-2-text
+  margin-bottom 10px
+
+$display-6, $display-5, $display-3, $display-2
+  c-merriweather('Light')
+
+$display-4, $display-1
+  c-merriweather()
+
+$headline-6-text, $headline-5-text, $headline-2-text
+  c-opensans('Light')
+
+$headline-4-text, $headline-3-text, $headline-1-text
+  c-opensans()
+
+$display-6
+  $type(54px, 60px)
+
+$display-5
+  $type(42px, 54px)
+
+$display-4
+  $type(32px, 36px)
+
+$display-3
+  $type(32px, 36px)
+
+$display-2
+  $type(24px, 30px)
+
+$display-1
+  $type(20px, 24px)
+
+$headline-6-text
+  $type(54px, 60px)
+
+$headline-5-text
+  $type(32px, 36px)
+
+$headline-4-text
+  $type(24px, 30px)
+
+$headline-3-text
+  $type(22px, 24px)
+
+$headline-2-text
+  $type(20px, 24px)
+
+$headline-1-text
+  $type(16px, 24px)
+
+$body-1-text-line-height = 21px
+$body-1-text
+  $type(14px, $body-1-text-line-height)
+  c-opensans()
+
+$body-2-text
+  @extend $body-1-text
+  c-opensans('bold')

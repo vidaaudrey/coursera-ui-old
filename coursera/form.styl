@@ -1,0 +1,40 @@
+@require './variables'
+
+.form-group
+  display inline-block
+  margin 0
+  padding 0
+
+  label, .form-control-feedback1, .form-control
+    display inline-block
+    padding 0 8px
+
+  .form-control
+    border-radius 0
+    line-height 34px
+    border-style 2px solid $color-black-g2
+
+
+  .form-control-feedback1
+    line-height 34px
+    width 100%
+    pointer-events none
+    display block
+
+  .form-text
+    display block
+
+&.has-danger
+
+  .form-control, .form-control:focus
+    border-color $color-danger
+
+  .form-control-feedback1
+    color $color-danger
+
+&.has-success
+  .form-control, .form-control:focus
+    border-color $color-success
+
+  .form-control-feedback1
+    color $color-success
