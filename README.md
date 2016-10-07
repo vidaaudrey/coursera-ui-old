@@ -62,7 +62,7 @@ An experiment to create reusable component library using the latest front-end te
 - [ ] List
 - [ ] Table
 - [ ] Form
-  - [ ] Input
+  - [x] Input
   - [ ] Checkbox
   - [ ] Radio
   - [ ] Toggle
@@ -72,7 +72,7 @@ An experiment to create reusable component library using the latest front-end te
   - [ ] Label
   - [ ] Form
 - [ ] Link
-- [ ] Icon
+- [ ] Icon 
 - [ ] Card
 - [ ] Divider
 - [ ] Dialog/Modal
@@ -134,6 +134,7 @@ An experiment to create reusable component library using the latest front-end te
 - [ ] Donut
 - [ ] Bar
 - [ ] Timeseries
+- [ ] ....
 
 #### Vendor Services
 - [ ] GoogleMap
@@ -143,14 +144,14 @@ An experiment to create reusable component library using the latest front-end te
 #### Composables (align with recompose)
 - [ ] withTheme
 - [ ] withRoute
-- [ ] withApiHandler
-- [ ] withHover (add mouse over and leave to existing component)
+- [x] withApiHandler
+- [x] withHover (add mouse over and leave to existing component)
 - [ ] mapStateToProps
 - [ ] ....
 
 #### Common States and Behaviors
 - [ ] Key interaction
-- API State: API_BEFORE_SEND, API_IN_PROGRESS, API_SUCCESS, API_ERROR
+- [x] API State: API_BEFORE_SEND, API_IN_PROGRESS, API_SUCCESS, API_ERROR
 
 
 ## Libraries
