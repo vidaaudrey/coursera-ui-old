@@ -4,9 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "clean": "rimraf lib",
-    "build-lib": "npm run clean && babel src/ -d lib/",
+    "build": "npm run clean && babel src -d lib",
     "commit": "git-cz",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx",
