@@ -24,7 +24,6 @@ describe('Button', () => {
 
   it('should handle click', () => {
     wrapper.simulate('click');
-    console.log(wrapper.debug());
     expect(stub.callCount).to.equal(1);
   });
 });
