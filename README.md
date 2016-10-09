@@ -72,7 +72,7 @@ An experiment to create reusable component library using the latest front-end te
   - [ ] Label
   - [ ] Form
 - [ ] Link
-- [ ] Icon 
+- [ ] Icon
 - [ ] Card
 - [ ] Divider
 - [ ] Dialog/Modal
@@ -179,6 +179,9 @@ An experiment to create reusable component library using the latest front-end te
 - Scopes
   - TODO
 
+- Styleguides
+  - [Airbnb React Styleguide][airbnb-react]
+
 ### Documentation
 We use git wiki to manage all our documentations. You can edit it online or within our repo's docs directory. [How to use git wiki as submodule][git-wiki-as-submodule]
 
@@ -213,3 +216,4 @@ We use Travis CI.
 [git-wiki-as-submodule]: https://brendancleary.com/2013/03/08/including-a-github-wiki-in-a-repository-as-a-submodule/
 [recompose]: https://github.com/acdlite/recompose
 [aphrodite]: https://github.com/Khan/aphrodite
+[airbnb-react]: https://github.com/airbnb/javascript/tree/master/react

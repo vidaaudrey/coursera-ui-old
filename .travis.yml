@@ -20,6 +20,7 @@ script:
 after_success:
   - npm run publish-storybook
   - npm run report-coverage
+  - npm run build
   - npm run semantic-release
 branches:
   except:
