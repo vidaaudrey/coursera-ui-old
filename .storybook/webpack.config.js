@@ -4,6 +4,7 @@ module.exports = {
   resolve: {
     alias: {
       src: path.join(__dirname, '../src'),
+      lib: path.join(__dirname, '../lib'),
       root: path.join(__dirname, '../'),
     },
     extensions: ['', '.js', '.jsx']

@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import colors from 'src/styles/colors';
+import {colors} from 'src';
+// import {colors} from 'lib';
+
 
 const colorStyles = {
   backgroundColor: colors.red50

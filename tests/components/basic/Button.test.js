@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {Button} from '../../../';
 import { expect } from 'chai';
 import sinon from 'sinon';
+import {Button} from 'src';
 
 const { describe, it, before } = global;
 
