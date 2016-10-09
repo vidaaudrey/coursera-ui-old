@@ -3,3 +3,4 @@
 // Only use when we have components open sourced
 export {default as App} from './containers/App';
 export {default as Button} from './components/basic/Button';
+export {default as colors} from './styles/colors';

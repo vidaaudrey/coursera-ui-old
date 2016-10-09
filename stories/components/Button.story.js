@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import {Button} from '../../';
+import {Button} from 'src';
 
-storiesOf('Button', module)
+storiesOf('basic.Button', module)
   .add('with text', () => (
     <Button onClick={action('clicked')}> Button </Button>
   ))
