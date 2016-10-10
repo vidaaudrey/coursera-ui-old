@@ -140,5 +140,5 @@ export default {
  yellow50, yellow100, yellow200, yellow300, yellow400, yellow500, yellow600, yellow700, yellow800, yellow900,
  midnight50, midnight100, midnight200, midnight300, midnight400, midnight500, midnight600, midnight700, midnight800, midnight900,
  dusk50, dusk100, dusk200, dusk300, dusk400, dusk500, dusk600, dusk700, dusk800, dusk900,
- dawn200, dawn300, dawn400, dawn500, dawn600, dawn700, dawn800, dawn900,
+ dawn200, dawn300, dawn400, dawn500, dawn600, dawn700, dawn800, dawn900
 }
