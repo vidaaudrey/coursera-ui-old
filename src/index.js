@@ -10,3 +10,7 @@ export {default as copyToClipboard} from './components/hocs/copyToClipboard';
 export {default as colors} from './styles/colors';
 export {default as gradients} from './styles/gradients';
 export {default as theme} from './styles/theme';
+
+
+// Prototype
+export {default as LeaderboardApp} from './prototypes/LeaderboardApp';
