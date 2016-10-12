@@ -8,4 +8,5 @@ export {default as Button} from './components/basic/Button';
 export {default as copyToClipboard} from './components/hocs/copyToClipboard';
 
 export {default as colors} from './styles/colors';
+export {default as gradients} from './styles/gradients';
 export {default as theme} from './styles/theme';
