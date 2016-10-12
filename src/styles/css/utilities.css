@@ -1,10 +1,19 @@
 /*A set of utility classes*/
+@media print {
+  * {
+    overflow: visible !important;
+  }
+}
 .bg-primary {
 
 }
 
 .bg-info {
 
+}
+
+.bg-gray {
+  background-color: #fdfeff;
 }
 
 .color-white {

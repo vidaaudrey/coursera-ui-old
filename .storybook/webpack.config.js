@@ -18,14 +18,14 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: ['json'],
+        loader: 'json',
         include: path.resolve(__dirname, '../'),
-     },
-     {
-       test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
-       exclude: /\/favicon.ico$/,
-       loader: 'file'
-     }
+      },
+      {
+        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
+        exclude: /\/favicon.ico$/,
+        loader: 'file'
+      }
     ]
   }
 }

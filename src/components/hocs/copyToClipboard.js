@@ -5,7 +5,7 @@ const copyToClipboard = (Component) => {
   const componentName = Component.displayName || Component.name;
 
   return class HOC extends React.Component {
-    displayName = componentName + '_copyToClipboard';
+    displayName = `copyToClipboard(${componentName})`;
 
     static propTypes = {
       text: React.PropTypes.string,

@@ -1,0 +1,506 @@
+[
+  {
+    "score": 64,
+    "currentCourse": "Regression Models",
+    "rank": 1,
+    "userName": "Jon Holman",
+    "numCoursesCompleted": 4,
+    "courseId": "a_xPWXNVEeWxvQr3acyajw"
+  },
+  {
+    "score": 61,
+    "currentCourse": "Statistical Inference",
+    "rank": 2,
+    "userName": "Wenhao Xia",
+    "numCoursesCompleted": 4,
+    "courseId": "YfjiOHROEeWLqw7zlLhRzQ"
+  },
+  {
+    "score": 61,
+    "currentCourse": "Statistical Inference",
+    "rank": 2,
+    "userName": "Abhinav Batra",
+    "numCoursesCompleted": 4,
+    "courseId": "YfjiOHROEeWLqw7zlLhRzQ"
+  },
+  {
+    "score": 60,
+    "currentCourse": "Statistical Inference",
+    "rank": 4,
+    "userName": "Adnan Patel",
+    "numCoursesCompleted": 4,
+    "courseId": "YfjiOHROEeWLqw7zlLhRzQ"
+  },
+  {
+    "score": 51,
+    "currentCourse": "Statistical Inference",
+    "rank": 5,
+    "userName": "Jorge Alejandro",
+    "numCoursesCompleted": 3,
+    "courseId": "YfjiOHROEeWLqw7zlLhRzQ"
+  },
+  {
+    "score": 49,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 6,
+    "userName": "Hitoshi Kawashima",
+    "numCoursesCompleted": 3,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 49,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 6,
+    "userName": "Phil Drexler",
+    "numCoursesCompleted": 3,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 49,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 6,
+    "userName": "Jake Bruemmer",
+    "numCoursesCompleted": 3,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 49,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 6,
+    "userName": "Matt Docherty",
+    "numCoursesCompleted": 3,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 48,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 10,
+    "userName": "Kushan Thakkar",
+    "numCoursesCompleted": 3,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 48,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 10,
+    "userName": "Unnam Chowdary",
+    "numCoursesCompleted": 3,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 47,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 12,
+    "userName": "Ollie",
+    "numCoursesCompleted": 3,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 36,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 13,
+    "userName": "Augustine Santillan",
+    "numCoursesCompleted": 2,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 35,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 14,
+    "userName": "Pramil Jain",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 35,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 14,
+    "userName": "Ankit Piparsania",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 35,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 14,
+    "userName": "Manasa Dintyala",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 34,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 17,
+    "userName": "Michael Auld",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 33,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 18,
+    "userName": "Loutfi Kuret",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 33,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 18,
+    "userName": "Gaurav A Singh",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 32,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 20,
+    "userName": "Priya Kumar",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 32,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 20,
+    "userName": "Richard Li",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 32,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 20,
+    "userName": "Jodi Clontz",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 32,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 20,
+    "userName": "Sal Mun",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 31,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 24,
+    "userName": "Richard Trent",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 31,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 24,
+    "userName": "Mehul Singh",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 31,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 24,
+    "userName": "Evan Luo",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 31,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 24,
+    "userName": "Adam Rochford",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 30,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 28,
+    "userName": "Prakhar Maini",
+    "numCoursesCompleted": 2,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 24,
+    "currentCourse": "Getting and Cleaning Data",
+    "rank": 29,
+    "userName": "Eric Pao",
+    "numCoursesCompleted": 2,
+    "courseId": "HkJsxW0yEeWEewoyD2Bc5Q"
+  },
+  {
+    "score": 20,
+    "currentCourse": "R Programming",
+    "rank": 30,
+    "userName": "Miji Kim",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 20,
+    "currentCourse": "R Programming",
+    "rank": 30,
+    "userName": "Colin Taggart",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 20,
+    "currentCourse": "R Programming",
+    "rank": 30,
+    "userName": "Andrew Labunka",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 20,
+    "currentCourse": "R Programming",
+    "rank": 30,
+    "userName": "Jordan Less",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 19,
+    "currentCourse": "R Programming",
+    "rank": 34,
+    "userName": "Jason Vanderlinden",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 19,
+    "currentCourse": "R Programming",
+    "rank": 34,
+    "userName": "Apurv Priyam",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 18,
+    "currentCourse": "R Programming",
+    "rank": 36,
+    "userName": "Priya Ashok Kumar Choudhary",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 18,
+    "currentCourse": "R Programming",
+    "rank": 36,
+    "userName": "Kalyan Srinivas Ponnam",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 17,
+    "currentCourse": "R Programming",
+    "rank": 38,
+    "userName": "Apurva Swarnakar",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 17,
+    "currentCourse": "R Programming",
+    "rank": 38,
+    "userName": "Marco Chan",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 17,
+    "currentCourse": "Exploratory Data Analysis",
+    "rank": 38,
+    "userName": "Rui Pan",
+    "numCoursesCompleted": 1,
+    "courseId": "hwiBZm0vEeWbyw5d8C-Blw"
+  },
+  {
+    "score": 16,
+    "currentCourse": "R Programming",
+    "rank": 41,
+    "userName": "Veena Calambur",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 16,
+    "currentCourse": "R Programming",
+    "rank": 41,
+    "userName": "James DiBitetto",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 16,
+    "currentCourse": "R Programming",
+    "rank": 41,
+    "userName": "Sean Scobell",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 16,
+    "currentCourse": "R Programming",
+    "rank": 41,
+    "userName": "Jamie Murphey",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 15,
+    "currentCourse": "R Programming",
+    "rank": 45,
+    "userName": "Raghav Goyal",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 15,
+    "currentCourse": "R Programming",
+    "rank": 45,
+    "userName": "Arkal Vikas Vittal Hegde",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 15,
+    "currentCourse": "R Programming",
+    "rank": 45,
+    "userName": "Amir Hashemi",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 15,
+    "currentCourse": "R Programming",
+    "rank": 45,
+    "userName": "Joe Donlan",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 14,
+    "currentCourse": "R Programming",
+    "rank": 49,
+    "userName": "William Quan",
+    "numCoursesCompleted": 1,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  },
+  {
+    "score": 6,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 50,
+    "userName": "Vickye Jain",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 5,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 51,
+    "userName": "Sinclair Kwak",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 5,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 51,
+    "userName": "Farah",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 3,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 53,
+    "userName": "Kaustubh Gururaj",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 3,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 53,
+    "userName": "Gregory Caiola",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 2,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 55,
+    "userName": "Sree Kumandan",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 2,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 55,
+    "userName": "Rafael Fernandez",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 2,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 55,
+    "userName": "Bako Feizi",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 1,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 58,
+    "userName": "Neil McQuarrie",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 0,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 59,
+    "userName": "Pranava Goundan",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 0,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 59,
+    "userName": "Abhishek Roy",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 0,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 59,
+    "userName": "Zainul Jafferji",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 0,
+    "currentCourse": "The Data Scientist’s Toolbox",
+    "rank": 59,
+    "userName": "Piyush Shroff",
+    "numCoursesCompleted": null,
+    "courseId": "iSxVEG07EeW3YxLB1q9I2w"
+  },
+  {
+    "score": 0,
+    "currentCourse": "R Programming",
+    "rank": 59,
+    "userName": "Prakhar Maini",
+    "numCoursesCompleted": null,
+    "courseId": "RMFRum1BEeWXrA6ju0fvnQ"
+  }
+]
