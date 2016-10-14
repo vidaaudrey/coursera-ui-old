@@ -1,22 +1,98 @@
 {
-    "glossary": {
-        "title": "example glossary",
-		"GlossDiv": {
-            "title": "S",
-			"GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-					"SortAs": "SGML",
-					"GlossTerm": "Standard Generalized Markup Language",
-					"Acronym": "SGML",
-					"Abbrev": "ISO 8879:1986",
-					"GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-						"GlossSeeAlso": ["GML", "XML"]
-                    },
-					"GlossSee": "markup"
-                }
-            }
+  "HkJsxW0yEeWEewoyD2Bc5Q":  {
+    "description": "Before you can work with data you have to get some. This course will cover the basic ways that data can be obtained. The course will cover obtaining data from the web, from APIs, from databases and from colleagues in various formats. It will also cover the basics of data cleaning and how to make data “tidy”. Tidy data dramatically speed downstream data analysis tasks. The course will also cover the components of a complete data set including raw data, processing instructions, codebooks, and processed data. The course will cover the basics needed for collecting, cleaning, and sharing data.",
+    "id": "HkJsxW0yEeWEewoyD2Bc5Q",
+    "name": "Getting and Cleaning Data",
+    "partnerIds":  {
+      "edges": [
+         {
+          "node":  {
+            "id": "8",
+            "name": "Johns Hopkins University"
+          }
         }
-    }
+      ]
+    },
+    "photoUrl": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/6d/aac7c069b611e39de639278c4f9dba/ObtainingData.jpg"
+  },
+  "RMFRum1BEeWXrA6ju0fvnQ":  {
+    "description": "In this course you will learn how to program in R and how to use R for effective data analysis. You will learn how to install and configure software necessary for a statistical programming environment and describe generic programming language concepts as they are implemented in a high-level statistical language. The course covers practical issues in statistical computing which includes programming in R, reading data into R, accessing R packages, writing R functions, debugging, profiling R code, and organizing and commenting R code. Topics in statistical data analysis will provide working examples.",
+    "id": "RMFRum1BEeWXrA6ju0fvnQ",
+    "name": "R Programming",
+    "partnerIds":  {
+      "edges": [
+         {
+          "node":  {
+            "id": "8",
+            "name": "Johns Hopkins University"
+          }
+        }
+      ]
+    },
+    "photoUrl": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/5e/b4ef8069b511e3ae92c39913bb30e0/Rprogramming.jpg"
+  },
+  "YfjiOHROEeWLqw7zlLhRzQ":  {
+    "description": "Statistical inference is the process of drawing conclusions about populations or scientific truths from data. There are many modes of performing inference including statistical modeling, data oriented strategies and explicit use of designs and randomization in analyses. Furthermore, there are broad theories (frequentists, Bayesian, likelihood, design based, …) and numerous complexities (missing data, observed and unobserved confounding, biases) for performing inference. A practitioner can often be left in a debilitating maze of techniques, philosophies and nuance. This course presents the fundamentals of inference in a practical approach for getting things done. After taking this course, students will understand the broad directions of statistical inference and use this information for making informed choices in analyzing data.",
+    "id": "YfjiOHROEeWLqw7zlLhRzQ",
+    "name": "Statistical Inference",
+    "partnerIds":  {
+      "edges": [
+         {
+          "node":  {
+            "id": "8",
+            "name": "Johns Hopkins University"
+          }
+        }
+      ]
+    },
+    "photoUrl": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/fc/f4739069b611e39de639278c4f9dba/StatisticalInference.jpg"
+  },
+  "a_xPWXNVEeWxvQr3acyajw":  {
+    "description": "Linear models, as their name implies, relates an outcome to a set of predictors of interest using linear assumptions.  Regression models, a subset of linear models, are the most important statistical analysis tool in a data scientist’s toolkit. This course covers regression analysis, least squares and inference using regression models. Special cases of the regression model, ANOVA and ANCOVA will be covered as well. Analysis of residuals and variability will be investigated. The course will cover modern thinking on model selection and novel uses of regression models including scatterplot smoothing.",
+    "id": "a_xPWXNVEeWxvQr3acyajw",
+    "name": "Regression Models",
+    "partnerIds":  {
+      "edges": [
+         {
+          "node":  {
+            "id": "8",
+            "name": "Johns Hopkins University"
+          }
+        }
+      ]
+    },
+    "photoUrl": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/75/11453069b511e3bca95d57a55dab34/RegressionModels.jpg"
+  },
+  "hwiBZm0vEeWbyw5d8C-Blw":  {
+    "description": "This course covers the essential exploratory techniques for summarizing data. These techniques are typically applied before formal modeling commences and can help inform the development of more complex statistical models. Exploratory techniques are also important for eliminating or sharpening potential hypotheses about the world that can be addressed by the data. We will cover in detail the plotting systems in R as well as some of the basic principles of constructing data graphics. We will also cover some of the common multivariate statistical techniques used to visualize high-dimensional data.",
+    "id": "hwiBZm0vEeWbyw5d8C-Blw",
+    "name": "Exploratory Data Analysis",
+    "partnerIds":  {
+      "edges": [
+         {
+          "node":  {
+            "id": "8",
+            "name": "Johns Hopkins University"
+          }
+        }
+      ]
+    },
+    "photoUrl": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/fa/fc1b7069b511e39de639278c4f9dba/ExploratoryDataAnalysis.jpg"
+  },
+  "iSxVEG07EeW3YxLB1q9I2w":  {
+    "description": "In this course you will get an introduction to the main tools and ideas in the data scientist's toolbox. The course gives an overview of the data, questions, and tools that data analysts and data scientists work with. There are two components to this course. The first is a conceptual introduction to the ideas behind turning data into actionable knowledge. The second is a practical introduction to the tools that will be used in the program like version control, markdown, git, GitHub, R, and RStudio.",
+    "id": "iSxVEG07EeW3YxLB1q9I2w",
+    "name": "The Data Scientist’s Toolbox",
+    "partnerIds":  {
+      "edges": [
+         {
+          "node":  {
+            "id": "8",
+            "name": "Johns Hopkins University"
+          }
+        }
+      ]
+    },
+    "photoUrl": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/37/6352a069b511e3ae92c39913bb30e0/DataScientistsToolbox.jpg"
+  }
 }

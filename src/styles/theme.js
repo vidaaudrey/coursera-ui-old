@@ -1,7 +1,7 @@
 import {
   blue100, blue500, blue700,
-  teal400, dawn200, midnight600, midnight300, dusk200,
-  dusk50, dusk100, dusk400, dawn300,
+  teal400, dawn200, dawn400, midnight600, midnight300, dusk200,
+  dusk50, dusk100, dusk300, dusk400, dawn300,
 } from './colors';
 import {coursera, strawberry} from './gradients';
 
@@ -15,6 +15,7 @@ export default {
     primaryText: midnight600,
     secondaryText: midnight300,
     divider: dusk200,
+    bgGray: dawn400,
     lightGray: dawn300,
     gray: dusk100,
     darkGray: dusk400,

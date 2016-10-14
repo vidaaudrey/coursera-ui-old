@@ -4,47 +4,96 @@ import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import LeaderboardCard from './components/LeaderboardCard';
 import LeaderProfileCard from './components/LeaderProfileCard';
 import TopCoursesCard from './components/TopCoursesCard';
+const _ = require('underscore');
 // import
 // var faker = require('faker');
 // var randomName = faker.name.findName(); // Rowan Nikolaus
 // var randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
 // var randomCard = faker.helpers.createCard(); // random contact card containing many properties
 
+// TODO[Audrey]:
+// 1. This month v.s. Overall ?
+
 class LeaderboardApp extends React.Component {
+
+  constructor(props, context) {
+    super(props, context);
+    this._menuItems = ['Overall Progress', 'This Month'];
+    // Get top courses, format: [{count: 20, id: 'xyz'}, {count: 10, id: 'abc'}]
+    this._topCourses = _.chain(props.leaderboards)
+                    .pluck('courseId')
+                    .reduce((total, item) => {
+                      total[item] = total[item] || 0;
+                      total[item] = total[item] + 1
+                      return total;
+                    }, {})
+                    .map((item, key) => ({id: key, count: item}))
+                    .sortBy('count')
+                    .reverse()
+                    .value()
+                    .slice(0, 3);
+    this.state = {
+      leaderboardData: props.leaderboards.slice(0, 15),
+      activeMenuIndex: 0,
+    }
+  }
+
+  handleMenuClick = (menuIndex) => {
+    let leaderboardData;
+    const {leaderboards} = this.props;
+    if (menuIndex === 0) {
+      leaderboardData = leaderboards.slice(0, 10);
+    } else {
+      leaderboardData = leaderboards.slice(4, 15);
+    }
+    this.setState({leaderboardData, activeMenuIndex: menuIndex});
+  }
+
   render() {
     const {styles, leaderboards} = this.props;
-
+    const {leaderboardData, activeMenuIndex} = this.state;
+    // console.warn('--counts-', this._topCourses);
     return (
       <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
-        <div className="container-fluid">
+        <header className="container-fluid">
           <div className="row">
             <div {...cssWithClass('Nav col-xs-12 horizontal-box align-items-absolute-center', styles.Nav)}>
               <h1>Coursera</h1>
             </div>
           </div>
           <div className="row">
-            <div {...cssWithClass('Jumbotron col-xs-12 vertical-box align-items-absolute-center text-xs-center', styles.Jumbotron)}>
+            <div {...cssWithClass('Jumbotron col-xs-12 vertical-box align-items-absolute-center text-xs-center p-b-3', styles.Jumbotron)}>
               <h1 {...css(styles.pageTitle)}>Coursera Leaderboard</h1>
-              <h4 className="text-uppercase">21 Days Left</h4>
+              <h4 className="text-uppercase m-b-3">21 Days Left</h4>
             </div>
           </div>
-        </div>
-        <div className="container">
+        </header>
+        <div {...cssWithClass('container', styles.main)}>
           <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-              <LeaderboardCard leaderboard={leaderboards[0]} />
-              <LeaderboardCard leaderboard={leaderboards[1]} />
-              <LeaderboardCard leaderboard={leaderboards[1]} />
-              <LeaderboardCard leaderboard={leaderboards[1]} />
-
-              {leaderboards.map((item, index) => (
-                <LeaderboardCard key={`LeaderboardCard~${index}`} leaderboard={item} />
-              ))}
-            </div>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <LeaderProfileCard leaderboard={leaderboards[0]} />
-                <TopCoursesCard leaderboard={leaderboards[0]} />
-            </div>
+            <main className="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+              <ul {...cssWithClass('TabMenu m-b-2 ', styles.TabMenu)}>
+                {this._menuItems.map((item, index) =>
+                  <li {...css(styles.tabMenuLi)} key={`tab-menu~${index}`}>
+                    <a
+                      {...css(styles.tabMenuA, styles.tabMenuAHover, index === activeMenuIndex && styles.tabMenuAActive)}
+                      href="#"
+                      onClick={() => (this.handleMenuClick(index))}
+                    >
+                      {item}
+                    </a>
+                  </li>
+                )}
+              </ul>
+              <section className="cards">
+                {leaderboardData.map((item, index) => (
+                  <LeaderboardCard key={`LeaderboardCard~${index}`} leaderboard={item} />
+                ))}
+              </section>
+            </main>
+            <aside {...cssWithClass('col-xs-12 col-sm-12 col-md-6 col-lg-4 p-t-3', styles.aside)}>
+              <LeaderProfileCard leaderboard={leaderboardData[0]} />
+              <TopCoursesCard topCourses={this._topCourses} />
+            </aside>
           </div>
         </div>
       </div>
@@ -58,7 +107,7 @@ const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(LeaderboardApp);
 
 export default withStyles(({color, gradient}) => ({
   LeaderboardApp: {
-    background: color.lightGray,
+    background: color.bgGray,
     minHeight: 800,
   },
   Nav: {
@@ -66,28 +115,45 @@ export default withStyles(({color, gradient}) => ({
     minHeight: 80,
   },
   Jumbotron: {
-    minHeight: 300,
+    minHeight: 360,
     background: `linear-gradient(90deg, ${gradient.primary.start}, ${gradient.primary.end})`,
     color: color.textIcon,
   },
+  TabMenu: {
+    padding: 0,
+    textAlign: 'left',
+  },
+  tabMenuLi: {
+    display: 'inline-block',
+  },
+  tabMenuA: {
+    diplay: 'inline-block',
+    padding: '8px 0',
+    margin: '0 32px 0 0',
+    fontWeight: 'normal',
+    color: color.textIcon,
+    textDecoration: 'none',
+  },
+  tabMenuAActive: {
+    fontWeight: 'bold',
+    borderBottom: `2px solid ${color.textIcon}`,
+  },
+  tabMenuAHover: {
+    ':hover': {
+        textDecoration: 'none',
+    }
+  },
+  sideBar: {
+
+  },
+
   pageTitle: {
     fontSize: 64,
     fontWeight: 'normal',
   },
   main: {
-    width: '100%',
     minHeight: 500,
-  },
-  red: {
-      backgroundColor: 'red'
-  },
-
-  font: {
-    fontSize: 60,
-  },
-
-  blue: {
-      backgroundColor: color.lightPrimary
+    marginTop: -96,
   },
 
   hover: {

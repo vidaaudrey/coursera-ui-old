@@ -1,5 +1,6 @@
 import React from 'react';
-import leaderboards from '../../data/leaderboard.json';
+import leaderboards from '../../data/leaderboards.json';
+import courses from '../../data/courses.json';
 
 const dataTypes = {
   COURSE: 'COURSE',
@@ -17,7 +18,8 @@ const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
         let apiData;
         switch (dataType) {
           case dataTypes.COURSE:
-            apiData = {courses: {}}
+            const id = this.props.id;
+            apiData = {course: courses[id]};
             break;
           case dataTypes.LEADERBOARD:
             apiData = {leaderboards}
