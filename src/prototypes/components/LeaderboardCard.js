@@ -6,9 +6,10 @@ const LeaderboardCard = ({styles, key, ...props}) => {
 
   return (
     <div {...cssWithClass('LeaderboardCard border-a row', styles.LeaderboardCard)}>
-        <div className="col-xs-12 col-lg-2">
-          <div className="vertical-box align-items-absolute-center h-100 w-100">
-            <img src="//placehold.it/100x100/A66506/FFFFFF" alt="CourseraAlt" />
+        <div className="col-xs-12 col-lg-2 vertical-box align-items-absolute-center">
+          <div className="text-xs-center">
+            <img src="//placehold.it/60x60/A66506/FFFFFF" alt="CourseraAlt" />
+            <p>Lorem ipsuebitis!</p>
           </div>
         </div>
 
@@ -17,8 +18,8 @@ const LeaderboardCard = ({styles, key, ...props}) => {
           <span>2 Courses Completed</span>
           <label>Current Courses</label>
           <div className="horizontal-box CourseCard border-a">
-            <div className="horizontal-box align-items-vertical-center">
-              <img src="//placehold.it/100x100/A66506/FFFFFF" alt="CourseraAlt" />
+            <div className="vertical-box align-items-absolute-center" style={{minWidth: 100}}>
+              <img src="//placehold.it/100x100/A66506/FFFFFF" alt="CourseraAlt"/>
             </div>
             <div className="border-a">
               <h4>Machine Learning</h4>
@@ -28,8 +29,8 @@ const LeaderboardCard = ({styles, key, ...props}) => {
           </div>
         </div>
 
-        <div className="col-xs-12 col-lg-2 border-a">
-          <div className="vertical-box align-items-absolute-center h-100 w-100">
+        <div className="col-xs-12 col-lg-2 border-a vertical-box align-items-absolute-center">
+          <div className="text-xs-center">
             <span className="text-uppercase">Points</span>
             <h1>315</h1>
           </div>
@@ -41,6 +42,5 @@ const LeaderboardCard = ({styles, key, ...props}) => {
 
 export default withStyles(({color, gradient}) => ({
   LeaderboardCard: {
-    // width: '100%',
   }
 }))(LeaderboardCard);

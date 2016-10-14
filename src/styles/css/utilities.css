@@ -28,6 +28,27 @@
   border: 1px solid #E3E4E5;
 }
 
+.pos-relative {
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  max-width: 100%;
+}
+
+
+.pos-vertical-center{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.absolute-center {
+  position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   border: 1px dashed deeppink;
+}
 
 
 .clearfix::after {

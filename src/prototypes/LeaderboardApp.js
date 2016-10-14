@@ -15,38 +15,38 @@ class LeaderboardApp extends React.Component {
     const {styles, leaderboards} = this.props;
 
     return (
-      <div {...cssWithClass('LeaderboardApp', styles.LeaderboardApp)}>
-
-        <div {...cssWithClass('Nav vertical-box align-items-absolute-center text-xs-center h-100', styles.Nav)}>
-          <h1>Coursera</h1>
-        </div>
-
-        <div {...cssWithClass('vertical-box align-items-absolute-center text-xs-center h-100', styles.Jumbotron)}>
-          <h1 {...css(styles.pageTitle)}>Coursera Leaderboard</h1>
-          <h4 className="text-uppercase">21 Days Left</h4>
-        </div>
-
-        <div {...css(styles.main)}>
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-                <LeaderboardCard leaderboard={leaderboards[0]} />
-                <LeaderboardCard leaderboard={leaderboards[1]} />
-                <LeaderboardCard leaderboard={leaderboards[1]} />
-                <LeaderboardCard leaderboard={leaderboards[1]} />
-
-                {leaderboards.map((item, index) => (
-                  <LeaderboardCard key={`${LeaderboardCard}~index`} leaderboard={item} />
-                ))}
-              </div>
-              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                  <LeaderProfileCard leaderboard={leaderboards[0]} />
-                  <TopCoursesCard leaderboard={leaderboards[0]} />
-              </div>
+      <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
+        <div className="container-fluid">
+          <div className="row">
+            <div {...cssWithClass('Nav col-xs-12 horizontal-box align-items-absolute-center', styles.Nav)}>
+              <h1>Coursera</h1>
+            </div>
+          </div>
+          <div className="row">
+            <div {...cssWithClass('Jumbotron col-xs-12 vertical-box align-items-absolute-center text-xs-center', styles.Jumbotron)}>
+              <h1 {...css(styles.pageTitle)}>Coursera Leaderboard</h1>
+              <h4 className="text-uppercase">21 Days Left</h4>
             </div>
           </div>
         </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+              <LeaderboardCard leaderboard={leaderboards[0]} />
+              <LeaderboardCard leaderboard={leaderboards[1]} />
+              <LeaderboardCard leaderboard={leaderboards[1]} />
+              <LeaderboardCard leaderboard={leaderboards[1]} />
 
+              {leaderboards.map((item, index) => (
+                <LeaderboardCard key={`LeaderboardCard~${index}`} leaderboard={item} />
+              ))}
+            </div>
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <LeaderProfileCard leaderboard={leaderboards[0]} />
+                <TopCoursesCard leaderboard={leaderboards[0]} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -62,7 +62,7 @@ export default withStyles(({color, gradient}) => ({
     minHeight: 800,
   },
   Nav: {
-    width: '100%',
+    // width: '100%',
     minHeight: 80,
   },
   Jumbotron: {
