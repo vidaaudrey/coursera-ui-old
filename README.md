@@ -216,4 +216,5 @@ We use Travis CI.
 [git-wiki-as-submodule]: https://brendancleary.com/2013/03/08/including-a-github-wiki-in-a-repository-as-a-submodule/
 [recompose]: https://github.com/acdlite/recompose
 [aphrodite]: https://github.com/Khan/aphrodite
+[with-styles](https://github.com/airbnb/react-with-styles)
 [airbnb-react]: https://github.com/airbnb/javascript/tree/master/react

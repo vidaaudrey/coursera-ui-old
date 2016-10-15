@@ -8,7 +8,7 @@ ThemedStyleSheet.registerDefaultTheme(theme);
 ThemedStyleSheet.registerInterface(aphroditeInterface);
 
 // Order matters, cssObject can overwrite generic css class
-function cssWithClass(className, cssObject) {
+function cssWithClass(className, ...cssObject) {
   const result = css(cssObject);
   result.className = `${className} ${result.className}`;
   return result;

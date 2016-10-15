@@ -4,13 +4,14 @@ import CourseMiniCard from './CourseMiniCard';
 
 
 const TopCoursesCard = ({styles, key, topCourses, ...props}) => {
-    console.warn('-topCourses--', topCourses);
   return (
-    <div {...cssWithClass('TopCoursesCard border-a m-b-2 card', styles.TopCoursesCard)}>
-      <div className="vertical-box">
+    <div {...cssWithClass('TopCoursesCard m-b-2 card', styles.TopCoursesCard)}>
+      <div className="vertical-box p-a-1">
         <h3 className="text-uppercase">Top Courses</h3>
         {topCourses.map((item, index) =>
-          <CourseMiniCard id={item.id} type={'TOP_COURSE'} learnerCount={item.count} />
+          <div key={`TopCoursesCard~${item.id}`} className="m-b-1">
+            <CourseMiniCard id={item.id} type={'TOP_COURSE'} learnerCount={item.count} />
+          </div>
         )}
       </div>
     </div>

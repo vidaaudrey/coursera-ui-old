@@ -33,7 +33,7 @@ class LeaderboardApp extends React.Component {
                     .value()
                     .slice(0, 3);
     this.state = {
-      leaderboardData: props.leaderboards.slice(0, 15),
+      leaderboardData: props.leaderboards,
       activeMenuIndex: 0,
     }
   }
@@ -52,7 +52,7 @@ class LeaderboardApp extends React.Component {
   render() {
     const {styles, leaderboards} = this.props;
     const {leaderboardData, activeMenuIndex} = this.state;
-    // console.warn('--counts-', this._topCourses);
+    console.warn('--counts-', this._topCourses, leaderboardData);
     return (
       <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
         <header className="container-fluid">
@@ -71,7 +71,7 @@ class LeaderboardApp extends React.Component {
         <div {...cssWithClass('container', styles.main)}>
           <div className="row">
             <main className="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-              <ul {...cssWithClass('TabMenu m-b-2 ', styles.TabMenu)}>
+              <ul {...cssWithClass('TabMenu m-b-2 invisible', styles.TabMenu)}>
                 {this._menuItems.map((item, index) =>
                   <li {...css(styles.tabMenuLi)} key={`tab-menu~${index}`}>
                     <a
@@ -86,7 +86,11 @@ class LeaderboardApp extends React.Component {
               </ul>
               <section className="cards">
                 {leaderboardData.map((item, index) => (
-                  <LeaderboardCard key={`LeaderboardCard~${index}`} leaderboard={item} />
+                  <LeaderboardCard
+                    key={`LeaderboardCard~${index}`}
+                    leaderboard={item}
+                    isNumberOne={index === 0}
+                  />
                 ))}
               </section>
             </main>

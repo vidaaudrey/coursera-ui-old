@@ -2,27 +2,20 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 const _ = require('underscore');
 import withApiData from '../../components/hocs/withApiData';
+import StaticLinearProgress from '../../components/basic/StaticLinearProgress';
 
 const CARD_TYPES = {
   PROGRESS: 'PROGRESS',
   TOP_COURSE: 'TOP_COURSE',
   FINISHED_COURSE: 'FINISHED_COURSE',
 }
-
-
-const ProgressBar = ({progress = 0}) => {
-  return (
-      <div className="rc-ProgressBar">
-        progress {progress}
-      </div>
-    );
-};
-
+const DEFAULT_COURSE_PHOTO_SIZE = 96;
 
 const CourseMiniCard = ({
   styles,
   course,
   type = CARD_TYPES.PROGRESS,
+  coursePhotoSize = DEFAULT_COURSE_PHOTO_SIZE,
   progress, grade, learnerCount,
   ...props
 }) => {
@@ -31,30 +24,32 @@ const CourseMiniCard = ({
   const {name, description, photoUrl, partnerIds} = course;
   const partner = _(partnerIds.edges).first();
   const partnerName = partner && partner.node.name;
+  const dynamicStyles = getStyles({coursePhotoSize});
 
    return (
-    <div className="horizontal-box CourseCard border-a">
-      <div className="vertical-box align-items-absolute-center" style={{minWidth: 100}}>
-        <img src={photoUrl} alt="CourseraAlt" {...css(styles.coursePhoto)}/>
+    <div className="horizontal-box CourseCard">
+      <div className="horizontal-box align-items-top m-r-1" style={{minWidth: 100}}>
+        <img src={photoUrl} alt="CourseraAlt" className="border-a" style={dynamicStyles.coursePhoto} />
       </div>
-      <div className="border-a vertical-box">
-        <h4>{name}</h4>
-        <span>{partnerName}</span>
+      <div className="vertical-box flex-1">
+        <h4 className="font-weight-normal m-b-0">{name}</h4>
+        <span className="text-muted font-sm">{partnerName}</span>
+
         {type === CARD_TYPES.PROGRESS && typeof progress !== undefined &&
-          <div>
+          <div className="m-t-auto">
             <span className="d-block font-sm text-uppercase">progress</span>
-            <ProgressBar progress={progress}/>
+            <StaticLinearProgress progress={30} style={dynamicStyles.StaticLinearProgress} />
           </div>
         }
         {type === CARD_TYPES.FINISHED_COURSE && typeof grade !== undefined &&
-          <div>
+          <div className="m-t-auto">
             <span className="d-block font-sm">
               {`Grade Achieved: ${grade}%`}
             </span>
           </div>
         }
         {type === CARD_TYPES.TOP_COURSE && typeof learnerCount !== undefined &&
-          <div>
+          <div className="m-t-auto">
             <span className="d-block font-sm">
               {`${learnerCount} learners enrolled`}
             </span>
@@ -67,11 +62,25 @@ const CourseMiniCard = ({
 
 const CourseWithApiData = withApiData({dataType: 'COURSE'})(CourseMiniCard);
 
+// Dynamtic styles
+function getStyles({coursePhotoSize}) {
+  return {
+    StaticLinearProgress: {
+      margin: 4,
+      marginLeft: 0,
+    },
+    coursePhoto: {
+      width: coursePhotoSize,
+      height: coursePhotoSize,
+    },
+  }
+}
+
 export default withStyles(({color, gradient}) => ({
   CourseMiniCard: {
   },
-  coursePhoto: {
-    width: 100,
-    height: 100,
-  }
+  StaticLinearProgress: {
+    margin: 8,
+    marginLeft: 0,
+  },
 }))(CourseWithApiData);
