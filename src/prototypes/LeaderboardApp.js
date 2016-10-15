@@ -1,10 +1,12 @@
 import React from 'react';
 import withApiData from '../components/hocs/withApiData';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+import {Avatar} from 'src';
 import LeaderboardCard from './components/LeaderboardCard';
 import LeaderProfileCard from './components/LeaderProfileCard';
 import TopCoursesCard from './components/TopCoursesCard';
 const _ = require('underscore');
+import {courseraLogo} from '../assets/pngAssets';
 // import
 // var faker = require('faker');
 // var randomName = faker.name.findName(); // Rowan Nikolaus
@@ -55,14 +57,18 @@ class LeaderboardApp extends React.Component {
     console.warn('--counts-', this._topCourses, leaderboardData);
     return (
       <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
-        <header className="container-fluid">
-          <div className="row">
-            <div {...cssWithClass('Nav col-xs-12 horizontal-box align-items-absolute-center', styles.Nav)}>
-              <h1>Coursera</h1>
-            </div>
+        <header  {...cssWithClass('container-fluid', styles.header)}>
+          <div className="container">
+            <nav {...cssWithClass('horizontal-box align-items-spacebetween wrap', styles.NavBar)}>
+              <a href="/"> <img src={courseraLogo} alt="Coursera Logo" alt="Coursera"/></a>
+              <div className="horizontal-box align-items-vertical-center">
+                <span className="m-r-2">Institutions</span>
+                <Avatar size={44} imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg"/>
+              </div>
+            </nav>
           </div>
           <div className="row">
-            <div {...cssWithClass('Jumbotron col-xs-12 vertical-box align-items-absolute-center text-xs-center p-b-3', styles.Jumbotron)}>
+            <div {...cssWithClass('Jumbotron col-xs-12 vertical-box align-items-absolute-center text-xs-center p-b-2', styles.Jumbotron)}>
               <h1 {...css(styles.pageTitle)}>Coursera Leaderboard</h1>
               <h4 className="text-uppercase m-b-3">21 Days Left</h4>
             </div>
@@ -114,9 +120,12 @@ export default withStyles(({color, gradient}) => ({
     background: color.bgGray,
     minHeight: 800,
   },
-  Nav: {
+  header: {
     // width: '100%',
-    minHeight: 80,
+  },
+  NavBar: {
+    minHeight: 56,
+
   },
   Jumbotron: {
     minHeight: 360,

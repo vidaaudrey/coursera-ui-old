@@ -2,7 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 const _ = require('underscore');
 import withApiData from '../../components/hocs/withApiData';
-import StaticLinearProgress from '../../components/basic/StaticLinearProgress';
+import {StaticLinearProgress} from 'src';
 
 const CARD_TYPES = {
   PROGRESS: 'PROGRESS',
@@ -37,7 +37,7 @@ const CourseMiniCard = ({
 
         {type === CARD_TYPES.PROGRESS && typeof progress !== undefined &&
           <div className="m-t-auto">
-            <span className="d-block font-sm text-uppercase">progress</span>
+            <strong className="d-block font-sm text-uppercase">progress</strong>
             <StaticLinearProgress progress={30} style={dynamicStyles.StaticLinearProgress} />
           </div>
         }

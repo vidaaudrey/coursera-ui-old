@@ -1,9 +1,8 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet, theme} from 'src';
 import CourseMiniCard from './CourseMiniCard';
-import Avatar from '../../components/basic/Avatar';
+import {Avatar} from 'src';
 import SvgCrown from '../../components/svg/SvgCrown';
-// import Avatar from './Avatar';
 
 const AVATAR_SIZE = 100;
 const LeaderboardCard = ({
@@ -12,7 +11,6 @@ const LeaderboardCard = ({
   isNumberOne,
   ...props
 }) => {
-  console.warn('---', theme.color.danger, theme, isNumberOne);
   return (
     <div {...cssWithClass('LeaderboardCard card p-a-1', styles.LeaderboardCard)}>
       <div className="row">
@@ -49,7 +47,7 @@ const LeaderboardCard = ({
           <span {...css(styles.stats, isNumberOne ? styles.colorAccent : styles.colorPrimary)}>
             {score}
           </span>
-          <span className="text-uppercase font-xs text-muted">Points</span>
+          <small className="text-uppercase font-xs text-muted">Points</small>
         </div>
       </div>
     </div>
@@ -59,7 +57,6 @@ const LeaderboardCard = ({
 
 export default withStyles(({color, gradient}) => ({
   LeaderboardCard: {
-    // backgroundColor: color.accent,
   },
   rank: {
     position: 'absolute',

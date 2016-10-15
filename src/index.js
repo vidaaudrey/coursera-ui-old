@@ -1,10 +1,10 @@
 // Allow us to import individual component, identically to the root index.js
 // No need to edit it now
 // Only use when we have components open sourced
-export {default as App} from './containers/App';
-export {default as Button} from './components/basic/Button';
-// export {default as Avatar} from './components/basic/Avatar';
-// export {default as StaticLinearProgress} from './components/basic/StaticLinearProgress';
+import App from './containers/App';
+import Button from './components/basic/Button';
+import StaticLinearProgress from './components/basic/StaticLinearProgress';
+import Avatar from './components/basic/Avatar';
 
 // Hoc
 export {default as copyToClipboard} from './components/hocs/copyToClipboard';
@@ -22,3 +22,11 @@ export {cssWithClass as cssWithClass} from './styles/withStyles';
 
 // Prototype
 export {default as LeaderboardApp} from './prototypes/LeaderboardApp';
+
+
+export {
+  App,
+  Button,
+  Avatar,
+  StaticLinearProgress,
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import CourseMiniCard from './CourseMiniCard';
-import Avatar from '../../components/basic/Avatar';
+import {Avatar} from 'src';
 
 const AVATAR_SIZE = 128;
 
@@ -35,7 +35,7 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
             {statsRowData.map((item, index) => (
               <div className="vertical-box align-items-absolute-center" key={`stats-row~${index}`}>
                 <span {...css(styles.stats) }>{item.number}</span>
-                <span className="text-uppercase font-xs">{item.label}</span>
+                <small className="text-uppercase font-xs">{item.label}</small>
               </div>
             ))}
           </div>
