@@ -1,14 +1,63 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import {SvgIcon} from 'src';
+import { SvgIcon } from 'src';
 import IconLibrary from '../support/IconLibrary';
+import { courseraIcons } from 'src';
+const {SvgEmail} = courseraIcons;
 
+console.log(SvgIcon)
 storiesOf('basic.SvgIcon', module)
-  .add('with text', () => (
-    <SvgIcon>
-      <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
-    </SvgIcon>
-  ))
+  .addWithInfo(
+    'default',
+    `
+      simple usage
+       ~~~js
+       import { SvgIcon } from 'src';
+       import { courseraIcons } from 'src';
+       const {SvgEmail} = courseraIcons;
+
+        <SvgEmail />
+
+        <SvgEmail size={128} color="red" hoverColor="blue" />
+
+        <SvgEmail onMouseEnter={action('mouse enter')} onMouseLeave={action('mouse leave')} />
+
+        <SvgIcon size={64} color="green" viewBox="0 0 48 48">
+          <title>email</title>
+          <path d="M0,6V33a9,9,0,0,0,9,9H39a9,9,0,0,0,9-9V6H0ZM46,33a7,7,0,0,1-7,7H9a7,7,0,0,1-7-7V8H46V33Z" />
+          <polygon points="42.48 13.67 41.14 12.19 24 27.65 6.96 12.21 5.62 13.69 24 30.35 42.48 13.67" />
+        </SvgIcon>
+       ~~~
+    `,
+    () => (
+      <div className="vertical-box">
+        <div className="vertical-box m-b-1">
+          <SvgEmail />
+          <small className="font-sm">No props</small>
+        </div>
+        <div className="vertical-box m-b-1">
+          <SvgEmail size={128} color="red" hoverColor="blue" />
+          <small className="font-sm"> with size, color, hoverColor props</small>
+        </div>
+
+        <div className="vertical-box m-b-1">
+          <SvgEmail onMouseEnter={action('mouse enter')} onMouseLeave={action('mouse leave')} />
+          <small className="font-sm"> with onMouseEnter and onMouseLeave callback </small>
+        </div>
+
+        <div className="vertical-box m-b-1">
+          <SvgIcon size={64} color="green" viewBox="0 0 48 48">
+            <title>email</title>
+            <path d="M0,6V33a9,9,0,0,0,9,9H39a9,9,0,0,0,9-9V6H0ZM46,33a7,7,0,0,1-7,7H9a7,7,0,0,1-7-7V8H46V33Z" />
+            <polygon points="42.48 13.67 41.14 12.19 24 27.65 6.96 12.21 5.62 13.69 24 30.35 42.48 13.67" />
+          </SvgIcon>
+          <small className="font-sm"> with custom svg as children </small>
+        </div>
+
+      </div>
+    ),
+    // { source: true, inline: true , propTables: [SvgIcon]},
+  )
   .add('icon library', () => (
     <IconLibrary />
   ))

@@ -2,7 +2,10 @@ import React, {Component, PropTypes} from 'react';
 import { css, cssWithClass, withStyles} from 'src';
 import transition from '../../styles/transition';
 import theme from '../../styles/theme';
-// import {theme} from 'src';
+import {withApiData} from '../hocs/withApiData';
+// import hoistNonReactStatics from 'hoist-non-react-statics'
+import {hoistStatics, nest} from 'recompose';
+
 
 class SvgIcon extends Component {
 
@@ -13,11 +16,17 @@ class SvgIcon extends Component {
     // Override the inline-styles of the root element
     style: PropTypes.object,
 
+    // Attributes overwrite.
+    htmlAttributes: PropTypes.object,
+
     //  Elements passed into the SVG Icon.
     children: PropTypes.node,
 
     // Fill color of the svg, default to theme.color.icon.
     color: PropTypes.string,
+
+    // Width and height of the svg, should be equal, so only use size.
+    size: PropTypes.number,
 
     // Default to theme.color.darkPrimary
     hoverColor: PropTypes.string,
@@ -40,6 +49,7 @@ class SvgIcon extends Component {
     size: 24,
     color: theme.color.icon,
     hoverColor: theme.color.darkPrimary,
+    styles: {},
     htmlAttributes: {},
   };
 
