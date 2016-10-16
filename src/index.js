@@ -6,7 +6,8 @@ import Button from './components/basic/Button';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import Avatar from './components/basic/Avatar';
 import SvgIcon from './components/svg/SvgIcon';
-
+import * as materialIcons from './components/svg/material';
+import * as courseraIcons from './components/svg/coursera';
 // Hoc
 import copyToClipboard from './components/hocs/copyToClipboard';
 
@@ -39,6 +40,9 @@ export {
   SvgIcon,
   Avatar,
   StaticLinearProgress,
+
+  materialIcons,
+  courseraIcons,
 
   LeaderboardApp,
 };

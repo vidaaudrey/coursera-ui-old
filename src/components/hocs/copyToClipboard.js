@@ -35,11 +35,14 @@ const copyToClipboard = (Component) => {
      }
    }
     render() {
-      const {text, onCopy, options, onClick, ...props} = this.props;
+      const {text, onCopy, options, onClick, htmlAttributes, ...props} = this.props;
       return (
         <Component
           {...props}
-          onClick={this.onClick}
+          htmlAttributes={{
+            ...htmlAttributes,
+            onClick: this.onClick
+          }}
         />
       );
     }
