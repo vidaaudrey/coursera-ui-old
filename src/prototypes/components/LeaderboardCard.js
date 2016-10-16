@@ -57,6 +57,7 @@ const LeaderboardCard = ({
 
 export default withStyles(({color, gradient, transition}) => ({
   LeaderboardCard: {
+    minWidth: 320,
   },
   rank: {
     position: 'absolute',

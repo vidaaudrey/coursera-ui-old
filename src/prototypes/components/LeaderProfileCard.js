@@ -20,7 +20,7 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
     label: 'enrolled',
     number: 2,
   }]
-  console.warn('---', leaderboard);
+  
   return (
     <div {...cssWithClass('LeaderProfileCard m-b-2', styles.LeaderProfileCard)}>
       <div className="vertical-box w-100 card">
@@ -58,6 +58,7 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
 export default withStyles(({color, gradient}) => ({
   LeaderProfileCard: {
     width: '100%',
+    minWidth: 320,
   },
   profileContainer: {
     background: `linear-gradient(90deg, ${gradient.secondary.start}, ${gradient.secondary.end})`,

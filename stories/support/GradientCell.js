@@ -1,14 +1,5 @@
 const React = require('react');
-
-const styles = {
-  GradientCell: {
-    width: 320,
-    height: 240,
-  },
-  textBox: {
-    width: 320,
-  }
-};
+import { css, cssWithClass, withStyles, ThemedStyleSheet} from 'src';
 
 function getGradientStyle({start, end}, deg = 90){
   return {
@@ -20,18 +11,18 @@ function getGradientStyle({start, end}, deg = 90){
   };
 }
 
-function GradientCell({gradient, name, deg}) {
+function GradientCell({styles, gradient, name, deg}) {
   return (
     <div className="GradientCell col-xs col-lg-3">
       <div
-        className="vertical-box align-items-absolute-center h-100 m-a-1"
+        className="vertical-box h-100 m-a-1"
       >
         <div
-          className="vertical-box align-items-absolute-center m-b-1"
-          style={{...styles.GradientCell, ...getGradientStyle(gradient, deg)}}
+          {...cssWithClass('m-b-1 w-100', styles.GradientCell)}
+          style={{...getGradientStyle(gradient, deg)}}
         >
         </div>
-        <div className="vertical-box align-items-left text-uppercase" style={styles.textBox}>
+        <div {...css('vertical-box align-items-left text-uppercase', styles.textBox)}>
           <div className="primary-text">{name} </div>
           <div>
             <span className="text-muted m-r-2">{gradient.start}</span>
@@ -44,4 +35,13 @@ function GradientCell({gradient, name, deg}) {
 }
 
 
-export default GradientCell;
+export default withStyles(({transition}) => ({
+  GradientCell: {
+    height: 240,
+    minWidth: 300,
+    transition: transition.easeOut(),
+  },
+  textBox: {
+    minHeight: 60
+  },
+}))(GradientCell);

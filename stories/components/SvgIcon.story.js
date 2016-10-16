@@ -5,7 +5,6 @@ import IconLibrary from '../support/IconLibrary';
 import { courseraIcons } from 'src';
 const {SvgEmail} = courseraIcons;
 
-console.log(SvgIcon)
 storiesOf('basic.SvgIcon', module)
   .addWithInfo(
     'default',

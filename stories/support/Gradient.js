@@ -14,7 +14,7 @@ export default class Gradient extends React.Component {
     return (
       <div className="Gradient w-100">
         <div className="color-list-container container-fluid">
-          <div className="row m-b-3">
+          <div className="row m-b-3 p-a-1">
             {_(gradients).map((item, key) =>
               <GradientCell name={key} key={`GradientCell~${key}`} gradient={item}/>
             )}

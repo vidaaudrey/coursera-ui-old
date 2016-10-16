@@ -55,7 +55,7 @@ class LeaderboardApp extends React.Component {
   render() {
     const {styles, leaderboards} = this.props;
     const {leaderboardData, activeMenuIndex} = this.state;
-    console.warn('--counts-', this._topCourses, leaderboardData);
+
     return (
       <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
         <header  {...cssWithClass('container-fluid', styles.header)}>

@@ -19,7 +19,6 @@ const StaticLinearProgress = ({
 }) => {
   const dynamicStyles = getStyles({backgroundColor, color, height});
   const mergedRootStyle = {...dynamicStyles.StaticLinearProgress, ...style};
-  console.warn('-style--', style);
   const barStyle = {...dynamicStyles.bar, width: `${progress}%`};
 
   return (
