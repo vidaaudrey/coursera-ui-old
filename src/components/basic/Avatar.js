@@ -21,12 +21,12 @@ const Avatar = ({
   ...props
 }) => {
   const dynamicStyles = getStyles({size, backgroundColor, color});
-  const mergedRootStyle = {...dynamicStyles.Avatar, ...style};
+  const mergedStyles = {...dynamicStyles.Avatar, ...style};
   if (imgSrc) {
     return (
       <img
         {...css(styles.Avatar)}
-        style={mergedRootStyle}
+        style={mergedStyles}
         src={imgSrc}
       />
     );
@@ -34,7 +34,7 @@ const Avatar = ({
   return (
     <div
       {...css(styles.Avatar)}
-      style={mergedRootStyle}
+      style={mergedStyles}
     >
      {children}
    </div>

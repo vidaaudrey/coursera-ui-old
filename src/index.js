@@ -5,13 +5,16 @@ import App from './containers/App';
 import Button from './components/basic/Button';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import Avatar from './components/basic/Avatar';
+import SvgIcon from './components/svg/SvgIcon';
 
 // Hoc
-export {default as copyToClipboard} from './components/hocs/copyToClipboard';
+import copyToClipboard from './components/hocs/copyToClipboard';
 
-export {default as colors} from './styles/colors';
-export {default as gradients} from './styles/gradients';
-export {default as theme} from './styles/theme';
+// Styles
+import colors from './styles/colors';
+import gradients from './styles/gradients';
+import theme from './styles/theme';
+import transition from './styles/transition';
 
 export {css as css} from './styles/withStyles';
 export {withStyles as withStyles} from './styles/withStyles';
@@ -21,12 +24,21 @@ export {cssWithClass as cssWithClass} from './styles/withStyles';
 
 
 // Prototype
-export {default as LeaderboardApp} from './prototypes/LeaderboardApp';
-
+import LeaderboardApp from './prototypes/LeaderboardApp';
 
 export {
+  colors,
+  gradients,
+  theme,
+  // transition,
+
+  copyToClipboard,
+
   App,
   Button,
+  SvgIcon,
   Avatar,
   StaticLinearProgress,
+
+  LeaderboardApp,
 };

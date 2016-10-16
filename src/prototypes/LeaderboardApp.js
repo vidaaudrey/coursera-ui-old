@@ -1,12 +1,13 @@
 import React from 'react';
 import withApiData from '../components/hocs/withApiData';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+import { css, cssWithClass, withStyles, ThemedStyleSheet} from 'src';
 import {Avatar} from 'src';
 import LeaderboardCard from './components/LeaderboardCard';
 import LeaderProfileCard from './components/LeaderProfileCard';
 import TopCoursesCard from './components/TopCoursesCard';
 const _ = require('underscore');
 import {courseraLogo} from '../assets/pngAssets';
+
 // import
 // var faker = require('faker');
 // var randomName = faker.name.findName(); // Rowan Nikolaus
@@ -115,13 +116,12 @@ const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(LeaderboardApp);
 
 
 
-export default withStyles(({color, gradient}) => ({
+export default withStyles(({color, gradient, transition}) => ({
   LeaderboardApp: {
     background: color.bgGray,
     minHeight: 800,
   },
   header: {
-    // width: '100%',
   },
   NavBar: {
     minHeight: 56,
@@ -157,7 +157,7 @@ export default withStyles(({color, gradient}) => ({
     }
   },
   sideBar: {
-
+    transition: transition.easeOut(),
   },
 
   pageTitle: {
@@ -167,6 +167,7 @@ export default withStyles(({color, gradient}) => ({
   main: {
     minHeight: 500,
     marginTop: -96,
+    transition: transition.easeOut(),
   },
 
   hover: {

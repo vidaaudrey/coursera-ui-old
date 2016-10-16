@@ -2,7 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet, theme} from 'src';
 import CourseMiniCard from './CourseMiniCard';
 import {Avatar} from 'src';
-import SvgCrown from '../../components/svg/SvgCrown';
+import SvgCrown from '../../components/svg/icons/SvgCrown';
 
 const AVATAR_SIZE = 100;
 const LeaderboardCard = ({
@@ -14,7 +14,7 @@ const LeaderboardCard = ({
   return (
     <div {...cssWithClass('LeaderboardCard card p-a-1', styles.LeaderboardCard)}>
       <div className="row">
-        <div className="col-xs-12 col-lg-3 vertical-box align-items-absolute-center p-a-1">
+        <div {...cssWithClass('col-xs-12 col-lg-3 vertical-box align-items-absolute-center p-a-1', styles.transition)}>
           <div className="text-xs-center pos-relative p-a-1">
             <Avatar imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg" size={AVATAR_SIZE} />
             {isNumberOne &&
@@ -36,14 +36,14 @@ const LeaderboardCard = ({
           </div>
         </div>
 
-        <div className="col-xs-12 col-lg-7">
+        <div {...cssWithClass('col-xs-12 col-lg-7', styles.transition)}>
           <h3 className="m-b-0">{userName}</h3>
           <span className="d-block text-uppercase font-sm text-muted m-b-1">{numCoursesCompleted} Courses Completed</span>
           <label className="text-uppercase font-sm font-weight-bold">Current Courses</label>
           <CourseMiniCard id={courseId}/>
         </div>
 
-        <div className="col-xs-12 col-lg-2 vertical-box align-items-absolute-center p-a-1">
+        <div {...cssWithClass('col-xs-12 col-lg-2 vertical-box align-items-absolute-center p-a-1', styles.transition)}>
           <span {...css(styles.stats, isNumberOne ? styles.colorAccent : styles.colorPrimary)}>
             {score}
           </span>
@@ -55,7 +55,7 @@ const LeaderboardCard = ({
 };
 
 
-export default withStyles(({color, gradient}) => ({
+export default withStyles(({color, gradient, transition}) => ({
   LeaderboardCard: {
   },
   rank: {
@@ -77,5 +77,8 @@ export default withStyles(({color, gradient}) => ({
   },
   colorAccent: {
     color: color.accent,
+  },
+  transition: {
+    transition: transition.easeOut(),
   },
 }))(LeaderboardCard);

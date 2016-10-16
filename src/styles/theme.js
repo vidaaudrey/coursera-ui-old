@@ -8,6 +8,7 @@ import {
   yellow500, red500, green500,
 } from './colors';
 import {coursera, strawberry} from './gradients';
+import transition from './transition';
 
 export default {
   color: {
@@ -31,9 +32,12 @@ export default {
     danger: red500,
     success: green500,
     info: blue500,
+
+    icon: midnight600,
   },
   gradient: {
     primary: coursera,
     secondary: strawberry,
   },
+  transition,
 };
