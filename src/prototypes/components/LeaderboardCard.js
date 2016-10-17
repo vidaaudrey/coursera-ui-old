@@ -17,17 +17,15 @@ const LeaderboardCard = ({
         <div {...cssWithClass('col-xs-12 col-lg-3 vertical-box align-items-absolute-center p-a-1', styles.transition)}>
           <div className="text-xs-center pos-relative p-a-1">
             <Avatar imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg" size={AVATAR_SIZE} />
-            {isNumberOne &&
-              <div {...css(styles.rank)}>
-                <Avatar
-                  backgroundColor={theme.color.accent}
-                  color={theme.color.textIcon}
-                  size={36}
-                  >
-                  <h4 className="m-a-0">1</h4>
-                </Avatar>
-              </div>
-            }
+            <div {...css(styles.rank)}>
+              <Avatar
+                backgroundColor={isNumberOne ? theme.color.accent : theme.color.primary}
+                color={theme.color.textIcon}
+                size={36}
+                >
+                <h4 className="m-a-0">{rank}</h4>
+              </Avatar>
+            </div>
             {isNumberOne &&
               <div {...css(styles.crown)}>
                 <SvgCrown fill={theme.color.accent}/>

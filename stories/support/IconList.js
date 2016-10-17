@@ -5,12 +5,11 @@ const _ = require('underscore');
 
 const IconCellWithCopy = copyToClipboard(IconCell);
 
-function IconList({iconList = [], handleCopied, color, size}) {
+function IconList({title = 'Coursera Icons', iconList = [], handleCopied, color, size}) {
   return (
-    <div className="row">
+    <div className="row m-b-3">
       <div className="col-xs-12">
-        <h3>Coursera Icons</h3>
-        <i>Click to copy</i>
+        <h3>{title}</h3>
       </div>
       {_(iconList).map((item) => {
         const Component = item;
@@ -34,6 +33,7 @@ function IconList({iconList = [], handleCopied, color, size}) {
 }
 
 IconList.propTypes = {
+  title: PropTypes.string.isRequired,
   iconList: PropTypes.object.isRequired,
   handleCopied: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,

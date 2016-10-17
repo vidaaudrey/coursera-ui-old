@@ -24,6 +24,7 @@ export default {
     secondaryText: midnight300,
     divider: dusk200,
     bgGray: dawn400,
+    disabled: dawn400,
     lightGray: dawn300,
     gray: dusk100,
     darkGray: dusk400,
@@ -40,4 +41,22 @@ export default {
     secondary: strawberry,
   },
   transition,
+  button: {
+    minWidth: 72,
+    disabledTextColor: dusk200,
+    size: {
+      xs: {
+        fontSize: '0.8rem',
+        padding: '0.5rem 1rem',
+      },
+      md: {
+        fontSize: '1rem',
+        padding: '0.8rem 1.6rem',
+      },
+      lg: {
+        fontSize: '1.2rem',
+        padding: '1rem 1.6rem',
+      },
+    }
+  },
 };

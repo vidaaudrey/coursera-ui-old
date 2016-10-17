@@ -11,6 +11,7 @@ import { css, cssWithClass, withStyles} from 'src';
 const Avatar = ({
   styles,
   style,
+  htmlAttributes = {},
   imgSrc,
   imgAlt = 'Avatar',
   iconName,
@@ -28,6 +29,7 @@ const Avatar = ({
         {...css(styles.Avatar)}
         style={mergedStyles}
         src={imgSrc}
+        {...htmlAttributes}
       />
     );
   }
@@ -35,6 +37,7 @@ const Avatar = ({
     <div
       {...css(styles.Avatar)}
       style={mergedStyles}
+      {...htmlAttributes}
     >
      {children}
    </div>
@@ -48,6 +51,9 @@ Avatar.propTypes = {
 
   // Override the inline-styles of the root element
   style: PropTypes.object,
+
+  // Attributes overwrite.
+  htmlAttributes: PropTypes.object,
 
   // The backgroundColor of the avatar. Does not apply to image avatars.
   backgroundColor: PropTypes.string,

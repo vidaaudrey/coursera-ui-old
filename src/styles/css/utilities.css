@@ -9,7 +9,15 @@
 }
 
 .bg-info {
+  background-color: #4a89dc;
+}
 
+.color-info {
+  color: #4a89dc;
+}
+
+.color-danger {
+  color: #da4453;
 }
 
 .bg-gray {
@@ -41,6 +49,12 @@ h1, h2, h3, h4, h5, h6, p {
 
 .font-sm {
   font-size: 0.8em;
+}
+
+.label-text {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
 .font-xs {

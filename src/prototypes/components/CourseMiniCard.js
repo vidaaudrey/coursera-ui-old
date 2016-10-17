@@ -11,6 +11,7 @@ const CARD_TYPES = {
 }
 const DEFAULT_COURSE_PHOTO_SIZE = 96;
 
+const BASE_URL = 'https://www.coursera.org/learn/';
 const CourseMiniCard = ({
   styles,
   course,
@@ -29,7 +30,9 @@ const CourseMiniCard = ({
    return (
     <div className="horizontal-box CourseCard">
       <div className="horizontal-box align-items-top m-r-1" style={{minWidth: 100}}>
-        <img src={photoUrl} alt="CourseraAlt" className="border-a" style={dynamicStyles.coursePhoto} />
+        <a href={`${BASE_URL}${course.slug}/home/welcome`}>
+          <img src={photoUrl} alt="CourseraAlt" className="border-a" style={dynamicStyles.coursePhoto} />
+        </a>
       </div>
       <div className="vertical-box flex-1">
         <h4 className="font-weight-normal m-b-0">{name}</h4>

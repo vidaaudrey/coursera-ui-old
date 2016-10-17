@@ -1,6 +1,7 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import CourseMiniCard from './CourseMiniCard';
+import CourseResumeCard from './CourseResumeCard';
 import {Avatar} from 'src';
 
 const AVATAR_SIZE = 128;
@@ -20,7 +21,7 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
     label: 'enrolled',
     number: 2,
   }]
-  
+
   return (
     <div {...cssWithClass('LeaderProfileCard m-b-2', styles.LeaderProfileCard)}>
       <div className="vertical-box w-100 card">
@@ -41,7 +42,10 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
           </div>
           <div className="current-course-container m-b-2">
             <label className="text-uppercase font-sm font-weight-bold">Current Courses</label>
-            <CourseMiniCard id={courseId}/>
+            <div className="m-b-1">
+              <CourseMiniCard id={courseId} />
+            </div>
+            <CourseResumeCard id={courseId} />
           </div>
 
           <div className="finished-course-container m-b-1">
@@ -64,8 +68,6 @@ export default withStyles(({color, gradient}) => ({
     background: `linear-gradient(90deg, ${gradient.secondary.start}, ${gradient.secondary.end})`,
     height: 200,
     margin: -1,
-    // marginLeft: -2,
-    // marginTop: -2,
   },
   stats: {
     color: color.primary,
