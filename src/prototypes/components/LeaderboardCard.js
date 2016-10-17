@@ -3,20 +3,33 @@ import { css, cssWithClass, withStyles, ThemedStyleSheet, theme} from 'src';
 import CourseMiniCard from './CourseMiniCard';
 import {Avatar} from 'src';
 import SvgCrown from '../../components/svg/icons/SvgCrown';
+import {getInitialsFromFullName} from '../../utils/common';
 
 const AVATAR_SIZE = 100;
 const LeaderboardCard = ({
   styles,
-  leaderboard: {userName, numCoursesCompleted, rank, score, currentCourse, courseId},
+  leaderboard: {userName, numCoursesCompleted, rank, score, currentCourse, courseId, profilePhoto},
   isNumberOne,
   ...props
 }) => {
+
   return (
     <div {...cssWithClass('LeaderboardCard card p-a-1', styles.LeaderboardCard)}>
       <div className="row">
         <div {...cssWithClass('col-xs-12 col-lg-3 vertical-box align-items-absolute-center p-a-1', styles.transition)}>
           <div className="text-xs-center pos-relative p-a-1">
-            <Avatar imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg" size={AVATAR_SIZE} />
+            {profilePhoto &&
+              <Avatar imgSrc={profilePhoto} size={AVATAR_SIZE} />
+            }
+            {!profilePhoto &&
+              <Avatar
+                backgroundColor={isNumberOne ? theme.color.accent : theme.color.darkPrimary}
+                color={theme.color.textIcon}
+                size={AVATAR_SIZE}
+              >
+                <h4 className="m-a-0 font-weight-normal">{getInitialsFromFullName(userName)}</h4>
+              </Avatar>
+            }
             <div {...css(styles.rank)}>
               <Avatar
                 backgroundColor={isNumberOne ? theme.color.accent : theme.color.primary}
@@ -36,7 +49,10 @@ const LeaderboardCard = ({
 
         <div {...cssWithClass('col-xs-12 col-lg-7', styles.transition)}>
           <h3 className="m-b-0">{userName}</h3>
-          <span className="d-block text-uppercase font-sm text-muted m-b-1">{numCoursesCompleted} Courses Completed</span>
+          <span className="d-block text-uppercase font-sm text-muted m-b-1">
+            {numCoursesCompleted || 0}
+            {numCoursesCompleted > 1 ? ' Courses' : ' Course'} Completed
+          </span>
           <label className="text-uppercase font-sm font-weight-bold">Current Courses</label>
           <CourseMiniCard id={courseId}/>
         </div>

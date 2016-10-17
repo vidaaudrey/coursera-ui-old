@@ -22,7 +22,7 @@ const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
             apiData = {course: courses[id]};
             break;
           case dataTypes.LEADERBOARD:
-            apiData = {leaderboards}
+            apiData = {leaderboards }
             break;
           default:
             break;

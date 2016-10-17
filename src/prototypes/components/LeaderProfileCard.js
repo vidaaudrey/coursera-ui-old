@@ -7,7 +7,7 @@ import {Avatar} from 'src';
 const AVATAR_SIZE = 128;
 
 const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
-  const {userName, numCoursesCompleted, rank, score, currentCourse, courseId} = leaderboard;
+  const {userName, numCoursesCompleted, rank, score, currentCourse, courseId, profilePhoto} = leaderboard;
   const statsRowData = [{
     label: 'points',
     number: score,
@@ -22,12 +22,18 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
     number: 2,
   }]
 
+  {
+    className: 'LeaderProfileCard-asdfasdfasf'
+  }
+
   return (
     <div {...cssWithClass('LeaderProfileCard m-b-2', styles.LeaderProfileCard)}>
       <div className="vertical-box w-100 card">
         <div {...cssWithClass('vertical-box align-items-absolute-center', styles.profileContainer)}>
           <div {...css(styles.AvatarWrapper)}>
-            <Avatar imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/marcomano_/128.jpg" size={AVATAR_SIZE} bordered />
+            {profilePhoto &&
+              <Avatar imgSrc={profilePhoto} size={AVATAR_SIZE} bordered />
+            }
           </div>
         </div>
         <div className="p-a-1">

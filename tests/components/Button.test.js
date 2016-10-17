@@ -21,9 +21,4 @@ describe('Button', () => {
   it('should show the given name', () => {
     expect(wrapper.text()).to.contain(mockProp.children);
   });
-
-  it('should handle click', () => {
-    wrapper.simulate('click');
-    expect(stub.callCount).to.equal(1);
-  });
 });

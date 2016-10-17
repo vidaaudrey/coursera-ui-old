@@ -1,2 +1,2 @@
-import './RaisedButton.story';
+import './Button.story';
 import './SvgIcon.story';

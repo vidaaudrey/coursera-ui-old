@@ -8,12 +8,6 @@ import TopCoursesCard from './components/TopCoursesCard';
 const _ = require('underscore');
 import {courseraLogo} from '../assets/pngAssets';
 
-// import
-// var faker = require('faker');
-// var randomName = faker.name.findName(); // Rowan Nikolaus
-// var randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
-// var randomCard = faker.helpers.createCard(); // random contact card containing many properties
-
 // TODO[Audrey]:
 // 1. This month v.s. Overall ?
 
@@ -55,7 +49,7 @@ class LeaderboardApp extends React.Component {
   render() {
     const {styles, leaderboards} = this.props;
     const {leaderboardData, activeMenuIndex} = this.state;
-
+    console.warn('---', leaderboardData);
     return (
       <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
         <header  {...cssWithClass('container-fluid', styles.header)}>
@@ -92,7 +86,7 @@ class LeaderboardApp extends React.Component {
                 )}
               </ul>
               <section className="cards">
-                {leaderboardData.map((item, index) => (
+                {_(leaderboardData).map((item, index) => (
                   <LeaderboardCard
                     key={`LeaderboardCard~${index}`}
                     leaderboard={item}
