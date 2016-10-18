@@ -19,7 +19,8 @@ class ProgramCreationApp extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      // step: stepCreateProgramName,
+      // step: stepSelectDomains,
+      // step: stepSelectDomains,
       step: stepSelectCourses,
       programName: null,
       domains: [],

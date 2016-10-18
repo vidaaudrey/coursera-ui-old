@@ -9,8 +9,9 @@ html {
     overflow: visible !important;
   }
 }
-.bg-primary {
 
+.bg-primary {
+  background-color: #4a89dc;
 }
 
 .bg-info {

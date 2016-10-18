@@ -1,6 +1,7 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button} from 'src';
+import DomainCard from './DomainCard';
 
 class ProgramSelectCoursePage extends React.Component {
 
@@ -9,7 +10,9 @@ class ProgramSelectCoursePage extends React.Component {
       styles, onAddCourse, onRemoveCourse, onAddS12n, onRemoveS12n,
     } = this.props;
     return (
-      <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramSelectCoursePage)}>
+      <div {...cssWithClass('bg-gray', styles.ProgramSelectCoursePage)}>
+        <DomainCard />
+
         <h2>Course Selection page</h2>
           <Button
             type="primary"
