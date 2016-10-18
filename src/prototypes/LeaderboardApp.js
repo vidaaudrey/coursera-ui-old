@@ -2,15 +2,13 @@ import React from 'react';
 import withApiData from '../components/hocs/withApiData';
 import { css, cssWithClass, withStyles, ThemedStyleSheet} from 'src';
 import {Avatar} from 'src';
-import LeaderboardCard from './components/LeaderboardCard';
-import LeaderProfileCard from './components/LeaderProfileCard';
-import TopCoursesCard from './components/TopCoursesCard';
+import LeaderboardCard from './components/leaderboard/LeaderboardCard';
+import LeaderProfileCard from './components/leaderboard/LeaderProfileCard';
+import TopCoursesCard from './components/leaderboard/TopCoursesCard';
 const _ = require('underscore');
 import {courseraLogo} from '../assets/pngAssets';
 
 // TODO[Audrey]:
-// 1. This month v.s. Overall ?
-
 class LeaderboardApp extends React.Component {
 
   constructor(props, context) {
@@ -107,7 +105,6 @@ class LeaderboardApp extends React.Component {
 }
 
 const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(LeaderboardApp);
-
 
 
 export default withStyles(({color, gradient, transition}) => ({

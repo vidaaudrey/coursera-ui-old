@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet, Button } from 'src';
 const _ = require('underscore');
-import withApiData from '../../components/hocs/withApiData';
+import withApiData from '../../../components/hocs/withApiData';
 import {StaticLinearProgress} from 'src';
 
 
@@ -29,7 +29,6 @@ const CourseResumeCard = ({
 };
 
 const CourseWithApiData = withApiData({dataType: 'COURSE'})(CourseResumeCard);
-
 
 export default withStyles(({color, gradient}) => ({
   CourseResumeCard: {

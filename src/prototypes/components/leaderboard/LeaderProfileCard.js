@@ -64,7 +64,6 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
   );
 };
 
-
 export default withStyles(({color, gradient}) => ({
   LeaderProfileCard: {
     width: '100%',

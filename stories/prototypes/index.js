@@ -1,1 +1,1 @@
-import './LeaderboardApp.story';
+import './Prototypes.story';

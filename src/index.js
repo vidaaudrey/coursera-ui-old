@@ -5,6 +5,7 @@ import App from './containers/App';
 import Button from './components/basic/Button';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import Avatar from './components/basic/Avatar';
+import FixedContainer from './components/extended/FixedContainer';
 import SvgIcon from './components/svg/SvgIcon';
 import * as materialIcons from './components/svg/material';
 import * as courseraIcons from './components/svg/coursera';
@@ -24,19 +25,20 @@ export {ThemedStyleSheet as ThemedStyleSheet} from './styles/withStyles';
 export {cssWithClass as cssWithClass} from './styles/withStyles';
 
 
-// Prototype
+// Prototypes
 import LeaderboardApp from './prototypes/LeaderboardApp';
+import ProgramCreationApp from './prototypes/ProgramCreationApp';
 
 export {
   colors,
   gradients,
   theme,
-  // transition,
 
   copyToClipboard,
 
   App,
   Button,
+  FixedContainer,
   SvgIcon,
   Avatar,
   StaticLinearProgress,
@@ -45,4 +47,5 @@ export {
   courseraIcons,
 
   LeaderboardApp,
+  ProgramCreationApp,
 };

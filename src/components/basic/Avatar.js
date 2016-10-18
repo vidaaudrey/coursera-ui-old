@@ -10,7 +10,7 @@ import { css, cssWithClass, withStyles} from 'src';
 // TODO[Audrey]: add icon support
 const Avatar = ({
   styles,
-  style,
+  style = {},
   htmlAttributes = {},
   imgSrc,
   imgAlt = 'Avatar',
@@ -26,18 +26,18 @@ const Avatar = ({
   if (imgSrc) {
     return (
       <img
+        {...htmlAttributes}
         {...css(styles.Avatar)}
         style={mergedStyles}
         src={imgSrc}
-        {...htmlAttributes}
       />
     );
   }
   return (
     <div
+      {...htmlAttributes}
       {...css(styles.Avatar)}
       style={mergedStyles}
-      {...htmlAttributes}
     >
      {children}
    </div>
@@ -73,6 +73,15 @@ Avatar.propTypes = {
   // If passed in, the component will render an img element. Otherwise, a div will be rendered.
   // bordered: PropTypes.bool,
   // shadow: PropTypes.bool
+};
+
+// Explicity declare the default props for documentation purpose,
+// as we only hoist a limit set of statics
+Avatar.defaultProps = {
+  style: {},
+  htmlAttributes: {},
+  imgAlt: 'Avatar',
+  size: 44,
 };
 
 // Dynamtic styles

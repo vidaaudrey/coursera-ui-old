@@ -11,7 +11,7 @@ storiesOf('basic.SvgIcon', module)
     `
       simple usage
        ~~~js
-       import { SvgIcon } from 'src';
+       import { SvgIcon } from 'coursera-ui';
        import { courseraIcons } from 'src';
        const {SvgEmail} = courseraIcons;
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet, theme} from 'src';
 import CourseMiniCard from './CourseMiniCard';
 import {Avatar} from 'src';
-import SvgCrown from '../../components/svg/icons/SvgCrown';
-import {getInitialsFromFullName} from '../../utils/common';
+import SvgCrown from '../../../components/svg/icons/SvgCrown';
+import {getInitialsFromFullName} from '../../../utils/common';
 
 const AVATAR_SIZE = 100;
 const LeaderboardCard = ({
@@ -32,7 +32,7 @@ const LeaderboardCard = ({
             }
             <div {...css(styles.rank)}>
               <Avatar
-                backgroundColor={isNumberOne ? theme.color.accent : theme.color.primary}
+                backgroundColor={isNumberOne ? theme.color.accent : theme.color.lightPrimary}
                 color={theme.color.textIcon}
                 size={36}
                 >
@@ -67,7 +67,6 @@ const LeaderboardCard = ({
     </div>
   );
 };
-
 
 export default withStyles(({color, gradient, transition}) => ({
   LeaderboardCard: {

@@ -14,7 +14,22 @@ const getInitialsFromFullName = (fullName) => {
   return undefined;
 };
 
+/**
+ * Get the middle value of an array, if sortFn is specified, use sortFn
+ * With even number of elements, return the lower index
+ * @param  {array} array
+ * @param  {function}  sortFn
+ * @return {any}
+ */
+const getMiddleValueFromArray = (array, sortFn = (a, b) => a > b) => {
+  if (Array.isArray(array)) {
+    if (array.length === 1) return array[0];
+    return array.sort(sortFn)[Math.ceil(array.length / 2) - 1];
+  }
+  return undefined;
+};
 export {
   helloWorld,
   getInitialsFromFullName,
+  getMiddleValueFromArray,
 };

@@ -6,6 +6,7 @@ const BUTTON_TYPES = {
   secondary: 'secondary',
   'default': 'default',
   disabled: 'disabled',
+  'noStyle': 'noStyle',
 };
 const BUTTON_SIZES = {
   xs: 'xs',
@@ -14,11 +15,12 @@ const BUTTON_SIZES = {
 }
 
 /**
- * A generic RaisedButton that accepts children, imgSrc and icon.
+ * A generic Button that accepts children, imgSrc and icon.
  * Sample Usage:
+ * <Button type="primary" size="xs" label={'xs'}/>
  */
 // TODO[Audrey]:
-const RaisedButton = ({
+const Button = ({
   styles,
   style,
   htmlAttributes = {},
@@ -30,12 +32,12 @@ const RaisedButton = ({
   ...props
 }) => {
   const dynamicStyles = getStyles({size});
-  const mergedStyles = {...dynamicStyles.RaisedButton, ...style};
+  const mergedStyles = {...dynamicStyles.Button, ...style};
   return (
     <button
-      {...css(styles.RaisedButton, styles[type], styles[size])}
-      style={mergedStyles}
       {...htmlAttributes}
+      {...css(styles.Button, styles[type], styles[size], styles[`${type}Hover`])}
+      style={mergedStyles}
     >
       {label}
       {children}
@@ -43,8 +45,16 @@ const RaisedButton = ({
  );
 };
 
+// Explicity declare the default props for documentation purpose,
+// as we only hoist a limit set of statics
+Button.defaultProps = {
+  style: {},
+  htmlAttributes: {},
+  size: 'xs',
+  type: BUTTON_TYPES.default,
+};
 
-RaisedButton.propTypes = {
+Button.propTypes = {
   // Static styles
   styles: PropTypes.object,
 
@@ -67,7 +77,7 @@ RaisedButton.propTypes = {
 // Dynamtic styles
 function getStyles({size}) {
   return {
-    RaisedButton: {
+    Button: {
     },
     icon: {
 
@@ -76,7 +86,7 @@ function getStyles({size}) {
 }
 
 export default withStyles(({color, transition, button}) => ({
-  RaisedButton: {
+  Button: {
     transition: transition.easeOut(),
     userSelect: 'none',
     position: 'relative',
@@ -93,20 +103,38 @@ export default withStyles(({color, transition, button}) => ({
     textDecoration: 'none',
     minWidth: button.minWidth,
   },
-  'default': {
-    color: color.primaryText,
-    backgroundColor: color.textIcon,
-    border: `1px solid ${color.divider}`,
-  },
   primary: {
     color: color.textIcon,
     backgroundColor: color.primary,
     border: `1px solid ${color.primary}`,
   },
+  primaryHover: {
+    ':hover': {
+      backgroundColor: color.darkPrimary,
+    },
+  },
   secondary: {
     color: color.primary,
     backgroundColor: color.textIcon,
     border: `1px solid ${color.primary}`,
+  },
+  secondaryHover: {
+    ':hover': {
+      color: color.textIcon,
+      backgroundColor: color.darkPrimary,
+    },
+  },
+  'default': {
+    color: color.primaryText,
+    backgroundColor: color.textIcon,
+    border: `1px solid ${color.divider}`,
+  },
+  defaultHover: {
+    ':hover': {
+      color: color.textIcon,
+      backgroundColor: color.darkPrimary,
+      border: `1px solid ${color.primary}`,
+    },
   },
   disabled: {
     backgroundColor: color.disabled,
@@ -114,6 +142,16 @@ export default withStyles(({color, transition, button}) => ({
     color: button.disabledTextColor,
     cursor: 'not-allowed',
     pointerEvents: 'none',
+  },
+  'noStyle': {
+    backgroundColor: 'transparent',
+    color: color.primaryText,
+    border: 'none',
+  },
+  'noStyleHover': {
+    ':hover': {
+      color: color.primary,
+    },
   },
   xs: {
     padding: button.size.xs.padding,
@@ -130,4 +168,4 @@ export default withStyles(({color, transition, button}) => ({
   icon: {
     color: color.primary,
   },
-}))(RaisedButton);
+}))(Button);

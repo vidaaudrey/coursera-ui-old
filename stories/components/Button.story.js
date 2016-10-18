@@ -6,8 +6,19 @@ storiesOf('basic.Button', module)
 .addWithInfo(
    'simple usage',
    `
-   <Button type="default" label={'Resume'}/>
+   Button with size, type, label and children
+   ~~~js
+   import { Button } from 'coursera-ui';
 
+   <Button type="primary"  label={'primary'}/>
+   <Button type="secondary" label={'secondary'}/>
+   <Button type="default" label={'default'}/>
+   <Button type="disabled" label={'disabled'}/>
+   <Button type="noStyle" label={'noStyle'}/>
+   <Button type="primary" size="xs" label={'xs'}/>
+   <Button type="secondary" size="md" label={'md'}/>
+   <Button type="default" size="lg" label={'lg'}/>
+   ~~~
    `,
    () => (
      <div className="container">
@@ -17,6 +28,7 @@ storiesOf('basic.Button', module)
         <Button type="secondary" label={'secondary'}/>
         <Button type="default" label={'default'}/>
         <Button type="disabled" label={'disabled'}/>
+        <Button type="noStyle" label={'noStyle'}/>
         <Button type="primary" size="xs" label={'xs'}/>
         <Button type="secondary" size="md" label={'md'}/>
         <Button type="default" size="lg" label={'lg'}/>

@@ -18,7 +18,6 @@ const TopCoursesCard = ({styles, key, topCourses, ...props}) => {
   );
 };
 
-
 export default withStyles(({color, gradient}) => ({
   TopCoursesCard: {
     width: '100%',
@@ -26,7 +25,6 @@ export default withStyles(({color, gradient}) => ({
   },
   profileContainer: {
     background: `linear-gradient(90deg, ${gradient.secondary.start}, ${gradient.secondary.end})`,
-
     height: 300,
   }
 }))(TopCoursesCard);
