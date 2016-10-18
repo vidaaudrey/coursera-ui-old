@@ -14,6 +14,7 @@ const FIXED_POSITIONS = {
 const FixedContainer = ({
   styles,
   style = {},
+  theme,
   htmlAttributes = {},
   backgroundColor,
   fixedPosition = FIXED_POSITIONS.bottom,
@@ -26,6 +27,7 @@ const FixedContainer = ({
   const mergedStyles = {...dynamicStyles.FixedContainer, ...style};
   return (
     <div
+      {...props}
       {...htmlAttributes}
       {...css(styles.FixedContainer)}
       style={mergedStyles}

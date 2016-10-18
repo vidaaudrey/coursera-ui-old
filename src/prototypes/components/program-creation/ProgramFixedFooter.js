@@ -4,8 +4,9 @@ import {Avatar, Button, FixedContainer} from 'src';
 import {FOOTER_HEIGHT, CREATE_PROGRAM_STEPS} from '../../../constants/ProgramCreationAppConstants';
 import ProgramFixedFooterProgramName from './ProgramFixedFooterProgramName';
 import ProgramFixedFooterDomainSelection from './ProgramFixedFooterDomainSelection';
+import ProgramFixedFooterCourseSelection from './ProgramFixedFooterCourseSelection';
 const {
-  stepCreateProgramName, stepSelectDomain, stepAddCurriculum
+  stepCreateProgramName, stepSelectDomains, stepSelectCourses
 } = CREATE_PROGRAM_STEPS;
 
 class ProgramFixedFooter extends React.Component {
@@ -14,6 +15,7 @@ class ProgramFixedFooter extends React.Component {
     const {
       style, styles, step, onProgramNameNext,
       onDomainSelectionPrev, onDomainSelectionNext,
+      totalSeats, s12nIds, courseIds, onCourseSelectionNext,
     } = this.props;
 
     return (
@@ -22,10 +24,18 @@ class ProgramFixedFooter extends React.Component {
           {step === stepCreateProgramName &&
             <ProgramFixedFooterProgramName onNext={onProgramNameNext}/>
           }
-          {step === stepSelectDomain &&
+          {step === stepSelectDomains &&
             <ProgramFixedFooterDomainSelection
               onPrev={onDomainSelectionPrev}
               onNext={onDomainSelectionNext}
+            />
+          }
+          {step === stepSelectCourses &&
+            <ProgramFixedFooterCourseSelection
+              courseIds={courseIds}
+              s12nIds={s12nIds}
+              totalSeats={totalSeats}
+              onNext={onCourseSelectionNext}
             />
           }
         </div>
