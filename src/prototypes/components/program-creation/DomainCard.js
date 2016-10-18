@@ -27,7 +27,7 @@ class DomainCard extends React.Component {
         <h4 className="text-uppercase"> Courses</h4>
         <div className="row">
             {courses.map((item, index) => (
-              <div className="col-xs-12 col-md-4 col-lg">
+              <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <CourseCard key={`CourseCard~${index}`}/>
               </div>
             ))}
@@ -47,6 +47,5 @@ function getStyles({coursePhotoSize}) {
 export default withStyles(({color, gradient}) => ({
   DomainCard: {
     textAlign: 'left',
-    minHeight: 450,
   }
 }))(DomainCard);

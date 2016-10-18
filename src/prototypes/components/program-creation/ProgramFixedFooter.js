@@ -19,7 +19,7 @@ class ProgramFixedFooter extends React.Component {
     } = this.props;
 
     return (
-      <FixedContainer height={FOOTER_HEIGHT}>
+      <FixedContainer height={FOOTER_HEIGHT} backgroundColor="white">
         <div {...css(styles.ProgramFixedFooter)}>
           {step === stepCreateProgramName &&
             <ProgramFixedFooterProgramName onNext={onProgramNameNext}/>

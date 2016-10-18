@@ -13,7 +13,7 @@ const Header = ({
   ...props
 }) => {
   return (
-    <FixedContainer height={HEADER_HEIGHT} fixedPosition="top">
+    <FixedContainer height={HEADER_HEIGHT} fixedPosition="top" backgroundColor="white">
       <header  {...cssWithClass('container-fluid', styles.Header)}>
         <div {...cssWithClass('container horizontal-box align-items-spacebetween wrap', styles.headerInner)}>
           <a href="/"> <img src={courseraLogo} alt="Coursera Logo" alt="Coursera"/></a>

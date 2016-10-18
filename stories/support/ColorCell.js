@@ -13,7 +13,7 @@ function ColorCell({colors, name, onClick}) {
   const colorName = `${name}500`;
   const color = colors[colorName];
   return (
-    <div className="ColorCell col-xs col-lg-2">
+    <div className="ColorCell col-xs-12 col-sm-4 col-md-3 col-lg-2">
       <div
         className="vertical-box align-items-absolute-center h-100 m-a-1"
       >
