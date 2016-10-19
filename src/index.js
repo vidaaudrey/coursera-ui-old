@@ -6,6 +6,7 @@ import Button from './components/basic/Button';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import Avatar from './components/basic/Avatar';
 import FixedContainer from './components/extended/FixedContainer';
+import S12nCard from './components/rich/S12nCard';
 import SvgIcon from './components/svg/SvgIcon';
 import SelectListItem from './components/extended/selectList/SelectListItem';
 import SelectList from './components/extended/selectList/SelectList';
@@ -41,6 +42,7 @@ export {
   App,
   Button,
   FixedContainer,
+  S12nCard,
   SvgIcon,
   SelectListItem,
   SelectList,
