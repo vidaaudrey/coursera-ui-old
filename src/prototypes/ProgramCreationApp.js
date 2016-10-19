@@ -7,23 +7,23 @@ import ProgramAddNamePage from './components/program-creation/ProgramAddNamePage
 import ProgramSelectDomainPage from './components/program-creation/ProgramSelectDomainPage';
 import ProgramSelectCoursePage from './components/program-creation/ProgramSelectCoursePage';
 import ProgramFixedFooter from './components/program-creation/ProgramFixedFooter';
+import SearchAndDomainSelectCard from './components/program-creation/SearchAndDomainSelectCard'
+
 import {
   HEADER_HEIGHT, FOOTER_HEIGHT, CREATE_PROGRAM_STEPS
 } from '../constants/ProgramCreationAppConstants';
 const {
   stepCreateProgramName, stepSelectDomains, stepSelectCourses, stepCreateProgram,
-  stepCreateProgramSuccess
+  stepCreateProgramSuccess, stepInviteMembers,
 } = CREATE_PROGRAM_STEPS;
 
 class ProgramCreationApp extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      // step: stepSelectDomains,
-      // step: stepSelectDomains,
       step: stepSelectCourses,
       programName: null,
-      domains: [],
+      selectedDomainIds: [],
       courseIds: [],
       s12nIds: [],
       totalSeats: 6,
@@ -34,8 +34,8 @@ class ProgramCreationApp extends React.Component {
     this.setState({programName});
   }
 
-  handlSetDomains = (domain) => {
-    this.setState({domain});
+  handlSetDomains = (selectedDomainIds) => {
+    this.setState({selectedDomainIds});
   }
 
   handleAddCourse = (id) => {
@@ -87,6 +87,14 @@ class ProgramCreationApp extends React.Component {
   }
 
   handleCourseSelectionNext = () => {
+    this.setState({step: stepInviteMembers});
+  }
+
+  handleInviteMemberPrev = () => {
+    this.setState({step: stepSelectCourses});
+  }
+
+  handleInviteMemberNext = () => {
     this.setState({step: stepCreateProgram});
   }
 
@@ -97,10 +105,17 @@ class ProgramCreationApp extends React.Component {
   render() {
     const {styles} = this.props;
     const {step, programName, courseIds, s12nIds, totalSeats} = this.state;
-    console.warn('---', this.state);
+    const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess)
+
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
         <Header />
+        {showSelectCoursePage &&
+          <SearchAndDomainSelectCard
+            onSetDomains={this.handlSetDomains}
+          />
+        }
+
         <div {...cssWithClass('container', styles.main)}>
           {step === stepCreateProgramName &&
             <ProgramAddNamePage programName={programName} onSetProgramName={this.handleSetProgramName}/>
@@ -108,7 +123,7 @@ class ProgramCreationApp extends React.Component {
           {step === stepSelectDomains &&
             <ProgramSelectDomainPage onSetDomains={this.handlSetDomains} />
           }
-          {(step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess) &&
+          {showSelectCoursePage &&
             <ProgramSelectCoursePage
               onCreateProgram={this.handleCreateProgram}
               onAddCourse={this.handleAddCourse}
@@ -135,7 +150,6 @@ class ProgramCreationApp extends React.Component {
 }
 
 const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(ProgramCreationApp);
-
 
 
 export default withStyles(({color, gradient, transition, spacing}) => ({

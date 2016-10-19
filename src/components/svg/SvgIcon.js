@@ -35,9 +35,6 @@ class SvgIcon extends Component {
 
     onMouseLeave: PropTypes.func,
 
-    // Override the inline-styles of the root element
-    style: PropTypes.object,
-
     // Allows you to redefine what the coordinates
     viewBox: PropTypes.string,
   };
@@ -50,6 +47,7 @@ class SvgIcon extends Component {
     color: theme.color.icon,
     hoverColor: theme.color.darkPrimary,
     styles: {},
+    style: {},
     htmlAttributes: {},
   };
 
@@ -87,16 +85,15 @@ class SvgIcon extends Component {
 
     const dynamicStyles = getStyles({color, hoverColor, size}, this.state);
     const mergedStyles = {...dynamicStyles.SvgIcon, ...style};
-
+    
     return (
       <svg
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        style={mergedStyles}
-        viewBox={viewBox}
+        {...htmlAttributes}
         {...css(styles.SvgIcon)}
         style={mergedStyles}
-        {...htmlAttributes}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+        viewBox={viewBox}
       >
         {children}
       </svg>

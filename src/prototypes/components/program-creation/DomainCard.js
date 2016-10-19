@@ -13,22 +13,22 @@ class DomainCard extends React.Component {
     } = this.props;
     const s12ns = _.range(3);
     const courses = _.range(20);
-    console.warn('---', s12ns, courses);
     return (
       <div {...css(styles.DomainCard)}>
-        <h4 className="text-uppercase"> Specializations</h4>
-        <div className="row">
+        <h2 {...css(styles.domainName)}>Computer Science</h2>
+        <h5 {...css(styles.cardType)}> Specializations</h5>
+        <div className="row m-b-2">
             {s12ns.map((item, index) => (
-              <div className="col-xs-12 col-md-6 col-lg-4">
-                <S12nCard key={`S12nCard~${index}`}/>
+              <div key={`S12nCard~${item}`} className="col-xs-12 col-md-6 col-lg-4">
+                <S12nCard />
               </div>
             ))}
         </div>
-        <h4 className="text-uppercase"> Courses</h4>
-        <div className="row">
+        <h4 {...css(styles.cardType)}> Courses</h4>
+        <div className="row m-b-2">
             {courses.map((item, index) => (
-              <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <CourseCard key={`CourseCard~${index}`}/>
+              <div key={`CourseCard~${index}`} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <CourseCard />
               </div>
             ))}
         </div>
@@ -44,8 +44,15 @@ function getStyles({coursePhotoSize}) {
   }
 }
 
-export default withStyles(({color, gradient}) => ({
+export default withStyles(({color, spacing}) => ({
   DomainCard: {
     textAlign: 'left',
+  },
+  domainName: {
+    fontWeight: 'normal',
+  },
+  cardType: {
+    textTransform: 'uppercase',
+    color: color.secondaryText,
   }
 }))(DomainCard);

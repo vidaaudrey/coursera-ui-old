@@ -6,4 +6,5 @@ export const CREATE_PROGRAM_STEPS = {
   stepSelectCourses: 'stepSelectCourses',
   stepCreateProgram: 'stepCreateProgram',
   stepCreateProgramSuccess: 'stepCreateProgramSuccess',
+  stepInviteMembers: 'stepInviteMembers',
 };

@@ -7,6 +7,8 @@ import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import Avatar from './components/basic/Avatar';
 import FixedContainer from './components/extended/FixedContainer';
 import SvgIcon from './components/svg/SvgIcon';
+import SelectListItem from './components/extended/selectList/SelectListItem';
+import SelectList from './components/extended/selectList/SelectList';
 import * as materialIcons from './components/svg/material';
 import * as courseraIcons from './components/svg/coursera';
 // Hoc
@@ -40,6 +42,8 @@ export {
   Button,
   FixedContainer,
   SvgIcon,
+  SelectListItem,
+  SelectList,
   Avatar,
   StaticLinearProgress,
 

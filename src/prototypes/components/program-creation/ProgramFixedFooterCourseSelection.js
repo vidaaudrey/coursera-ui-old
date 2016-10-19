@@ -6,9 +6,9 @@ const _ = require('underscore');
 const ProgramFixedFooterDomainSelection = ({
   styles, totalSeats, courseIds, s12nIds, onNext
 }) => {
-  console.warn('-ProgramFixedFooterDomainSelection--', totalSeats );
   const selectedSize = _(courseIds).size();
   const availableSeats = totalSeats - selectedSize;
+  
   return (
     <div className="container horizontal-box align-items-spacebetween align-items-vertical-center h-100">
       <div className="horizontal-box">

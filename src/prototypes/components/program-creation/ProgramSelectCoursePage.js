@@ -2,6 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button} from 'src';
 import DomainCard from './DomainCard';
+import SubDomainSelectCard from './SubDomainSelectCard';
 
 class ProgramSelectCoursePage extends React.Component {
 
@@ -11,8 +12,8 @@ class ProgramSelectCoursePage extends React.Component {
     } = this.props;
     return (
       <div {...cssWithClass('bg-gray', styles.ProgramSelectCoursePage)}>
+        <SubDomainSelectCard />
         <DomainCard />
-
         <h2>Course Selection page</h2>
           <Button
             type="primary"
@@ -58,5 +59,5 @@ function getStyles({coursePhotoSize}) {
 export default withStyles(({color, gradient}) => ({
   ProgramSelectCoursePage: {
     minHeight: 450,
-  }
+  },
 }))(ProgramSelectCoursePage);
