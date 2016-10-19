@@ -41,7 +41,7 @@ export default {
   lighten,
   spacing: {
     minWidth: 320,
-    xs: '0.5rem',
+    sm: '0.5rem',
     md: '1rem',
     lg: '1.5rem',
   },

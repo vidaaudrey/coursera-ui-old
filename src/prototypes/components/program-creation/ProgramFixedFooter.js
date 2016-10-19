@@ -15,7 +15,9 @@ class ProgramFixedFooter extends React.Component {
     const {
       style, styles, step, onProgramNameNext,
       onDomainSelectionPrev, onDomainSelectionNext,
-      totalSeats, s12nIds, courseIds, onCourseSelectionNext,
+      seatLimit, currentTotalSelectCount,
+      selectedS12nIds, selectedCourseIds,
+      onCourseSelectionPrev, onCourseSelectionNext,
     } = this.props;
 
     return (
@@ -32,9 +34,11 @@ class ProgramFixedFooter extends React.Component {
           }
           {step === stepSelectCourses &&
             <ProgramFixedFooterCourseSelection
-              courseIds={courseIds}
-              s12nIds={s12nIds}
-              totalSeats={totalSeats}
+              selectedCourseIds={selectedCourseIds}
+              selectedS12nIds={selectedS12nIds}
+              seatLimit={seatLimit}
+              currentTotalSelectCount={currentTotalSelectCount}
+              onPrev={onCourseSelectionPrev}
               onNext={onCourseSelectionNext}
             />
           }

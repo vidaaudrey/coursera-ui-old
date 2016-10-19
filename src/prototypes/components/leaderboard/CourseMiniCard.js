@@ -65,7 +65,7 @@ const CourseMiniCard = ({
 
 const CourseWithApiData = withApiData({dataType: 'COURSE'})(CourseMiniCard);
 
-// Dynamtic styles
+// Dynamic styles
 function getStyles({coursePhotoSize}) {
   return {
     StaticLinearProgress: {

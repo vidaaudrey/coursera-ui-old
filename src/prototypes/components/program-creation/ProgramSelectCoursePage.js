@@ -8,38 +8,22 @@ class ProgramSelectCoursePage extends React.Component {
 
   render() {
     const {
-      styles, onAddCourse, onRemoveCourse, onAddS12n, onRemoveS12n,
+      styles, selectedCourseIds, selectedS12nIds,
+      onToggleCourseSelect, onToggleS12nSelect,
+      onSelectChange,
     } = this.props;
     return (
       <div {...cssWithClass('bg-gray', styles.ProgramSelectCoursePage)}>
-        <SubDomainSelectCard />
-        <DomainCard />
-        <h2>Course Selection page</h2>
-          <Button
-            type="primary"
-            size="xs"
-            label={'Add Course'}
-            htmlAttributes={{onClick: () => onAddCourse(1)}}
-          />
-          <Button
-            type="primary"
-            size="xs"
-            label={'Remove Course'}
-            htmlAttributes={{onClick: () => onRemoveCourse(1)}}
-          />
-          <Button
-            type="primary"
-            size="xs"
-            label={'Add S12n'}
-            htmlAttributes={{onClick: () => onAddS12n(1)}}
-          />
-          <Button
-            type="primary"
-            size="xs"
-            label={'Remove S12n'}
-            htmlAttributes={{onClick: () => onRemoveS12n(1)}}
-          />
-
+        <SubDomainSelectCard
+          onSelectChange={onSelectChange}
+          alignCenter={true}
+        />
+        <DomainCard
+          selectedCourseIds={selectedCourseIds}
+          selectedS12nIds={selectedS12nIds}
+          onToggleCourseSelect={onToggleCourseSelect}
+          onToggleS12nSelect={onToggleS12nSelect}
+        />
       </div>
     );
   }

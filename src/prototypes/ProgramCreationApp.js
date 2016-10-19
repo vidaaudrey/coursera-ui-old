@@ -20,73 +20,103 @@ const {
 class ProgramCreationApp extends React.Component {
   constructor(props, context) {
     super(props, context);
+    // Keep a record of all courseIds in a s12n
+    this._selectedS12nRecord = {};
     this.state = {
       step: stepSelectCourses,
       programName: null,
-      selectedDomainIds: [],
-      courseIds: [],
-      s12nIds: [],
-      totalSeats: 6,
+      programSlug: null,
+      selectedDomainIds: ['data-science', 'computer-science', 'business'],
+      selectedCourseIds: [],
+      selectedS12nIds: [],
+      seatLimit: 6,
+      currentTotalSelectCount: 0,
     }
   }
 
-  handleSetProgramName = (programName) => {
+  onSetProgramName = (programName) => {
     this.setState({programName});
   }
 
-  handlSetDomains = (selectedDomainIds) => {
+  onSetProgramSlug = (programSlug) => {
+    this.setState({programSlug});
+  }
+
+  onSetDomains = (selectedDomainIds) => {
     this.setState({selectedDomainIds});
   }
 
+  onToggleCourseSelect = (courseId, isSelected) => {
+    if (isSelected) {
+      this.handleAddCourse(courseId);
+    } else {
+      this.handleRemoveCourse(courseId);
+    }
+  }
+
+  onToggleS12nSelect = (s12nId, isSelected, s12nCourseIds = []) => {
+    const {selectedS12nIds, selectedCourseIds} = this.state;
+    if (isSelected) {
+      this.handleAddS12n(s12nId, s12nCourseIds)
+    } else {
+      this.handleRemoveS12n(s12nId, s12nCourseIds);
+    }
+  }
+
   handleAddCourse = (id) => {
-    const courseIds = [...this.state.courseIds];
-    courseIds.push(id);
-    _.uniq(courseIds);
-    this.setState({courseIds});
+    let selectedCourseIds = [...this.state.selectedCourseIds, id];
+    selectedCourseIds = _.uniq(selectedCourseIds);
+    this.setState({
+      selectedCourseIds,
+      currentTotalSelectCount: this.state.currentTotalSelectCount + 1,
+    });
   }
 
   handleRemoveCourse = (id) => {
-    const courseIds = _.reject(this.state.courseIds, (item) => item === id);
-    this.setState({courseIds});
+    const selectedCourseIds = _.reject(this.state.selectedCourseIds, (item) => item === id);
+    this.setState({
+      selectedCourseIds,
+      currentTotalSelectCount: this.state.currentTotalSelectCount - 1,
+    });
   }
 
-  handleAddS12n = (id, courseIds) => {
-    const s12nIds = [...this.state.s12nIds];
-    s12nIds.push(id);
-    _.uniq(s12nIds);
-    if (courseIds) {
-      this.state.courseIds.concat(courseIds);
-      _.uniq(this.state.courseIds);
-    }
-    this.setState({s12nIds});
+  handleAddS12n = (id, s12nCourseIds = []) => {
+    let selectedS12nIds = [...this.state.selectedS12nIds, id];
+    selectedS12nIds = _.uniq(selectedS12nIds);
+    this.setState({
+      selectedS12nIds,
+      currentTotalSelectCount: this.state.currentTotalSelectCount + _(s12nCourseIds).size(),
+    });
+
+    this._selectedS12nRecord[id] = s12nCourseIds;
   }
 
-  handleRemoveS12n = (id, courseIds) => {
-    const s12nIds = _.reject(this.state.s12nIds, (item) => item === id);
-    if (courseIds) {
-      const newCourseIds = _.reject(this.state.courseIds, (item) => item === id);
-      this.setState({courseIds: newCourseIds});
-    }
-    this.setState({s12nIds});
+  handleRemoveS12n = (id, s12nCourseIds = []) => {
+    const selectedS12nIds = _.reject(this.state.selectedS12nIds, (item) => item === id);
+    this.setState({
+      selectedS12nIds,
+      currentTotalSelectCount: this.state.currentTotalSelectCount - _(s12nCourseIds).size(),
+    });
   }
 
-  handleProgramNameNext = () => {
+  onProgramNameNext = () => {
     this.setState({step: stepSelectDomains});
   }
 
-  handleDomainSelectionPrev = () => {
+  onDomainSelectionPrev = () => {
     this.setState({step: stepCreateProgramName});
   }
 
-  handleDomainSelectionNext = () => {
+  onDomainSelectionNext = () => {
     this.setState({step: stepSelectCourses});
   }
 
-  handleCourseSelectionPrev = () => {
-    this.setState({step: stepSelectDomain});
+  onCourseSelectionPrev = () => {
+    console.warn('-onCourseSelectionPrev--');
+    this.setState({step: stepSelectDomains});
   }
 
-  handleCourseSelectionNext = () => {
+  onCourseSelectionNext = () => {
     this.setState({step: stepInviteMembers});
   }
 
@@ -98,51 +128,66 @@ class ProgramCreationApp extends React.Component {
     this.setState({step: stepCreateProgram});
   }
 
-  handleCreateProgram = () => {
+  onCreateProgram = () => {
     this.setState({step: stepCreateProgram});
   }
 
+
   render() {
     const {styles} = this.props;
-    const {step, programName, courseIds, s12nIds, totalSeats} = this.state;
+    const {
+      step, programName, programSlug,
+      selectedDomainIds, selectedCourseIds, selectedS12nIds,
+      seatLimit, currentTotalSelectCount,
+    } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess)
+    console.warn('---', this.state);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
         <Header />
         {showSelectCoursePage &&
           <SearchAndDomainSelectCard
-            onSetDomains={this.handlSetDomains}
+            onSetDomains={this.onSetDomains}
           />
         }
 
         <div {...cssWithClass('container', styles.main)}>
           {step === stepCreateProgramName &&
-            <ProgramAddNamePage programName={programName} onSetProgramName={this.handleSetProgramName}/>
+            <ProgramAddNamePage
+              programName={programName}
+              programSlug={programSlug}
+              onSetProgramName={this.onSetProgramName}
+              onSetProgramSlug={this.onSetProgramName}
+            />
           }
           {step === stepSelectDomains &&
-            <ProgramSelectDomainPage onSetDomains={this.handlSetDomains} />
+            <ProgramSelectDomainPage
+              onSetDomains={this.onSetDomains}
+              selectedDomainIds={selectedDomainIds}
+            />
           }
           {showSelectCoursePage &&
             <ProgramSelectCoursePage
-              onCreateProgram={this.handleCreateProgram}
-              onAddCourse={this.handleAddCourse}
-              onRemoveCourse={this.handleRemoveCourse}
-              onAddS12n={this.handleAddS12n}
-              onRemoveS12n={this.handleRemoveS12n}
+              selectedCourseIds={selectedCourseIds}
+              selectedS12nIds={selectedS12nIds}
+              onCreateProgram={this.onCreateProgram}
+              onToggleCourseSelect={this.onToggleCourseSelect}
+              onToggleS12nSelect={this.onToggleS12nSelect}
             />
           }
         </div>
         <ProgramFixedFooter
           step={step}
-          courseIds={courseIds}
-          s12nIds={s12nIds}
-          totalSeats={totalSeats}
-          onProgramNameNext={this.handleProgramNameNext}
-          onDomainSelectionNext={this.handleDomainSelectionNext}
-          onDomainSelectionPrev={this.handleDomainSelectionPrev}
-          onCourseSelectionPrev={this.handleCourseSelectionPrev}
-          onCourseSelectionNext={this.handleCourseSelectionNext}
+          selectedCourseIds={selectedCourseIds}
+          selectedS12nIds={selectedS12nIds}
+          seatLimit={seatLimit}
+          currentTotalSelectCount={currentTotalSelectCount}
+          onProgramNameNext={this.onProgramNameNext}
+          onDomainSelectionNext={this.onDomainSelectionNext}
+          onDomainSelectionPrev={this.onDomainSelectionPrev}
+          onCourseSelectionPrev={this.onCourseSelectionPrev}
+          onCourseSelectionNext={this.onCourseSelectionNext}
         />
       </div>
     );

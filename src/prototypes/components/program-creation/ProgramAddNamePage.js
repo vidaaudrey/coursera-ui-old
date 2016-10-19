@@ -5,17 +5,32 @@ import {Avatar, Button} from 'src';
 class ProgramAddName extends React.Component {
 
   render() {
-    const {styles, programName, onSetProgramName} = this.props;
+    const {
+      styles, programName, programSlug, onSetProgramName, onSetProgramSlug
+    } = this.props;
     return (
       <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramAddName)}>
         <h2>Create your first Learning Program</h2>
-        <input type="text"
-          {...css(styles.input)}
-          ref={(r) => (this.programNameRef = r)}
-          placeholder="Program Name"
-          defaultValue={programName}
-          onChange={() => onSetProgramName(this.programNameRef.value)}
-        />
+        <div className="vertical-box">
+          <div className="m-b-1">
+            <input type="text"
+              {...css(styles.input)}
+              ref={(r) => (this.programNameRef = r)}
+              placeholder="Program Name"
+              defaultValue={programName}
+              onChange={() => onSetProgramName(this.programNameRef.value)}
+            />
+          </div>
+          <div className="m-b-1">
+            <input type="text"
+              {...css(styles.input)}
+              ref={(r) => (this.programSlugRef = r)}
+              placeholder="Program Slug"
+              defaultValue={programSlug}
+              onChange={() => onSetProgramSlug(this.programSlugRef.value)}
+              />
+          </div>
+        </div>
       </div>
     );
   }

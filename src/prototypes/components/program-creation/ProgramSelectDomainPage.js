@@ -25,7 +25,10 @@ class ProgramSelectDomainPage extends React.Component {
       <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramSelectDomainPage)}>
         <h2>The skills I am looking for are in </h2>
         <div className="p-t-3 p-b-3 m-b-3">
-          <DomainSelectList onSelectChange={this.onSelectChange}/>
+          <DomainSelectList
+            onSelectChange={this.onSelectChange}
+            alignCenter={true}
+          />
         </div>
       </div>
     );

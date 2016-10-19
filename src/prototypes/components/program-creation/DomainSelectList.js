@@ -43,13 +43,21 @@ const mockListData = [
   }
 ];
 
-const DomainSelectList = ({listData = mockListData, onSelectChange}) => {
+const DomainSelectList = ({
+  alignCenter, selectedDomainIds = [], listData = mockListData, onSelectChange
+}) => {
+  const listDataWithSelect = _(listData).map((item) => ({
+    id: item.id,
+    label: item.label,
+    isSelected: _(selectedDomainIds).contains(item.id),
+  }));
   return (
     <SelectList
-      listData={listData}
+      listData={listDataWithSelect}
       showSelectAll={true}
       selectAllLabel={'All Topics'}
       onSelectChange={onSelectChange}
+      alignCenter={alignCenter}
     />
   );
 };

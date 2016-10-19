@@ -25,7 +25,7 @@ const Button = ({
   style,
   htmlAttributes = {},
   type = BUTTON_TYPES.default,
-  size = 'xs',
+  size = 'md',
   isOutline,
   children,
   label,
@@ -50,7 +50,7 @@ const Button = ({
 Button.defaultProps = {
   style: {},
   htmlAttributes: {},
-  size: 'xs',
+  size: 'md',
   type: BUTTON_TYPES.default,
 };
 
@@ -74,7 +74,7 @@ Button.propTypes = {
   label: PropTypes.string,
 };
 
-// Dynamtic styles
+// Dynamic styles
 function getStyles({size}) {
   return {
     Button: {

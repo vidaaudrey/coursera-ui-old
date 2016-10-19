@@ -84,7 +84,7 @@ Avatar.defaultProps = {
   size: 44,
 };
 
-// Dynamtic styles
+// Dynamic styles
 function getStyles(props) {
   const {size, backgroundColor, color} = props;
   return {

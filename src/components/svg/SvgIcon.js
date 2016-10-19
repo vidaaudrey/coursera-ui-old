@@ -101,7 +101,7 @@ class SvgIcon extends Component {
   }
 }
 
-// Dynamtic styles
+// Dynamic styles
 function getStyles(props, state) {
   const {color, hoverColor, size} = props;
   const {hovered} = state;

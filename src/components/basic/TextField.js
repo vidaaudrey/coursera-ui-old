@@ -87,7 +87,7 @@ TextField.propTypes = {
 
 };
 
-// Dynamtic styles
+// Dynamic styles
 function getStyles({size}) {
   return {
     TextField: {

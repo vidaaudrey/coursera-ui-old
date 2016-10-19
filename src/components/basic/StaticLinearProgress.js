@@ -49,7 +49,7 @@ StaticLinearProgress.propTypes = {
   height: PropTypes.number,
 };
 
-// Dynamtic styles
+// Dynamic styles
 function getStyles(props) {
   const {backgroundColor, color, height} = props;
   return {
