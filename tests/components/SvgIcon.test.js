@@ -99,12 +99,10 @@ describe('SvgIcon', () => {
 
     it('overwrites and extends htmlAttributes', () => {
       const htmlAttributes = {
-        viewBox: '0 0 40 40',
         xmlns: 'http://www.w3.org/2000/svg',
         version: "1.1",
       }
       wrapper = mount(<SvgIcon color={mockProp.color} htmlAttributes={htmlAttributes}>{children}</SvgIcon>);
-      expect(wrapper.find('svg').props().viewBox).to.equal(htmlAttributes.viewBox);
       expect(wrapper.find('svg').props().xmlns).to.equal(htmlAttributes.xmlns);
       expect(wrapper.find('svg').props().version).to.equal(htmlAttributes.version);
     });
