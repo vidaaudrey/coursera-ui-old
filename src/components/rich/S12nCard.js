@@ -11,7 +11,9 @@ const S12nCard = ({
   weekCount = 26,
   weeklyHourCount = '6-8',
   nextSessionDate = 'October 3rd',
-  certificateCount = 1
+  certificateCount = 1,
+  isSelected,
+  onToggleS12nSelect,
 }) => {
   return (
     <div {...cssWithClass('vertical-box', styles.S12nCard)}>
@@ -41,7 +43,10 @@ const S12nCard = ({
             </div>
             <div {...cssWithClass('col-xs-5 horizontal-box align-items-vertical-center', styles.cardSelect)}>
               <span {...css(styles.selectText)}> Not Selected </span>
-              <SvgCheckOutline size={20} color="darkGray"/>
+              <button onClick={() => (onToggleS12nSelect(id, !isSelected, courseIds))}>
+                <SvgCheckOutline size={20} color="darkGray"/>
+                {isSelected ? 'Deselect' : 'Select'}
+              </button>
             </div>
           </div>
         </div>
