@@ -50,7 +50,9 @@ class SearchAndDomainSelectCard extends React.Component {
 
   static propTypes = {
     onSetDomains: React.PropTypes.func.isRequired,
+    onSetSearchKeyword: React.PropTypes.func.isRequired,
     selectedDomainIds: React.PropTypes.array.isRequired,
+    searchKeyWord: React.PropTypes.string,
   }
 
   static defaultProps = {
@@ -58,17 +60,21 @@ class SearchAndDomainSelectCard extends React.Component {
     selectedDomainIds: [],
   }
 
+  onSubmit = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.props.onSetSearchKeyword(this.searchRef.value)
+  }
+
   onSelectChange = (id, newIsSelect, newListData) => {
     const selectedDomainIds = _.chain(newListData)
-                                .filter(item => item.isSelected)
-                                .pluck('id')
-                                .value();
-
+      .filter(item => item.isSelected)
+      .pluck('id')
+      .value();
     this.props.onSetDomains(selectedDomainIds);
   }
 
   render() {
-    const { styles, domainListData, selectedDomainIds } = this.props;
+    const { styles, domainListData, selectedDomainIds, onSetSearchKeyword, searchKeyWord } = this.props;
 
     return (
       <div {...cssWithClass('p-b-1', styles.SearchAndDomainSelectCard)}>
@@ -81,13 +87,16 @@ class SearchAndDomainSelectCard extends React.Component {
           />
         </div>
         <div className="container horizontal-box align-items-vertical-center">
-          <div className="flex-1 m-r-1">
+          <form className="flex-1 m-r-1" onSubmit={this.onSubmit} >
             <input
               type="text"
               placeholder="What do you want to learn?"
               {...css(styles.searchInput)}
+              ref={(r) => (this.searchRef = r)}
+              defaultValue={searchKeyWord}
+              onChange={() => (onSetSearchKeyword(this.searchRef.value))}
             />
-          </div>
+          </form>
           <button {...css(styles.iconButton)}>
             <ContentFilterList />
           </button>

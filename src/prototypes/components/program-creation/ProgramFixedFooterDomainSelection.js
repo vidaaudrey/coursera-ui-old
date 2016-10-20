@@ -10,13 +10,13 @@ const ProgramFixedFooterDomainSelection = ({
     <div className="container horizontal-box align-items-spacebetween align-items-vertical-center h-100">
       <Button
         type="primary"
-        size="xs"
+        size="sm"
         label={'Back'}
         htmlAttributes={{onClick: onPrev}}
       />
       <Button
         type="primary"
-        size="xs"
+        size="sm"
         label={'Next'}
         htmlAttributes={{onClick: onNext}}
       />

@@ -32,10 +32,11 @@ class ProgramCreationApp extends React.Component {
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
     this.state = {
-      step: stepSelectCourses,
+      step: stepCreateProgramName,
       programName: null,
       programSlug: null,
       programTagline: null,
+      searchKeyWord: null,
       selectedDomainIds: ['data-science', 'computer-science', 'business'],
       selectedCourseIds: [],
       selectedS12nIds: [],
@@ -54,6 +55,10 @@ class ProgramCreationApp extends React.Component {
 
   onSetProgramTagline = (programTagline) => {
     this.setState({programTagline});
+  }
+
+  onSetSearchKeyword = (searchKeyWord) => {
+    this.setState({searchKeyWord});
   }
 
   onSetDomains = (selectedDomainIds) => {
@@ -157,7 +162,7 @@ class ProgramCreationApp extends React.Component {
   render() {
     const {styles} = this.props;
     const {
-      step, programName, programSlug, programTagline,
+      step, programName, programSlug, programTagline, searchKeyWord,
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
       seatLimit, currentTotalSelectCount,
     } = this.state;
@@ -168,6 +173,8 @@ class ProgramCreationApp extends React.Component {
         <Header />
         {showSelectCoursePage &&
           <SearchAndDomainSelectCard
+            onSetSearchKeyword={this.onSetSearchKeyword}
+            searchKeyWord={searchKeyWord}
             onSetDomains={this.onSetDomains}
             selectedDomainIds={selectedDomainIds}
           />
@@ -192,10 +199,10 @@ class ProgramCreationApp extends React.Component {
           }
           {showSelectCoursePage &&
             <ProgramSelectCoursePage
+              searchKeyWord={searchKeyWord}
               selectedCourseIds={selectedCourseIds}
               selectedS12nIds={selectedS12nIds}
               selectedDomainIds={selectedDomainIds}
-              onCreateProgram={this.onCreateProgram}
               onToggleCourseSelect={this.onToggleCourseSelect}
               onToggleS12nSelect={this.onToggleS12nSelect}
             />
@@ -209,6 +216,7 @@ class ProgramCreationApp extends React.Component {
               selectedS12nIds={selectedS12nIds}
               seatLimit={seatLimit}
               currentTotalSelectCount={currentTotalSelectCount}
+              onCreateProgram={this.onCreateProgram}
             />
           }
         </div>

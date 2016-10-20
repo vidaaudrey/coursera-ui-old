@@ -23,8 +23,8 @@ const Header = ({
             }
           </div>
           <div className="horizontal-box align-items-vertical-center">
-            <Button type="noStyle" size="xs" label="Log In" style={{marginRight: '1rem'}}/>
-            <Button type="primary" size="xs" label="Sign Up"/>
+            <Button type="noStyle" size="sm" label="Log In" style={{marginRight: '1rem'}}/>
+            <Button type="primary" size="sm" label="Sign Up"/>
           </div>
         </div>
       </header>

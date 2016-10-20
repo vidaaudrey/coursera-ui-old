@@ -15,7 +15,7 @@ storiesOf('basic.Button', module)
    <Button type="default" label={'default'}/>
    <Button type="disabled" label={'disabled'}/>
    <Button type="noStyle" label={'noStyle'}/>
-   <Button type="primary" size="xs" label={'xs'}/>
+   <Button type="primary" size="sm" label={'sm'}/>
    <Button type="secondary" size="md" label={'md'}/>
    <Button type="default" size="lg" label={'lg'}/>
    ~~~
@@ -29,7 +29,7 @@ storiesOf('basic.Button', module)
         <Button type="default" label={'default'}/>
         <Button type="disabled" label={'disabled'}/>
         <Button type="noStyle" label={'noStyle'}/>
-        <Button type="primary" size="xs" label={'xs'}/>
+        <Button type="primary" size="sm" label={'sm'}/>
         <Button type="secondary" size="md" label={'md'}/>
         <Button type="default" size="lg" label={'lg'}/>
       </div>
@@ -39,7 +39,7 @@ storiesOf('basic.Button', module)
         <Button type="secondary" label={'secondary'}/>
         <Button type="default" label={'default'}/>
         <Button type="disabled" label={'disabled'}/>
-        <Button type="primary" size="xs" label={'xs'}/>
+        <Button type="primary" size="sm" label={'sm'}/>
         <Button type="secondary" size="md" label={'md'}/>
         <Button type="default" size="lg" label={'lg'}/>
       </div>

@@ -10,13 +10,20 @@ class DomainCard extends React.Component {
   static propTypes = {
     selectedCourseIds: React.PropTypes.array,
     selectedS12nIds: React.PropTypes.array,
-    domainId: React.PropTypes.string,
-    domainName: React.PropTypes.string,
+    domainId: React.PropTypes.string.isRequired,
+    domainName: React.PropTypes.string.isRequired,
+    searchKeyWord: React.PropTypes.string,
   }
 
   static defaultProps = {
     selectedCourseIds: [],
     selectedS12nIds: [],
+  }
+
+  constructor(props, context) {
+    super(props, context);
+    const {domainId, searchKeyWord} = props;
+    console.log('--Domain Card TODO: search on s12n and course by domainId and searchKeyWord--', domainId, searchKeyWord);
   }
 
   render() {

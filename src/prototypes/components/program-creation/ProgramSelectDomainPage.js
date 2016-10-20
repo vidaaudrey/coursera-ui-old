@@ -13,9 +13,9 @@ class ProgramSelectDomainPage extends React.Component {
 
   onSelectChange = (id, newIsSelect, newListData) => {
     const selectedDomainIds = _.chain(newListData)
-                                .filter(item => item.isSelected)
-                                .pluck('id')
-                                .value();
+      .filter(item => item.isSelected)
+      .pluck('id')
+      .value();
 
     this.props.onSetDomains(selectedDomainIds);
   }

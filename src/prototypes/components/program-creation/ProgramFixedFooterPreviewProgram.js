@@ -13,7 +13,7 @@ const ProgramFixedFooterPreviewProgram = ({
     <div className="container horizontal-box align-items-spacebetween align-items-vertical-center h-100">
       <Button
         type="primary"
-        size="xs"
+        size="sm"
         label={'Back'}
         htmlAttributes={{onClick: onPrev}}
       />
@@ -26,7 +26,7 @@ const ProgramFixedFooterPreviewProgram = ({
 
       <Button
         type={currentTotalSelectCount > 0 ? 'primary' : 'disabled'}
-        size="xs"
+        size="sm"
         label={'Create Program'}
         htmlAttributes={{onClick: onNext}}
       />

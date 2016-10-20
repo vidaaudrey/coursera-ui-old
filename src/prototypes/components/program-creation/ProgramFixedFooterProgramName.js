@@ -10,7 +10,7 @@ const ProgramFixedFooterProgramName = ({
     <div className="container horizontal-box align-items-right align-items-vertical-center h-100">
       <Button
         type="primary"
-        size="xs"
+        size="sm"
         label={'Find Courses'}
         htmlAttributes={{onClick: onNext}}
       />

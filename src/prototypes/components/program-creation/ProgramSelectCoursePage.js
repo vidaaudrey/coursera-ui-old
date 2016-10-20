@@ -8,12 +8,20 @@ import withApiData from '../../../components/hocs/withApiData';
 const _ = require('underscore');
 
 class ProgramSelectCoursePage extends React.Component {
+  static propTypes = {
+    searchKeyWord: React.PropTypes.string,
+    selectedCourseIds: React.PropTypes.array.isRequired,
+    selectedS12nIds: React.PropTypes.array.isRequired,
+    selectedDomainIds: React.PropTypes.array.isRequired,
+    onToggleCourseSelect: React.PropTypes.func.isRequired,
+    onToggleS12nSelect: React.PropTypes.func.isRequired,
+  }
 
   render() {
     const {
       styles, selectedCourseIds, selectedS12nIds, selectedDomainIds,
       onToggleCourseSelect, onToggleS12nSelect,
-      onSelectChange, domains
+      onSelectChange, domains, searchKeyWord,
     } = this.props;
 
     if (_(selectedDomainIds).size() === 0) {
@@ -40,6 +48,7 @@ class ProgramSelectCoursePage extends React.Component {
             <DomainCard
               domainName={item.name}
               domainId={item.id}
+              searchKeyWord={searchKeyWord}
               selectedCourseIds={selectedCourseIds}
               selectedS12nIds={selectedS12nIds}
               onToggleCourseSelect={onToggleCourseSelect}

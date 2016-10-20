@@ -9,7 +9,7 @@ const BUTTON_TYPES = {
   'noStyle': 'noStyle',
 };
 const BUTTON_SIZES = {
-  xs: 'xs',
+  sm: 'sm',
   md: 'md',
   lg: 'lg',
 }
@@ -17,7 +17,7 @@ const BUTTON_SIZES = {
 /**
  * A generic Button that accepts children, imgSrc and icon.
  * Sample Usage:
- * <Button type="primary" size="xs" label={'xs'}/>
+ * <Button type="primary" size="sm" label={'sm'}/>
  */
 // TODO[Audrey]:
 const Button = ({
