@@ -30,7 +30,7 @@ export default withStyles(({color, font, spacing}) => ({
   LayeredS12nCard: {
     marginBottom: spacing.md,
     maxWidth: 560,
-    minHeight: 360,
+    minHeight: 416,
   },
   firstLayer: {
     borderColor: color.divider,
