@@ -41,8 +41,6 @@ class DomainCard extends React.Component {
       }))
       .value();
 
-    // console.warn('--courses-', courses);
-
     return (
       <div {...css(styles.DomainCard)}>
         <h2 {...css(styles.domainName)}>{domainName}</h2>

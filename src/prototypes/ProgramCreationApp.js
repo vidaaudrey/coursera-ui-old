@@ -162,7 +162,6 @@ class ProgramCreationApp extends React.Component {
       seatLimit, currentTotalSelectCount,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess)
-    console.warn('---', this.state.selectedDomainIds);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
@@ -182,6 +181,7 @@ class ProgramCreationApp extends React.Component {
               programTagline={programTagline}
               onSetProgramName={this.onSetProgramName}
               onSetProgramSlug={this.onSetProgramSlug}
+              onSetProgramTagline={this.onSetProgramTagline}
             />
           }
           {step === stepSelectDomains &&
