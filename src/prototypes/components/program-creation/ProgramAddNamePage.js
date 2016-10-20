@@ -13,7 +13,8 @@ class ProgramAddName extends React.Component {
       <div {...cssWithClass('vertical-box align-items-absolute-center p-b-3', styles.ProgramAddName)}>
         <h2 className="m-b-3">Create your first Learning Program</h2>
         <div className="vertical-box">
-          <div className="m-b-1">
+          {/*
+            <div className="m-b-1">
             <input type="text"
               {...css(styles.input)}
               ref={(r) => (this.programNameRef = r)}
@@ -22,6 +23,7 @@ class ProgramAddName extends React.Component {
               onChange={() => onSetProgramName(this.programNameRef.value)}
             />
           </div>
+          */}
           <div className="m-b-1">
             <input type="text"
               {...css(styles.input)}
