@@ -20,8 +20,8 @@ const ProgramFixedFooterDomainSelection = ({
       <div className="horizontal-box">
         <b {...css(styles.numberSpan)}>{currentTotalSelectCount}</b>
         <span {...css(styles.textSpan)}>Selected</span>
-        <b {...css(styles.numberSpan)}>{availableSeats}</b>
-        <span {...css(styles.textSpan)}>Available</span>
+        <b {...css(styles.numberSpan)}>{availableSeats > 0 ? availableSeats : seatLimit}</b>
+        <span {...css(styles.textSpan)}>{availableSeats > 0 ? 'Available' : 'Total Available'}</span>
       </div>
 
       <Button

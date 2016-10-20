@@ -159,61 +159,62 @@ class ProgramPreviewPage extends React.Component {
             </div>
           ))}
         </section>
+        {(_(leftS12nIds).size() > 0 || _(leftCourseIds).size() > 0) &&
+          <section className="m-b-1">
+            <h3> You Choices </h3>
+              {_(leftS12nIds).map(s12nId => (
+              <div className="card p-a-1 m-b-1" key={`S12nMiniCard-selected~${s12nId}`}>
+                <div className="row">
+                  <div className="col-xs-2 vertical-box align-items-absolute-center">
+                    <button
+                      {...css(styles.iconButton, styles.iconButtonFocus)}
+                      onClick={() => (this.onToggleS12nSelect(s12nId, true))}
+                      >
+                      <ContentAddCircle
+                        size={24}
+                        color={this.getIconColor({s12nId})}
+                        hoverColor={this.getIconColor({s12nId})}
+                      />
+                    </button>
+                  </div>
+                  <div className="col-xs-10 horizontal-box">
+                    <S12nMiniCard
+                      id={s12nId}
+                    >
+                    </S12nMiniCard>
+                  </div>
+                </div>
+              </div>
+            ))}
 
-        <section className="m-b-1">
-          <h3>The Rest of the Selection </h3>
-            {_(leftS12nIds).map(s12nId => (
-            <div className="card p-a-1 m-b-1" key={`S12nMiniCard-selected~${s12nId}`}>
+            {_(leftCourseIds).map(courseId => (
+            <div className="card p-a-1 m-b-1" key={`CourseMiniCard-selected~${courseId}`}>
               <div className="row">
                 <div className="col-xs-2 vertical-box align-items-absolute-center">
                   <button
                     {...css(styles.iconButton, styles.iconButtonFocus)}
-                    onClick={() => (this.onToggleS12nSelect(s12nId, true))}
+                    onClick={() => (this.onToggleCourseSelect(courseId, true))}
                     >
                     <ContentAddCircle
                       size={24}
-                      color={this.getIconColor({s12nId})}
-                      hoverColor={this.getIconColor({s12nId})}
+                      color={this.getIconColor({courseId})}
+                      hoverColor={this.getIconColor({courseId})}
                     />
                   </button>
                 </div>
                 <div className="col-xs-10 horizontal-box">
-                  <S12nMiniCard
-                    id={s12nId}
+                  <CourseMiniCard
+                    id={courseId}
+                    hasBorder={true}
+                    type='CUSTOM_CHILDREN'
                   >
-                  </S12nMiniCard>
+                  </CourseMiniCard>
                 </div>
               </div>
             </div>
           ))}
-
-          {_(leftCourseIds).map(courseId => (
-          <div className="card p-a-1 m-b-1" key={`CourseMiniCard-selected~${courseId}`}>
-            <div className="row">
-              <div className="col-xs-2 vertical-box align-items-absolute-center">
-                <button
-                  {...css(styles.iconButton, styles.iconButtonFocus)}
-                  onClick={() => (this.onToggleCourseSelect(courseId, true))}
-                  >
-                  <ContentAddCircle
-                    size={24}
-                    color={this.getIconColor({courseId})}
-                    hoverColor={this.getIconColor({courseId})}
-                  />
-                </button>
-              </div>
-              <div className="col-xs-10 horizontal-box">
-                <CourseMiniCard
-                  id={courseId}
-                  hasBorder={true}
-                  type='CUSTOM_CHILDREN'
-                >
-                </CourseMiniCard>
-              </div>
-            </div>
-          </div>
-        ))}
-        </section>
+          </section>
+        }
 
       </div>
     );

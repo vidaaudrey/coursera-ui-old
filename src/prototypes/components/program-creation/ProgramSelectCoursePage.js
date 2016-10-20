@@ -29,7 +29,7 @@ class ProgramSelectCoursePage extends React.Component {
     }, []);
 
     return (
-      <div {...cssWithClass('bg-gray', styles.ProgramSelectCoursePage)}>
+      <div {...css(styles.ProgramSelectCoursePage)}>
         {_(domainListData).map(item =>(
           <section className="m-b-3" key={`domain-container~${item.id}`}>
             <SubDomainSelectCard

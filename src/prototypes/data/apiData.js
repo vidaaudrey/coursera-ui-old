@@ -347,7 +347,7 @@ module.exports = {
   ////////////////////////////////////////
   s12nsNaptime: [{
     id: 's1',
-    courseIds: ['c1', 'c2', 'c3'],
+    courseIds: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eligendi distinctio iste qui quaerat, eveniet necessitatibus nobis, reiciendis deleniti repellendus. Aspernatur maiores minima, fugiat saepe labore commodi, rerum deserunt error.',
     name: 'Full Stack Web Development',
     partnerName: 'California Institute of the Art',
@@ -372,7 +372,7 @@ module.exports = {
     instructorIds: ['i1', 'i2'],
   }, {
     id: 's3',
-    courseIds: ['c1', 'c2', 'c3'],
+    courseIds: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate quaerat, sint? Deserunt maxime magnam, aliquam blanditiis tempora commodi quidem rem consequuntur voluptate! Temporibus amet omnis recusandae voluptate. Beatae, obcaecati, iusto!',
     name: 'Full Stack Web Development',
     courseCount: 5,
@@ -384,7 +384,7 @@ module.exports = {
     instructorIds: ['i1', 'i2'],
   }, {
     id: 's4',
-    courseIds: ['c1', 'c2', 'c3'],
+    courseIds: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi repellendus ex eaque atque est, repellat error dolore? Est nam optio laboriosam, odio deleniti natus libero, aliquid porro fugit nihil non?',
     name: 'Full Stack Web Development',
     partnerName: 'California Institute of the Art',

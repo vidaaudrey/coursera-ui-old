@@ -32,13 +32,13 @@ class ProgramCreationApp extends React.Component {
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
     this.state = {
-      step: stepProgramPreview,
+      step: stepSelectCourses,
       programName: null,
       programSlug: null,
       programTagline: null,
       selectedDomainIds: ['data-science', 'computer-science', 'business'],
       selectedCourseIds: [],
-      selectedS12nIds: ['s1'],
+      selectedS12nIds: [],
       seatLimit: 6,
       currentTotalSelectCount: 0,
     }
