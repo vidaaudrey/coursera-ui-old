@@ -75,7 +75,7 @@ class DomainCard extends React.Component {
               </div>
             ))}
             <div className="col-xs-12 text-xs-right">
-              <Button type="secondary" label={'See All'} size={'sm'}/>
+              <Button type="secondary" label={'See All'}/>
             </div>
         </div>
       </div>

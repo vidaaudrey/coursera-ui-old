@@ -17,6 +17,7 @@ const ProgramFixedFooterDomainSelection = ({
         label={'Back'}
         htmlAttributes={{onClick: onPrev}}
       />
+    
       <div className="horizontal-box">
         <b {...css(styles.numberSpan)}>{currentTotalSelectCount}</b>
         <span {...css(styles.textSpan)}>Selected</span>

@@ -91,13 +91,13 @@ export default {
     minWidth: 72,
     disabledTextColor: dusk200,
     size: {
-      xs: {
+      sm: {
         fontSize: '0.8rem',
         padding: '0.3rem 0.8rem',
       },
       md: {
         fontSize: '1rem',
-        padding: '0.8rem 1.2rem',
+        padding: '0.6rem 1rem',
       },
       lg: {
         fontSize: '1.2rem',

@@ -153,9 +153,9 @@ export default withStyles(({color, transition, button}) => ({
       color: color.primary,
     },
   },
-  xs: {
-    padding: button.size.xs.padding,
-    fontSize: button.size.xs.fontSize,
+  sm: {
+    padding: button.size.sm.padding,
+    fontSize: button.size.sm.fontSize,
   },
   md: {
     padding: button.size.md.padding,
