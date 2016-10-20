@@ -61,7 +61,7 @@ const CourseCardWithApiData = withApiData({
 
 export default withStyles(({color, font, spacing}) => ({
   CourseCard: {
-    minHeight: 320,
+    minHeight: 368,
     maxWidth: 480,
   },
   cardSelect: {
