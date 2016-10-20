@@ -64,7 +64,6 @@ const S12nCard = ({
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );
@@ -87,9 +86,9 @@ const S12nCardWithApiData = withApiData({
 
 export default withStyles(({color, font, spacing}) => ({
   S12nCard: {
-    marginBottom: 10,
+    marginBottom: spacing.md,
     maxWidth: 560,
-    minHeight: 360,
+    minHeight: 380,
   },
   cardContent: {
     alignContent: 'flex-end',
@@ -106,8 +105,9 @@ export default withStyles(({color, font, spacing}) => ({
     color: color.secondaryText,
     fontSize: font.xs,
   },
-  courseCount: {
-    paddingLeft: spacing.md,
+  courseImage: {
+    height: 160,
+    width: '100%',
   },
   details: {
     color: color.secondaryText,
@@ -121,9 +121,16 @@ export default withStyles(({color, font, spacing}) => ({
     height: 8,
     margin: '0px 10px',
   },
-  courseImage: {
-    height: 160,
-    width: '100%',
+  iconButton: {
+    padding: 0,
+    height: 24,
+    backgroundColor: 'transparent',
+    border: 'none',
+  },
+  iconButtonFocus: {
+    ':focus' : {
+      outline: 'none',
+    }
   },
   secondLayer: {
     borderColor: color.divider,
@@ -135,7 +142,7 @@ export default withStyles(({color, font, spacing}) => ({
   selectText: {
     color: color.darkGray,
     paddingRight: spacing.sm,
-    marginLeft: -spacing.sm,
+    marginLeft: `-${spacing.sm}`,
   },
   subtitle: {
     color: color.secondaryText,
@@ -144,18 +151,4 @@ export default withStyles(({color, font, spacing}) => ({
   title: {
     marginBottom: 0,
   },
-  footer: {
-
-  },
-  iconButton: {
-    padding: 0,
-    height: 24,
-    backgroundColor: 'transparent',
-    border: 'none',
-  },
-  iconButtonFocus: {
-    ':focus' : {
-      outline: 'none',
-    }
-  }
 }))(S12nCardWithApiData);

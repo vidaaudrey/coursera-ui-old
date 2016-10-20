@@ -3,10 +3,12 @@
 // Only use when we have components open sourced
 import App from './containers/App';
 import Button from './components/basic/Button';
+import CourseCard from './components/rich/CourseCard';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import StepProgress from './components/basic/StepProgress';
 import Avatar from './components/basic/Avatar';
 import FixedContainer from './components/extended/FixedContainer';
+import LayeredS12nCard from './components/rich/LayeredS12nCard';
 import S12nCard from './components/rich/S12nCard';
 import SvgIcon from './components/svg/SvgIcon';
 import SelectListItem from './components/extended/selectList/SelectListItem';
@@ -42,7 +44,9 @@ export {
 
   App,
   Button,
+  CourseCard,
   FixedContainer,
+  LayeredS12nCard,
   S12nCard,
   SvgIcon,
   SelectListItem,
