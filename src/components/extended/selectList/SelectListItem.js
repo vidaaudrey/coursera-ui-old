@@ -174,6 +174,6 @@ export default withStyles(({color, transition, spacing}) => ({
     }
   },
   text: {
-    paddingRight: spacing.xs,
+    paddingRight: spacing.sm,
   }
 }))(SelectListItem);
