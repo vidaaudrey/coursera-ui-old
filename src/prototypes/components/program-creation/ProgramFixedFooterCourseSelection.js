@@ -37,7 +37,7 @@ const ProgramFixedFooterDomainSelection = ({
 export default withStyles(({color, spacing, font}) => ({
   numberSpan: {
     color: color.secondaryText,
-    marginRight: spacing.xs,
+    marginRight: spacing.sm,
     fontSize: font.lg,
     lineHeight: font.lg,
   },

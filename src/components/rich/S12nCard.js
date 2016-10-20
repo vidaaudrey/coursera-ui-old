@@ -4,6 +4,9 @@ import { SvgCheckOutline } from '../svg/coursera'
 
 const S12nCard = ({
   styles,
+  theme,
+  id,
+  courseIds = [1, 2],
   title = 'S12nCard',
   subtitle = 'University name',
   courseCount = 5,
@@ -15,45 +18,50 @@ const S12nCard = ({
   isSelected,
   onToggleS12nSelect,
 }) => {
+  console.warn('---', theme.color.primary, theme.color.icon);
+  const iconColor = isSelected ? theme.color.primary : theme.color.icon;
   return (
-    <div {...cssWithClass('vertical-box', styles.S12nCard)}>
-      <div {...cssWithClass('card vertical-box', styles.wrapper)}>
-        <div>
-          <img src="//placehold.it/200x100/A66506/FFFFFF"
-               alt="CourseraAlt"
-               {...css(styles.image)}
-          />
-        </div>
-        <div {...cssWithClass('flex-1 vertical-box', styles.cardContent)}>
-          <div className="flex-1">
-            <h3 {...css(styles.title)}>{title}</h3>
-            <span {...css(styles.subtitle)}>{subtitle}</span>
-          </div>
+    <div {...cssWithClass('vertical-box card', styles.S12nCard)}>
+      <img
+        src="//placehold.it/200x120/A66506/FFFFFF"
+        alt="CourseraAlt"
+        {...css(styles.courseImage)}
+      />
+    <div className="main flex-1 vertical-box p-a-1 p-b-0">
+        <div className="content flex-1">
+          <h3 {...css(styles.title)}>{title}</h3>
+          <span {...css(styles.subtitle)}>{subtitle}</span>
           <div {...css(styles.details)}>
             {courseCount} courses + {capstoneCount} capstone projects <br/>
             {weekCount} weeks ({weeklyHourCount} hours / week) <br/>
             Next Session: {nextSessionDate} <br />
             {certificateCount} certificate
           </div>
-          <div className="horizontal-box">
-            <div {...cssWithClass('col-xs-7 horizontal-box align-items-vertical-center', styles.cardRibbon)}>
-              <span {...css(styles.courseCount)}>
-                {courseCount}{'-courses'}
-              </span>
-            </div>
-            <div {...cssWithClass('col-xs-5 horizontal-box align-items-vertical-center', styles.cardSelect)}>
+        </div>
+        <div {...cssWithClass('row', styles.footer)}>
+          <div {...cssWithClass('col-xs-6 horizontal-box align-items-vertical-center', styles.cardRibbon)}>
+            <span {...css(styles.courseCount)}>
+              {courseCount}{'-courses'}
+            </span>
+          </div>
+          <div
+            {...cssWithClass('col-xs-6 horizontal-box align-items-vertical-center align-items-right', styles.cardSelect)}
+          >
+            {!isSelected &&
               <span {...css(styles.selectText)}> Not Selected </span>
-              <button onClick={() => (onToggleS12nSelect(id, !isSelected, courseIds))}>
-                <SvgCheckOutline size={20} color="darkGray"/>
-                {isSelected ? 'Deselect' : 'Select'}
-              </button>
-            </div>
+            }
+            <button
+              {...css(styles.iconButton, styles.iconButtonFocus)}
+              onClick={() => (onToggleS12nSelect(id, !isSelected, courseIds))}
+              >
+              <SvgCheckOutline
+                size={24}
+                color={iconColor}
+                hoverColor={iconColor}
+                />
+            </button>
           </div>
         </div>
-      </div>
-      <div>
-        <div {...css(styles.firstLayer)}/>
-        <div {...css(styles.secondLayer)}/>
       </div>
     </div>
   );
@@ -64,6 +72,7 @@ export default withStyles(({color, font, spacing}) => ({
   S12nCard: {
     marginBottom: 10,
     maxWidth: 480,
+    minHeight: 360,
   },
   cardContent: {
     alignContent: 'flex-end',
@@ -73,15 +82,12 @@ export default withStyles(({color, font, spacing}) => ({
     color: color.secondaryText,
     fontSize: font.sm,
     backgroundImage: `linear-gradient(-250deg, ${color.gray} 90%, ${color.white} 90%)`,
-    marginLeft: `-${spacing.md}`,
-    marginBottom: `-${spacing.sm}`,
-    padding: '5px 0px',
+    marginLeft: -1,
+    height: '2rem',
   },
   cardSelect: {
     color: color.secondaryText,
     fontSize: font.xs,
-    marginBottom: `-${spacing.md}`,
-    marginRight: `-${spacing.sm}`,
   },
   courseCount: {
     paddingLeft: spacing.md,
@@ -98,7 +104,7 @@ export default withStyles(({color, font, spacing}) => ({
     height: 8,
     margin: '0px 10px',
   },
-  image: {
+  courseImage: {
     height: 120,
     width: '100%',
   },
@@ -120,7 +126,18 @@ export default withStyles(({color, font, spacing}) => ({
   title: {
     marginBottom: 0,
   },
-  wrapper: {
-    minHeight: 360,
+  footer: {
+
   },
+  iconButton: {
+    padding: 0,
+    height: 24,
+    backgroundColor: 'transparent',
+    border: 'none',
+  },
+  iconButtonFocus: {
+    ':focus' : {
+      outline: 'none',
+    }
+  }
 }))(S12nCard);
