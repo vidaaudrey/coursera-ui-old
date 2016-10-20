@@ -7,6 +7,12 @@ import CourseCard  from '../program-common/CourseCard';
 import {S12nCard} from 'src';
 
 class DomainCard extends React.Component {
+  static propTypes = {
+    selectedCourseIds: React.PropTypes.array,
+    selectedS12nIds: React.PropTypes.array,
+    domainId: React.PropTypes.string,
+    domainName: React.PropTypes.string,
+  }
 
   static defaultProps = {
     selectedCourseIds: [],
@@ -17,24 +23,28 @@ class DomainCard extends React.Component {
     const {
       style, styles, selectedCourseIds, selectedS12nIds,
       onToggleCourseSelect, onToggleS12nSelect,
+      domainName,
     } = this.props;
+    const s12nIds = ['s1', 's2', 's3'];
+    const courseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
 
-    const s12ns = _.chain(_.range(3))
+    const s12ns = _.chain(s12nIds)
                     .map((id) => ({
                       id,
                       isSelected: _(selectedS12nIds).contains(id)
                     }))
                     .value();
-    const courses = _.chain(_.range(12))
+    const courses = _.chain(courseIds)
                     .map((id) => ({
                       id,
                       isSelected: _(selectedCourseIds).contains(id)
                     }))
                     .value();
 
+    console.warn('--courses-', courses);
     return (
       <div {...css(styles.DomainCard)}>
-        <h2 {...css(styles.domainName)}>Computer Science</h2>
+        <h2 {...css(styles.domainName)}>{domainName}</h2>
         <h5 {...css(styles.cardType)}> Specializations</h5>
         <div className="row m-b-2">
             {s12ns.map((item, index) => (

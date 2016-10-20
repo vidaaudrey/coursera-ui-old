@@ -13,14 +13,15 @@ class ProgramSelectDomainPage extends React.Component {
 
   onSelectChange = (id, newIsSelect, newListData) => {
     const selectedDomainIds = _.chain(newListData)
-                                .filter(item => !item.isSelected)
+                                .filter(item => item.isSelected)
                                 .pluck('id')
                                 .value();
+
     this.props.onSetDomains(selectedDomainIds);
   }
 
   render() {
-    const {styles} = this.props;
+    const {styles, selectedDomainIds} = this.props;
     return (
       <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramSelectDomainPage)}>
         <h2>The skills I am looking for are in </h2>
@@ -28,6 +29,7 @@ class ProgramSelectDomainPage extends React.Component {
           <DomainSelectList
             onSelectChange={this.onSelectChange}
             alignCenter={true}
+            selectedDomainIds={selectedDomainIds}
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 const _ = require('underscore');
-import withApiData from '../../../components/hocs/withApiData';
+import withApiData from 'src/components/hocs/withApiData';
 import {StaticLinearProgress} from 'src';
 
 const CARD_TYPES = {
@@ -17,12 +17,14 @@ const BASE_URL = 'https://www.coursera.org/learn/';
 const CourseMiniCard = ({
   styles,
   course,
+  id,
   type = CARD_TYPES.PROGRESS,
   coursePhotoSize = DEFAULT_COURSE_PHOTO_SIZE,
   progress, grade, learnerCount,
   children,
   ...props
 }) => {
+  console.warn('-mini card--', course, id);
   if (!course) return null;
 
   const {name, description, photoUrl, partnerIds, partnerName: mockName} = course;
@@ -72,7 +74,7 @@ const CourseMiniCard = ({
   );
 };
 
-const CourseWithApiData = withApiData({dataType: 'LEADER_COURSE'})(CourseMiniCard);
+const CourseWithApiData = withApiData({dataType: 'COURSE'})(CourseMiniCard);
 
 // Dynamic styles
 function getStyles({coursePhotoSize}) {

@@ -135,7 +135,7 @@ class SelectList extends React.Component{
             {...selectListItemAttributes}
             label={selectAllLabel}
             isSelected={isAllSelected}
-            onClick={() => (this.toggleSelect(selectAllId))}
+            onClick={() => (this.toggleSelectAll(selectAllId))}
             style={{marginBottom: 32}}
           />
         }

@@ -68,9 +68,10 @@ const LeaderboardCard = ({
   );
 };
 
-export default withStyles(({color, gradient, transition}) => ({
+export default withStyles(({color, spacing, transition}) => ({
   LeaderboardCard: {
     minWidth: 320,
+    marginBottom: spacing.sm,
   },
   rank: {
     position: 'absolute',

@@ -2,7 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button, SelectList} from 'src';
 import {ContentFilterList} from 'src/components/svg/material';
-
+import DomainSelectList from './DomainSelectList';
 const _ = require('underscore');
 
 const mockListData = [
@@ -50,39 +50,47 @@ class SearchAndDomainSelectCard extends React.Component {
 
   static propTypes = {
     onSetDomains: React.PropTypes.func.isRequired,
+    selectedDomainIds: React.PropTypes.array.isRequired,
   }
 
   static defaultProps = {
     domainListData: mockListData,
+    selectedDomainIds: [],
   }
 
   onSelectChange = (id, newIsSelect, newListData) => {
+    const selectedDomainIds = _.chain(newListData)
+                                .filter(item => item.isSelected)
+                                .pluck('id')
+                                .value();
+
+    this.props.onSetDomains(selectedDomainIds);
   }
 
   render() {
-    const {styles, domainListData} = this.props;
+    const { styles, domainListData, selectedDomainIds } = this.props;
 
     return (
-      <div {...css(styles.SearchAndDomainSelectCard)}>
-        <div className="container vertical-box p-a-1">
-          <div className="m-b-1">
-            <SelectList
-              listData={domainListData}
-              onSelectChange={this.onSelectChange}
+      <div {...cssWithClass('p-b-1', styles.SearchAndDomainSelectCard)}>
+        <div {...cssWithClass('container-fluid vertical-box p-a-1 m-b-1', styles.domainContainer)}>
+          <DomainSelectList
+            showSelectAll={false}
+            onSelectChange={this.onSelectChange}
+            alignCenter={true}
+            selectedDomainIds={selectedDomainIds}
+          />
+        </div>
+        <div className="container horizontal-box align-items-vertical-center">
+          <div className="flex-1 m-r-1">
+            <input
+              type="text"
+              placeholder="What do you want to learn?"
+              {...css(styles.searchInput)}
             />
           </div>
-          <div className="horizontal-box align-items-vertical-center">
-            <div className="flex-1 m-r-1">
-              <input
-                type="text"
-                placeholder="What do you want to learn?"
-                {...css(styles.searchInput)}
-              />
-            </div>
-            <button {...css(styles.iconButton)}>
-              <ContentFilterList />
-            </button>
-          </div>
+          <button {...css(styles.iconButton)}>
+            <ContentFilterList />
+          </button>
         </div>
       </div>
     );
@@ -95,6 +103,9 @@ export default withStyles(({color, spacing}) => ({
     backgroundColor: color.white,
     marginBottom: spacing.lg,
     borderBottom: `1px solid ${color.divider}`,
+  },
+  domainContainer: {
+    maxWidth: 1200,
   },
   searchInput: {
     padding: 8,

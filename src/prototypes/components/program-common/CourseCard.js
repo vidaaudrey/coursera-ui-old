@@ -1,14 +1,20 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+import withApiData from 'src/components/hocs/withApiData';
 
-const CourseCard = ({name = 'CourseCard', isSelected, id, onToggleCourseSelect}) => {
+const CourseCard = ({
+  styles,
+  course, isSelected, id, onToggleCourseSelect
+}) => {
+  const {name, photoUrl, partnerIds, partnerName = 'John Hopken '} = course;
+
   return (
-      <div className="card vertical-box" style={{minHeight: 360}}>
-        <img src="//placehold.it/200x120/A66506/FFFFFF" alt="CourseraAlt" style={{width: '100%'}} />
-        <div className="main flex-1 vertical-box">
+      <div {...cssWithClass('card vertical-box m-b-1', styles.CourseCard)}>
+        <img src={photoUrl} alt="CourseraAlt" style={{width: '100%'}} />
+        <div className="main flex-1 vertical-box p-a-1">
           <div className="content flex-1">
-            <h1>{name}</h1>
-            Lorem ipsum dolor sit.
+            <h3>{name}</h3>
+            {partnerName}
           </div>
           <div className="footer horizontal-box align-items-spacebetween">
             <p>footer content</p>
@@ -21,4 +27,13 @@ const CourseCard = ({name = 'CourseCard', isSelected, id, onToggleCourseSelect})
     );
 };
 
-export default CourseCard;
+const CourseCardWithApiData = withApiData({
+  dataType: 'COURSE',
+})(CourseCard);
+
+
+export default withStyles(({}) => ({
+  CourseCard: {
+    minHeight: 400,
+  }
+}))(CourseCardWithApiData);

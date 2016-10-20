@@ -6,6 +6,7 @@ import Header from './components/program-common/Header';
 import ProgramAddNamePage from './components/program-creation/ProgramAddNamePage';
 import ProgramSelectDomainPage from './components/program-creation/ProgramSelectDomainPage';
 import ProgramSelectCoursePage from './components/program-creation/ProgramSelectCoursePage';
+import ProgramPreviewPage from './components/program-creation/ProgramPreviewPage';
 import ProgramFixedFooter from './components/program-creation/ProgramFixedFooter';
 import SearchAndDomainSelectCard from './components/program-creation/SearchAndDomainSelectCard'
 
@@ -13,8 +14,8 @@ import {
   HEADER_HEIGHT, FOOTER_HEIGHT, CREATE_PROGRAM_STEPS
 } from '../constants/ProgramCreationAppConstants';
 const {
-  stepCreateProgramName, stepSelectDomains, stepSelectCourses, stepCreateProgram,
-  stepCreateProgramSuccess, stepInviteMembers,
+  stepCreateProgramName, stepSelectDomains, stepSelectCourses, stepProgramPreview,
+  stepCreateProgram, stepCreateProgramSuccess, stepInviteMembers,
 } = CREATE_PROGRAM_STEPS;
 
 class ProgramCreationApp extends React.Component {
@@ -23,12 +24,12 @@ class ProgramCreationApp extends React.Component {
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
     this.state = {
-      step: stepSelectCourses,
+      step: stepProgramPreview,
       programName: null,
       programSlug: null,
       selectedDomainIds: ['data-science', 'computer-science', 'business'],
-      selectedCourseIds: [],
-      selectedS12nIds: [],
+      selectedCourseIds: ['c1', 'c2', 'c3'],
+      selectedS12nIds: ['s1'],
       seatLimit: 6,
       currentTotalSelectCount: 0,
     }
@@ -112,21 +113,28 @@ class ProgramCreationApp extends React.Component {
   }
 
   onCourseSelectionPrev = () => {
-    console.warn('-onCourseSelectionPrev--');
     this.setState({step: stepSelectDomains});
   }
 
   onCourseSelectionNext = () => {
-    this.setState({step: stepInviteMembers});
+    this.setState({step: stepProgramPreview});
   }
 
-  handleInviteMemberPrev = () => {
+  onProgramPreviewPrev = () => {
     this.setState({step: stepSelectCourses});
   }
 
-  handleInviteMemberNext = () => {
-    this.setState({step: stepCreateProgram});
+  onProgramPreviewNext = () => {
+    this.setState({step: stepInviteMembers});
   }
+
+  // handleInviteMemberPrev = () => {
+  //   this.setState({step: stepSelectCourses});
+  // }
+  //
+  // handleInviteMemberNext = () => {
+  //   this.setState({step: stepCreateProgram});
+  // }
 
   onCreateProgram = () => {
     this.setState({step: stepCreateProgram});
@@ -141,7 +149,7 @@ class ProgramCreationApp extends React.Component {
       seatLimit, currentTotalSelectCount,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess)
-    console.warn('---', this.state);
+    console.warn('---', this.state.selectedDomainIds);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
@@ -149,6 +157,7 @@ class ProgramCreationApp extends React.Component {
         {showSelectCoursePage &&
           <SearchAndDomainSelectCard
             onSetDomains={this.onSetDomains}
+            selectedDomainIds={selectedDomainIds}
           />
         }
 
@@ -158,7 +167,7 @@ class ProgramCreationApp extends React.Component {
               programName={programName}
               programSlug={programSlug}
               onSetProgramName={this.onSetProgramName}
-              onSetProgramSlug={this.onSetProgramName}
+              onSetProgramSlug={this.onSetProgramSlug}
             />
           }
           {step === stepSelectDomains &&
@@ -171,9 +180,20 @@ class ProgramCreationApp extends React.Component {
             <ProgramSelectCoursePage
               selectedCourseIds={selectedCourseIds}
               selectedS12nIds={selectedS12nIds}
+              selectedDomainIds={selectedDomainIds}
               onCreateProgram={this.onCreateProgram}
               onToggleCourseSelect={this.onToggleCourseSelect}
               onToggleS12nSelect={this.onToggleS12nSelect}
+            />
+          }
+          {step === stepProgramPreview &&
+            <ProgramPreviewPage
+              programName={programName}
+              programSlug={programSlug}
+              selectedCourseIds={selectedCourseIds}
+              selectedS12nIds={selectedS12nIds}
+              seatLimit={seatLimit}
+              currentTotalSelectCount={currentTotalSelectCount}
             />
           }
         </div>
@@ -181,6 +201,7 @@ class ProgramCreationApp extends React.Component {
           step={step}
           selectedCourseIds={selectedCourseIds}
           selectedS12nIds={selectedS12nIds}
+          selectedDomainIds={selectedDomainIds}
           seatLimit={seatLimit}
           currentTotalSelectCount={currentTotalSelectCount}
           onProgramNameNext={this.onProgramNameNext}
@@ -188,6 +209,8 @@ class ProgramCreationApp extends React.Component {
           onDomainSelectionPrev={this.onDomainSelectionPrev}
           onCourseSelectionPrev={this.onCourseSelectionPrev}
           onCourseSelectionNext={this.onCourseSelectionNext}
+          onProgramPreviewPrev={this.onProgramPreviewPrev}
+          onProgramPreviewNext={this.onProgramPreviewNext}
         />
       </div>
     );

@@ -9,8 +9,8 @@ class ProgramAddName extends React.Component {
       styles, programName, programSlug, onSetProgramName, onSetProgramSlug
     } = this.props;
     return (
-      <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramAddName)}>
-        <h2>Create your first Learning Program</h2>
+      <div {...cssWithClass('vertical-box align-items-absolute-center p-b-3', styles.ProgramAddName)}>
+        <h2 className="m-b-3">Create your first Learning Program</h2>
         <div className="vertical-box">
           <div className="m-b-1">
             <input type="text"
@@ -49,7 +49,7 @@ function getStyles({coursePhotoSize}) {
 
 export default withStyles(({color, gradient}) => ({
   ProgramAddName: {
-    minHeight: 450,
+    minHeight: '100vh',
   },
   input: {
     textAlign: 'center',

@@ -1,10 +1,19 @@
 import React from 'react';
+const _ = require('underscore');
 import leaderboards from '../../data/leaderboards.json';
 import courses from '../../data/courses.json';
+import {
+  domainNaptime, coursesNaptime, s12nsNaptime,
+} from 'src/prototypes/data/apiData';
 
 const dataTypes = {
-  COURSE: 'COURSE',
+  LEADER_COURSE: 'LEADER_COURSE',
   LEADERBOARD: 'LEADERBOARD',
+  DOMAINS: 'DOMAINS',
+  COURSES: 'COURSES',
+  S12NS: 'S12NS',
+  S12N: 'S12N',
+  COURSE: 'COURSE',
 }
 const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
   return (Component) => {
@@ -15,18 +24,35 @@ const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
       state = {}
 
       render() {
+        const {id} = this.props;
         let apiData;
         switch (dataType) {
-          case dataTypes.COURSE:
-            const id = this.props.id;
+          case dataTypes.LEADER_COURSE:
             apiData = {course: courses[id]};
             break;
           case dataTypes.LEADERBOARD:
             apiData = {leaderboards }
             break;
-          default:
+          case dataTypes.DOMAINS:
+            apiData = {domains: domainNaptime }
+            break;
+          case dataTypes.COURSES:
+            apiData = {courses: coursesNaptime }
+            break;
+          case dataTypes.S12NS:
+            apiData = {s12ns: s12nsNaptime }
             break;
 
+          case dataTypes.S12N:
+            apiData = {s12n: _(s12nsNaptime).findWhere({id}) }
+            break;
+
+          case dataTypes.COURSE:
+            apiData = {course: _(coursesNaptime).findWhere({id}) }
+            break;
+
+          default:
+            break;
         }
         return (
           <Component

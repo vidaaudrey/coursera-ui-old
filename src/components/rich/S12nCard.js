@@ -1,16 +1,14 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import { SvgCheckOutline } from '../svg/coursera'
+const _ = require('underscore');
+import withApiData from 'src/components/hocs/withApiData';
 
 const S12nCard = ({
   styles,
   theme,
   id,
-  courseIds = [1, 2],
-  title = 'S12nCard',
-  subtitle = 'University name',
-  courseCount = 5,
-  capstoneCount = 1,
+  s12n,
   weekCount = 26,
   weeklyHourCount = '6-8',
   nextSessionDate = 'October 3rd',
@@ -19,17 +17,21 @@ const S12nCard = ({
   onToggleS12nSelect,
 }) => {
   const iconColor = isSelected ? theme.color.primary : theme.color.icon;
+  const {courseIds, name, partnerName, partnerIds, promoPhoto} = s12n;
+  const courseCount = _(courseIds).size() - 1;
+  const capstoneCount = 1;
+
   return (
     <div {...cssWithClass('vertical-box card', styles.S12nCard)}>
       <img
-        src="//placehold.it/200x120/A66506/FFFFFF"
+        src={promoPhoto}
         alt="CourseraAlt"
         {...css(styles.courseImage)}
       />
       <div className="flex-1 vertical-box p-a-1 p-b-0">
         <div className="content flex-1">
-          <h3 {...css(styles.title)}>{title}</h3>
-          <span {...css(styles.subtitle)}>{subtitle}</span>
+          <h3 {...css(styles.title)}>{name}</h3>
+          <span {...css(styles.subtitle)}>{partnerName}</span>
         </div>
         <div {...css(styles.details)}>
           {courseCount} courses + {capstoneCount} capstone projects <br/>
@@ -68,11 +70,15 @@ const S12nCard = ({
   );
 };
 
+const S12nCardWithApiData = withApiData({
+  dataType: 'S12N',
+})(S12nCard);
+
 
 export default withStyles(({color, font, spacing}) => ({
   S12nCard: {
     marginBottom: 10,
-    maxWidth: 480,
+    maxWidth: 560,
     minHeight: 360,
   },
   cardContent: {
@@ -106,7 +112,7 @@ export default withStyles(({color, font, spacing}) => ({
     margin: '0px 10px',
   },
   courseImage: {
-    height: 120,
+    height: 160,
     width: '100%',
   },
   secondLayer: {
@@ -142,4 +148,4 @@ export default withStyles(({color, font, spacing}) => ({
       outline: 'none',
     }
   }
-}))(S12nCard);
+}))(S12nCardWithApiData);

@@ -3,7 +3,7 @@ import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Button} from 'src';
 const _ = require('underscore');
 
-const ProgramFixedFooterDomainSelection = ({
+const ProgramFixedFooterPreviewProgram = ({
   styles, onPrev, onNext,
   seatLimit, currentTotalSelectCount, selectedCourseIds, selectedS12nIds
 }) => {
@@ -27,7 +27,7 @@ const ProgramFixedFooterDomainSelection = ({
       <Button
         type={currentTotalSelectCount > 0 ? 'primary' : 'disabled'}
         size="xs"
-        label={'Preview'}
+        label={'Create Program'}
         htmlAttributes={{onClick: onNext}}
       />
     </div>
@@ -35,6 +35,9 @@ const ProgramFixedFooterDomainSelection = ({
 };
 
 export default withStyles(({color, spacing, font}) => ({
+  ProgramFixedFooterPreviewProgram: {
+
+  },
   numberSpan: {
     color: color.secondaryText,
     marginRight: spacing.sm,
@@ -48,4 +51,4 @@ export default withStyles(({color, spacing, font}) => ({
     marginRight: spacing.lg,
     lineHeight: font.lg,
   },
-}))(ProgramFixedFooterDomainSelection);
+}))(ProgramFixedFooterPreviewProgram);

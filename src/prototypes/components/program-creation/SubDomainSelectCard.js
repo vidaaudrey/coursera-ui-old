@@ -78,7 +78,7 @@ export default withStyles(({color, spacing, font}) => ({
   },
   typeSpan: {
     fontSize: font.md,
-    paddingLeft: spacing.xs,
+    paddingLeft: spacing.sm,
     fontWeight: 'normal',
     textTransform: 'uppercase',
   },

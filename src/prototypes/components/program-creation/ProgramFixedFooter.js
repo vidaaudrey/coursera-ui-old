@@ -5,8 +5,9 @@ import {FOOTER_HEIGHT, CREATE_PROGRAM_STEPS} from '../../../constants/ProgramCre
 import ProgramFixedFooterProgramName from './ProgramFixedFooterProgramName';
 import ProgramFixedFooterDomainSelection from './ProgramFixedFooterDomainSelection';
 import ProgramFixedFooterCourseSelection from './ProgramFixedFooterCourseSelection';
+import ProgramFixedFooterPreviewProgram from './ProgramFixedFooterPreviewProgram';
 const {
-  stepCreateProgramName, stepSelectDomains, stepSelectCourses
+  stepCreateProgramName, stepSelectDomains, stepSelectCourses, stepProgramPreview,
 } = CREATE_PROGRAM_STEPS;
 
 class ProgramFixedFooter extends React.Component {
@@ -18,6 +19,7 @@ class ProgramFixedFooter extends React.Component {
       seatLimit, currentTotalSelectCount,
       selectedS12nIds, selectedCourseIds,
       onCourseSelectionPrev, onCourseSelectionNext,
+      onProgramPreviewPrev, onProgramPreviewNext,
     } = this.props;
 
     return (
@@ -40,6 +42,16 @@ class ProgramFixedFooter extends React.Component {
               currentTotalSelectCount={currentTotalSelectCount}
               onPrev={onCourseSelectionPrev}
               onNext={onCourseSelectionNext}
+            />
+          }
+          {step === stepProgramPreview &&
+            <ProgramFixedFooterPreviewProgram
+              selectedCourseIds={selectedCourseIds}
+              selectedS12nIds={selectedS12nIds}
+              seatLimit={seatLimit}
+              currentTotalSelectCount={currentTotalSelectCount}
+              onPrev={onProgramPreviewPrev}
+              onNext={onProgramPreviewNext}
             />
           }
         </div>

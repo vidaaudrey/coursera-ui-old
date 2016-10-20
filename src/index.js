@@ -4,6 +4,7 @@
 import App from './containers/App';
 import Button from './components/basic/Button';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
+import StepProgress from './components/basic/StepProgress';
 import Avatar from './components/basic/Avatar';
 import FixedContainer from './components/extended/FixedContainer';
 import S12nCard from './components/rich/S12nCard';
@@ -48,7 +49,7 @@ export {
   SelectList,
   Avatar,
   StaticLinearProgress,
-
+  StepProgress,
   materialIcons,
   courseraIcons,
 
