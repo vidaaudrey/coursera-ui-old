@@ -18,7 +18,6 @@ const S12nCard = ({
   isSelected,
   onToggleS12nSelect,
 }) => {
-  console.warn('---', theme.color.primary, theme.color.icon);
   const iconColor = isSelected ? theme.color.primary : theme.color.icon;
   return (
     <div {...cssWithClass('vertical-box card', styles.S12nCard)}>
@@ -27,17 +26,18 @@ const S12nCard = ({
         alt="CourseraAlt"
         {...css(styles.courseImage)}
       />
-    <div className="main flex-1 vertical-box p-a-1 p-b-0">
+      <div className="flex-1 vertical-box p-a-1 p-b-0">
         <div className="content flex-1">
           <h3 {...css(styles.title)}>{title}</h3>
           <span {...css(styles.subtitle)}>{subtitle}</span>
-          <div {...css(styles.details)}>
-            {courseCount} courses + {capstoneCount} capstone projects <br/>
-            {weekCount} weeks ({weeklyHourCount} hours / week) <br/>
-            Next Session: {nextSessionDate} <br />
-            {certificateCount} certificate
-          </div>
         </div>
+        <div {...css(styles.details)}>
+          {courseCount} courses + {capstoneCount} capstone projects <br/>
+          {weekCount} weeks ({weeklyHourCount} hours / week) <br/>
+          Next Session: {nextSessionDate} <br />
+          {certificateCount} certificate
+        </div>
+
         <div {...cssWithClass('row', styles.footer)}>
           <div {...cssWithClass('col-xs-6 horizontal-box align-items-vertical-center', styles.cardRibbon)}>
             <span {...css(styles.courseCount)}>
@@ -62,6 +62,7 @@ const S12nCard = ({
             </button>
           </div>
         </div>
+
       </div>
     </div>
   );
@@ -95,7 +96,7 @@ export default withStyles(({color, font, spacing}) => ({
   details: {
     color: color.secondaryText,
     fontSize: font.xs,
-    paddingBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   firstLayer: {
     borderColor: color.divider,
@@ -118,6 +119,7 @@ export default withStyles(({color, font, spacing}) => ({
   selectText: {
     color: color.darkGray,
     paddingRight: spacing.sm,
+    marginLeft: -spacing.sm,
   },
   subtitle: {
     color: color.secondaryText,
