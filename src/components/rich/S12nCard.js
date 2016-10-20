@@ -70,6 +70,16 @@ const S12nCard = ({
   );
 };
 
+// Add this for documentation
+S12nCard.propTypes = {
+  id: React.PropTypes.string.isRequired,
+  onToggleS12nSelect: React.PropTypes.func.isRequired,
+};
+
+S12nCard.defaultProps = {
+  id: 's1' // Remove later
+};
+
 const S12nCardWithApiData = withApiData({
   dataType: 'S12N',
 })(S12nCard);

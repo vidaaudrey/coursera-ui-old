@@ -14,6 +14,7 @@ const CARD_TYPES = {
 const DEFAULT_COURSE_PHOTO_SIZE = 96;
 
 const BASE_URL = 'https://www.coursera.org/learn/';
+
 const CourseMiniCard = ({
   styles,
   course,
@@ -24,7 +25,7 @@ const CourseMiniCard = ({
   children,
   ...props
 }) => {
-  console.warn('-mini card--', course, id);
+
   if (!course) return null;
 
   const {name, description, photoUrl, partnerIds, partnerName: mockName} = course;

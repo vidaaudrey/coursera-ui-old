@@ -6,7 +6,8 @@ class ProgramAddName extends React.Component {
 
   render() {
     const {
-      styles, programName, programSlug, onSetProgramName, onSetProgramSlug
+      styles, programName, programSlug, programTagline,
+      onSetProgramName, onSetProgramSlug, onSetProgramTagline,
     } = this.props;
     return (
       <div {...cssWithClass('vertical-box align-items-absolute-center p-b-3', styles.ProgramAddName)}>
@@ -29,6 +30,15 @@ class ProgramAddName extends React.Component {
               defaultValue={programSlug}
               onChange={() => onSetProgramSlug(this.programSlugRef.value)}
               />
+          </div>
+          <div className="m-b-1">
+            <input type="text"
+              {...css(styles.input)}
+              ref={(r) => (this.programTaglineRef = r)}
+              placeholder="Program Tagline"
+              defaultValue={programTagline}
+              onChange={() => onSetProgramTagline(this.programTaglineRef.value)}
+            />
           </div>
         </div>
       </div>

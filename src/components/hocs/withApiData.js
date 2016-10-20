@@ -2,10 +2,10 @@ import React from 'react';
 const _ = require('underscore');
 import leaderboards from '../../data/leaderboards.json';
 import courses from '../../data/courses.json';
+import hoistNonReactStatic from 'hoist-non-react-statics';
 import {
   domainNaptime, coursesNaptime, s12nsNaptime,
 } from 'src/prototypes/data/apiData';
-
 const dataTypes = {
   LEADER_COURSE: 'LEADER_COURSE',
   LEADERBOARD: 'LEADERBOARD',
@@ -62,6 +62,8 @@ const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
         );
       }
     };
+
+    hoistNonReactStatic(Component, HOC);
   };
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import {Avatar, Button, FixedContainer} from 'src';
+import {Avatar, Button, FixedContainer, StepProgress} from 'src';
 import {FOOTER_HEIGHT, CREATE_PROGRAM_STEPS} from '../../../constants/ProgramCreationAppConstants';
 import ProgramFixedFooterProgramName from './ProgramFixedFooterProgramName';
 import ProgramFixedFooterDomainSelection from './ProgramFixedFooterDomainSelection';
@@ -14,17 +14,26 @@ class ProgramFixedFooter extends React.Component {
 
   render() {
     const {
-      style, styles, step, onProgramNameNext,
+      style, styles, theme, step, onProgramNameNext,
       onDomainSelectionPrev, onDomainSelectionNext,
       seatLimit, currentTotalSelectCount,
       selectedS12nIds, selectedCourseIds,
       onCourseSelectionPrev, onCourseSelectionNext,
       onProgramPreviewPrev, onProgramPreviewNext,
+      currentStepNumber, totalSteps
     } = this.props;
 
     return (
       <FixedContainer height={FOOTER_HEIGHT} backgroundColor="white">
         <div {...css(styles.ProgramFixedFooter)}>
+          <div {...css(styles.progressContainer)}>
+            <StepProgress
+              currentStep={currentStepNumber}
+              totalSteps={totalSteps}
+              backgroundColor={theme.color.bgGray}
+            />
+          </div>
+
           {step === stepCreateProgramName &&
             <ProgramFixedFooterProgramName onNext={onProgramNameNext}/>
           }
@@ -76,5 +85,12 @@ export default withStyles(({color, gradient}) => ({
     background: color.white,
     height: FOOTER_HEIGHT,
     boxShadow: `0 -2px 4px 0 ${color.shadow}`,
+    position: 'relative',
+  },
+  progressContainer: {
+    position: 'absolute',
+    top: -4,
+    left: -2,
+    right: -2,
   },
 }))(ProgramFixedFooter);

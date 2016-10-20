@@ -18,6 +18,14 @@ const {
   stepCreateProgram, stepCreateProgramSuccess, stepInviteMembers,
 } = CREATE_PROGRAM_STEPS;
 
+const ALL_STEPS = [
+  stepCreateProgramName,
+  stepSelectDomains,
+  stepSelectCourses,
+  stepProgramPreview,
+  stepCreateProgramSuccess
+];
+
 class ProgramCreationApp extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -27,8 +35,9 @@ class ProgramCreationApp extends React.Component {
       step: stepProgramPreview,
       programName: null,
       programSlug: null,
+      programTagline: null,
       selectedDomainIds: ['data-science', 'computer-science', 'business'],
-      selectedCourseIds: ['c1', 'c2', 'c3'],
+      selectedCourseIds: [],
       selectedS12nIds: ['s1'],
       seatLimit: 6,
       currentTotalSelectCount: 0,
@@ -41,6 +50,10 @@ class ProgramCreationApp extends React.Component {
 
   onSetProgramSlug = (programSlug) => {
     this.setState({programSlug});
+  }
+
+  onSetProgramTagline = (programTagline) => {
+    this.setState({programTagline});
   }
 
   onSetDomains = (selectedDomainIds) => {
@@ -144,7 +157,7 @@ class ProgramCreationApp extends React.Component {
   render() {
     const {styles} = this.props;
     const {
-      step, programName, programSlug,
+      step, programName, programSlug, programTagline,
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
       seatLimit, currentTotalSelectCount,
     } = this.state;
@@ -166,6 +179,7 @@ class ProgramCreationApp extends React.Component {
             <ProgramAddNamePage
               programName={programName}
               programSlug={programSlug}
+              programTagline={programTagline}
               onSetProgramName={this.onSetProgramName}
               onSetProgramSlug={this.onSetProgramSlug}
             />
@@ -190,6 +204,7 @@ class ProgramCreationApp extends React.Component {
             <ProgramPreviewPage
               programName={programName}
               programSlug={programSlug}
+              programTagline={programTagline}
               selectedCourseIds={selectedCourseIds}
               selectedS12nIds={selectedS12nIds}
               seatLimit={seatLimit}
@@ -199,6 +214,8 @@ class ProgramCreationApp extends React.Component {
         </div>
         <ProgramFixedFooter
           step={step}
+          currentStepNumber={_(ALL_STEPS).indexOf(step) + 1}
+          totalSteps={_(ALL_STEPS).size()}
           selectedCourseIds={selectedCourseIds}
           selectedS12nIds={selectedS12nIds}
           selectedDomainIds={selectedDomainIds}

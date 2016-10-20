@@ -29,19 +29,20 @@ class DomainCard extends React.Component {
     const courseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
 
     const s12ns = _.chain(s12nIds)
-                    .map((id) => ({
-                      id,
-                      isSelected: _(selectedS12nIds).contains(id)
-                    }))
-                    .value();
+      .map((id) => ({
+        id,
+        isSelected: _(selectedS12nIds).contains(id)
+      }))
+      .value();
     const courses = _.chain(courseIds)
-                    .map((id) => ({
-                      id,
-                      isSelected: _(selectedCourseIds).contains(id)
-                    }))
-                    .value();
+      .map((id) => ({
+        id,
+        isSelected: _(selectedCourseIds).contains(id)
+      }))
+      .value();
 
-    console.warn('--courses-', courses);
+    // console.warn('--courses-', courses);
+
     return (
       <div {...css(styles.DomainCard)}>
         <h2 {...css(styles.domainName)}>{domainName}</h2>

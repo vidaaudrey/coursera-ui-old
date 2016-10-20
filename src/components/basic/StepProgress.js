@@ -25,15 +25,14 @@ const StepProgress = ({
   const progressColorLocal = progressColor || theme.color.success;
   const barWidth = 1 / totalSteps ;
   const barData = _.range(totalSteps)
-                    .map((item) =>({
-                      step: item,
-                      style: {
-                        width: `${barWidth * 100}%`,
-                        backgroundColor: item < currentStep ? progressColorLocal : 'transparent',
-                        ...dynamicStyles.bar
-                      },
-                    }));
-  console.warn('---', props, currentStep, progressColorLocal, barData);
+    .map((item) =>({
+      step: item,
+      style: {
+        width: `${barWidth * 100}%`,
+        backgroundColor: item < currentStep ? progressColorLocal : 'transparent',
+        ...dynamicStyles.bar
+      },
+    }));
   return (
     <div
       {...cssWithClass('horizontal-box align-items-spacebetween', styles.StepProgress)}
