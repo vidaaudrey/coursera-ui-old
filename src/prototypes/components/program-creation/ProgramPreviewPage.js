@@ -57,11 +57,11 @@ class ProgramPreviewPage extends React.Component {
     const {color} = this.props.theme;
     if (courseId) {
       isSelected = this.getIsCourseSelected(courseId);
-      return isSelected ? color.primary : color.icon;
+      return !isSelected ? color.primary : color.icon;
     }
     if (s12nId) {
       isSelected = this.getIsS12nSelected(s12nId);
-      return isSelected ? color.primary : color.icon;
+      return !isSelected ? color.primary : color.icon;
     }
   }
 
