@@ -2,9 +2,9 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button} from 'src';
 const _ = require('underscore');
-import CourseCard  from '../program-common/CourseCard';
+// import CourseCard  from '../program-common/CourseCard';
 // import S12nCard  from '../program-common/S12nCard';
-import {S12nCard} from 'src';
+import {CourseCard, S12nCard} from 'src';
 
 class DomainCard extends React.Component {
   static propTypes = {
