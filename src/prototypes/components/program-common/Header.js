@@ -2,8 +2,8 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 const _ = require('underscore');
 import { Avatar, Button, FixedContainer } from 'src';
-import withApiData from '../../../components/hocs/withApiData';
-import { courseraLogo } from '../../../assets/pngAssets';
+import withApiData from 'src/components/hocs/withApiData';
+import { courseraLogo } from 'src/assets/pngAssets';
 import {HEADER_HEIGHT} from '../../../constants/ProgramCreationAppConstants';
 
 const Header = ({

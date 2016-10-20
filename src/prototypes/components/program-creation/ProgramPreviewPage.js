@@ -107,7 +107,7 @@ class ProgramPreviewPage extends React.Component {
         </section>
 
         <section className="m-b-1">
-          <h3>Current Selected</h3>
+          <h3>Currently Selected</h3>
             {_(finalSelectedS12nIds).map(s12nId => (
               <div className="card p-a-1 m-b-1" key={`S12nMiniCard-final-selected~${s12nId}`}>
                 <div className="row">

@@ -88,7 +88,7 @@ export default withStyles(({color, font, spacing}) => ({
   S12nCard: {
     marginBottom: spacing.md,
     maxWidth: 560,
-    minHeight: 380,
+    minHeight: 416,
   },
   cardContent: {
     alignContent: 'flex-end',

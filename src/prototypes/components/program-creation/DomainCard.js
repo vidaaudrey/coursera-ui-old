@@ -2,9 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button} from 'src';
 const _ = require('underscore');
-// import CourseCard  from '../program-common/CourseCard';
-// import S12nCard  from '../program-common/S12nCard';
-import {CourseCard, S12nCard} from 'src';
+import {CourseCard, LayeredS12nCard} from 'src';
 
 class DomainCard extends React.Component {
   static propTypes = {
@@ -54,8 +52,8 @@ class DomainCard extends React.Component {
         <h5 {...css(styles.cardType)}> Specializations</h5>
         <div className="row m-b-2">
             {s12ns.map((item, index) => (
-              <div key={`S12nCard~${item.id}`} className="col-xs-12 col-md-6 col-lg-4">
-                <S12nCard
+              <div key={`LayeredS12nCard~${item.id}`} className="col-xs-12 col-md-6 col-lg-4">
+                <LayeredS12nCard
                   id={item.id}
                   isSelected={item.isSelected}
                   onToggleS12nSelect={onToggleS12nSelect}

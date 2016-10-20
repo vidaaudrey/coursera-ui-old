@@ -1,7 +1,7 @@
 import React from 'react';
 const _ = require('underscore');
-import leaderboards from '../../data/leaderboards.json';
-import courses from '../../data/courses.json';
+import leaderboards from 'src/data/leaderboards.json';
+import courses from 'src/data/courses.json';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import {
   domainNaptime, coursesNaptime, s12nsNaptime,

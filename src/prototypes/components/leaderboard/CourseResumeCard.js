@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet, Button } from 'src';
 const _ = require('underscore');
-import withApiData from '../../../components/hocs/withApiData';
+import withApiData from 'src/components/hocs/withApiData';
 import {StaticLinearProgress} from 'src';
 
 

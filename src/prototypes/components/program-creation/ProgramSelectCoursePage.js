@@ -4,7 +4,7 @@ import {Avatar, Button} from 'src';
 import DomainCard from './DomainCard';
 import SubDomainSelectCard from './SubDomainSelectCard';
 import NoDomainSelected from './NoDomainSelected';
-import withApiData from '../../../components/hocs/withApiData';
+import withApiData from 'src/components/hocs/withApiData';
 const _ = require('underscore');
 
 class ProgramSelectCoursePage extends React.Component {

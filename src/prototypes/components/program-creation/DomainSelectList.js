@@ -2,7 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button, SelectList} from 'src';
 const _ = require('underscore');
-import withApiData from '../../../components/hocs/withApiData';
+import withApiData from 'src/components/hocs/withApiData';
 
 const DomainSelectList = ({
   showSelectAll,
