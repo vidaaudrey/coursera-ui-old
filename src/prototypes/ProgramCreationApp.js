@@ -5,8 +5,8 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 
-import withApiData from '../components/hocs/withApiData';
 const _ = require('underscore');
+import withApiData from 'src/components/hocs/withApiData';
 import Header from 'src/prototypes/components/program-common/Header';
 import ProgramAddNamePage from 'src/prototypes/components/program-creation/ProgramAddNamePage';
 import ProgramSelectDomainPage from 'src/prototypes/components/program-creation/ProgramSelectDomainPage';
@@ -69,6 +69,10 @@ class ProgramCreationApp extends React.Component {
 
   onSetDomains = (selectedDomainIds) => {
     this.setState({selectedDomainIds});
+  }
+
+  onCreateProgram = () => {
+    this.setState({step: stepCreateProgram});
   }
 
   onToggleCourseSelect = (courseId, isSelected) => {
@@ -158,11 +162,6 @@ class ProgramCreationApp extends React.Component {
   // handleInviteMemberNext = () => {
   //   this.setState({step: stepCreateProgram});
   // }
-
-  onCreateProgram = () => {
-    this.setState({step: stepCreateProgram});
-  }
-
 
   render() {
     const {

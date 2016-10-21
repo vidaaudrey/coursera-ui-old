@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import withApiData from '../components/hocs/withApiData';
-import {Avatar} from 'src';
-import LeaderboardCard from './components/leaderboard/LeaderboardCard';
-import LeaderProfileCard from './components/leaderboard/LeaderProfileCard';
-import TopCoursesCard from './components/leaderboard/TopCoursesCard';
-import {courseraLogo} from '../assets/pngAssets';
+import withApiData from 'src/components/hocs/withApiData';
+import { Avatar } from 'src';
+import LeaderboardCard from 'src/prototypes/components/leaderboard/LeaderboardCard';
+import LeaderProfileCard from 'src/prototypes/components/leaderboard/LeaderProfileCard';
+import TopCoursesCard from 'src/prototypes/components/leaderboard/TopCoursesCard';
+import { courseraLogo } from 'src/assets/pngAssets';
 
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
@@ -61,7 +61,7 @@ class LeaderboardApp extends React.Component {
         <header {...cssWithClass('container-fluid', styles.header)}>
           <div className="container">
             <nav {...cssWithClass('horizontal-box align-items-spacebetween wrap', styles.NavBar)}>
-              <a href="/"> <img src={courseraLogo} alt="Coursera Logo" alt="Coursera" /></a>
+              <a href="/"> <img src={courseraLogo} alt="Coursera Logo" /></a>
               <div className="horizontal-box align-items-vertical-center">
                 <span className="m-r-2">Institutions</span>
                 <Avatar size={44} imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg" />
