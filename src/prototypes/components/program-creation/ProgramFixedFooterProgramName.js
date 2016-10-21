@@ -4,7 +4,7 @@ import {Button} from 'src';
 
 
 const ProgramFixedFooterProgramName = ({
-  onNext
+  onNext,
 }) => {
   return (
     <div className="container horizontal-box align-items-right align-items-vertical-center h-100">

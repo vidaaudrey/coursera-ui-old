@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let ImageBrightness1 = (props) => (
+let ImageBrightness1 = props => (
   <SvgIcon {...props}>
-    <circle cx="12" cy="12" r="10"/>
+    <circle cx="12" cy="12" r="10" />
   </SvgIcon>
 );
 ImageBrightness1 = pure(ImageBrightness1);

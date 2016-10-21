@@ -12,28 +12,28 @@ const copyToClipboard = (Component) => {
       onCopy: React.PropTypes.func,
       options: React.PropTypes.shape({
         debug: React.PropTypes.bool,
-        message: React.PropTypes.string
-      })
+        message: React.PropTypes.string,
+      }),
     }
 
     static defaultProps = {
-      text: 'color'
+      text: 'color',
     }
 
     state = {}
 
     onClick = (e) => {
-     const {text, onCopy, options, onClick} = this.props;
-     copy(text, options);
+      const {text, onCopy, options, onClick} = this.props;
+      copy(text, options);
 
-     if (onCopy) {
-       onCopy(text);
-     }
+      if (onCopy) {
+        onCopy(text);
+      }
 
-     if (onClick) {
-       onClick(e);
-     }
-   }
+      if (onClick) {
+        onClick(e);
+      }
+    }
     render() {
       const {text, onCopy, options, onClick, htmlAttributes, ...props} = this.props;
       return (
@@ -41,7 +41,7 @@ const copyToClipboard = (Component) => {
           {...props}
           htmlAttributes={{
             ...htmlAttributes,
-            onClick: this.onClick
+            onClick: this.onClick,
           }}
         />
       );

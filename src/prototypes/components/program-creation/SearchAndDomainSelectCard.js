@@ -9,40 +9,40 @@ const mockListData = [
   {
     id: 'computer-science',
     label: 'Computer Science',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'arts-and-humanities',
     label: 'Arts & Humanities',
-    isSelected: false
+    isSelected: false,
   }, {
     id: 'data-science',
     label: 'Data Science',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'social-sciences',
     label: 'Social Science',
-    isSelected: false
+    isSelected: false,
   }, {
     id: 'life-sciences',
     label: 'Life Science',
-    isSelected: false
+    isSelected: false,
   }, {
     id: 'business',
     label: 'Business',
-    isSelected: false
+    isSelected: false,
   }, {
     id: 'personal-development',
     label: 'Personal Development',
-    isSelected: false
+    isSelected: false,
   }, {
     id: 'math-and-logic',
     label: 'Math & Logic',
-    isSelected: false
+    isSelected: false,
   }, {
     id: 'physical-science-and-engineering',
     label: 'Physical Science & Engineering',
-    isSelected: false
-  }
+    isSelected: false,
+  },
 ];
 
 
@@ -62,7 +62,7 @@ class SearchAndDomainSelectCard extends React.Component {
 
   onSubmit = (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    this.props.onSetSearchKeyword(this.searchRef.value)
+    this.props.onSetSearchKeyword(this.searchRef.value);
   }
 
   onSelectChange = (id, newIsSelect, newListData) => {
@@ -82,7 +82,7 @@ class SearchAndDomainSelectCard extends React.Component {
           <DomainSelectList
             showSelectAll={false}
             onSelectChange={this.onSelectChange}
-            alignCenter={true}
+            alignCenter
             selectedDomainIds={selectedDomainIds}
           />
         </div>
@@ -92,7 +92,7 @@ class SearchAndDomainSelectCard extends React.Component {
               type="text"
               placeholder="What do you want to learn?"
               {...css(styles.searchInput)}
-              ref={(r) => (this.searchRef = r)}
+              ref={r => (this.searchRef = r)}
               defaultValue={searchKeyWord}
               onChange={() => (onSetSearchKeyword(this.searchRef.value))}
             />

@@ -6,31 +6,31 @@
 
 module.exports = {
   domains: {
-    ['Computer Science']: [
+    'Computer Science': [
       'Software Development',
       'Mobile and Web Development',
       'Algorithms',
       'Computer Security and Networks',
       'Design and Product',
     ],
-    ['Arts & Humanities']: [
+    'Arts & Humanities': [
       'History',
       'Music and Art',
       'Philosophy',
     ],
-    ['Data Science']: [
+    'Data Science': [
       'Data Analysis',
       'Machine Learning',
       'Probability and Statistics',
     ],
-    ['Social Science']: [
+    'Social Science': [
       'Economics',
       'Education',
       'Governance and Society',
       'Law',
       'Psychology',
     ],
-    ['Life Science']: [
+    'Life Science': [
       'Animals and Veterinary Science',
       'Bioinformatics',
       'Biology',
@@ -38,7 +38,7 @@ module.exports = {
       'Nutrition',
       'Clinical Science',
     ],
-    ['Business']: [
+    Business: [
       'Leadership and Management',
       'Finance',
       'Marketing',
@@ -46,9 +46,9 @@ module.exports = {
       'Business Essentials',
       'Business Strategy',
     ],
-    ['Personal Development']: [],
-    ['Math & Logic']: [],
-    ['Physical Science & Engineering']: [
+    'Personal Development': [],
+    'Math & Logic': [],
+    'Physical Science & Engineering': [
       'Electrical Engineering',
       'Mechanical Engineering',
       'Chemistry',

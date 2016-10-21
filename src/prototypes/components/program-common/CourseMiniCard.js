@@ -10,7 +10,7 @@ const CARD_TYPES = {
   FINISHED_COURSE: 'FINISHED_COURSE',
   CUSTOM_CHILDREN: 'CUSTOM_CHILDREN',
 
-}
+};
 const DEFAULT_COURSE_PHOTO_SIZE = 96;
 
 const BASE_URL = 'https://www.coursera.org/learn/';
@@ -23,9 +23,8 @@ const CourseMiniCard = ({
   coursePhotoSize = DEFAULT_COURSE_PHOTO_SIZE,
   progress, grade, learnerCount,
   children,
-  ...props
+  ...props,
 }) => {
-
   if (!course) return null;
 
   const {name, description, photoUrl, partnerIds, partnerName: mockName} = course;
@@ -33,7 +32,7 @@ const CourseMiniCard = ({
   const partnerName = partner && partner.node.name || mockName;
   const dynamicStyles = getStyles({coursePhotoSize});
 
-   return (
+  return (
     <div className="horizontal-box CourseCard">
       <div className="horizontal-box align-items-top m-r-1" style={{minWidth: 100}}>
         <a href={`${BASE_URL}${course.slug}/home/welcome`}>
@@ -64,7 +63,7 @@ const CourseMiniCard = ({
             </span>
           </div>
         }
-        {type === CARD_TYPES.CUSTOM_CHILDREN  &&
+        {type === CARD_TYPES.CUSTOM_CHILDREN &&
           <div className="m-t-auto">
             {children}
           </div>
@@ -88,7 +87,7 @@ function getStyles({coursePhotoSize}) {
       width: coursePhotoSize,
       height: coursePhotoSize,
     },
-  }
+  };
 }
 
 export default withStyles(({color, gradient}) => ({

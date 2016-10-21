@@ -8,10 +8,10 @@ import ProgramSelectDomainPage from './components/program-creation/ProgramSelect
 import ProgramSelectCoursePage from './components/program-creation/ProgramSelectCoursePage';
 import ProgramPreviewPage from './components/program-creation/ProgramPreviewPage';
 import ProgramFixedFooter from './components/program-creation/ProgramFixedFooter';
-import SearchAndDomainSelectCard from './components/program-creation/SearchAndDomainSelectCard'
+import SearchAndDomainSelectCard from './components/program-creation/SearchAndDomainSelectCard';
 
 import {
-  HEADER_HEIGHT, FOOTER_HEIGHT, CREATE_PROGRAM_STEPS
+  HEADER_HEIGHT, FOOTER_HEIGHT, CREATE_PROGRAM_STEPS,
 } from '../constants/ProgramCreationAppConstants';
 const {
   stepCreateProgramName, stepSelectDomains, stepSelectCourses, stepProgramPreview,
@@ -23,7 +23,7 @@ const ALL_STEPS = [
   stepSelectDomains,
   stepSelectCourses,
   stepProgramPreview,
-  stepCreateProgramSuccess
+  stepCreateProgramSuccess,
 ];
 
 class ProgramCreationApp extends React.Component {
@@ -42,7 +42,7 @@ class ProgramCreationApp extends React.Component {
       selectedS12nIds: [],
       seatLimit: 6,
       currentTotalSelectCount: 0,
-    }
+    };
   }
 
   onSetProgramName = (programName) => {
@@ -76,7 +76,7 @@ class ProgramCreationApp extends React.Component {
   onToggleS12nSelect = (s12nId, isSelected, s12nCourseIds = []) => {
     const {selectedS12nIds, selectedCourseIds} = this.state;
     if (isSelected) {
-      this.handleAddS12n(s12nId, s12nCourseIds)
+      this.handleAddS12n(s12nId, s12nCourseIds);
     } else {
       this.handleRemoveS12n(s12nId, s12nCourseIds);
     }
@@ -92,7 +92,7 @@ class ProgramCreationApp extends React.Component {
   }
 
   handleRemoveCourse = (id) => {
-    const selectedCourseIds = _.reject(this.state.selectedCourseIds, (item) => item === id);
+    const selectedCourseIds = _.reject(this.state.selectedCourseIds, item => item === id);
     this.setState({
       selectedCourseIds,
       currentTotalSelectCount: this.state.currentTotalSelectCount - 1,
@@ -111,7 +111,7 @@ class ProgramCreationApp extends React.Component {
   }
 
   handleRemoveS12n = (id, s12nCourseIds = []) => {
-    const selectedS12nIds = _.reject(this.state.selectedS12nIds, (item) => item === id);
+    const selectedS12nIds = _.reject(this.state.selectedS12nIds, item => item === id);
     this.setState({
       selectedS12nIds,
       currentTotalSelectCount: this.state.currentTotalSelectCount - _(s12nCourseIds).size(),
@@ -166,7 +166,7 @@ class ProgramCreationApp extends React.Component {
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
       seatLimit, currentTotalSelectCount,
     } = this.state;
-    const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess)
+    const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
@@ -285,8 +285,8 @@ export default withStyles(({color, gradient, transition, spacing}) => ({
   },
   tabMenuAHover: {
     ':hover': {
-        textDecoration: 'none',
-    }
+      textDecoration: 'none',
+    },
   },
   sideBar: {
     transition: transition.easeOut(),
@@ -303,14 +303,14 @@ export default withStyles(({color, gradient, transition, spacing}) => ({
   },
 
   hover: {
-      ':hover': {
-          backgroundColor: 'red'
-      }
+    ':hover': {
+      backgroundColor: 'red',
+    },
   },
 
   small: {
-      '@media (max-width: 600px)': {
-          backgroundColor: 'red',
-      }
-  }
+    '@media (max-width: 600px)': {
+      backgroundColor: 'red',
+    },
+  },
 }))(AppWithApiData);

@@ -34,15 +34,15 @@ class DomainCard extends React.Component {
     const courseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
 
     const s12ns = _.chain(s12nIds)
-      .map((id) => ({
+      .map(id => ({
         id,
-        isSelected: _(selectedS12nIds).contains(id)
+        isSelected: _(selectedS12nIds).contains(id),
       }))
       .value();
     const courses = _.chain(courseIds)
-      .map((id) => ({
+      .map(id => ({
         id,
-        isSelected: _(selectedCourseIds).contains(id)
+        isSelected: _(selectedCourseIds).contains(id),
       }))
       .value();
 
@@ -73,7 +73,7 @@ class DomainCard extends React.Component {
               </div>
             ))}
             <div className="col-xs-12 text-xs-right">
-              <Button type="secondary" label={'See All'}/>
+              <Button type="secondary" label={'See All'} />
             </div>
         </div>
       </div>
@@ -84,8 +84,8 @@ class DomainCard extends React.Component {
 function getStyles({coursePhotoSize}) {
   return {
     DomainCard: {
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color, spacing}) => ({
@@ -98,5 +98,5 @@ export default withStyles(({color, spacing}) => ({
   cardType: {
     textTransform: 'uppercase',
     color: color.secondaryText,
-  }
+  },
 }))(DomainCard);

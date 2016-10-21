@@ -15,7 +15,7 @@ const StaticLinearProgress = ({
   backgroundColor,
   color,
   height = DEFAULT_HEIGHT,
-  ...props
+  ...props,
 }) => {
   const dynamicStyles = getStyles({backgroundColor, color, height});
   const mergedRootStyle = {...dynamicStyles.StaticLinearProgress, ...style};
@@ -26,7 +26,7 @@ const StaticLinearProgress = ({
       {...css(styles.StaticLinearProgress)}
       style={mergedRootStyle}
     >
-      <div {...css(styles.bar)} style={barStyle}></div>
+      <div {...css(styles.bar)} style={barStyle} />
    </div>
  );
 };
@@ -61,8 +61,8 @@ function getStyles(props) {
     bar: {
       backgroundColor: color,
       borderRadius: height / 2,
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color, gradient}) => ({
@@ -75,5 +75,5 @@ export default withStyles(({color, gradient}) => ({
   bar: {
     height: '100%',
     backgroundColor: color.primary,
-  }
+  },
 }))(StaticLinearProgress);

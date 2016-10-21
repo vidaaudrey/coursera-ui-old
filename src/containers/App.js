@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 class App extends React.Component {
   static defaultProps = {
     name: 'World',
-    handleClick: (name) => console.log(`hi ${name}`),
+    handleClick: name => console.log(`hi ${name}`),
   }
 
   static propTypes = {
@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <div className="rc-App">
         <h1>Hello {name}!</h1>
-        <button onClick={() => {handleClick(name);}}> Ask {name}</button>
+        <button onClick={() => { handleClick(name); }}> Ask {name}</button>
       </div>
     );
   }

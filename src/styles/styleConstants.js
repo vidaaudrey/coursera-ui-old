@@ -6,11 +6,11 @@ export const gridBreakPoints = {
   md: 768,
   lg: 992,
   xl: 1200,
-}
+};
 
 export const containerMaxWidths = {
   xm: 576,
   md: 720,
   lg: 940,
   xl: 1140,
-}
+};

@@ -5,7 +5,7 @@ const _ = require('underscore');
 
 const ProgramFixedFooterPreviewProgram = ({
   styles, onPrev, onNext,
-  seatLimit, currentTotalSelectCount, selectedCourseIds, selectedS12nIds
+  seatLimit, currentTotalSelectCount, selectedCourseIds, selectedS12nIds,
 }) => {
   const availableSeats = seatLimit - currentTotalSelectCount;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let SvgCheckOutline = (props) => (
+let SvgCheckOutline = props => (
   <SvgIcon {...props} viewBox="0 0 48 48">
     <title>check outline</title>
     <path d="M24,0A24,24,0,1,0,48,24,24,24,0,0,0,24,0Zm0,46A22,22,0,1,1,46,24,22,22,0,0,1,24,46Z" />

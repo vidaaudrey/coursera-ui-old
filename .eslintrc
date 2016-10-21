@@ -12,7 +12,6 @@
     "react/jsx-filename-extension": 0,
     "object-curly-spacing": 0,
     "newline-after-import": 0,
-    "import/import-first": 0,
-    "newline-after-import": 0,
+    "import/import-first": 0
   }
 }

@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let DeviceSignalCellular4Bar = (props) => (
+let DeviceSignalCellular4Bar = props => (
   <SvgIcon {...props}>
-    <path d="M2 22h20V2z"/>
+    <path d="M2 22h20V2z" />
   </SvgIcon>
 );
 DeviceSignalCellular4Bar = pure(DeviceSignalCellular4Bar);

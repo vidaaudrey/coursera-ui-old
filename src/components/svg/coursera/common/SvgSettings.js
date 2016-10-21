@@ -2,7 +2,7 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let SvgSettings = (props) => (
+let SvgSettings = props => (
   <SvgIcon {...props} viewBox="0 0 48 48">
     <title>settings</title>
     <path d="M24,16a8,8,0,1,0,8,8A8,8,0,0,0,24,16Zm0,14a6,6,0,1,1,6-6A6,6,0,0,1,24,30Z" />

@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let AvPlayArrow = (props) => (
+let AvPlayArrow = props => (
   <SvgIcon {...props}>
-    <path d="M8 5v14l11-7z"/>
+    <path d="M8 5v14l11-7z" />
   </SvgIcon>
 );
 AvPlayArrow = pure(AvPlayArrow);

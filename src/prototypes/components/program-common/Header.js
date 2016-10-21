@@ -10,26 +10,26 @@ const Header = ({
   style,
   styles,
   isLoggedIn,
-  ...props
+  ...props,
 }) => {
   return (
     <FixedContainer height={HEADER_HEIGHT} fixedPosition="top" backgroundColor="white">
-      <header  {...cssWithClass('container-fluid', styles.Header)}>
+      <header {...cssWithClass('container-fluid', styles.Header)}>
         <div {...cssWithClass('container horizontal-box align-items-spacebetween wrap', styles.headerInner)}>
-          <a href="/"> <img src={courseraLogo} alt="Coursera Logo" alt="Coursera"/></a>
+          <a href="/"> <img src={courseraLogo} alt="Coursera Logo" alt="Coursera" /></a>
           <div className="horizontal-box align-items-vertical-center">
             {isLoggedIn &&
-              <Avatar size={44} imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg"/>
+              <Avatar size={44} imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg" />
             }
           </div>
           <div className="horizontal-box align-items-vertical-center">
-            <Button type="noStyle" size="sm" label="Log In" style={{marginRight: '1rem'}}/>
-            <Button type="primary" size="sm" label="Sign Up"/>
+            <Button type="noStyle" size="sm" label="Log In" style={{marginRight: '1rem'}} />
+            <Button type="primary" size="sm" label="Sign Up" />
           </div>
         </div>
       </header>
     </FixedContainer>
-  )
+  );
 };
 
 const CourseWithApiData = withApiData({dataType: 'COURSE'})(Header);
@@ -42,7 +42,7 @@ function getStyles({coursePhotoSize}) {
       width: coursePhotoSize,
       height: coursePhotoSize,
     },
-  }
+  };
 }
 
 export default withStyles(({color, gradient, spacing}) => ({

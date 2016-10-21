@@ -5,35 +5,35 @@ const _ = require('underscore');
 
 const mockListData = [
   {
-    'id': 'leadership-and-management',
-    'isSelected': false,
-    'label': 'leadership-and-management'
+    id: 'leadership-and-management',
+    isSelected: false,
+    label: 'leadership-and-management',
   }, {
-    'id': 'finance',
-    'isSelected': false,
-    'label': 'finance'
+    id: 'finance',
+    isSelected: false,
+    label: 'finance',
   }, {
-    'id': 'marketing',
-    'isSelected': true,
-    'label': 'marketing'
+    id: 'marketing',
+    isSelected: true,
+    label: 'marketing',
   }, {
-    'id': 'entrepreneurship',
-    'isSelected': false,
-    'label': 'entrepreneurship'
+    id: 'entrepreneurship',
+    isSelected: false,
+    label: 'entrepreneurship',
   }, {
-    'id': 'business-essentials',
-    'isSelected': true,
-    'label': 'business-essentials'
+    id: 'business-essentials',
+    isSelected: true,
+    label: 'business-essentials',
   }, {
-    'id': 'business-strategy',
-    'isSelected': true,
-    'label': 'business-strategy'
-  }
+    id: 'business-strategy',
+    isSelected: true,
+    label: 'business-strategy',
+  },
 ];
 
 const SubDomainSelectCard = ({
   styles,
-  listData = mockListData, onSelectChange
+  listData = mockListData, onSelectChange,
 }) => {
   return (
     <div {...cssWithClass('vertical-box p-a-1 m-b-2', styles.SubDomainSelectCard)}>

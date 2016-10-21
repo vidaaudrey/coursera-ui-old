@@ -16,7 +16,7 @@ class ProgramAddName extends React.Component {
           <div className="m-b-1">
             <input type="text"
               {...css(styles.input)}
-              ref={(r) => (this.programNameRef = r)}
+              ref={r => (this.programNameRef = r)}
               placeholder="Program Name"
               defaultValue={programName}
               onChange={() => onSetProgramName(this.programNameRef.value)}
@@ -39,7 +39,7 @@ class ProgramAddName extends React.Component {
           <div className="m-b-1">
             <input type="text"
               {...css(styles.input)}
-              ref={(r) => (this.programTaglineRef = r)}
+              ref={r => (this.programTaglineRef = r)}
               placeholder="Program Tagline"
               defaultValue={programTagline}
               onChange={() => onSetProgramTagline(this.programTaglineRef.value)}
@@ -59,7 +59,7 @@ function getStyles({coursePhotoSize}) {
       width: coursePhotoSize,
       height: coursePhotoSize,
     },
-  }
+  };
 }
 
 export default withStyles(({color, gradient}) => ({

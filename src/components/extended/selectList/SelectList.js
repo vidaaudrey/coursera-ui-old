@@ -9,7 +9,7 @@ const idType = [
   React.PropTypes.string,
   React.PropTypes.number,
 ];
-class SelectList extends React.Component{
+class SelectList extends React.Component {
   static propTypes = {
     listData: React.PropTypes.arrayOf(React.PropTypes.shape({
       id: React.PropTypes.oneOfType(idType).isRequired,
@@ -53,7 +53,7 @@ class SelectList extends React.Component{
 
     // If the list item already has isSelected field, we'll not modify the list
     if (showSelectAll) {
-      newListData = listData.map(item => {
+      newListData = listData.map((item) => {
         const itemCopy = item;
         if (!{}.hasOwnProperty.call(itemCopy, 'isSelected')) {
           itemCopy.isSelected = false;
@@ -61,7 +61,7 @@ class SelectList extends React.Component{
         return itemCopy;
       });
     }
-    const isAllSelected = _.every(newListData, (item) => item.isSelected);
+    const isAllSelected = _.every(newListData, item => item.isSelected);
     return {
       listData: newListData,
       isAllSelected,
@@ -103,7 +103,7 @@ class SelectList extends React.Component{
     const {isAllSelected} = this.state;
     const newIsAllSelected = !this.state.isAllSelected;
     /* eslint-disable no-param-reassign */
-    const newListData = this.state.listData.map(item => {
+    const newListData = this.state.listData.map((item) => {
       item.isSelected = newIsAllSelected;
       return item;
     });
@@ -140,7 +140,7 @@ class SelectList extends React.Component{
           />
         }
         <div>
-          {_(listData).map((item) =>
+          {_(listData).map(item =>
             <SelectListItem
               {...selectListItemAttributes}
               key={`SelectList~${item.id}`}
@@ -152,18 +152,16 @@ class SelectList extends React.Component{
           )}
         </div>
       </div>
-    )
+    );
   }
 }
-
-
 
 
 function getStyles({alignCenter}) {
   return {
     textAlign: alignCenter ? 'center' : 'left',
-  }
-};
+  };
+}
 
 export default withStyles(({color, transition, spacing}) => ({
   SelectList: {
@@ -176,5 +174,5 @@ export default withStyles(({color, transition, spacing}) => ({
     verticalAlign: 'middle',
     whiteSpace: 'nowrap',
     cursor: 'pointer',
-  }
+  },
 }))(SelectList);

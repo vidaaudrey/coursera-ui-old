@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let AvFiberManualRecord = (props) => (
+let AvFiberManualRecord = props => (
   <SvgIcon {...props}>
-    <circle cx="12" cy="12" r="8"/>
+    <circle cx="12" cy="12" r="8" />
   </SvgIcon>
 );
 AvFiberManualRecord = pure(AvFiberManualRecord);

@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let DeviceSignalCellular1Bar = (props) => (
+let DeviceSignalCellular1Bar = props => (
   <SvgIcon {...props}>
-    <path fillOpacity=".3" d="M2 22h20V2z"/><path d="M12 12L2 22h10z"/>
+    <path fillOpacity=".3" d="M2 22h20V2z" /><path d="M12 12L2 22h10z" />
   </SvgIcon>
 );
 DeviceSignalCellular1Bar = pure(DeviceSignalCellular1Bar);

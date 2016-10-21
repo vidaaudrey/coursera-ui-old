@@ -22,7 +22,7 @@ const TextField = ({
   successMsg,
   minInputSize = 10,
   maxInputSize = 76,
-  ...props
+  ...props,
 }) => {
   const dynamicStyles = getStyles({size});
   const mergedStyles = {...dynamicStyles.TextField, ...style};
@@ -46,7 +46,8 @@ const TextField = ({
     <div
       {...htmlAttributes}
 
-      className={containerClass} style={{...style, marginBottom: extendedInfoHeight}} >
+      className={containerClass} style={{...style, marginBottom: extendedInfoHeight}}
+    >
       <label
         htmlFor={labelTextLocal}
         className={labelClassName}
@@ -65,7 +66,6 @@ const TextField = ({
       </div>
     </div>
   );
-
 };
 
 // Explicity declare the default props for documentation purpose,
@@ -91,8 +91,8 @@ TextField.propTypes = {
 function getStyles({size}) {
   return {
     TextField: {
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color, transition, button}) => ({

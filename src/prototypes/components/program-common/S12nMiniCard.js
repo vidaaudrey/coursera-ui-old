@@ -15,9 +15,8 @@ const S12nMiniCard = ({
   id,
   s12nPhotoSize = DEFAULT_COURSE_PHOTO_SIZE,
   children,
-  ...props
+  ...props,
 }) => {
-
   if (!s12n) return null;
 
   const {name, description, promoPhoto, courseIds, partnerIds, partnerName: mockName} = s12n;
@@ -25,7 +24,7 @@ const S12nMiniCard = ({
   const partnerName = partner && partner.node.name || mockName;
   const dynamicStyles = getStyles({s12nPhotoSize});
 
-   return (
+  return (
     <div className="horizontal-box CourseCard">
       <div className="horizontal-box align-items-top m-r-1" style={{minWidth: 100}}>
         <a href={`${BASE_URL}${s12n.slug}`}>
@@ -54,7 +53,7 @@ function getStyles({s12nPhotoSize}) {
       width: s12nPhotoSize,
       height: s12nPhotoSize,
     },
-  }
+  };
 }
 
 export default withStyles(({color, spacing}) => ({

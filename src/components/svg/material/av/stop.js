@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let AvStop = (props) => (
+let AvStop = props => (
   <SvgIcon {...props}>
-    <path d="M6 6h12v12H6z"/>
+    <path d="M6 6h12v12H6z" />
   </SvgIcon>
 );
 AvStop = pure(AvStop);

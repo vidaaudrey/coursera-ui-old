@@ -3,7 +3,7 @@ import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button} from 'src';
 import CourseMiniCard from '../program-common/CourseMiniCard';
 import S12nMiniCard from '../program-common/S12nMiniCard';
-import { ContentAddCircle, NavigationCancel } from 'src/components/svg/material'
+import { ContentAddCircle, NavigationCancel } from 'src/components/svg/material';
 const _ = require('underscore');
 
 const BASE_URL = 'https://coursera.org/programs/';
@@ -25,10 +25,10 @@ class ProgramPreviewPage extends React.Component {
   onToggleCourseSelect = (courseId, isSelected) => {
     if (isSelected) {
       this.setState({
-        finalSelectedCourseIds: [...this.state.finalSelectedCourseIds, courseId]
-      })
+        finalSelectedCourseIds: [...this.state.finalSelectedCourseIds, courseId],
+      });
     } else {
-      const finalSelectedCourseIds = _.reject(this.state.finalSelectedCourseIds, (item) => item === courseId);
+      const finalSelectedCourseIds = _.reject(this.state.finalSelectedCourseIds, item => item === courseId);
       this.setState({finalSelectedCourseIds});
     }
   }
@@ -36,10 +36,10 @@ class ProgramPreviewPage extends React.Component {
   onToggleS12nSelect = (s12nId, isSelected) => {
     if (isSelected) {
       this.setState({
-        finalSelectedS12nIds: [...this.state.finalSelectedS12nIds, s12nId]
-      })
+        finalSelectedS12nIds: [...this.state.finalSelectedS12nIds, s12nId],
+      });
     } else {
-      const finalSelectedS12nIds = _.reject(this.state.finalSelectedS12nIds, (item) => item === s12nId);
+      const finalSelectedS12nIds = _.reject(this.state.finalSelectedS12nIds, item => item === s12nId);
       this.setState({finalSelectedS12nIds});
     }
   }
@@ -115,7 +115,7 @@ class ProgramPreviewPage extends React.Component {
                     <button
                       {...css(styles.iconButton, styles.iconButtonFocus)}
                       onClick={() => (this.onToggleS12nSelect(s12nId, false))}
-                      >
+                    >
                       <NavigationCancel
                         size={24}
                         color={this.getIconColor({s12nId})}
@@ -126,8 +126,7 @@ class ProgramPreviewPage extends React.Component {
                   <div className="col-xs-10 horizontal-box">
                     <S12nMiniCard
                       id={s12nId}
-                    >
-                  </S12nMiniCard>
+                    />
                   </div>
                 </div>
               </div>
@@ -140,7 +139,7 @@ class ProgramPreviewPage extends React.Component {
                   <button
                     {...css(styles.iconButton, styles.iconButtonFocus)}
                     onClick={() => (this.onToggleCourseSelect(courseId, false))}
-                    >
+                  >
                     <NavigationCancel
                       size={24}
                       color={this.getIconColor({courseId})}
@@ -151,9 +150,8 @@ class ProgramPreviewPage extends React.Component {
                 <div className="col-xs-10 horizontal-box">
                   <CourseMiniCard
                     id={courseId}
-                    type='CUSTOM_CHILDREN'
-                  >
-                  </CourseMiniCard>
+                    type="CUSTOM_CHILDREN"
+                  />
                 </div>
               </div>
             </div>
@@ -169,7 +167,7 @@ class ProgramPreviewPage extends React.Component {
                     <button
                       {...css(styles.iconButton, styles.iconButtonFocus)}
                       onClick={() => (this.onToggleS12nSelect(s12nId, true))}
-                      >
+                    >
                       <ContentAddCircle
                         size={24}
                         color={this.getIconColor({s12nId})}
@@ -180,8 +178,7 @@ class ProgramPreviewPage extends React.Component {
                   <div className="col-xs-10 horizontal-box">
                     <S12nMiniCard
                       id={s12nId}
-                    >
-                    </S12nMiniCard>
+                    />
                   </div>
                 </div>
               </div>
@@ -194,7 +191,7 @@ class ProgramPreviewPage extends React.Component {
                   <button
                     {...css(styles.iconButton, styles.iconButtonFocus)}
                     onClick={() => (this.onToggleCourseSelect(courseId, true))}
-                    >
+                  >
                     <ContentAddCircle
                       size={24}
                       color={this.getIconColor({courseId})}
@@ -205,10 +202,9 @@ class ProgramPreviewPage extends React.Component {
                 <div className="col-xs-10 horizontal-box">
                   <CourseMiniCard
                     id={courseId}
-                    hasBorder={true}
-                    type='CUSTOM_CHILDREN'
-                  >
-                  </CourseMiniCard>
+                    hasBorder
+                    type="CUSTOM_CHILDREN"
+                  />
                 </div>
               </div>
             </div>
@@ -234,8 +230,8 @@ export default withStyles(({color, gradient}) => ({
     border: 'none',
   },
   iconButtonFocus: {
-    ':focus' : {
+    ':focus': {
       outline: 'none',
-    }
+    },
   },
 }))(ProgramPreviewPage);

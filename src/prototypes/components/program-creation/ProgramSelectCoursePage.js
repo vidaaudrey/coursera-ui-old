@@ -38,11 +38,11 @@ class ProgramSelectCoursePage extends React.Component {
 
     return (
       <div {...css(styles.ProgramSelectCoursePage)}>
-        {_(domainListData).map(item =>(
+        {_(domainListData).map(item => (
           <section className="m-b-3" key={`domain-container~${item.id}`}>
             <SubDomainSelectCard
               onSelectChange={onSelectChange}
-              alignCenter={true}
+              alignCenter
               subdomainIds={item.subdomainIds}
             />
             <DomainCard
@@ -62,7 +62,7 @@ class ProgramSelectCoursePage extends React.Component {
 }
 
 const ProgramSelectCoursePageWithApiData = withApiData({
-  dataType: 'DOMAINS'
+  dataType: 'DOMAINS',
 })(ProgramSelectCoursePage);
 
 
@@ -74,7 +74,7 @@ function getStyles({coursePhotoSize}) {
       width: coursePhotoSize,
       height: coursePhotoSize,
     },
-  }
+  };
 }
 
 export default withStyles(({color, gradient}) => ({

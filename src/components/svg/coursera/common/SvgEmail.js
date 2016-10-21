@@ -2,7 +2,7 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let SvgEmail = (props) => (
+let SvgEmail = props => (
   <SvgIcon {...props} viewBox="0 0 48 48">
     <title>email</title>
     <path d="M0,6V33a9,9,0,0,0,9,9H39a9,9,0,0,0,9-9V6H0ZM46,33a7,7,0,0,1-7,7H9a7,7,0,0,1-7-7V8H46V33Z" />

@@ -1,15 +1,15 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet, S12nCard } from 'src';
-import { SvgCheckOutline } from '../svg/coursera'
+import { SvgCheckOutline } from '../svg/coursera';
 const _ = require('underscore');
 
 const LayeredS12nCard = ({styles, id, onToggleS12nSelect}) => {
   return (
     <div {...cssWithClass('vertical-box', styles.LayeredS12nCard)}>
-      <S12nCard id={id} onToggleS12nSelect={onToggleS12nSelect}/>
+      <S12nCard id={id} onToggleS12nSelect={onToggleS12nSelect} />
       <div {...css(styles.layers)}>
-        <div {...css(styles.firstLayer)}></div>
-        <div {...css(styles.secondLayer)}></div>
+        <div {...css(styles.firstLayer)} />
+        <div {...css(styles.secondLayer)} />
       </div>
     </div>
   );
@@ -22,7 +22,7 @@ LayeredS12nCard.propTypes = {
 };
 
 LayeredS12nCard.defaultProps = {
-  id: 's1' // Remove later
+  id: 's1', // Remove later
 };
 
 
@@ -47,6 +47,6 @@ export default withStyles(({color, font, spacing}) => ({
     margin: '0px 20px',
   },
   layers: {
-    marginTop: `-${spacing.md}`
-  }
+    marginTop: `-${spacing.md}`,
+  },
 }))(LayeredS12nCard);

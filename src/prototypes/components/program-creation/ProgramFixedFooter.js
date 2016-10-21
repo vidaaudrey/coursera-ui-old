@@ -20,7 +20,7 @@ class ProgramFixedFooter extends React.Component {
       selectedS12nIds, selectedCourseIds,
       onCourseSelectionPrev, onCourseSelectionNext,
       onProgramPreviewPrev, onProgramPreviewNext,
-      currentStepNumber, totalSteps
+      currentStepNumber, totalSteps,
     } = this.props;
 
     return (
@@ -35,7 +35,7 @@ class ProgramFixedFooter extends React.Component {
           </div>
 
           {step === stepCreateProgramName &&
-            <ProgramFixedFooterProgramName onNext={onProgramNameNext}/>
+            <ProgramFixedFooterProgramName onNext={onProgramNameNext} />
           }
           {step === stepSelectDomains &&
             <ProgramFixedFooterDomainSelection
@@ -77,7 +77,7 @@ function getStyles({coursePhotoSize}) {
       width: coursePhotoSize,
       height: coursePhotoSize,
     },
-  }
+  };
 }
 
 export default withStyles(({color, gradient}) => ({

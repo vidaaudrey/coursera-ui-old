@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let AvSkipPrevious = (props) => (
+let AvSkipPrevious = props => (
   <SvgIcon {...props}>
-    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
   </SvgIcon>
 );
 AvSkipPrevious = pure(AvSkipPrevious);

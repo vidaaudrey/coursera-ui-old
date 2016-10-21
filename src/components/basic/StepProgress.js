@@ -17,20 +17,20 @@ const StepProgress = ({
   height = DEFAULT_HEIGHT,
   totalSteps = 1,
   currentStep = 0,
-  ...props
+  ...props,
 }) => {
   const dynamicStyles = getStyles({backgroundColor, color, height, barMargin});
   const mergedRootStyle = {...dynamicStyles.StepProgress, ...style};
   // const barStyle = {...dynamicStyles.bar, width: `${progress}%`};
   const progressColorLocal = progressColor || theme.color.success;
-  const barWidth = 1 / totalSteps ;
+  const barWidth = 1 / totalSteps;
   const barData = _.range(totalSteps)
-    .map((item) =>({
+    .map(item => ({
       step: item,
       style: {
         width: `${barWidth * 100}%`,
         backgroundColor: item < currentStep ? progressColorLocal : 'transparent',
-        ...dynamicStyles.bar
+        ...dynamicStyles.bar,
       },
     }));
   return (
@@ -38,13 +38,12 @@ const StepProgress = ({
       {...cssWithClass('horizontal-box align-items-spacebetween', styles.StepProgress)}
       style={mergedRootStyle}
     >
-      {_(barData).map((item) => (
+      {_(barData).map(item => (
         <div
           {...css(styles.bar)}
           style={item.style}
           key={`StepProgress~${item.step}`}
-        >
-        </div>
+        />
       ))}
     </div>
  );
@@ -81,7 +80,7 @@ StepProgress.defaultProps = {
 };
 
 // Dynamic styles
-function getStyles({backgroundColor, color, height, barMargin} ) {
+function getStyles({backgroundColor, color, height, barMargin}) {
   return {
     StepProgress: {
       height,
@@ -90,8 +89,8 @@ function getStyles({backgroundColor, color, height, barMargin} ) {
     bar: {
       marginLeft: barMargin,
       marginRight: barMargin,
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color, gradient}) => ({
@@ -103,5 +102,5 @@ export default withStyles(({color, gradient}) => ({
   },
   bar: {
     height: '100%',
-  }
+  },
 }))(StepProgress);

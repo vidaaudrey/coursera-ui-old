@@ -16,21 +16,22 @@ class LeaderboardApp extends React.Component {
     this._menuItems = ['Overall Progress', 'This Month'];
     // Get top courses, format: [{count: 20, id: 'xyz'}, {count: 10, id: 'abc'}]
     this._topCourses = _.chain(props.leaderboards)
-                    .pluck('courseId')
-                    .reduce((total, item) => {
-                      total[item] = total[item] || 0;
-                      total[item] = total[item] + 1
-                      return total;
-                    }, {})
-                    .map((item, key) => ({id: key, count: item}))
-                    .sortBy('count')
-                    .reverse()
-                    .value()
-                    .slice(0, 3);
+      .pluck('courseId')
+      .reduce((total, item) => {
+        total[item] = total[item] || 0;
+        total[item] = total[item] + 1;
+        return total;
+      }, {})
+      .map((item, key) => ({id: key, count: item}))
+      .sortBy('count')
+      .reverse()
+      .value()
+      .slice(0, 3);
+
     this.state = {
       leaderboardData: props.leaderboards,
       activeMenuIndex: 0,
-    }
+    };
   }
 
   handleMenuClick = (menuIndex) => {
@@ -50,13 +51,13 @@ class LeaderboardApp extends React.Component {
 
     return (
       <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
-        <header  {...cssWithClass('container-fluid', styles.header)}>
+        <header {...cssWithClass('container-fluid', styles.header)}>
           <div className="container">
             <nav {...cssWithClass('horizontal-box align-items-spacebetween wrap', styles.NavBar)}>
-              <a href="/"> <img src={courseraLogo} alt="Coursera Logo" alt="Coursera"/></a>
+              <a href="/"> <img src={courseraLogo} alt="Coursera Logo" alt="Coursera" /></a>
               <div className="horizontal-box align-items-vertical-center">
                 <span className="m-r-2">Institutions</span>
-                <Avatar size={44} imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg"/>
+                <Avatar size={44} imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg" />
               </div>
             </nav>
           </div>
@@ -144,8 +145,8 @@ export default withStyles(({color, gradient, transition}) => ({
   },
   tabMenuAHover: {
     ':hover': {
-        textDecoration: 'none',
-    }
+      textDecoration: 'none',
+    },
   },
   sideBar: {
     transition: transition.easeOut(),
@@ -162,14 +163,14 @@ export default withStyles(({color, gradient, transition}) => ({
   },
 
   hover: {
-      ':hover': {
-          backgroundColor: 'red'
-      }
+    ':hover': {
+      backgroundColor: 'red',
+    },
   },
 
   small: {
-      '@media (max-width: 600px)': {
-          backgroundColor: 'red',
-      }
-  }
+    '@media (max-width: 600px)': {
+      backgroundColor: 'red',
+    },
+  },
 }))(AppWithApiData);

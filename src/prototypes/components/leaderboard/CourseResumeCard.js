@@ -10,18 +10,18 @@ const CourseResumeCard = ({
   style,
   styles,
   course,
-  ...props
+  ...props,
 }) => {
   if (!course) return null;
 
   const {name, description, photoUrl, partnerIds} = course;
 
-   return (
+  return (
     <div {...cssWithClass('vertical-box p-a-1', styles.CourseResumeCard)}>
       <p>Finish the next module to gain more points!</p>
       <div className="horizontal-box align-items-right wrap">
         <a href={`${BASE_URL}${course.slug}/home/welcome`}>
-        <Button type="primary" label={'Resume'}/>
+        <Button type="primary" label={'Resume'} />
         </a>
       </div>
     </div>

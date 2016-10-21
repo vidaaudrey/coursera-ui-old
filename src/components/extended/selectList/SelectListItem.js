@@ -3,7 +3,7 @@ import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {SvgCheckOutline, SvgCheckSolid} from '../../svg/coursera';
 
 const DEFAULT_HEIGHT = 36;
-const HEIGHT_TO_ICON_RATIO = 0.6
+const HEIGHT_TO_ICON_RATIO = 0.6;
 
 const SelectListItem = ({
   style = {}, styles, htmlAttributes = {},
@@ -58,7 +58,7 @@ SelectListItem.defaultProps = {
   styles: {},
   htmlAttributes: {},
   height: DEFAULT_HEIGHT,
-}
+};
 
 SelectListItem.propTypes = {
   label: React.PropTypes.string.isRequired,
@@ -82,7 +82,7 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
     icon: {
       fill: `${color.primary}`,
       color: `${color.primary}`,
-    }
+    },
   };
 
   // check different cases for theme and selected state
@@ -97,7 +97,7 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
       },
       icon: {
         fill: `${color.secondaryText}`,
-      }
+      },
     };
   } else if (!isSelected && isDarkTheme) {
     return {
@@ -110,7 +110,7 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
       },
       icon: {
         fill: `${color.white}`,
-      }
+      },
     };
   } else if (isSelected && !isDarkTheme) {
     return {
@@ -125,7 +125,7 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
       icon: {
         fill: `${color.white}`,
         stroke: color.primary,
-      }
+      },
     };
   } else {
     return {
@@ -138,10 +138,10 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
       },
       icon: {
         fill: `${color.white}`,
-      }
+      },
     };
   }
-};
+}
 
 export default withStyles(({color, transition, spacing}) => ({
   SelectListItem: {
@@ -161,19 +161,19 @@ export default withStyles(({color, transition, spacing}) => ({
     border: `1px solid ${color.white}`,
   },
   activeButtonStyle: {
-    ':active' : {
+    ':active': {
       outline: 'none',
     },
-    ':focus' : {
+    ':focus': {
       outline: 'none',
-    }
+    },
   },
   hoverButtonStyle: {
     ':hover': {
       color: color.primary,
-    }
+    },
   },
   text: {
     paddingRight: spacing.sm,
-  }
+  },
 }))(SelectListItem);

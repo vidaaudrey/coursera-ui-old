@@ -21,7 +21,7 @@ const FixedContainer = ({
   width = '100%',
   height = '100%',
   children,
-  ...props
+  ...props,
 }) => {
   const dynamicStyles = getStyles({backgroundColor, fixedPosition, width, height});
   const mergedStyles = {...dynamicStyles.FixedContainer, ...style};
@@ -77,13 +77,13 @@ function getStyles({backgroundColor, fixedPosition, width, height}) {
       [fixedPosition]: 0,
       width,
       height,
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color, gradient, zIndex}) => ({
   FixedContainer: {
     position: 'fixed',
-    zIndex: zIndex.fixedContainer
+    zIndex: zIndex.fixedContainer,
   },
 }))(FixedContainer);

@@ -4,15 +4,15 @@ import { css, cssWithClass, withStyles} from 'src';
 const BUTTON_TYPES = {
   primary: 'primary',
   secondary: 'secondary',
-  'default': 'default',
+  default: 'default',
   disabled: 'disabled',
-  'noStyle': 'noStyle',
+  noStyle: 'noStyle',
 };
 const BUTTON_SIZES = {
   sm: 'sm',
   md: 'md',
   lg: 'lg',
-}
+};
 
 /**
  * A generic Button that accepts children, imgSrc and icon.
@@ -29,7 +29,7 @@ const Button = ({
   isOutline,
   children,
   label,
-  ...props
+  ...props,
 }) => {
   const dynamicStyles = getStyles({size});
   const mergedStyles = {...dynamicStyles.Button, ...style};
@@ -81,8 +81,8 @@ function getStyles({size}) {
     },
     icon: {
 
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color, transition, button}) => ({
@@ -124,7 +124,7 @@ export default withStyles(({color, transition, button}) => ({
       backgroundColor: color.darkPrimary,
     },
   },
-  'default': {
+  default: {
     color: color.primaryText,
     backgroundColor: color.textIcon,
     border: `1px solid ${color.divider}`,
@@ -143,12 +143,12 @@ export default withStyles(({color, transition, button}) => ({
     cursor: 'not-allowed',
     pointerEvents: 'none',
   },
-  'noStyle': {
+  noStyle: {
     backgroundColor: 'transparent',
     color: color.primaryText,
     border: 'none',
   },
-  'noStyleHover': {
+  noStyleHover: {
     ':hover': {
       color: color.primary,
     },

@@ -27,9 +27,9 @@ class ProgramSelectDomainPage extends React.Component {
         <h2>The skills I am looking for are in </h2>
         <div className="p-t-3 p-b-3 m-b-3">
           <DomainSelectList
-            showSelectAll={true}
+            showSelectAll
             onSelectChange={this.onSelectChange}
-            alignCenter={true}
+            alignCenter
             selectedDomainIds={selectedDomainIds}
           />
         </div>
@@ -42,5 +42,5 @@ class ProgramSelectDomainPage extends React.Component {
 export default withStyles(({color, gradient}) => ({
   ProgramSelectDomainPage: {
     minHeight: '100vh',
-  }
+  },
 }))(ProgramSelectDomainPage);

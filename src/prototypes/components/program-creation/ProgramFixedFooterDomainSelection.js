@@ -4,7 +4,7 @@ import {Button} from 'src';
 
 
 const ProgramFixedFooterDomainSelection = ({
-  onPrev, onNext
+  onPrev, onNext,
 }) => {
   return (
     <div className="container horizontal-box align-items-spacebetween align-items-vertical-center h-100">

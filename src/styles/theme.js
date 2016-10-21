@@ -5,14 +5,14 @@ import {
   yellow600,
   teal400, dawn200, dawn400, midnight600, midnight300, dusk200,
   dusk50, dusk100, dusk300, dusk400, dawn300,
-  yellow500, red500, green500,dawn500, blue700, blue100,
+  yellow500, red500, green500, dawn500, blue700, blue100,
 } from './colors';
 import {coursera, strawberry} from './gradients';
 import transition from './transition';
 
 function lighten(col, amt) {
   let usePound = false;
-  if (col[0] == "#") {
+  if (col[0] == '#') {
     col = col.slice(1);
     usePound = true;
   }
@@ -33,7 +33,7 @@ function lighten(col, amt) {
   if (g > 255) g = 255;
   else if (g < 0) g = 0;
 
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
+  return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
 }
 
 
@@ -56,7 +56,7 @@ export default {
     // primary: turquoise500 ,
     // darkPrimary: turquoise700,
     // lightPrimary: turquoise100,
-    primary: blue500 ,
+    primary: blue500,
     darkPrimary: blue700,
     lightPrimary: blue100,
     accent: yellow600,
@@ -103,6 +103,6 @@ export default {
         fontSize: '1.2rem',
         padding: '1rem 1.6rem',
       },
-    }
+    },
   },
 };

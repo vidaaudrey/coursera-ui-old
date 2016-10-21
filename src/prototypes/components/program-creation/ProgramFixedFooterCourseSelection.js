@@ -5,7 +5,7 @@ const _ = require('underscore');
 
 const ProgramFixedFooterDomainSelection = ({
   styles, onPrev, onNext,
-  seatLimit, currentTotalSelectCount, selectedCourseIds, selectedS12nIds
+  seatLimit, currentTotalSelectCount, selectedCourseIds, selectedS12nIds,
 }) => {
   const availableSeats = seatLimit - currentTotalSelectCount;
 
@@ -17,7 +17,7 @@ const ProgramFixedFooterDomainSelection = ({
         label={'Back'}
         htmlAttributes={{onClick: onPrev}}
       />
-    
+
       <div className="horizontal-box">
         <b {...css(styles.numberSpan)}>{currentTotalSelectCount}</b>
         <span {...css(styles.textSpan)}>Selected</span>

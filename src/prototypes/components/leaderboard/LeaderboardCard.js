@@ -10,9 +10,8 @@ const LeaderboardCard = ({
   styles,
   leaderboard: {userName, numCoursesCompleted, rank, score, currentCourse, courseId, profilePhoto},
   isNumberOne,
-  ...props
+  ...props,
 }) => {
-
   return (
     <div {...cssWithClass('LeaderboardCard card p-a-1', styles.LeaderboardCard)}>
       <div className="row">
@@ -35,13 +34,13 @@ const LeaderboardCard = ({
                 backgroundColor={isNumberOne ? theme.color.accent : theme.color.lightPrimary}
                 color={theme.color.textIcon}
                 size={36}
-                >
+              >
                 <h4 className="m-a-0">{rank}</h4>
               </Avatar>
             </div>
             {isNumberOne &&
               <div {...css(styles.crown)}>
-                <SvgCrown fill={theme.color.accent}/>
+                <SvgCrown fill={theme.color.accent} />
               </div>
             }
           </div>
@@ -54,7 +53,7 @@ const LeaderboardCard = ({
             {numCoursesCompleted > 1 ? ' Courses' : ' Course'} Completed
           </span>
           <label className="text-uppercase font-sm font-weight-bold">Current Courses</label>
-          <CourseMiniCard id={courseId}/>
+          <CourseMiniCard id={courseId} />
         </div>
 
         <div {...cssWithClass('col-xs-12 col-lg-2 vertical-box align-items-absolute-center p-a-1', styles.transition)}>

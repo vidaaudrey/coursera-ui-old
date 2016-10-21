@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let HardwareKeyboardArrowLeft = (props) => (
+let HardwareKeyboardArrowLeft = props => (
   <SvgIcon {...props}>
-    <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
+    <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
   </SvgIcon>
 );
 HardwareKeyboardArrowLeft = pure(HardwareKeyboardArrowLeft);

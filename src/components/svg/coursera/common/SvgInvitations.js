@@ -2,7 +2,7 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let SvgInvitations = (props) => (
+let SvgInvitations = props => (
   <SvgIcon {...props} viewBox="0 0 48 48">
     <title>invite member</title>
     <polygon points="47 14 40 14 40 7 38 7 38 14 31 14 31 16 38 16 38 23 40 23 40 16 47 16 47 14" />

@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let ImageDetails = (props) => (
+let ImageDetails = props => (
   <SvgIcon {...props}>
-    <path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z"/>
+    <path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z" />
   </SvgIcon>
 );
 ImageDetails = pure(ImageDetails);

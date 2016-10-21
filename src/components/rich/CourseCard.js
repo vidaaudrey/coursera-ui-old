@@ -1,11 +1,11 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import { SvgCheckOutline } from '../svg/coursera'
+import { SvgCheckOutline } from '../svg/coursera';
 import withApiData from 'src/components/hocs/withApiData';
 
 const CourseCard = ({
   styles, theme,
-  course, isSelected, id, onToggleCourseSelect
+  course, isSelected, id, onToggleCourseSelect,
 }) => {
   const {name, photoUrl, partnerIds, partnerName = 'John Hopken '} = course;
   const iconColor = isSelected ? theme.color.primary : theme.color.icon;
@@ -32,7 +32,7 @@ const CourseCard = ({
           <button
             {...css(styles.iconButton, styles.iconButtonFocus)}
             onClick={() => (onToggleCourseSelect(id, !isSelected))}
-            >
+          >
             <SvgCheckOutline
               size={24}
               color={iconColor}
@@ -48,10 +48,10 @@ const CourseCard = ({
 CourseCard.propTypes = {
   id: React.PropTypes.string.isRequired,
   onToggleCourseSelect: React.PropTypes.func.isRequired,
-}
+};
 
 CourseCard.defaultProps = {
-  id: 'c1' // Remove later
+  id: 'c1', // Remove later
 };
 
 const CourseCardWithApiData = withApiData({
@@ -79,9 +79,9 @@ export default withStyles(({color, font, spacing}) => ({
     border: 'none',
   },
   iconButtonFocus: {
-    ':focus' : {
+    ':focus': {
       outline: 'none',
-    }
+    },
   },
   selectText: {
     color: color.darkGray,

@@ -24,11 +24,11 @@ import gradients from './styles/gradients';
 import theme from './styles/theme';
 import transition from './styles/transition';
 
-export {css as css} from './styles/withStyles';
-export {withStyles as withStyles} from './styles/withStyles';
-export {ThemeProvider as ThemeProvider} from './styles/withStyles';
-export {ThemedStyleSheet as ThemedStyleSheet} from './styles/withStyles';
-export {cssWithClass as cssWithClass} from './styles/withStyles';
+export {css} from './styles/withStyles';
+export {withStyles} from './styles/withStyles';
+export {ThemeProvider} from './styles/withStyles';
+export {ThemedStyleSheet} from './styles/withStyles';
+export {cssWithClass} from './styles/withStyles';
 
 
 // Prototypes

@@ -85,7 +85,7 @@ class SvgIcon extends Component {
 
     const dynamicStyles = getStyles({color, hoverColor, size}, this.state);
     const mergedStyles = {...dynamicStyles.SvgIcon, ...style};
-    
+
     return (
       <svg
         {...htmlAttributes}
@@ -110,8 +110,8 @@ function getStyles(props, state) {
       fill: hovered ? hoverColor : color,
       height: size,
       width: size,
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color}) => ({
@@ -120,5 +120,5 @@ export default withStyles(({color}) => ({
     color: color.icon,
     transition: transition.easeOut(),
     userSelect: 'none',
-  }
+  },
 }))(SvgIcon);

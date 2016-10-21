@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import { SvgCheckOutline } from '../svg/coursera'
+import { SvgCheckOutline } from '../svg/coursera';
 const _ = require('underscore');
 import withApiData from 'src/components/hocs/withApiData';
 
@@ -34,8 +34,8 @@ const S12nCard = ({
           <span {...css(styles.subtitle)}>{partnerName}</span>
         </div>
         <div {...css(styles.details)}>
-          {courseCount} courses + {capstoneCount} capstone projects <br/>
-          {weekCount} weeks ({weeklyHourCount} hours / week) <br/>
+          {courseCount} courses + {capstoneCount} capstone projects <br />
+          {weekCount} weeks ({weeklyHourCount} hours / week) <br />
           Next Session: {nextSessionDate} <br />
           {certificateCount} certificate
         </div>
@@ -55,12 +55,12 @@ const S12nCard = ({
             <button
               {...css(styles.iconButton, styles.iconButtonFocus)}
               onClick={() => (onToggleS12nSelect(id, !isSelected, courseIds))}
-              >
+            >
               <SvgCheckOutline
                 size={24}
                 color={iconColor}
                 hoverColor={iconColor}
-                />
+              />
             </button>
           </div>
         </div>
@@ -76,7 +76,7 @@ S12nCard.propTypes = {
 };
 
 S12nCard.defaultProps = {
-  id: 's1' // Remove later
+  id: 's1', // Remove later
 };
 
 const S12nCardWithApiData = withApiData({
@@ -128,9 +128,9 @@ export default withStyles(({color, font, spacing}) => ({
     border: 'none',
   },
   iconButtonFocus: {
-    ':focus' : {
+    ':focus': {
       outline: 'none',
-    }
+    },
   },
   secondLayer: {
     borderColor: color.divider,

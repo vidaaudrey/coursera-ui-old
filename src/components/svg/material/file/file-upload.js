@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let FileFileUpload = (props) => (
+let FileFileUpload = props => (
   <SvgIcon {...props}>
-    <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+    <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
   </SvgIcon>
 );
 FileFileUpload = pure(FileFileUpload);

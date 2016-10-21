@@ -2,7 +2,7 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let SvgDownload = (props) => (
+let SvgDownload = props => (
   <SvgIcon {...props} viewBox="0 0 48 48">
     <title>download</title>
     <path d="M42,31v6c0,2.76-2.53,5-5.63,5H11.63C8.53,42,6,39.76,6,37V31H4v6c0,3.86,3.42,7,7.63,7H36.37C40.58,44,44,40.86,44,37V31H42Z" />

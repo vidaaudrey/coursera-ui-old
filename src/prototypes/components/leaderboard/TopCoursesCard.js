@@ -26,5 +26,5 @@ export default withStyles(({color, gradient}) => ({
   profileContainer: {
     background: `linear-gradient(90deg, ${gradient.secondary.start}, ${gradient.secondary.end})`,
     height: 300,
-  }
+  },
 }))(TopCoursesCard);

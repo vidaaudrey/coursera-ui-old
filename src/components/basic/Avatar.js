@@ -19,7 +19,7 @@ const Avatar = ({
   color,
   children,
   size = 44,
-  ...props
+  ...props,
 }) => {
   const dynamicStyles = getStyles({size, backgroundColor, color});
   const mergedStyles = {...dynamicStyles.Avatar, ...style};
@@ -100,8 +100,8 @@ function getStyles(props) {
       height: size * 0.6,
       fontSize: size * 0.6,
       margin: size * 0.2,
-    }
-  }
+    },
+  };
 }
 
 export default withStyles(({color, gradient}) => ({
@@ -122,5 +122,5 @@ export default withStyles(({color, gradient}) => ({
     lineHeight: '100%',
     margin: 0,
     padding: 0,
-  }
+  },
 }))(Avatar);

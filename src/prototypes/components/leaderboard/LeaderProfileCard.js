@@ -20,10 +20,10 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
   }, {
     label: 'enrolled',
     number: 2,
-  }]
+  }];
 
   {
-    className: 'LeaderProfileCard-asdfasdfasf'
+    className: 'LeaderProfileCard-asdfasdfasf';
   }
 
   return (
@@ -41,7 +41,7 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
           <div className="horizontal-box align-items-spacebetween wrap m-b-2">
             {statsRowData.map((item, index) => (
               <div className="vertical-box align-items-absolute-center" key={`stats-row~${index}`}>
-                <span {...css(styles.stats) }>{item.number}</span>
+                <span {...css(styles.stats)}>{item.number}</span>
                 <small className="text-uppercase font-xs">{item.label}</small>
               </div>
             ))}
@@ -83,6 +83,6 @@ export default withStyles(({color, gradient}) => ({
     width: 132,
     height: 132,
     borderRadius: '50%',
-    border: `2px solid rgba(255, 255, 255, .8)`,
+    border: '2px solid rgba(255, 255, 255, .8)',
   },
 }))(LeaderProfileCard);

@@ -2,9 +2,9 @@ import React from 'react';
 import { pure } from 'recompose';
 import SvgIcon from '../../SvgIcon';
 
-let ContentRemove = (props) => (
+let ContentRemove = props => (
   <SvgIcon {...props}>
-    <path d="M19 13H5v-2h14v2z"/>
+    <path d="M19 13H5v-2h14v2z" />
   </SvgIcon>
 );
 ContentRemove = pure(ContentRemove);

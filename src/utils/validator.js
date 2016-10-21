@@ -6,7 +6,7 @@ const _ = require('underscore');
 
 /* eslint-disable max-len, consistent-return */
 const isEmpty = value => value === undefined || value === null || value === '';
-const join = (rules) =>
+const join = rules =>
   (value, data) =>
     rules.map(rule =>
         rule(value, data)).filter(error => !!error)[0/* first error */];
@@ -62,11 +62,11 @@ const isRequired = (value) => {
 };
 
 const minLength = (min) => {
-  return value => {
+  return (value) => {
     if (!isEmpty(value) && value.length < min) {
       return (
         <FormattedMessage
-          message={_t(`Must be at least {min} characters`)}
+          message={_t('Must be at least {min} characters')}
           min={min}
         />
       );
@@ -75,11 +75,11 @@ const minLength = (min) => {
 };
 
 const maxLength = (max) => {
-  return value => {
+  return (value) => {
     if (!isEmpty(value) && value.length > max) {
       return (
         <FormattedMessage
-          message={_t(`Must be no more than {max} characters`)}
+          message={_t('Must be no more than {max} characters')}
           max={max}
         />
       );
@@ -94,12 +94,12 @@ const isInteger = (value) => {
 };
 
 const isOneOf = (enumeration) => {
-  return value => {
+  return (value) => {
     if (_(enumeration).contains(value)) {
       const options = enumeration.join(', ');
       return (
         <FormattedMessage
-          message={_t(`Must be one of: {options}`)}
+          message={_t('Must be one of: {options}')}
           options={options}
         />
       );

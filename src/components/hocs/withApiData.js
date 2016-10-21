@@ -14,7 +14,7 @@ const dataTypes = {
   S12NS: 'S12NS',
   S12N: 'S12N',
   COURSE: 'COURSE',
-}
+};
 const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
   return (Component) => {
     const componentName = Component.displayName || Component.name || 'Component';
@@ -31,24 +31,24 @@ const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
             apiData = {course: courses[id]};
             break;
           case dataTypes.LEADERBOARD:
-            apiData = {leaderboards }
+            apiData = {leaderboards };
             break;
           case dataTypes.DOMAINS:
-            apiData = {domains: domainNaptime }
+            apiData = {domains: domainNaptime };
             break;
           case dataTypes.COURSES:
-            apiData = {courses: coursesNaptime }
+            apiData = {courses: coursesNaptime };
             break;
           case dataTypes.S12NS:
-            apiData = {s12ns: s12nsNaptime }
+            apiData = {s12ns: s12nsNaptime };
             break;
 
           case dataTypes.S12N:
-            apiData = {s12n: _(s12nsNaptime).findWhere({id}) }
+            apiData = {s12n: _(s12nsNaptime).findWhere({id}) };
             break;
 
           case dataTypes.COURSE:
-            apiData = {course: _(coursesNaptime).findWhere({id}) }
+            apiData = {course: _(coursesNaptime).findWhere({id}) };
             break;
 
           default:
@@ -65,6 +65,6 @@ const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
 
     hoistNonReactStatic(Component, HOC);
   };
-}
+};
 
 export default withApiData;
