@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import { SvgCheckOutline } from '../svg/coursera';
+import { SvgCheckOutline } from 'src/components/svg/coursera';
 const _ = require('underscore');
 import withApiData from 'src/components/hocs/withApiData';
 

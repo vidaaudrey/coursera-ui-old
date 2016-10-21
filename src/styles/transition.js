@@ -1,5 +1,5 @@
-export default {
-
+/* eslint-disable no-plusplus, no-param-reassign */
+module.exports = {
   easeOutFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
   easeInOutFunction: 'cubic-bezier(0.445, 0.05, 0.55, 0.95)',
 
@@ -14,9 +14,8 @@ export default {
       }
 
       return transitions;
-    } else {
-      return this.create(duration, property, delay, easeFunction);
     }
+    return this.create(duration, property, delay, easeFunction);
   },
 
   create(duration, property, delay, easeFunction) {

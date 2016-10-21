@@ -1,10 +1,14 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, font,
+} = require('src/styles/theme');
+
 import {Button} from 'src';
 const _ = require('underscore');
 
 const ProgramFixedFooterDomainSelection = ({
-  styles, onPrev, onNext,
+  onPrev, onNext,
   seatLimit, currentTotalSelectCount, selectedCourseIds, selectedS12nIds,
 }) => {
   const availableSeats = seatLimit - currentTotalSelectCount;
@@ -35,7 +39,9 @@ const ProgramFixedFooterDomainSelection = ({
     );
 };
 
-export default withStyles(({color, spacing, font}) => ({
+module.exports = ProgramFixedFooterDomainSelection;
+
+const styles = StyleSheet.create({
   numberSpan: {
     color: color.secondaryText,
     marginRight: spacing.sm,
@@ -49,4 +55,4 @@ export default withStyles(({color, spacing, font}) => ({
     marginRight: spacing.lg,
     lineHeight: font.lg,
   },
-}))(ProgramFixedFooterDomainSelection);
+});

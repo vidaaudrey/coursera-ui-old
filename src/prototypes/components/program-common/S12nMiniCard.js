@@ -1,5 +1,8 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 const _ = require('underscore');
 import withApiData from 'src/components/hocs/withApiData';
 import {StaticLinearProgress} from 'src';
@@ -10,7 +13,6 @@ const DEFAULT_COURSE_PHOTO_SIZE = 96;
 const BASE_URL = 'https://www.s12nra.org/specialization/';
 
 const S12nMiniCard = ({
-  styles,
   s12n,
   id,
   s12nPhotoSize = DEFAULT_COURSE_PHOTO_SIZE,
@@ -40,7 +42,7 @@ const S12nMiniCard = ({
   );
 };
 
-const CourseWithApiData = withApiData({dataType: 'S12N'})(S12nMiniCard);
+module.exports = withApiData({dataType: 'S12N'})(S12nMiniCard);
 
 // Dynamic styles
 function getStyles({s12nPhotoSize}) {
@@ -56,11 +58,11 @@ function getStyles({s12nPhotoSize}) {
   };
 }
 
-export default withStyles(({color, spacing}) => ({
+const styles = StyleSheet.create({
   S12nMiniCard: {
   },
   courseCount: {
     color: color.secondaryText,
     background: color.bgGray,
   },
-}))(CourseWithApiData);
+});

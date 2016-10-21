@@ -1,8 +1,9 @@
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import {Avatar, Button} from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 
-const NoDomainSelected = ({styles}) => {
+const NoDomainSelected = (props) => {
   return (
     <div {...cssWithClass('vertical-box align-items-absolute-center', styles.NoDomainSelected)}>
       <h2 className="m-b-3">
@@ -12,8 +13,10 @@ const NoDomainSelected = ({styles}) => {
   );
 };
 
-export default withStyles(({color}) => ({
+module.exports = NoDomainSelected;
+
+const styles = StyleSheet.create({
   NoDomainSelected: {
     minHeight: 300,
   },
-}))(NoDomainSelected);
+});

@@ -1,5 +1,5 @@
 const React = require('react');
-import theme from '../../src/styles/theme';
+import theme from 'src/styles/theme';
 const _ = require('underscore');
 // import * as icons from '.'
 import {materialIcons, courseraIcons} from 'src';

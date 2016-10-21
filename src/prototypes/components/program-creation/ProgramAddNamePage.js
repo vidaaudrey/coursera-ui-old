@@ -1,12 +1,15 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 import {Avatar, Button} from 'src';
 
 class ProgramAddName extends React.Component {
 
   render() {
     const {
-      styles, programName, programSlug, programTagline,
+      programName, programSlug, programTagline,
       onSetProgramName, onSetProgramSlug, onSetProgramTagline,
     } = this.props;
     return (
@@ -51,18 +54,9 @@ class ProgramAddName extends React.Component {
   }
 }
 
-function getStyles({coursePhotoSize}) {
-  return {
-    Header: {
-    },
-    coursePhoto: {
-      width: coursePhotoSize,
-      height: coursePhotoSize,
-    },
-  };
-}
+module.exports = ProgramAddName;
 
-export default withStyles(({color, gradient}) => ({
+const styles = StyleSheet.create({
   ProgramAddName: {
     minHeight: '100vh',
   },
@@ -71,5 +65,4 @@ export default withStyles(({color, gradient}) => ({
     minWidth: 120,
     padding: '8px 16px',
   },
-
-}))(ProgramAddName);
+});

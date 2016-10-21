@@ -22,7 +22,10 @@ import copyToClipboard from './components/hocs/copyToClipboard';
 import colors from './styles/colors';
 import gradients from './styles/gradients';
 import theme from './styles/theme';
-import transition from './styles/transition';
+
+// Prototypes
+import LeaderboardApp from './prototypes/LeaderboardApp';
+import ProgramCreationApp from './prototypes/ProgramCreationApp';
 
 export {css} from './styles/withStyles';
 export {withStyles} from './styles/withStyles';
@@ -30,10 +33,6 @@ export {ThemeProvider} from './styles/withStyles';
 export {ThemedStyleSheet} from './styles/withStyles';
 export {cssWithClass} from './styles/withStyles';
 
-
-// Prototypes
-import LeaderboardApp from './prototypes/LeaderboardApp';
-import ProgramCreationApp from './prototypes/ProgramCreationApp';
 
 export {
   colors,

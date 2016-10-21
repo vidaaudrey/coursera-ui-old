@@ -1,6 +1,6 @@
 const React = require('react');
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import {SvgCheckOutline, SvgCheckSolid} from '../../svg/coursera';
+import {SvgCheckOutline, SvgCheckSolid} from 'src/components/svg/coursera';
 
 const DEFAULT_HEIGHT = 36;
 const HEIGHT_TO_ICON_RATIO = 0.6;

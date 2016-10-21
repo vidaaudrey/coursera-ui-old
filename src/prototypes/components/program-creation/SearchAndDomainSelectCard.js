@@ -1,8 +1,11 @@
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 import {Avatar, Button, SelectList} from 'src';
 import {ContentFilterList} from 'src/components/svg/material';
-import DomainSelectList from './DomainSelectList';
+import DomainSelectList from 'src/prototypes/components/program-creation/DomainSelectList';
 const _ = require('underscore');
 
 const mockListData = [
@@ -74,7 +77,7 @@ class SearchAndDomainSelectCard extends React.Component {
   }
 
   render() {
-    const { styles, domainListData, selectedDomainIds, onSetSearchKeyword, searchKeyWord } = this.props;
+    const {domainListData, selectedDomainIds, onSetSearchKeyword, searchKeyWord } = this.props;
 
     return (
       <div {...cssWithClass('p-b-1', styles.SearchAndDomainSelectCard)}>
@@ -106,8 +109,9 @@ class SearchAndDomainSelectCard extends React.Component {
   }
 }
 
+module.exports = SearchAndDomainSelectCard;
 
-export default withStyles(({color, spacing}) => ({
+const styles = StyleSheet.create({
   SearchAndDomainSelectCard: {
     backgroundColor: color.white,
     marginBottom: spacing.lg,
@@ -125,4 +129,4 @@ export default withStyles(({color, spacing}) => ({
     backgroundColor: 'transparent',
     border: 'none',
   },
-}))(SearchAndDomainSelectCard);
+});

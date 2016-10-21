@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-// import { css, cssWithClass, withStyles} from 'src';
+
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition, button,
 } = require('src/styles/theme');
@@ -16,76 +16,6 @@ const BUTTON_SIZES = {
   md: 'md',
   lg: 'lg',
 };
-
-/**
- * A generic Button that accepts children, imgSrc and icon.
- * Sample Usage:
- * <Button type="primary" size="sm" label={'sm'}/>
- */
-// TODO[Audrey]:
-const Button = ({
-  // styles,
-  style,
-  htmlAttributes = {},
-  type = BUTTON_TYPES.default,
-  size = 'md',
-  isOutline,
-  children,
-  label,
-  ...props,
-}) => {
-  const dynamicStyles = getStyles({size});
-  const mergedStyles = {...dynamicStyles.Button, ...style};
-  return (
-    <button
-      {...htmlAttributes}
-      {...css(styles.Button, styles[type], styles[size], styles[`${type}Hover`])}
-      style={mergedStyles}
-    >
-      {label}
-      {children}
-   </button>
- );
-};
-
-// Explicity declare the default props for documentation purpose,
-// as we only hoist a limit set of statics
-Button.defaultProps = {
-  style: {},
-  htmlAttributes: {},
-  size: 'md',
-  type: BUTTON_TYPES.default,
-};
-
-Button.propTypes = {
-  // Override the inline-styles of the root element
-  style: PropTypes.object,
-
-  htmlAttributes: PropTypes.object,
-
-  // Button types.
-  type: PropTypes.oneOf(Object.values(BUTTON_TYPES)),
-  size: PropTypes.oneOf(Object.values(BUTTON_SIZES)),
-
-  // Can use to letters inside the avatar.
-  children: PropTypes.node,
-
-  // The text for the button
-  label: PropTypes.string,
-};
-
-// Dynamic styles
-function getStyles({size}) {
-  return {
-    Button: {
-    },
-    icon: {
-
-    },
-  };
-}
-
-module.exports = Button;
 
 const styles = StyleSheet.create({
   Button: {
@@ -171,3 +101,75 @@ const styles = StyleSheet.create({
     color: color.primary,
   },
 });
+
+/**
+ * A generic Button that accepts children, imgSrc and icon.
+ * Sample Usage:
+ * <Button type="primary" size="sm" label={'sm'}/>
+ */
+// TODO[Audrey]:
+const Button = ({
+  style,
+  htmlAttributes = {},
+  type = BUTTON_TYPES.default,
+  size = 'md',
+  isOutline,
+  children,
+  label,
+  ...props,
+}) => {
+  const dynamicStyles = getStyles({size});
+  const mergedStyles = {...dynamicStyles.Button, ...style};
+  return (
+    <button
+      {...htmlAttributes}
+      {...css(styles.Button, styles[type], styles[size], styles[`${type}Hover`])}
+      style={mergedStyles}
+    >
+      {label}
+      {children}
+   </button>
+ );
+};
+
+// Explicity declare the default props for documentation purpose,
+// as we only hoist a limit set of statics
+Button.defaultProps = {
+  style: {},
+  htmlAttributes: {},
+  size: 'md',
+  type: BUTTON_TYPES.default,
+};
+
+Button.propTypes = {
+  // Static styles
+  styles: PropTypes.object,
+
+  // Override the inline-styles of the root element
+  style: PropTypes.object,
+
+  htmlAttributes: PropTypes.object,
+
+  // Button types.
+  type: PropTypes.oneOf(Object.values(BUTTON_TYPES)),
+  size: PropTypes.oneOf(Object.values(BUTTON_SIZES)),
+
+  // Can use to letters inside the avatar.
+  children: PropTypes.node,
+
+  // The text for the button
+  label: PropTypes.string,
+};
+
+module.exports = Button;
+
+// Dynamic styles
+function getStyles({size}) {
+  return {
+    Button: {
+    },
+    icon: {
+
+    },
+  };
+}

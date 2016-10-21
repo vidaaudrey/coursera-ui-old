@@ -1,7 +1,5 @@
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Button} from 'src';
-
 
 const ProgramFixedFooterDomainSelection = ({
   onPrev, onNext,

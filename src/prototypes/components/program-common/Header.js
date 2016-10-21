@@ -4,7 +4,7 @@ const _ = require('underscore');
 import { Avatar, Button, FixedContainer } from 'src';
 import withApiData from 'src/components/hocs/withApiData';
 import { courseraLogo } from 'src/assets/pngAssets';
-import {HEADER_HEIGHT} from '../../../constants/ProgramCreationAppConstants';
+import {HEADER_HEIGHT} from 'src/constants/ProgramCreationAppConstants';
 
 const Header = ({
   style,

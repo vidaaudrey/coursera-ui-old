@@ -1,9 +1,10 @@
 import React, {PropTypes} from 'react';
-import { css, cssWithClass, withStyles} from 'src';
-import {getMiddleValueFromArray} from '../../utils/common';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+import {getMiddleValueFromArray} from 'src/utils/common';
 
 const TextField = ({
-  styles,
   style,
   htmlAttributes = {},
   fieldName,
@@ -76,9 +77,6 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
-  // Static styles
-  styles: PropTypes.object,
-
   // Override the inline-styles of the root element
   style: PropTypes.object,
 
@@ -95,7 +93,9 @@ function getStyles({size}) {
   };
 }
 
-export default withStyles(({color, transition, button}) => ({
+module.exports = TextField;
+
+const styles = StyleSheet.create({
   TextField: {
     transition: transition.easeOut(),
     userSelect: 'none',
@@ -104,4 +104,4 @@ export default withStyles(({color, transition, button}) => ({
   input: {
     display: 'inline-block',
   },
-}))(TextField);
+});

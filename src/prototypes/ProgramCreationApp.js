@@ -1,18 +1,24 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
+
 import React from 'react';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 import withApiData from '../components/hocs/withApiData';
-import { css, cssWithClass, withStyles, ThemedStyleSheet} from 'src';
 const _ = require('underscore');
-import Header from './components/program-common/Header';
-import ProgramAddNamePage from './components/program-creation/ProgramAddNamePage';
-import ProgramSelectDomainPage from './components/program-creation/ProgramSelectDomainPage';
-import ProgramSelectCoursePage from './components/program-creation/ProgramSelectCoursePage';
-import ProgramPreviewPage from './components/program-creation/ProgramPreviewPage';
-import ProgramFixedFooter from './components/program-creation/ProgramFixedFooter';
-import SearchAndDomainSelectCard from './components/program-creation/SearchAndDomainSelectCard';
+import Header from 'src/prototypes/components/program-common/Header';
+import ProgramAddNamePage from 'src/prototypes/components/program-creation/ProgramAddNamePage';
+import ProgramSelectDomainPage from 'src/prototypes/components/program-creation/ProgramSelectDomainPage';
+import ProgramSelectCoursePage from 'src/prototypes/components/program-creation/ProgramSelectCoursePage';
+import ProgramPreviewPage from 'src/prototypes/components/program-creation/ProgramPreviewPage';
+import ProgramFixedFooter from 'src/prototypes/components/program-creation/ProgramFixedFooter';
+import SearchAndDomainSelectCard from 'src/prototypes/components/program-creation/SearchAndDomainSelectCard';
 
 import {
   HEADER_HEIGHT, FOOTER_HEIGHT, CREATE_PROGRAM_STEPS,
-} from '../constants/ProgramCreationAppConstants';
+} from 'src/constants/ProgramCreationAppConstants';
+
 const {
   stepCreateProgramName, stepSelectDomains, stepSelectCourses, stepProgramPreview,
   stepCreateProgram, stepCreateProgramSuccess, stepInviteMembers,
@@ -32,7 +38,7 @@ class ProgramCreationApp extends React.Component {
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
     this.state = {
-      step: stepCreateProgramName,
+      step: stepSelectCourses,
       programName: null,
       programSlug: null,
       programTagline: null,
@@ -74,7 +80,6 @@ class ProgramCreationApp extends React.Component {
   }
 
   onToggleS12nSelect = (s12nId, isSelected, s12nCourseIds = []) => {
-    const {selectedS12nIds, selectedCourseIds} = this.state;
     if (isSelected) {
       this.handleAddS12n(s12nId, s12nCourseIds);
     } else {
@@ -160,7 +165,6 @@ class ProgramCreationApp extends React.Component {
 
 
   render() {
-    const {styles} = this.props;
     const {
       step, programName, programSlug, programTagline, searchKeyWord,
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
@@ -244,8 +248,10 @@ class ProgramCreationApp extends React.Component {
 
 const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(ProgramCreationApp);
 
+module.exports = AppWithApiData;
 
-export default withStyles(({color, gradient, transition, spacing}) => ({
+// export default withStyles(({color, gradient, transition, spacing}) => ({
+const styles = StyleSheet.create({
   ProgramCreationApp: {
     background: color.bgGray,
     minHeight: '100vh',
@@ -313,4 +319,4 @@ export default withStyles(({color, gradient, transition, spacing}) => ({
       backgroundColor: 'red',
     },
   },
-}))(AppWithApiData);
+});

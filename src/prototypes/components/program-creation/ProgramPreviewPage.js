@@ -1,8 +1,11 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 import {Avatar, Button} from 'src';
-import CourseMiniCard from '../program-common/CourseMiniCard';
-import S12nMiniCard from '../program-common/S12nMiniCard';
+import CourseMiniCard from 'src/prototypes/components/program-common/CourseMiniCard';
+import S12nMiniCard from 'src/prototypes/components/program-common/S12nMiniCard';
 import { ContentAddCircle, NavigationCancel } from 'src/components/svg/material';
 const _ = require('underscore');
 
@@ -54,7 +57,6 @@ class ProgramPreviewPage extends React.Component {
 
   getIconColor = ({courseId, s12nId}) => {
     let isSelected;
-    const {color} = this.props.theme;
     if (courseId) {
       isSelected = this.getIsCourseSelected(courseId);
       return !isSelected ? color.primary : color.icon;
@@ -67,7 +69,6 @@ class ProgramPreviewPage extends React.Component {
 
   render() {
     const {
-      styles, theme,
       programName,
       programSlug,
       programTagline,
@@ -84,7 +85,6 @@ class ProgramPreviewPage extends React.Component {
 
 
     const isSelected = false;
-    const iconColor = isSelected ? theme.color.primary : theme.color.icon;
     const programUrl = `${BASE_URL}${programSlug || AUTO_SLUG}`;
     return (
       <div {...cssWithClass('container', styles.ProgramPreviewPage)}>
@@ -108,29 +108,29 @@ class ProgramPreviewPage extends React.Component {
 
         <section className="m-b-1">
           <h3>Currently Selected</h3>
-            {_(finalSelectedS12nIds).map(s12nId => (
-              <div className="card p-a-1 m-b-1" key={`S12nMiniCard-final-selected~${s12nId}`}>
-                <div className="row">
-                  <div className="col-xs-2 vertical-box align-items-absolute-center">
-                    <button
-                      {...css(styles.iconButton, styles.iconButtonFocus)}
-                      onClick={() => (this.onToggleS12nSelect(s12nId, false))}
-                    >
-                      <NavigationCancel
-                        size={24}
-                        color={this.getIconColor({s12nId})}
-                        hoverColor={this.getIconColor({s12nId})}
-                      />
-                    </button>
-                  </div>
-                  <div className="col-xs-10 horizontal-box">
-                    <S12nMiniCard
-                      id={s12nId}
+          {_(finalSelectedS12nIds).map(s12nId => (
+            <div className="card p-a-1 m-b-1" key={`S12nMiniCard-final-selected~${s12nId}`}>
+              <div className="row">
+                <div className="col-xs-2 vertical-box align-items-absolute-center">
+                  <button
+                    {...css(styles.iconButton, styles.iconButtonFocus)}
+                    onClick={() => (this.onToggleS12nSelect(s12nId, false))}
+                  >
+                    <NavigationCancel
+                      size={24}
+                      color={this.getIconColor({s12nId})}
+                      hoverColor={this.getIconColor({s12nId})}
                     />
-                  </div>
+                  </button>
+                </div>
+                <div className="col-xs-10 horizontal-box">
+                  <S12nMiniCard
+                    id={s12nId}
+                  />
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
 
           {_(finalSelectedCourseIds).map(courseId => (
             <div className="card p-a-1 m-b-1" key={`CourseMiniCard-final-selected~${courseId}`}>
@@ -185,30 +185,30 @@ class ProgramPreviewPage extends React.Component {
             ))}
 
             {_(leftCourseIds).map(courseId => (
-            <div className="card p-a-1 m-b-1" key={`CourseMiniCard-selected~${courseId}`}>
-              <div className="row">
-                <div className="col-xs-2 vertical-box align-items-absolute-center">
-                  <button
-                    {...css(styles.iconButton, styles.iconButtonFocus)}
-                    onClick={() => (this.onToggleCourseSelect(courseId, true))}
-                  >
-                    <ContentAddCircle
-                      size={24}
-                      color={this.getIconColor({courseId})}
-                      hoverColor={this.getIconColor({courseId})}
+              <div className="card p-a-1 m-b-1" key={`CourseMiniCard-selected~${courseId}`}>
+                <div className="row">
+                  <div className="col-xs-2 vertical-box align-items-absolute-center">
+                    <button
+                      {...css(styles.iconButton, styles.iconButtonFocus)}
+                      onClick={() => (this.onToggleCourseSelect(courseId, true))}
+                    >
+                      <ContentAddCircle
+                        size={24}
+                        color={this.getIconColor({courseId})}
+                        hoverColor={this.getIconColor({courseId})}
+                      />
+                    </button>
+                  </div>
+                  <div className="col-xs-10 horizontal-box">
+                    <CourseMiniCard
+                      id={courseId}
+                      hasBorder
+                      type="CUSTOM_CHILDREN"
                     />
-                  </button>
-                </div>
-                <div className="col-xs-10 horizontal-box">
-                  <CourseMiniCard
-                    id={courseId}
-                    hasBorder
-                    type="CUSTOM_CHILDREN"
-                  />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
           </section>
         }
 
@@ -217,8 +217,9 @@ class ProgramPreviewPage extends React.Component {
   }
 }
 
+module.exports = ProgramPreviewPage;
 
-export default withStyles(({color, gradient}) => ({
+const styles = StyleSheet.create({
   ProgramPreviewPage: {
     minHeight: '100vh',
     minWidth: 400,
@@ -234,4 +235,4 @@ export default withStyles(({color, gradient}) => ({
       outline: 'none',
     },
   },
-}))(ProgramPreviewPage);
+});

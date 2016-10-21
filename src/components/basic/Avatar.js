@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
-import { css, cssWithClass, withStyles} from 'src';
+const {
+ StyleSheet, color, css,
+} = require('src/styles/theme');
 
 /**
  * A generic Avatar that accepts children, imgSrc and icon.
@@ -9,7 +11,6 @@ import { css, cssWithClass, withStyles} from 'src';
  */
 // TODO[Audrey]: add icon support
 const Avatar = ({
-  styles,
   style = {},
   htmlAttributes = {},
   imgSrc,
@@ -104,7 +105,9 @@ function getStyles(props) {
   };
 }
 
-export default withStyles(({color, gradient}) => ({
+module.exports = Avatar;
+
+const styles = StyleSheet.create({
   Avatar: {
     backgroundColor: color.accent,
     color: color.textIcon,
@@ -123,4 +126,4 @@ export default withStyles(({color, gradient}) => ({
     margin: 0,
     padding: 0,
   },
-}))(Avatar);
+});

@@ -1,5 +1,8 @@
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 const _ = require('underscore');
 import withApiData from 'src/components/hocs/withApiData';
 import {StaticLinearProgress} from 'src';
@@ -15,7 +18,6 @@ const DEFAULT_COURSE_PHOTO_SIZE = 96;
 
 const BASE_URL = 'https://www.coursera.org/learn/';
 const CourseMiniCard = ({
-  styles,
   course,
   type = CARD_TYPES.PROGRESS,
   coursePhotoSize = DEFAULT_COURSE_PHOTO_SIZE,
@@ -25,7 +27,7 @@ const CourseMiniCard = ({
 }) => {
   if (!course) return null;
 
-  const {name, description, photoUrl, partnerIds, partnerName: mockName} = course;
+  const {name, photoUrl, partnerIds, partnerName: mockName} = course;
   const partner = _(partnerIds.edges).first();
   const partnerName = partner && partner.node.name || mockName;
   const dynamicStyles = getStyles({coursePhotoSize});
@@ -88,11 +90,13 @@ function getStyles({coursePhotoSize}) {
   };
 }
 
-export default withStyles(({color, gradient}) => ({
+module.exports = CourseWithApiData;
+
+const styles = StyleSheet.create({
   CourseMiniCard: {
   },
   StaticLinearProgress: {
     margin: 8,
     marginLeft: 0,
   },
-}))(CourseWithApiData);
+});

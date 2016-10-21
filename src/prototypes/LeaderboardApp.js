@@ -1,15 +1,23 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 import withApiData from '../components/hocs/withApiData';
-import { css, cssWithClass, withStyles, ThemedStyleSheet} from 'src';
 import {Avatar} from 'src';
 import LeaderboardCard from './components/leaderboard/LeaderboardCard';
 import LeaderProfileCard from './components/leaderboard/LeaderProfileCard';
 import TopCoursesCard from './components/leaderboard/TopCoursesCard';
-const _ = require('underscore');
 import {courseraLogo} from '../assets/pngAssets';
+
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+const _ = require('underscore');
+
 
 // TODO[Audrey]:
 class LeaderboardApp extends React.Component {
+  static propTypes = {
+    leaderboards: React.PropTypes.array,
+  }
 
   constructor(props, context) {
     super(props, context);
@@ -46,11 +54,10 @@ class LeaderboardApp extends React.Component {
   }
 
   render() {
-    const {styles, leaderboards} = this.props;
     const {leaderboardData, activeMenuIndex} = this.state;
 
     return (
-      <div {...cssWithClass('LeaderboardApp bg-gray w-100', styles.LeaderboardApp)}>
+      <div {...cssWithClass('bg-gray w-100', styles.LeaderboardApp)}>
         <header {...cssWithClass('container-fluid', styles.header)}>
           <div className="container">
             <nav {...cssWithClass('horizontal-box align-items-spacebetween wrap', styles.NavBar)}>
@@ -76,7 +83,7 @@ class LeaderboardApp extends React.Component {
                   <li {...css(styles.tabMenuLi)} key={`tab-menu~${index}`}>
                     <a
                       {...css(styles.tabMenuA, styles.tabMenuAHover, index === activeMenuIndex && styles.tabMenuAActive)}
-                      href="#"
+                      href="/"
                       onClick={() => (this.handleMenuClick(index))}
                     >
                       {item}
@@ -107,8 +114,9 @@ class LeaderboardApp extends React.Component {
 
 const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(LeaderboardApp);
 
+module.exports = AppWithApiData;
 
-export default withStyles(({color, gradient, transition}) => ({
+const styles = StyleSheet.create({
   LeaderboardApp: {
     background: color.bgGray,
     minHeight: 800,
@@ -173,4 +181,4 @@ export default withStyles(({color, gradient, transition}) => ({
       backgroundColor: 'red',
     },
   },
-}))(AppWithApiData);
+});

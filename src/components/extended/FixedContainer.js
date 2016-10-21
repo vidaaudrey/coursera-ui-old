@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
-import { css, cssWithClass, withStyles} from 'src';
+const {
+  StyleSheet, css, zIndex, transition,
+} = require('src/styles/theme');
 
 const FIXED_POSITIONS = {
   top: 'top',
@@ -12,7 +14,6 @@ const FIXED_POSITIONS = {
  * A container that can keep children in fixed position
  */
 const FixedContainer = ({
-  styles,
   style = {},
   theme,
   htmlAttributes = {},
@@ -39,9 +40,6 @@ const FixedContainer = ({
 
 
 FixedContainer.propTypes = {
-  // Static styles
-  styles: PropTypes.object,
-
   // Override the inline-styles of the root element
   style: PropTypes.object,
 
@@ -81,9 +79,11 @@ function getStyles({backgroundColor, fixedPosition, width, height}) {
   };
 }
 
-export default withStyles(({color, gradient, zIndex}) => ({
+module.exports = FixedContainer;
+
+const styles = StyleSheet.create({
   FixedContainer: {
     position: 'fixed',
     zIndex: zIndex.fixedContainer,
   },
-}))(FixedContainer);
+});

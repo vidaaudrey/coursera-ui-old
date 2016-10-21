@@ -1,12 +1,17 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet, S12nCard } from 'src';
-import { SvgCheckOutline } from '../svg/coursera';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
+import {S12nCard} from 'src';
+import { SvgCheckOutline } from 'src/components/svg/coursera';
 const _ = require('underscore');
 
-const LayeredS12nCard = ({styles, id, onToggleS12nSelect}) => {
+const LayeredS12nCard = ({id, ...props}) => {
   return (
     <div {...cssWithClass('vertical-box', styles.LayeredS12nCard)}>
-      <S12nCard id={id} onToggleS12nSelect={onToggleS12nSelect} />
+      <S12nCard id={id} {...props} />
       <div {...css(styles.layers)}>
         <div {...css(styles.firstLayer)} />
         <div {...css(styles.secondLayer)} />
@@ -18,15 +23,15 @@ const LayeredS12nCard = ({styles, id, onToggleS12nSelect}) => {
 // Add this for documentation
 LayeredS12nCard.propTypes = {
   id: React.PropTypes.string.isRequired,
-  onToggleS12nSelect: React.PropTypes.func.isRequired,
 };
 
 LayeredS12nCard.defaultProps = {
   id: 's1', // Remove later
 };
 
+module.exports = LayeredS12nCard;
 
-export default withStyles(({color, font, spacing}) => ({
+const styles = StyleSheet.create({
   LayeredS12nCard: {
     marginBottom: spacing.md,
     maxWidth: 560,
@@ -49,4 +54,4 @@ export default withStyles(({color, font, spacing}) => ({
   layers: {
     marginTop: `-${spacing.md}`,
   },
-}))(LayeredS12nCard);
+});

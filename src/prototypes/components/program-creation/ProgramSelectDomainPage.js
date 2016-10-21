@@ -1,8 +1,12 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 import {Avatar, Button} from 'src';
-import SelectList from '../../../components/extended/selectList/SelectList';
-import DomainSelectList from './DomainSelectList';
+import SelectList from 'src/components/extended/selectList/SelectList';
+import DomainSelectList from 'src/prototypes/components/program-creation/DomainSelectList';
 const _ = require('underscore');
 
 class ProgramSelectDomainPage extends React.Component {
@@ -21,7 +25,7 @@ class ProgramSelectDomainPage extends React.Component {
   }
 
   render() {
-    const {styles, selectedDomainIds} = this.props;
+    const {selectedDomainIds} = this.props;
     return (
       <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramSelectDomainPage)}>
         <h2>The skills I am looking for are in </h2>
@@ -38,9 +42,10 @@ class ProgramSelectDomainPage extends React.Component {
   }
 }
 
+module.exports = ProgramSelectDomainPage;
 
-export default withStyles(({color, gradient}) => ({
+const styles = StyleSheet.create({
   ProgramSelectDomainPage: {
     minHeight: '100vh',
   },
-}))(ProgramSelectDomainPage);
+});

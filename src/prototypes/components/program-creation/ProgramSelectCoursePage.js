@@ -1,9 +1,12 @@
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 import {Avatar, Button} from 'src';
-import DomainCard from './DomainCard';
-import SubDomainSelectCard from './SubDomainSelectCard';
-import NoDomainSelected from './NoDomainSelected';
+import DomainCard from 'src/prototypes/components/program-creation/DomainCard';
+import SubDomainSelectCard from 'src/prototypes/components/program-creation/SubDomainSelectCard';
+import NoDomainSelected from 'src/prototypes/components/program-creation/NoDomainSelected';
 import withApiData from 'src/components/hocs/withApiData';
 const _ = require('underscore');
 
@@ -19,7 +22,7 @@ class ProgramSelectCoursePage extends React.Component {
 
   render() {
     const {
-      styles, selectedCourseIds, selectedS12nIds, selectedDomainIds,
+      selectedCourseIds, selectedS12nIds, selectedDomainIds,
       onToggleCourseSelect, onToggleS12nSelect,
       onSelectChange, domains, searchKeyWord,
     } = this.props;
@@ -54,7 +57,7 @@ class ProgramSelectCoursePage extends React.Component {
               onToggleCourseSelect={onToggleCourseSelect}
               onToggleS12nSelect={onToggleS12nSelect}
             />
-        </section>
+          </section>
         ))}
       </div>
     );
@@ -65,20 +68,10 @@ const ProgramSelectCoursePageWithApiData = withApiData({
   dataType: 'DOMAINS',
 })(ProgramSelectCoursePage);
 
+module.exports = ProgramSelectCoursePageWithApiData;
 
-function getStyles({coursePhotoSize}) {
-  return {
-    Header: {
-    },
-    coursePhoto: {
-      width: coursePhotoSize,
-      height: coursePhotoSize,
-    },
-  };
-}
-
-export default withStyles(({color, gradient}) => ({
+const styles = StyleSheet.create({
   ProgramSelectCoursePage: {
     minHeight: 450,
   },
-}))(ProgramSelectCoursePageWithApiData);
+});

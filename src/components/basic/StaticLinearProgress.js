@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
-import { css, cssWithClass, withStyles} from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 
 /**
  *  A static progress bar
@@ -9,7 +11,6 @@ import { css, cssWithClass, withStyles} from 'src';
  */
 const DEFAULT_HEIGHT = 8;
 const StaticLinearProgress = ({
-  styles,
   style,
   progress = 0, // 0 - 100
   backgroundColor,
@@ -33,8 +34,6 @@ const StaticLinearProgress = ({
 
 
 StaticLinearProgress.propTypes = {
-  // Static styles
-  styles: PropTypes.object,
 
   // Override the inline-styles of the root element
   style: PropTypes.object,
@@ -51,7 +50,7 @@ StaticLinearProgress.propTypes = {
 
 // Dynamic styles
 function getStyles(props) {
-  const {backgroundColor, color, height} = props;
+  const {backgroundColor, height} = props;
   return {
     StaticLinearProgress: {
       height,
@@ -65,7 +64,9 @@ function getStyles(props) {
   };
 }
 
-export default withStyles(({color, gradient}) => ({
+module.exports = StaticLinearProgress;
+
+const styles = StyleSheet.create({
   StaticLinearProgress: {
     backgroundColor: color.bgGray,
     width: '100%',
@@ -76,4 +77,4 @@ export default withStyles(({color, gradient}) => ({
     height: '100%',
     backgroundColor: color.primary,
   },
-}))(StaticLinearProgress);
+});

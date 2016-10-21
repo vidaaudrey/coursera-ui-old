@@ -1,11 +1,14 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 import {Avatar, Button, FixedContainer, StepProgress} from 'src';
-import {FOOTER_HEIGHT, CREATE_PROGRAM_STEPS} from '../../../constants/ProgramCreationAppConstants';
-import ProgramFixedFooterProgramName from './ProgramFixedFooterProgramName';
-import ProgramFixedFooterDomainSelection from './ProgramFixedFooterDomainSelection';
-import ProgramFixedFooterCourseSelection from './ProgramFixedFooterCourseSelection';
-import ProgramFixedFooterPreviewProgram from './ProgramFixedFooterPreviewProgram';
+import {FOOTER_HEIGHT, CREATE_PROGRAM_STEPS} from 'src/constants/ProgramCreationAppConstants';
+import ProgramFixedFooterProgramName from 'src/prototypes/components/program-creation/ProgramFixedFooterProgramName';
+import ProgramFixedFooterDomainSelection from 'src/prototypes/components/program-creation/ProgramFixedFooterDomainSelection';
+import ProgramFixedFooterCourseSelection from 'src/prototypes/components/program-creation/ProgramFixedFooterCourseSelection';
+import ProgramFixedFooterPreviewProgram from 'src/prototypes/components/program-creation/ProgramFixedFooterPreviewProgram';
 const {
   stepCreateProgramName, stepSelectDomains, stepSelectCourses, stepProgramPreview,
 } = CREATE_PROGRAM_STEPS;
@@ -14,7 +17,7 @@ class ProgramFixedFooter extends React.Component {
 
   render() {
     const {
-      style, styles, theme, step, onProgramNameNext,
+      style, step, onProgramNameNext,
       onDomainSelectionPrev, onDomainSelectionNext,
       seatLimit, currentTotalSelectCount,
       selectedS12nIds, selectedCourseIds,
@@ -30,7 +33,7 @@ class ProgramFixedFooter extends React.Component {
             <StepProgress
               currentStep={currentStepNumber}
               totalSteps={totalSteps}
-              backgroundColor={theme.color.bgGray}
+              backgroundColor={color.bgGray}
             />
           </div>
 
@@ -69,18 +72,9 @@ class ProgramFixedFooter extends React.Component {
   }
 }
 
-function getStyles({coursePhotoSize}) {
-  return {
-    Header: {
-    },
-    coursePhoto: {
-      width: coursePhotoSize,
-      height: coursePhotoSize,
-    },
-  };
-}
+module.exports = ProgramFixedFooter;
 
-export default withStyles(({color, gradient}) => ({
+const styles = StyleSheet.create({
   ProgramFixedFooter: {
     background: color.white,
     height: FOOTER_HEIGHT,
@@ -93,4 +87,4 @@ export default withStyles(({color, gradient}) => ({
     left: -2,
     right: -2,
   },
-}))(ProgramFixedFooter);
+});

@@ -1,13 +1,18 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import CourseMiniCard from './CourseMiniCard';
-import CourseResumeCard from './CourseResumeCard';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
+import CourseMiniCard from 'src/prototypes/components/leaderboard/CourseMiniCard';
+import CourseResumeCard from 'src/prototypes/components/leaderboard/CourseMiniCard';
+
 import {Avatar} from 'src';
 
 const AVATAR_SIZE = 128;
 
-const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
-  const {userName, numCoursesCompleted, rank, score, currentCourse, courseId, profilePhoto} = leaderboard;
+const LeaderProfileCard = ({key, leaderboard, ...props}) => {
+  const {userName, numCoursesCompleted, rank, score, courseId, profilePhoto} = leaderboard;
   const statsRowData = [{
     label: 'points',
     number: score,
@@ -21,10 +26,6 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
     label: 'enrolled',
     number: 2,
   }];
-
-  {
-    className: 'LeaderProfileCard-asdfasdfasf';
-  }
 
   return (
     <div {...cssWithClass('LeaderProfileCard m-b-2', styles.LeaderProfileCard)}>
@@ -47,7 +48,7 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
             ))}
           </div>
           <div className="current-course-container m-b-2">
-            <label className="text-uppercase font-sm font-weight-bold">Current Courses</label>
+            <label htmlFor="Current Course" className="text-uppercase font-sm font-weight-bold">Current Courses</label>
             <div className="m-b-1">
               <CourseMiniCard id={courseId} />
             </div>
@@ -55,7 +56,7 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
           </div>
 
           <div className="finished-course-container m-b-1">
-            <label className="text-uppercase font-sm font-weight-bold">Accomplishments</label>
+            <label htmlFor="Accomplishments" className="text-uppercase font-sm font-weight-bold">Accomplishments</label>
             <CourseMiniCard id={courseId} type={'FINISHED_COURSE'} grade={21} />
           </div>
         </div>
@@ -64,7 +65,9 @@ const LeaderProfileCard = ({styles, key, leaderboard, ...props}) => {
   );
 };
 
-export default withStyles(({color, gradient}) => ({
+module.exports = LeaderProfileCard;
+
+const styles = StyleSheet.create({
   LeaderProfileCard: {
     width: '100%',
     minWidth: 320,
@@ -85,4 +88,4 @@ export default withStyles(({color, gradient}) => ({
     borderRadius: '50%',
     border: '2px solid rgba(255, 255, 255, .8)',
   },
-}))(LeaderProfileCard);
+});

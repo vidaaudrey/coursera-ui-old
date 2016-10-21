@@ -1,5 +1,8 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 const _ = require('underscore');
 import withApiData from 'src/components/hocs/withApiData';
 import {StaticLinearProgress} from 'src';
@@ -16,7 +19,6 @@ const DEFAULT_COURSE_PHOTO_SIZE = 96;
 const BASE_URL = 'https://www.coursera.org/learn/';
 
 const CourseMiniCard = ({
-  styles,
   course,
   id,
   type = CARD_TYPES.PROGRESS,
@@ -90,11 +92,13 @@ function getStyles({coursePhotoSize}) {
   };
 }
 
-export default withStyles(({color, gradient}) => ({
+module.exports = CourseWithApiData;
+
+const styles = StyleSheet.create({
   CourseMiniCard: {
   },
   StaticLinearProgress: {
     margin: 8,
     marginLeft: 0,
   },
-}))(CourseWithApiData);
+});

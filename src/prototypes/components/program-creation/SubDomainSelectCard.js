@@ -1,5 +1,9 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, font, transition,
+} = require('src/styles/theme');
+
 import {Avatar, Button, SelectList} from 'src';
 const _ = require('underscore');
 
@@ -32,7 +36,6 @@ const mockListData = [
 ];
 
 const SubDomainSelectCard = ({
-  styles,
   listData = mockListData, onSelectChange,
 }) => {
   return (
@@ -63,7 +66,9 @@ const SubDomainSelectCard = ({
   );
 };
 
-export default withStyles(({color, spacing, font}) => ({
+module.exports = SubDomainSelectCard;
+
+const styles = StyleSheet.create({
   SubDomainSelectCard: {
     color: color.white,
     textAlign: 'left',
@@ -82,4 +87,4 @@ export default withStyles(({color, spacing, font}) => ({
     fontWeight: 'normal',
     textTransform: 'uppercase',
   },
-}))(SubDomainSelectCard);
+});

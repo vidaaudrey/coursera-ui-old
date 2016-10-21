@@ -1,18 +1,19 @@
-import {
-  turquoise100, turquoise500, turquoise700,
-  // blue100, blue500, blue700,
-  blue500,
-  yellow600,
-  teal400, dawn200, dawn400, midnight600, midnight300, dusk200,
-  dusk50, dusk100, dusk300, dusk400, dawn300,
-  yellow500, red500, green500, dawn500, blue700, blue100,
-} from './colors';
-import {coursera, strawberry} from './gradients';
-import transition from './transition';
+/* eslint-disable no-param-reassign, no-bit-wise */
+const {StyleSheet, css} = require('aphrodite/no-important');
+const classNames = require('classnames');
+const {
+  turquoise500, blue500, yellow600,
+  yellow500, red500, blue700, blue100,
+  dawn200, dawn400, dawn300, dawn500,
+  dusk100, dusk400,
+  midnight600, midnight300, dusk200,
+} = require('./colors');
+const {coursera, strawberry} = require('./gradients');
+const transition = require('./transition');
 
 function lighten(col, amt) {
   let usePound = false;
-  if (col[0] == '#') {
+  if (col[0] === '#') {
     col = col.slice(1);
     usePound = true;
   }
@@ -36,8 +37,19 @@ function lighten(col, amt) {
   return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
 }
 
+function cssWithClass(className, cssObject, ...rest) {
+  const dynamicClassName = css(cssObject, ...rest);
+  return {className: classNames(dynamicClassName, className)};
+}
 
-export default {
+function cssWith(cssObj, ...rest) {
+  return {className: css(cssObj, ...rest)};
+}
+
+module.exports = {
+  StyleSheet,
+  css: cssWith,
+  cssWithClass,
   lighten,
   spacing: {
     minWidth: 320,
@@ -53,9 +65,6 @@ export default {
     xlg: '2.5rem',
   },
   color: {
-    // primary: turquoise500 ,
-    // darkPrimary: turquoise700,
-    // lightPrimary: turquoise100,
     primary: blue500,
     darkPrimary: blue700,
     lightPrimary: blue100,

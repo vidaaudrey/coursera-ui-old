@@ -1,8 +1,12 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import {Avatar, Button} from 'src';
 const _ = require('underscore');
 import {CourseCard, LayeredS12nCard} from 'src';
+
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 
 class DomainCard extends React.Component {
   static propTypes = {
@@ -11,6 +15,8 @@ class DomainCard extends React.Component {
     domainId: React.PropTypes.string.isRequired,
     domainName: React.PropTypes.string.isRequired,
     searchKeyWord: React.PropTypes.string,
+    onToggleCourseSelect: React.PropTypes.func.isRequired,
+    onToggleS12nSelect: React.PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -26,7 +32,7 @@ class DomainCard extends React.Component {
 
   render() {
     const {
-      style, styles, selectedCourseIds, selectedS12nIds,
+      selectedCourseIds, selectedS12nIds,
       onToggleCourseSelect, onToggleS12nSelect,
       domainName,
     } = this.props;
@@ -51,44 +57,39 @@ class DomainCard extends React.Component {
         <h2 {...css(styles.domainName)}>{domainName}</h2>
         <h5 {...css(styles.cardType)}> Specializations</h5>
         <div className="row m-b-2">
-            {s12ns.map((item, index) => (
-              <div key={`LayeredS12nCard~${item.id}`} className="col-xs-12 col-md-6 col-lg-4">
-                <LayeredS12nCard
-                  id={item.id}
-                  isSelected={item.isSelected}
-                  onToggleS12nSelect={onToggleS12nSelect}
-                />
-              </div>
-            ))}
+          {s12ns.map(item => (
+            <div key={`LayeredS12nCard~${item.id}`} className="col-xs-12 col-md-6 col-lg-4">
+              <LayeredS12nCard
+                id={item.id}
+                isSelected={item.isSelected}
+                onToggleS12nSelect={onToggleS12nSelect}
+              />
+            </div>
+          ))}
         </div>
         <h4 {...css(styles.cardType)}> Courses</h4>
         <div className="row m-b-2">
-            {courses.map((item, index) => (
-              <div key={`CourseCard~${item.id}`} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <CourseCard
-                  id={item.id}
-                  isSelected={item.isSelected}
-                  onToggleCourseSelect={onToggleCourseSelect}
-                />
-              </div>
-            ))}
-            <div className="col-xs-12 text-xs-right">
-              <Button type="secondary" label={'See All'} />
+          {courses.map(item => (
+            <div key={`CourseCard~${item.id}`} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <CourseCard
+                id={item.id}
+                isSelected={item.isSelected}
+                onToggleCourseSelect={onToggleCourseSelect}
+              />
             </div>
+          ))}
+          <div className="col-xs-12 text-xs-right">
+            <Button type="secondary" label={'See All'} />
+          </div>
         </div>
       </div>
     );
   }
 }
 
-function getStyles({coursePhotoSize}) {
-  return {
-    DomainCard: {
-    },
-  };
-}
+module.exports = DomainCard;
 
-export default withStyles(({color, spacing}) => ({
+const styles = StyleSheet.create({
   DomainCard: {
     textAlign: 'left',
   },
@@ -99,4 +100,4 @@ export default withStyles(({color, spacing}) => ({
     textTransform: 'uppercase',
     color: color.secondaryText,
   },
-}))(DomainCard);
+});

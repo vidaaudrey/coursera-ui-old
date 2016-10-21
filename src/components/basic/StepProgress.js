@@ -1,5 +1,8 @@
 import React, {PropTypes} from 'react';
-import { css, cssWithClass, withStyles} from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 const _ = require('underscore');
 /**
  *  A static progress bar
@@ -7,22 +10,20 @@ const _ = require('underscore');
 const DEFAULT_HEIGHT = 8;
 const DEFAULT_BAR_MARGIN = 2;
 const StepProgress = ({
-  styles,
   style,
-  theme,
   backgroundColor,
   progressColor,
-  color,
+  color: cColor,
   barMargin = DEFAULT_BAR_MARGIN,
   height = DEFAULT_HEIGHT,
   totalSteps = 1,
   currentStep = 0,
   ...props,
 }) => {
-  const dynamicStyles = getStyles({backgroundColor, color, height, barMargin});
+  const dynamicStyles = getStyles({backgroundColor, color: cColor, height, barMargin});
   const mergedRootStyle = {...dynamicStyles.StepProgress, ...style};
   // const barStyle = {...dynamicStyles.bar, width: `${progress}%`};
-  const progressColorLocal = progressColor || theme.color.success;
+  const progressColorLocal = progressColor || color.success;
   const barWidth = 1 / totalSteps;
   const barData = _.range(totalSteps)
     .map(item => ({
@@ -51,9 +52,6 @@ const StepProgress = ({
 
 
 StepProgress.propTypes = {
-  // Static styles
-  styles: PropTypes.object,
-
   // Override the inline-styles of the root element
   style: PropTypes.object,
 
@@ -93,7 +91,9 @@ function getStyles({backgroundColor, color, height, barMargin}) {
   };
 }
 
-export default withStyles(({color, gradient}) => ({
+module.exports = StepProgress;
+
+const styles = StyleSheet.create({
   StepProgress: {
     backgroundColor: color.white,
     width: '100%',
@@ -103,4 +103,4 @@ export default withStyles(({color, gradient}) => ({
   bar: {
     height: '100%',
   },
-}))(StepProgress);
+});

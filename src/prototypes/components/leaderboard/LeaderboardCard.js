@@ -1,13 +1,16 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet, theme} from 'src';
-import CourseMiniCard from './CourseMiniCard';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
+import CourseMiniCard from 'src/prototypes/components/leaderboard/CourseMiniCard';
 import {Avatar} from 'src';
 import SvgCrown from 'src/components/svg/icons/SvgCrown';
 import {getInitialsFromFullName} from 'src/utils/common';
 
 const AVATAR_SIZE = 100;
 const LeaderboardCard = ({
-  styles,
   leaderboard: {userName, numCoursesCompleted, rank, score, currentCourse, courseId, profilePhoto},
   isNumberOne,
   ...props,
@@ -22,8 +25,8 @@ const LeaderboardCard = ({
             }
             {!profilePhoto &&
               <Avatar
-                backgroundColor={isNumberOne ? theme.color.accent : theme.color.darkPrimary}
-                color={theme.color.textIcon}
+                backgroundColor={isNumberOne ? color.accent : color.darkPrimary}
+                color={color.textIcon}
                 size={AVATAR_SIZE}
               >
                 <h4 className="m-a-0 font-weight-normal">{getInitialsFromFullName(userName)}</h4>
@@ -31,8 +34,8 @@ const LeaderboardCard = ({
             }
             <div {...css(styles.rank)}>
               <Avatar
-                backgroundColor={isNumberOne ? theme.color.accent : theme.color.lightPrimary}
-                color={theme.color.textIcon}
+                backgroundColor={isNumberOne ? color.accent : color.lightPrimary}
+                color={color.textIcon}
                 size={36}
               >
                 <h4 className="m-a-0">{rank}</h4>
@@ -40,7 +43,7 @@ const LeaderboardCard = ({
             </div>
             {isNumberOne &&
               <div {...css(styles.crown)}>
-                <SvgCrown fill={theme.color.accent} />
+                <SvgCrown fill={color.accent} />
               </div>
             }
           </div>
@@ -52,7 +55,12 @@ const LeaderboardCard = ({
             {numCoursesCompleted || 0}
             {numCoursesCompleted > 1 ? ' Courses' : ' Course'} Completed
           </span>
-          <label className="text-uppercase font-sm font-weight-bold">Current Courses</label>
+          <label
+            htmlFor={'Current Coures'}
+            className="text-uppercase font-sm font-weight-bold"
+          >
+            Current Courses
+          </label>
           <CourseMiniCard id={courseId} />
         </div>
 
@@ -67,7 +75,9 @@ const LeaderboardCard = ({
   );
 };
 
-export default withStyles(({color, spacing, transition}) => ({
+module.exports = LeaderboardCard;
+
+const styles = StyleSheet.create({
   LeaderboardCard: {
     minWidth: 320,
     marginBottom: spacing.sm,
@@ -80,7 +90,7 @@ export default withStyles(({color, spacing, transition}) => ({
   crown: {
     position: 'absolute',
     top: '-1.5em',
-    left: AVATAR_SIZE / 2 - 4,
+    left: (AVATAR_SIZE / 2) - 4,
   },
   stats: {
     fontSize: 48,
@@ -95,4 +105,4 @@ export default withStyles(({color, spacing, transition}) => ({
   transition: {
     transition: transition.easeOut(),
   },
-}))(LeaderboardCard);
+});
