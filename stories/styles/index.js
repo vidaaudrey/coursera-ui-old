@@ -1,2 +1,2 @@
-// import './Colors.story';
+import './Colors.story';
 import './Theme.story';

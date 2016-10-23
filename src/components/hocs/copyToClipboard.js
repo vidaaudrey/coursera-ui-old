@@ -34,6 +34,7 @@ const copyToClipboard = (Component) => {
         onClick(e);
       }
     }
+
     render() {
       const {text, onCopy, options, onClick, htmlAttributes, ...props} = this.props;
       return (

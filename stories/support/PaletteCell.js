@@ -5,7 +5,7 @@ const styles = {
   PaletteCell: {
     width: 500,
     height: 200,
-  }
+  },
 };
 
 
@@ -26,6 +26,6 @@ function PaletteCell({color, name, htmlAttributes = {}}) {
 PaletteCell.propTypes = {
   color: React.PropTypes.string,
   name: React.PropTypes.string.isRequired,
-}
+};
 
 export default PaletteCell;
