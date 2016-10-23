@@ -1,5 +1,5 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes} from 'react';
-// import { css, cssWithClass, withStyles} from 'src';
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition, button,
 } = require('src/styles/theme');
@@ -32,7 +32,6 @@ const Button = ({
   isOutline,
   children,
   label,
-  ...props,
 }) => {
   const dynamicStyles = getStyles({size});
   const mergedStyles = {...dynamicStyles.Button, ...style};
@@ -44,7 +43,7 @@ const Button = ({
     >
       {label}
       {children}
-   </button>
+    </button>
  );
 };
 
@@ -64,8 +63,8 @@ Button.propTypes = {
   htmlAttributes: PropTypes.object,
 
   // Button types.
-  type: PropTypes.oneOf(Object.values(BUTTON_TYPES)),
-  size: PropTypes.oneOf(Object.values(BUTTON_SIZES)),
+  type: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
+  size: PropTypes.oneOf(Object.keys(BUTTON_SIZES)),
 
   // Can use to letters inside the avatar.
   children: PropTypes.node,

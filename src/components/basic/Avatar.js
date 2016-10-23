@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes} from 'react';
 const {
  StyleSheet, color, css,
@@ -17,12 +18,12 @@ const Avatar = ({
   imgAlt = 'Avatar',
   iconName,
   backgroundColor,
-  color,
+  color: propColor,
   children,
   size = 44,
   ...props,
 }) => {
-  const dynamicStyles = getStyles({size, backgroundColor, color});
+  const dynamicStyles = getStyles({size, backgroundColor, propColor});
   const mergedStyles = {...dynamicStyles.Avatar, ...style};
   if (imgSrc) {
     return (
@@ -31,6 +32,7 @@ const Avatar = ({
         {...css(styles.Avatar)}
         style={mergedStyles}
         src={imgSrc}
+        role="presentation"
       />
     );
   }
@@ -40,16 +42,13 @@ const Avatar = ({
       {...css(styles.Avatar)}
       style={mergedStyles}
     >
-     {children}
-   </div>
+      {children}
+    </div>
  );
 };
 
 
 Avatar.propTypes = {
-  // Static styles
-  styles: PropTypes.object,
-
   // Override the inline-styles of the root element
   style: PropTypes.object,
 
@@ -69,7 +68,11 @@ Avatar.propTypes = {
   size: PropTypes.number,
 
   // If passed in, the component will render an img element. Otherwise, a div will be rendered.
-  src: PropTypes.string,
+  imgSrc: PropTypes.string,
+
+  imgAlt: PropTypes.string,
+
+  iconName: PropTypes.string,
 
   // If passed in, the component will render an img element. Otherwise, a div will be rendered.
   // bordered: PropTypes.bool,
@@ -86,12 +89,11 @@ Avatar.defaultProps = {
 };
 
 // Dynamic styles
-function getStyles(props) {
-  const {size, backgroundColor, color} = props;
+function getStyles({size, backgroundColor, propColor}) {
   return {
     Avatar: {
       backgroundColor,
-      color,
+      propColor,
       fontSize: size / 2,
       height: size,
       width: size,
@@ -109,7 +111,6 @@ module.exports = Avatar;
 
 const styles = StyleSheet.create({
   Avatar: {
-    backgroundColor: color.accent,
     color: color.textIcon,
     backgroundColor: color.primary,
     userSelect: 'none',

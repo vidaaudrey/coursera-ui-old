@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign, no-bit-wise */
+/* eslint-disable no-param-reassign, no-bit-wise, no-extraneous-dependencies*/
 const {StyleSheet, css} = require('aphrodite/no-important');
 const classNames = require('classnames');
 const {

@@ -10,11 +10,11 @@ import SvgCrown from 'src/components/svg/icons/SvgCrown';
 import {getInitialsFromFullName} from 'src/utils/common';
 
 const AVATAR_SIZE = 100;
+
 const LeaderboardCard = ({
-  leaderboard: {userName, numCoursesCompleted, rank, score, currentCourse, courseId, profilePhoto},
-  isNumberOne,
-  ...props,
+  leaderboard: {userName, numCoursesCompleted, rank, score, courseId, profilePhoto},
 }) => {
+  const isNumberOne = rank < 2;
   return (
     <div {...cssWithClass('LeaderboardCard card p-a-1', styles.LeaderboardCard)}>
       <div className="row">
@@ -73,6 +73,10 @@ const LeaderboardCard = ({
       </div>
     </div>
   );
+};
+
+LeaderboardCard.propTypes = {
+  leaderboard: React.PropTypes.object,
 };
 
 module.exports = LeaderboardCard;

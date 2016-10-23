@@ -1,18 +1,13 @@
-import React, {Component, PropTypes} from 'react';
-import { css, cssWithClass, withStyles} from 'src';
-import transition from '../../styles/transition';
-import theme from '../../styles/theme';
-import {withApiData} from '../hocs/withApiData';
-// import hoistNonReactStatics from 'hoist-non-react-statics'
-import {hoistStatics, nest} from 'recompose';
+const React = require('react');
+const {PropTypes} = React;
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
 
 
-class SvgIcon extends Component {
+class SvgIcon extends React.Component {
 
   static propTypes = {
-    // Static styles
-    styles: PropTypes.object,
-
     // Override the inline-styles of the root element
     style: PropTypes.object,
 
@@ -22,13 +17,13 @@ class SvgIcon extends Component {
     //  Elements passed into the SVG Icon.
     children: PropTypes.node,
 
-    // Fill color of the svg, default to theme.color.icon.
+    // Fill color of the svg, default to color.icon.
     color: PropTypes.string,
 
     // Width and height of the svg, should be equal, so only use size.
     size: PropTypes.number,
 
-    // Default to theme.color.darkPrimary
+    // Default to color.darkPrimary
     hoverColor: PropTypes.string,
 
     onMouseEnter: PropTypes.func,
@@ -44,8 +39,8 @@ class SvgIcon extends Component {
     onMouseLeave: () => {},
     viewBox: '0 0 24 24',
     size: 24,
-    color: theme.color.icon,
-    hoverColor: theme.color.darkPrimary,
+    color: color.icon,
+    hoverColor: color.darkPrimary,
     styles: {},
     style: {},
     htmlAttributes: {},
@@ -114,11 +109,13 @@ function getStyles(props, state) {
   };
 }
 
-export default withStyles(({color}) => ({
+module.exports = SvgIcon;
+
+const styles = StyleSheet.create({
   SvgIcon: {
     display: 'inline-block',
     color: color.icon,
     transition: transition.easeOut(),
     userSelect: 'none',
-  },
-}))(SvgIcon);
+  }
+});

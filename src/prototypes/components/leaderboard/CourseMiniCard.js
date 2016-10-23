@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
@@ -12,18 +13,16 @@ const CARD_TYPES = {
   TOP_COURSE: 'TOP_COURSE',
   FINISHED_COURSE: 'FINISHED_COURSE',
   CUSTOM_CHILDREN: 'CUSTOM_CHILDREN',
-
 };
 const DEFAULT_COURSE_PHOTO_SIZE = 96;
-
 const BASE_URL = 'https://www.coursera.org/learn/';
+
 const CourseMiniCard = ({
   course,
   type = CARD_TYPES.PROGRESS,
   coursePhotoSize = DEFAULT_COURSE_PHOTO_SIZE,
   progress, grade, learnerCount,
   children,
-  ...props,
 }) => {
   if (!course) return null;
 
@@ -34,7 +33,7 @@ const CourseMiniCard = ({
 
   return (
     <div className="horizontal-box CourseCard">
-      <div className="horizontal-box align-items-top m-r-1" style={{minWidth: 100}}>
+      <div>
         <a href={`${BASE_URL}${course.slug}/home/welcome`}>
           <img src={photoUrl} alt="CourseraAlt" className="border-a" style={dynamicStyles.coursePhoto} />
         </a>
@@ -74,7 +73,15 @@ const CourseMiniCard = ({
   );
 };
 
-const CourseWithApiData = withApiData({dataType: 'LEADER_COURSE'})(CourseMiniCard);
+CourseMiniCard.propTypes = {
+  course: React.PropTypes.object.isRequired,
+  progress: React.PropTypes.number,
+  grade: React.PropTypes.number,
+  learnerCount: React.PropTypes.number,
+  children: React.PropTypes.node,
+};
+
+module.exports = withApiData({dataType: 'LEADER_COURSE'})(CourseMiniCard);
 
 // Dynamic styles
 function getStyles({coursePhotoSize}) {
@@ -90,11 +97,11 @@ function getStyles({coursePhotoSize}) {
   };
 }
 
-module.exports = CourseWithApiData;
-
 const styles = StyleSheet.create({
   CourseMiniCard: {
+    minWidth: 320
   },
+
   StaticLinearProgress: {
     margin: 8,
     marginLeft: 0,

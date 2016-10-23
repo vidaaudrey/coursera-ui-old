@@ -3,6 +3,7 @@
 // Only use when we have components open sourced
 import App from './containers/App';
 import Button from './components/basic/Button';
+import TextFit from './components/basic/TextFit';
 import CourseCard from './components/rich/CourseCard';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import StepProgress from './components/basic/StepProgress';
@@ -43,6 +44,7 @@ export {
 
   App,
   Button,
+  TextFit,
   CourseCard,
   FixedContainer,
   LayeredS12nCard,

@@ -5,7 +5,7 @@ import { Avatar } from 'src';
 import LeaderboardCard from 'src/prototypes/components/leaderboard/LeaderboardCard';
 import LeaderProfileCard from 'src/prototypes/components/leaderboard/LeaderProfileCard';
 import TopCoursesCard from 'src/prototypes/components/leaderboard/TopCoursesCard';
-import { courseraLogo } from 'src/assets/pngAssets';
+import courseraLogo from 'src/assets/courseraLogo';
 
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
@@ -14,9 +14,13 @@ const _ = require('underscore');
 
 
 // TODO[Audrey]:
-class LeaderboardApp extends React.Component {
+class LeaderboardsMain extends React.Component {
   static propTypes = {
     leaderboards: React.PropTypes.array,
+  }
+
+  static defaultProps = {
+    leaderboards: [],
   }
 
   constructor(props, context) {
@@ -27,7 +31,7 @@ class LeaderboardApp extends React.Component {
       .pluck('courseId')
       .reduce((total, item) => {
         total[item] = total[item] || 0;
-        total[item] = total[item] + 1;
+        total[item] += total[item];
         return total;
       }, {})
       .map((item, key) => ({id: key, count: item}))
@@ -57,7 +61,7 @@ class LeaderboardApp extends React.Component {
     const {leaderboardData, activeMenuIndex} = this.state;
 
     return (
-      <div {...cssWithClass('bg-gray w-100', styles.LeaderboardApp)}>
+      <div {...cssWithClass('bg-gray w-100', styles.LeaderboardsMain)}>
         <header {...cssWithClass('container-fluid', styles.header)}>
           <div className="container">
             <nav {...cssWithClass('horizontal-box align-items-spacebetween wrap', styles.NavBar)}>
@@ -112,16 +116,15 @@ class LeaderboardApp extends React.Component {
   }
 }
 
-const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(LeaderboardApp);
-
-module.exports = AppWithApiData;
+module.exports = withApiData({dataType: 'LEADERBOARD'})(LeaderboardsMain);
 
 const styles = StyleSheet.create({
-  LeaderboardApp: {
+  LeaderboardsMain: {
     background: color.bgGray,
     minHeight: 800,
   },
   header: {
+
   },
   NavBar: {
     minHeight: 56,
@@ -168,17 +171,5 @@ const styles = StyleSheet.create({
     minHeight: 500,
     marginTop: -96,
     transition: transition.easeOut(),
-  },
-
-  hover: {
-    ':hover': {
-      backgroundColor: 'red',
-    },
-  },
-
-  small: {
-    '@media (max-width: 600px)': {
-      backgroundColor: 'red',
-    },
   },
 });
