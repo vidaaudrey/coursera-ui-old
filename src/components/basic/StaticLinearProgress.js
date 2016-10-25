@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes} from 'react';
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
@@ -14,11 +15,11 @@ const StaticLinearProgress = ({
   style,
   progress = 0, // 0 - 100
   backgroundColor,
-  color,
+  color: propColor,
   height = DEFAULT_HEIGHT,
   ...props,
 }) => {
-  const dynamicStyles = getStyles({backgroundColor, color, height});
+  const dynamicStyles = getStyles({backgroundColor, propColor, height});
   const mergedRootStyle = {...dynamicStyles.StaticLinearProgress, ...style};
   const barStyle = {...dynamicStyles.bar, width: `${progress}%`};
 
@@ -28,13 +29,12 @@ const StaticLinearProgress = ({
       style={mergedRootStyle}
     >
       <div {...css(styles.bar)} style={barStyle} />
-   </div>
+    </div>
  );
 };
 
 
 StaticLinearProgress.propTypes = {
-
   // Override the inline-styles of the root element
   style: PropTypes.object,
 
@@ -46,11 +46,12 @@ StaticLinearProgress.propTypes = {
 
   // The height of the the progress bar
   height: PropTypes.number,
+
+  progress: React.PropTypes.number,
 };
 
 // Dynamic styles
-function getStyles(props) {
-  const {backgroundColor, height} = props;
+function getStyles({backgroundColor, propColor, height}) {
   return {
     StaticLinearProgress: {
       height,
@@ -58,7 +59,7 @@ function getStyles(props) {
       borderRadius: height / 2,
     },
     bar: {
-      backgroundColor: color,
+      backgroundColor: propColor,
       borderRadius: height / 2,
     },
   };

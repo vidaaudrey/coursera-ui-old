@@ -1,13 +1,13 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import IconLibrary from '../support/IconLibrary';
-import { SelectList, SelectListItem } from 'src';
+import { ChipList, Chip } from 'src';
 
 const listData = [
   {
     id: 'computer-science',
     label: 'Computer Science',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'arts-and-humanities',
     label: 'Arts & Humanities',
@@ -15,7 +15,7 @@ const listData = [
   }, {
     id: 'data-science',
     label: 'Data Science',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'social-sciences',
     label: 'Social Science',
@@ -23,36 +23,36 @@ const listData = [
   }, {
     id: 'life-sciences',
     label: 'Life Science',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'business',
     label: 'Business',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'personal-development',
     label: 'Personal Development',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'math-and-logic',
     label: 'Math & Logic',
-    isSelected: true
+    isSelected: true,
   }, {
     id: 'physical-science-and-engineering',
     label: 'Physical Science & Engineering',
-    isSelected: true
-  }
+    isSelected: true,
+  },
 ];
 
-storiesOf('extended.SelectList', module)
+storiesOf('extended.ChipList', module)
   .addWithInfo(
-    'SelectList default',
+    'ChipList default',
     `
       Usage
 
       ~~~js
-      import { SelectListItem } from 'coursera-ui';
+      import { Chip } from 'coursera-ui';
 
-      <SelectList
+      <ChipList
         listData={listData}
         showSelectAll={true}
         selectAllLabel={'All Topics'}
@@ -63,7 +63,7 @@ storiesOf('extended.SelectList', module)
     `,
     () => (
       <div className="container p-a-3 bg-gray">
-        <SelectList
+        <ChipList
           listData={listData}
           showSelectAll={true}
           alignCenter={true}
@@ -74,14 +74,14 @@ storiesOf('extended.SelectList', module)
     ),
   )
   .addWithInfo(
-    'SelectList, themeDark',
+    'ChipList, themeDark',
     `
       Usage
 
       ~~~js
-      import { SelectListItem } from 'coursera-ui';
+      import { Chip } from 'coursera-ui';
 
-      <SelectList
+      <ChipList
         listData={listData}
         showSelectAll={true}
         selectAllLabel={'All Topics'}
@@ -91,12 +91,12 @@ storiesOf('extended.SelectList', module)
     `,
     () => (
       <div className="container p-a-3 bg-primary">
-        <SelectList
+        <ChipList
           showSelectAll={true}
           selectAllLabel={'All Topics'}
           listData={listData}
           onSelectChange={action('select changed')}
-          selectListItemAttributes={{
+          ChipAttributes={{
             isDarkTheme: true,
             height: 32,
             fontSize: 'sm',
@@ -106,18 +106,18 @@ storiesOf('extended.SelectList', module)
     ),
   )
   .addWithInfo(
-    'SelectListItem',
+    'Chip',
     `
       Usage
       ~~~js
-      import { SelectListItem } from 'coursera-ui';
+      import { Chip } from 'coursera-ui';
 
-      <SelectListItem
+      <Chip
         label="light theme"
         onClick={action('clicked')}
       />
 
-      <SelectListItem
+      <Chip
         label="dark theme, selected, height 28, fontsize xs"
         isSelected={true}
         isDarkTheme={true}
@@ -130,11 +130,11 @@ storiesOf('extended.SelectList', module)
     () => (
       <div className="vertical-box p-t-3">
         <div className="m-b-3">
-          <SelectListItem
+          <Chip
             label="light theme"
             onClick={action('clicked')}
           />
-          <SelectListItem
+          <Chip
             label="light theme, selected"
             isSelected={true}
             onClick={action('clicked')}
@@ -142,12 +142,12 @@ storiesOf('extended.SelectList', module)
         </div>
 
         <div className="m-b-3 bg-primary p-a-3">
-          <SelectListItem
+          <Chip
             label="dark theme"
             isDarkTheme={true}
             onClick={action('clicked')}
           />
-          <SelectListItem
+          <Chip
             label="dark theme, selected, height 28, fontsize xs"
             isSelected={true}
             isDarkTheme={true}

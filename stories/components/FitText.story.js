@@ -62,11 +62,11 @@ storiesOf('basic.TextFit', module)
             }}
           >
             <p>
-              Oh! there are spirits of the air,
-              And genii of the evening breeze,
-              And gentle ghosts, with eyes as fair
-              As star-beams among twilight trees:—
-              Such lovely ministers to meet
+              Oh! there are spirits of the air, <br />
+              And genii of the evening breeze, <br />
+              And gentle ghosts, with eyes as fair <br />
+              As star-beams among twilight trees:— <br />
+              Such lovely ministers to meet <br />
               Oft hast thou turned from men thy lonely feet.
             </p>
             <p>

@@ -43,7 +43,7 @@ storiesOf('basic.Progress', module)
           totalSteps={5}
           barMargin={4}
           height={12}
-          progressColor="#e9573f"
+          color="#e9573f"
           backgroundColor="#f9e1e1"
         />
       </div>

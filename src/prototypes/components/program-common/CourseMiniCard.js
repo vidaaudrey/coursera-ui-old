@@ -4,7 +4,7 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 const _ = require('underscore');
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 import {StaticLinearProgress} from 'src';
 
 const CARD_TYPES = {
@@ -76,7 +76,7 @@ const CourseMiniCard = ({
   );
 };
 
-const CourseWithApiData = withApiData({dataType: 'COURSE'})(CourseMiniCard);
+const CoursewithApiMockData = withApiMockData({dataType: 'COURSE'})(CourseMiniCard);
 
 // Dynamic styles
 function getStyles({coursePhotoSize}) {
@@ -92,7 +92,7 @@ function getStyles({coursePhotoSize}) {
   };
 }
 
-module.exports = CourseWithApiData;
+module.exports = CoursewithApiMockData;
 
 const styles = StyleSheet.create({
   CourseMiniCard: {

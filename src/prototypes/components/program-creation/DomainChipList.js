@@ -1,9 +1,9 @@
 import React from 'react';
-import {SelectList} from 'src';
+import {ChipList} from 'src';
 const _ = require('underscore');
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 
-const DomainSelectList = ({
+const DomainChipList = ({
   showSelectAll,
   alignCenter, selectedDomainIds = [], domains, onSelectChange,
 }) => {
@@ -14,7 +14,7 @@ const DomainSelectList = ({
   }));
 
   return (
-    <SelectList
+    <ChipList
       listData={listDataWithSelect}
       showSelectAll={showSelectAll}
       selectAllLabel={'All Topics'}
@@ -25,4 +25,4 @@ const DomainSelectList = ({
 };
 
 
-export default withApiData({dataType: 'DOMAINS'})(DomainSelectList);
+export default withApiMockData({dataType: 'DOMAINS'})(DomainChipList);

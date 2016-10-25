@@ -4,7 +4,7 @@ const {
 } = require('src/styles/theme');
 
 const _ = require('underscore');
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 import {StaticLinearProgress, Button} from 'src';
 
 
@@ -19,7 +19,7 @@ const CourseResumeCard = ({
   const {description, photoUrl, partnerIds} = course;
 
   return (
-    <div {...cssWithClass('vertical-box p-a-1', styles.CourseResumeCard)}>
+    <div {...css('vertical-box p-a-1', styles.CourseResumeCard)}>
       <p>Finish the next module to gain more points!</p>
       <div className="horizontal-box align-items-right wrap">
         <a href={`${BASE_URL}${course.slug}/home/welcome`}>
@@ -30,9 +30,9 @@ const CourseResumeCard = ({
   );
 };
 
-const CourseWithApiData = withApiData({dataType: 'COURSE'})(CourseResumeCard);
+const CoursewithApiMockData = withApiMockData({dataType: 'COURSE'})(CourseResumeCard);
 
-module.exports = CourseWithApiData;
+module.exports = CoursewithApiMockData;
 
 const styles = StyleSheet.create({
   CourseResumeCard: {

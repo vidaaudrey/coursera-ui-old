@@ -5,18 +5,18 @@ import {SvgCheckOutline, SvgCheckSolid} from 'src/components/svg/coursera';
 const DEFAULT_HEIGHT = 36;
 const HEIGHT_TO_ICON_RATIO = 0.6;
 
-const SelectListItem = ({
+const Chip = ({
   style = {}, styles, htmlAttributes = {},
   label, theme, isDarkTheme, isSelected, onClick, fontSize = 'md',
   height = DEFAULT_HEIGHT,
 }) => {
   const dynamicStyles = getStyles({isDarkTheme, theme, isSelected, height, fontSize});
-  const mergedStyles = {...dynamicStyles.SelectListItem, ...style};
+  const mergedStyles = {...dynamicStyles.Chip, ...style};
 
   return (
     <button
       {...css(
-        styles.SelectListItem,
+        styles.Chip,
         styles.activeButtonStyle,
         styles.hoverButtonStyle,
         isDarkTheme ? styles.borderLine : styles.boxShadow,
@@ -52,7 +52,7 @@ const SelectListItem = ({
   );
 };
 
-SelectListItem.defaultProps = {
+Chip.defaultProps = {
   fontSize: 'md',
   style: {},
   styles: {},
@@ -60,7 +60,7 @@ SelectListItem.defaultProps = {
   height: DEFAULT_HEIGHT,
 };
 
-SelectListItem.propTypes = {
+Chip.propTypes = {
   label: React.PropTypes.string.isRequired,
   isSelected: React.PropTypes.bool,
   isDarkTheme: React.PropTypes.bool,
@@ -71,7 +71,7 @@ SelectListItem.propTypes = {
 function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
   const {color} = theme;
   const baseStyle = {
-    SelectListItem: {
+    Chip: {
       height,
       borderRadius: height / 2,
       fontSize: theme.font[fontSize],
@@ -88,8 +88,8 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
   // check different cases for theme and selected state
   if (!isSelected && !isDarkTheme) {
     return {
-      SelectListItem: {
-        ...baseStyle.SelectListItem,
+      Chip: {
+        ...baseStyle.Chip,
         backgroundColor: color.white,
       },
       text: {
@@ -101,8 +101,8 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
     };
   } else if (!isSelected && isDarkTheme) {
     return {
-      SelectListItem: {
-        ...baseStyle.SelectListItem,
+      Chip: {
+        ...baseStyle.Chip,
         backgroundColor: 'transparent',
       },
       text: {
@@ -114,8 +114,8 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
     };
   } else if (isSelected && !isDarkTheme) {
     return {
-      SelectListItem: {
-        ...baseStyle.SelectListItem,
+      Chip: {
+        ...baseStyle.Chip,
         color: color.white,
         backgroundColor: color.darkPrimary,
       },
@@ -129,8 +129,8 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
     };
   } else {
     return {
-      SelectListItem: {
-        ...baseStyle.SelectListItem,
+      Chip: {
+        ...baseStyle.Chip,
         backgroundColor: color.whiteHalf,
       },
       text: {
@@ -144,7 +144,7 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
 }
 
 export default withStyles(({color, transition, spacing}) => ({
-  SelectListItem: {
+  Chip: {
     transition: transition.easeOut(),
     border: 'none',
     overflow: 'hidden',
@@ -176,4 +176,4 @@ export default withStyles(({color, transition, spacing}) => ({
   text: {
     paddingRight: spacing.sm,
   },
-}))(SelectListItem);
+}))(Chip);

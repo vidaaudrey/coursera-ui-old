@@ -2,7 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import { SvgCheckOutline } from 'src/components/svg/coursera';
 const _ = require('underscore');
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 
 const S12nCard = ({
   styles,
@@ -79,7 +79,7 @@ S12nCard.defaultProps = {
   id: 's1', // Remove later
 };
 
-const S12nCardWithApiData = withApiData({
+const S12nCardwithApiMockData = withApiMockData({
   dataType: 'S12N',
 })(S12nCard);
 
@@ -151,4 +151,4 @@ export default withStyles(({color, font, spacing}) => ({
   title: {
     marginBottom: 0,
   },
-}))(S12nCardWithApiData);
+}))(S12nCardwithApiMockData);

@@ -5,7 +5,7 @@ const {
 } = require('src/styles/theme');
 
 const _ = require('underscore');
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 import {StaticLinearProgress} from 'src';
 
 const CARD_TYPES = {
@@ -81,7 +81,7 @@ CourseMiniCard.propTypes = {
   children: React.PropTypes.node,
 };
 
-module.exports = withApiData({dataType: 'LEADER_COURSE'})(CourseMiniCard);
+module.exports = withApiMockData({dataType: 'LEADER_COURSE'})(CourseMiniCard);
 
 // Dynamic styles
 function getStyles({coursePhotoSize}) {

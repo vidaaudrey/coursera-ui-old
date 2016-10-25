@@ -7,7 +7,7 @@ import {Avatar, Button} from 'src';
 import DomainCard from 'src/prototypes/components/program-creation/DomainCard';
 import SubDomainSelectCard from 'src/prototypes/components/program-creation/SubDomainSelectCard';
 import NoDomainSelected from 'src/prototypes/components/program-creation/NoDomainSelected';
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 const _ = require('underscore');
 
 class ProgramSelectCoursePage extends React.Component {
@@ -64,11 +64,11 @@ class ProgramSelectCoursePage extends React.Component {
   }
 }
 
-const ProgramSelectCoursePageWithApiData = withApiData({
+const ProgramSelectCoursePagewithApiMockData = withApiMockData({
   dataType: 'DOMAINS',
 })(ProgramSelectCoursePage);
 
-module.exports = ProgramSelectCoursePageWithApiData;
+module.exports = ProgramSelectCoursePagewithApiMockData;
 
 const styles = StyleSheet.create({
   ProgramSelectCoursePage: {

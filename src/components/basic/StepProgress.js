@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes} from 'react';
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
@@ -12,25 +13,23 @@ const DEFAULT_BAR_MARGIN = 2;
 const StepProgress = ({
   style,
   backgroundColor,
-  progressColor,
-  color: cColor,
+  progressColor = color.primary,
   barMargin = DEFAULT_BAR_MARGIN,
   height = DEFAULT_HEIGHT,
   totalSteps = 1,
   currentStep = 0,
   ...props,
 }) => {
-  const dynamicStyles = getStyles({backgroundColor, color: cColor, height, barMargin});
+  const dynamicStyles = getStyles({backgroundColor, progressColor, height, barMargin});
   const mergedRootStyle = {...dynamicStyles.StepProgress, ...style};
   // const barStyle = {...dynamicStyles.bar, width: `${progress}%`};
-  const progressColorLocal = progressColor || color.success;
   const barWidth = 1 / totalSteps;
   const barData = _.range(totalSteps)
     .map(item => ({
       step: item,
       style: {
         width: `${barWidth * 100}%`,
-        backgroundColor: item < currentStep ? progressColorLocal : 'transparent',
+        backgroundColor: item < currentStep ? progressColor : 'transparent',
         ...dynamicStyles.bar,
       },
     }));
@@ -68,6 +67,7 @@ StepProgress.propTypes = {
   currentStep: PropTypes.number,
 };
 
+// Explicity declare the default props for documentation purpose
 StepProgress.defaultProps = {
   styles: {},
   style: {},
@@ -75,10 +75,12 @@ StepProgress.defaultProps = {
   currentStep: 0,
   height: DEFAULT_HEIGHT,
   barMargin: DEFAULT_BAR_MARGIN,
+  color: color.primary,
+  backgroundColor: color.bgGray,
 };
 
 // Dynamic styles
-function getStyles({backgroundColor, color, height, barMargin}) {
+function getStyles({backgroundColor, height, barMargin}) {
   return {
     StepProgress: {
       height,
@@ -95,6 +97,7 @@ module.exports = StepProgress;
 
 const styles = StyleSheet.create({
   StepProgress: {
+    transition: transition.easeOut(),
     backgroundColor: color.white,
     width: '100%',
     height: DEFAULT_HEIGHT,

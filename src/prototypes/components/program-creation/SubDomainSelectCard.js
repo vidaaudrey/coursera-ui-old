@@ -4,7 +4,7 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, font, transition,
 } = require('src/styles/theme');
 
-import {Avatar, Button, SelectList} from 'src';
+import {Avatar, Button, ChipList} from 'src';
 const _ = require('underscore');
 
 const mockListData = [
@@ -53,10 +53,10 @@ const SubDomainSelectCard = ({
           </h3>
         </div>
       </div>
-      <SelectList
+      <ChipList
         listData={listData}
         onSelectChange={onSelectChange}
-        selectListItemAttributes={{
+        ChipAttributes={{
           isDarkTheme: true,
           height: 28,
           fontSize: 'xs',

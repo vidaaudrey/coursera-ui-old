@@ -5,8 +5,8 @@ const {
 } = require('src/styles/theme');
 
 import {Avatar, Button} from 'src';
-import SelectList from 'src/components/extended/selectList/SelectList';
-import DomainSelectList from 'src/prototypes/components/program-creation/DomainSelectList';
+import ChipList from 'src/components/extended/chipList/ChipList';
+import DomainChipList from 'src/prototypes/components/program-creation/DomainChipList';
 const _ = require('underscore');
 
 class ProgramSelectDomainPage extends React.Component {
@@ -30,7 +30,7 @@ class ProgramSelectDomainPage extends React.Component {
       <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramSelectDomainPage)}>
         <h2>The skills I am looking for are in </h2>
         <div className="p-t-3 p-b-3 m-b-3">
-          <DomainSelectList
+          <DomainChipList
             showSelectAll
             onSelectChange={this.onSelectChange}
             alignCenter

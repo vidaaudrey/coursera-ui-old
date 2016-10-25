@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 import { SvgCheckOutline } from 'src/components/svg/coursera';
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 
 const CourseCard = ({
   styles, theme,
@@ -54,7 +54,7 @@ CourseCard.defaultProps = {
   id: 'c1', // Remove later
 };
 
-const CourseCardWithApiData = withApiData({
+const CourseCardwithApiMockData = withApiMockData({
   dataType: 'COURSE',
 })(CourseCard);
 
@@ -95,4 +95,4 @@ export default withStyles(({color, font, spacing}) => ({
   title: {
     marginBottom: 0,
   },
-}))(CourseCardWithApiData);
+}))(CourseCardwithApiMockData);

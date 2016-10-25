@@ -6,7 +6,7 @@ const {
 } = require('src/styles/theme');
 
 const _ = require('underscore');
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 import Header from 'src/prototypes/components/program-common/Header';
 import ProgramAddNamePage from 'src/prototypes/components/program-creation/ProgramAddNamePage';
 import ProgramSelectDomainPage from 'src/prototypes/components/program-creation/ProgramSelectDomainPage';
@@ -245,9 +245,9 @@ class ProgramCreationApp extends React.Component {
   }
 }
 
-const AppWithApiData = withApiData({dataType: 'LEADERBOARD'})(ProgramCreationApp);
+const AppwithApiMockData = withApiMockData({dataType: 'LEADERBOARD'})(ProgramCreationApp);
 
-module.exports = AppWithApiData;
+module.exports = AppwithApiMockData;
 
 // export default withStyles(({color, gradient, transition, spacing}) => ({
 const styles = StyleSheet.create({

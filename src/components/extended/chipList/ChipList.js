@@ -1,7 +1,7 @@
 const React = require('react');
 const _ = require('underscore');
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
-import SelectListItem from './SelectListItem';
+import Chip from './Chip';
 
 const SELECT_ALL_ID = -2;
 
@@ -9,7 +9,7 @@ const idType = [
   React.PropTypes.string,
   React.PropTypes.number,
 ];
-class SelectList extends React.Component {
+class ChipList extends React.Component {
   static propTypes = {
     listData: React.PropTypes.arrayOf(React.PropTypes.shape({
       id: React.PropTypes.oneOfType(idType).isRequired,
@@ -21,7 +21,7 @@ class SelectList extends React.Component {
     onSelectChange: React.PropTypes.func,
     selectAllId: React.PropTypes.oneOfType(idType),
     isDarkTheme: React.PropTypes.bool,
-    selectListItemAttributes: React.PropTypes.shape({
+    ChipAttributes: React.PropTypes.shape({
       isDarkTheme: React.PropTypes.bool,
       height: React.PropTypes.nubmer,
       fontSize: React.PropTypes.string,
@@ -33,7 +33,7 @@ class SelectList extends React.Component {
     super(props, context);
     const {listData, showSelectAll} = props;
     // Overwrite isSelected properties
-    this.state = SelectList.createLocalState(listData, showSelectAll);
+    this.state = ChipList.createLocalState(listData, showSelectAll);
   }
 
   static defaultProps = {
@@ -44,7 +44,7 @@ class SelectList extends React.Component {
 
   componentWillReceiveProps({listData, showSelectAll}) {
     if (this.props.listData !== listData || this.props.showSelectAll !== showSelectAll) {
-      this.setState(SelectList.createLocalState(listData, showSelectAll));
+      this.setState(ChipList.createLocalState(listData, showSelectAll));
     }
   }
 
@@ -122,7 +122,7 @@ class SelectList extends React.Component {
   render() {
     const {
       style, styles, showSelectAll, selectAllLabel, selectAllId, isDarkTheme,
-      selectListItemAttributes, alignCenter,
+      ChipAttributes, alignCenter,
     } = this.props;
 
     const dynamicStyles = getStyles({alignCenter});
@@ -131,8 +131,8 @@ class SelectList extends React.Component {
     return (
       <div style={dynamicStyles}>
         {showSelectAll &&
-          <SelectListItem
-            {...selectListItemAttributes}
+          <Chip
+            {...ChipAttributes}
             label={selectAllLabel}
             isSelected={isAllSelected}
             onClick={() => (this.toggleSelectAll(selectAllId))}
@@ -141,9 +141,9 @@ class SelectList extends React.Component {
         }
         <div>
           {_(listData).map(item =>
-            <SelectListItem
-              {...selectListItemAttributes}
-              key={`SelectList~${item.id}`}
+            <Chip
+              {...ChipAttributes}
+              key={`ChipList~${item.id}`}
               label={item.label}
               isSelected={item.isSelected}
               onClick={() => (this.toggleSelect(item.id))}
@@ -164,7 +164,7 @@ function getStyles({alignCenter}) {
 }
 
 export default withStyles(({color, transition, spacing}) => ({
-  SelectList: {
+  ChipList: {
     transition: transition.easeOut(),
     border: 'none',
     overflow: 'hidden',
@@ -175,4 +175,4 @@ export default withStyles(({color, transition, spacing}) => ({
     whiteSpace: 'nowrap',
     cursor: 'pointer',
   },
-}))(SelectList);
+}))(ChipList);

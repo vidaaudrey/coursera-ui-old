@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 import { Avatar } from 'src';
 import LeaderboardCard from 'src/prototypes/components/leaderboard/LeaderboardCard';
 import LeaderProfileCard from 'src/prototypes/components/leaderboard/LeaderProfileCard';
@@ -116,7 +116,7 @@ class LeaderboardsMain extends React.Component {
   }
 }
 
-module.exports = withApiData({dataType: 'LEADERBOARD'})(LeaderboardsMain);
+module.exports = withApiMockData({dataType: 'LEADERBOARD'})(LeaderboardsMain);
 
 const styles = StyleSheet.create({
   LeaderboardsMain: {

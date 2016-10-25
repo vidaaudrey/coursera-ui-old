@@ -24,12 +24,10 @@ const BUTTON_SIZES = {
  */
 // TODO[Audrey]:
 const Button = ({
-  // styles,
   style,
   htmlAttributes = {},
   type = BUTTON_TYPES.default,
   size = 'md',
-  isOutline,
   children,
   label,
 }) => {
@@ -48,7 +46,6 @@ const Button = ({
 };
 
 // Explicity declare the default props for documentation purpose,
-// as we only hoist a limit set of statics
 Button.defaultProps = {
   style: {},
   htmlAttributes: {},
@@ -57,7 +54,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  // Override the inline-styles of the root element
+  // Override the inline-styles of the root element.
   style: PropTypes.object,
 
   htmlAttributes: PropTypes.object,
@@ -71,6 +68,7 @@ Button.propTypes = {
 
   // The text for the button
   label: PropTypes.string,
+
 };
 
 // Dynamic styles

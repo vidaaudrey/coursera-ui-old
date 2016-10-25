@@ -3,9 +3,9 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 
-import {Avatar, Button, SelectList} from 'src';
+import {Avatar, Button, ChipList} from 'src';
 import {ContentFilterList} from 'src/components/svg/material';
-import DomainSelectList from 'src/prototypes/components/program-creation/DomainSelectList';
+import DomainChipList from 'src/prototypes/components/program-creation/DomainChipList';
 const _ = require('underscore');
 
 const mockListData = [
@@ -82,7 +82,7 @@ class SearchAndDomainSelectCard extends React.Component {
     return (
       <div {...cssWithClass('p-b-1', styles.SearchAndDomainSelectCard)}>
         <div {...cssWithClass('container-fluid vertical-box p-a-1 m-b-1', styles.domainContainer)}>
-          <DomainSelectList
+          <DomainChipList
             showSelectAll={false}
             onSelectChange={this.onSelectChange}
             alignCenter

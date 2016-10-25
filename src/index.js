@@ -12,8 +12,8 @@ import FixedContainer from './components/extended/FixedContainer';
 import LayeredS12nCard from './components/rich/LayeredS12nCard';
 import S12nCard from './components/rich/S12nCard';
 import SvgIcon from './components/svg/SvgIcon';
-import SelectListItem from './components/extended/selectList/SelectListItem';
-import SelectList from './components/extended/selectList/SelectList';
+import Chip from './components/extended/chipList/Chip';
+import ChipList from './components/extended/chipList/ChipList';
 import * as materialIcons from './components/svg/material';
 import * as courseraIcons from './components/svg/coursera';
 // Hoc
@@ -50,8 +50,8 @@ export {
   LayeredS12nCard,
   S12nCard,
   SvgIcon,
-  SelectListItem,
-  SelectList,
+  Chip,
+  ChipList,
   Avatar,
   StaticLinearProgress,
   StepProgress,

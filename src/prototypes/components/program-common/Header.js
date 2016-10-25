@@ -2,7 +2,7 @@ import React from 'react';
 import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
 const _ = require('underscore');
 import { Avatar, Button, FixedContainer } from 'src';
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 import { courseraLogo } from 'src/assets/pngAssets';
 import {HEADER_HEIGHT} from 'src/constants/ProgramCreationAppConstants';
 
@@ -32,7 +32,7 @@ const Header = ({
   );
 };
 
-const CourseWithApiData = withApiData({dataType: 'COURSE'})(Header);
+const CoursewithApiMockData = withApiMockData({dataType: 'COURSE'})(Header);
 
 function getStyles({coursePhotoSize}) {
   return {
@@ -55,4 +55,4 @@ export default withStyles(({color, gradient, spacing}) => ({
   headerInner: {
     padding: '8px 0',
   },
-}))(CourseWithApiData);
+}))(CoursewithApiMockData);

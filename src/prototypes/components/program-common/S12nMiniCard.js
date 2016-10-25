@@ -4,7 +4,7 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 const _ = require('underscore');
-import withApiData from 'src/components/hocs/withApiData';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 import {StaticLinearProgress} from 'src';
 
 
@@ -42,7 +42,7 @@ const S12nMiniCard = ({
   );
 };
 
-module.exports = withApiData({dataType: 'S12N'})(S12nMiniCard);
+module.exports = withApiMockData({dataType: 'S12N'})(S12nMiniCard);
 
 // Dynamic styles
 function getStyles({s12nPhotoSize}) {

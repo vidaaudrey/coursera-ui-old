@@ -15,11 +15,11 @@ const dataTypes = {
   S12N: 'S12N',
   COURSE: 'COURSE',
 };
-const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
+const withApiMockData = ({dataType = dataTypes.LEADERBOARD}) => {
   return (Component) => {
     const componentName = Component.displayName || Component.name || 'Component';
     return class HOC extends React.Component {
-      displayName = `withApiData(${componentName})`;
+      displayName = `withApiMockData(${componentName})`;
 
       state = {}
 
@@ -67,4 +67,4 @@ const withApiData = ({dataType = dataTypes.LEADERBOARD}) => {
   };
 };
 
-export default withApiData;
+export default withApiMockData;
