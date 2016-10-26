@@ -35,11 +35,11 @@ const mockListData = [
   },
 ];
 
-const SubDomainSelectCard = ({
+const DomainSectionSubDomainCard = ({
   listData = mockListData, onSelectChange,
 }) => {
   return (
-    <div {...cssWithClass('vertical-box p-a-1 m-b-2', styles.SubDomainSelectCard)}>
+    <div {...cssWithClass('vertical-box p-a-1 m-b-2', styles.DomainSectionSubDomainCard)}>
       <div className="horizontal-box align-items-vertical-center wrap">
         <h2 {...css(styles.domainName)}>Data Science</h2>
         <div className="horizontal-box">
@@ -66,10 +66,10 @@ const SubDomainSelectCard = ({
   );
 };
 
-module.exports = SubDomainSelectCard;
+module.exports = DomainSectionSubDomainCard;
 
 const styles = StyleSheet.create({
-  SubDomainSelectCard: {
+  DomainSectionSubDomainCard: {
     color: color.white,
     textAlign: 'left',
     backgroundColor: color.darkPrimary,

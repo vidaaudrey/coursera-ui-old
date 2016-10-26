@@ -1,5 +1,8 @@
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 const _ = require('underscore');
 import { Avatar, Button, FixedContainer } from 'src';
 import withApiMockData from 'src/components/hocs/withApiMockData';
@@ -8,7 +11,6 @@ import {HEADER_HEIGHT} from 'src/constants/ProgramCreationAppConstants';
 
 const Header = ({
   style,
-  styles,
   isLoggedIn,
   ...props,
 }) => {
@@ -45,9 +47,12 @@ function getStyles({coursePhotoSize}) {
   };
 }
 
-export default withStyles(({color, gradient, spacing}) => ({
+
+module.exports = CoursewithApiMockData;
+
+const styles = StyleSheet.create({
   Header: {
-    minHeight: 48,
+    height: 48,
     minWidth: spacing.minWidth,
     backgroundColor: color.white,
     boxShadow: `0 2px 4px 0 ${color.shadow}`,
@@ -55,4 +60,4 @@ export default withStyles(({color, gradient, spacing}) => ({
   headerInner: {
     padding: '8px 0',
   },
-}))(CoursewithApiMockData);
+});

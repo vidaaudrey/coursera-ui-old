@@ -54,7 +54,7 @@ storiesOf('extended.ChipList', module)
 
       <ChipList
         listData={listData}
-        showSelectAll={true}
+        showSelectAll
         selectAllLabel={'All Topics'}
         alignCenter={true}
         onSelectChange={action('select changed')}
@@ -65,8 +65,8 @@ storiesOf('extended.ChipList', module)
       <div className="container p-a-3 bg-gray">
         <ChipList
           listData={listData}
-          showSelectAll={true}
-          alignCenter={true}
+          showSelectAll
+          alignCenter
           selectAllLabel={'All Topics'}
           onSelectChange={action('select changed')}
         />
@@ -92,7 +92,7 @@ storiesOf('extended.ChipList', module)
     () => (
       <div className="container p-a-3 bg-primary">
         <ChipList
-          showSelectAll={true}
+          showSelectAll
           selectAllLabel={'All Topics'}
           listData={listData}
           onSelectChange={action('select changed')}
@@ -136,7 +136,7 @@ storiesOf('extended.ChipList', module)
           />
           <Chip
             label="light theme, selected"
-            isSelected={true}
+            isSelected
             onClick={action('clicked')}
           />
         </div>
@@ -144,13 +144,13 @@ storiesOf('extended.ChipList', module)
         <div className="m-b-3 bg-primary p-a-3">
           <Chip
             label="dark theme"
-            isDarkTheme={true}
+            isDarkTheme
             onClick={action('clicked')}
           />
           <Chip
             label="dark theme, selected, height 28, fontsize xs"
-            isSelected={true}
-            isDarkTheme={true}
+            isSelected
+            isDarkTheme
             height={28}
             fontSize={'xs'}
             onClick={action('clicked')}

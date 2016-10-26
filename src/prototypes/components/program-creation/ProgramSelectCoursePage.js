@@ -4,8 +4,8 @@ const {
 } = require('src/styles/theme');
 
 import {Avatar, Button} from 'src';
-import DomainCard from 'src/prototypes/components/program-creation/DomainCard';
-import SubDomainSelectCard from 'src/prototypes/components/program-creation/SubDomainSelectCard';
+import DomainSection from 'src/prototypes/components/program-creation/DomainSection';
+import DomainSectionSubDomainCard from 'src/prototypes/components/program-creation/DomainSectionSubDomainCard';
 import NoDomainSelected from 'src/prototypes/components/program-creation/NoDomainSelected';
 import withApiMockData from 'src/components/hocs/withApiMockData';
 const _ = require('underscore');
@@ -42,13 +42,10 @@ class ProgramSelectCoursePage extends React.Component {
     return (
       <div {...css(styles.ProgramSelectCoursePage)}>
         {_(domainListData).map(item => (
-          <section className="m-b-3" key={`domain-container~${item.id}`}>
-            <SubDomainSelectCard
+          <div className="m-b-3" key={`domain-container~${item.id}`}>
+            <DomainSection
               onSelectChange={onSelectChange}
-              alignCenter
               subdomainIds={item.subdomainIds}
-            />
-            <DomainCard
               domainName={item.name}
               domainId={item.id}
               searchKeyWord={searchKeyWord}
@@ -57,7 +54,7 @@ class ProgramSelectCoursePage extends React.Component {
               onToggleCourseSelect={onToggleCourseSelect}
               onToggleS12nSelect={onToggleS12nSelect}
             />
-          </section>
+          </div>
         ))}
       </div>
     );

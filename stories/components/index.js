@@ -6,3 +6,4 @@ import './SvgIcon.story';
 import './ChipList.story';
 import './S12nCard.story';
 import './InfiniteScrollDemo.story';
+import './SmartScrollWrapper.story';

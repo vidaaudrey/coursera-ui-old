@@ -4,6 +4,50 @@ import IconLibrary from '../support/IconLibrary';
 // import { ChipList, Chip } from 'src';
 import InfiniteScrollDemo from 'src/components/extended/InfiniteScrollDemo';
 
+class InfiniteScrollDemoWrapper extends React.Component {
+
+  // state = {
+  //   isScrollDown: true,
+  //   lastScrollPos: 0,
+  // }
+  //
+  // handleScroll = (e) => {
+  //   // const newScrollPos = e.target.scrollTop;
+  //   const newScrollPos = document.body.scrollTop;
+  //   const {lastScrollPos} = this.state;
+  //   const isScrollDown =  lastScrollPos < newScrollPos ? true : false;
+  //   this.setState({
+  //     isScrollDown,
+  //     lastScrollPos: newScrollPos,
+  //   })
+  //   console.warn('-scrolling--', newScrollPos, e, isScrollDown);
+  // }
+  //
+  // componentDidMount() {
+  //   window.addEventListener('scroll', this.handleScroll);
+  // }
+  //
+  // componentWillUnmount() {
+  //   window.removeEventListener('scroll', this.handleScroll);
+  // }
+
+  render() {
+    return (
+      <div className="rc-InfiniteScrollDemoWrapper border-a"
+        onScroll={this.handleScroll}
+      >
+        <h2>wrapper</h2>
+        <div
+          ref={r => (this.containerRef = r)}
+          style={{overflow: 'scroll'}}
+        >
+          <InfiniteScrollDemo limit={60} />
+        </div>
+      </div>
+    );
+  }
+}
+
 storiesOf('extended.Demos', module)
   .addWithInfo(
     'InfiniteScrollDemo',
@@ -24,7 +68,7 @@ storiesOf('extended.Demos', module)
     `,
     () => (
       <div className="container">
-        <InfiniteScrollDemo limit={21} />
+        <InfiniteScrollDemoWrapper />
       </div>
     ),
   );

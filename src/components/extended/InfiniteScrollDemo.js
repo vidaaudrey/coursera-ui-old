@@ -4,11 +4,13 @@ const {
   StyleSheet, css, zIndex, transition,
 } = require('src/styles/theme');
 const Waypoint = require('react-waypoint');
+import {withScrollInfo} from 'src';
 const _ = require('underscore');
 const { getAbsoluteBoundingRect } = require('src/utils/common');
 
+const DELTA = 50;
 let currentIndex = 0;
-const totalItemCount = 40;
+const totalItemCount = 100;
 
 const generateItem = () => {
   const chooseCat = Math.floor(Math.random() * 2);
@@ -37,6 +39,10 @@ class InfiniteScrollDemo extends React.Component {
       isContentOnWindowTop: true,
       reachedLimit: _(initialItems).size >= limit,
     };
+  }
+
+  handleScroll = (data) => {
+    console.warn('-scrolling--', data);
   }
 
   _loadMoreItems = () => {
@@ -99,9 +105,9 @@ class InfiniteScrollDemo extends React.Component {
     const {items, isContentOnWindowTop, isInfiniteMode, isLoading} = this.state;
     const reachedLimit = _(items).size() >= limit;
     const renderWayPoint = isInfiniteMode && !reachedLimit && !isLoading;
-
+    console.warn('---', this.props);
     return (
-      <div>
+      <div onScroll={this.handleScroll}>
         <h1>Header Coursera Logo</h1>
         <div className="p-a-3 m-a-3 border-a" ref={(r) => (this.domainListRef = r)}>
           <h3>hello world</h3>
@@ -125,12 +131,13 @@ class InfiniteScrollDemo extends React.Component {
             Loading...
           </p>
         }
-        <div className="infinite-scroll-example__scrollable-parent">
+        <div className="infinite-scroll-example__scrollable-parent row">
           {this.state.items.map((imageUrl, index) => (
             <img
               src={imageUrl}
               alt="CATS AND ROBOTS... "
               key={index}
+              className="col-xs-12 col-sm-6"
               {...css(styles.listItem)}
             />
           ))}
@@ -149,7 +156,8 @@ class InfiniteScrollDemo extends React.Component {
 }
 
 
-module.exports = InfiniteScrollDemo;
+// module.exports = withScrollInfo(InfiniteScrollDemo);
+module.exports = withScrollInfo({delta: DELTA})(InfiniteScrollDemo);
 
 const styles = StyleSheet.create({
   InfiniteScrollDemo: {

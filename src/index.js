@@ -9,6 +9,8 @@ import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import StepProgress from './components/basic/StepProgress';
 import Avatar from './components/basic/Avatar';
 import FixedContainer from './components/extended/FixedContainer';
+import SmartScrollWrapper from './components/extended/SmartScrollWrapper';
+import SmartScrollWrapperResponsive from './components/extended/SmartScrollWrapperResponsive';
 import LayeredS12nCard from './components/rich/LayeredS12nCard';
 import S12nCard from './components/rich/S12nCard';
 import SvgIcon from './components/svg/SvgIcon';
@@ -18,6 +20,7 @@ import * as materialIcons from './components/svg/material';
 import * as courseraIcons from './components/svg/coursera';
 // Hoc
 import copyToClipboard from './components/hocs/copyToClipboard';
+import withScrollInfo from './components/hocs/withScrollInfo';
 
 // Styles
 import colors from './styles/colors';
@@ -41,12 +44,15 @@ export {
   theme,
 
   copyToClipboard,
+  withScrollInfo,
 
   App,
   Button,
   TextFit,
   CourseCard,
   FixedContainer,
+  SmartScrollWrapper,
+  SmartScrollWrapperResponsive,
   LayeredS12nCard,
   S12nCard,
   SvgIcon,
