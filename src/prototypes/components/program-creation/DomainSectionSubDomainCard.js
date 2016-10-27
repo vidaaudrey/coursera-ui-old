@@ -3,7 +3,7 @@ import React from 'react';
 const {
   cssWithClass, StyleSheet, css, color, spacing, font, transition,
 } = require('src/styles/theme');
-
+import {NavigationArrowBack} from 'src/components/svg/material';
 import {Avatar, Button, ChipList} from 'src';
 const _ = require('underscore');
 
@@ -35,11 +35,29 @@ const mockListData = [
   },
 ];
 
+const ICON_SIZE = 44;
 const DomainSectionSubDomainCard = ({
-  listData = mockListData, onSelectChange,
+  listData = mockListData, onSelectChange, isInfiniteMode, onCollapse,
 }) => {
   return (
     <div {...cssWithClass('vertical-box p-a-1 m-b-2', styles.DomainSectionSubDomainCard)}>
+      <div className="horizontal-box">
+        {isInfiniteMode &&
+          <Button
+            isSvgButton
+            size={'sm'}
+            htmlAttributes={{
+              onClick: onCollapse,
+            }}
+          >
+            <NavigationArrowBack
+              size={ICON_SIZE}
+              color={color.white}
+              hoverColor={color.lightPrimary}
+            />
+          </Button>
+        }
+      </div>
       <div className="horizontal-box align-items-vertical-center wrap">
         <h2 {...css(styles.domainName)}>Data Science</h2>
         <div className="horizontal-box">
@@ -64,6 +82,12 @@ const DomainSectionSubDomainCard = ({
       />
     </div>
   );
+};
+
+DomainSectionSubDomainCard.propTypes = {
+  isInfiniteMode: React.PropTypes.bool,
+  onSelectChange: React.PropTypes.func.isRequired,
+  onCollapse: React.PropTypes.func.isRequired,
 };
 
 module.exports = DomainSectionSubDomainCard;

@@ -7,11 +7,11 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
  * Check 'SmartScrollWrapper' for example
  */
 
-const withScrollInfo = ({delta = 5}) => {
+const withScreenDimensions = ({delta = 5}) => {
   return (Component) => {
     const componentName = Component.displayName || Component.name || 'Component';
     class HOC extends React.Component {
-      static displayName = `withScrollInfo(${componentName})`;
+      static displayName = `withScreenDimensions(${componentName})`;
 
       static propTypes = {
         delta: React.PropTypes.number,
@@ -49,7 +49,7 @@ const withScrollInfo = ({delta = 5}) => {
       }
 
       render() {
-        console.warn('--withScrollInfo-', this.state);
+        console.warn('--withScreenDimensions-', this.state);
 
         return (
           <Component
@@ -67,4 +67,4 @@ const withScrollInfo = ({delta = 5}) => {
 };
 
 
-export default withScrollInfo;
+export default withScreenDimensions;

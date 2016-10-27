@@ -41,9 +41,10 @@ class ProgramSelectCoursePage extends React.Component {
 
     return (
       <div {...css(styles.ProgramSelectCoursePage)}>
-        {_(domainListData).map(item => (
+        {_(domainListData).map((item, index) => (
           <div className="m-b-3" key={`domain-container~${item.id}`}>
             <DomainSection
+              index={index}
               onSelectChange={onSelectChange}
               subdomainIds={item.subdomainIds}
               domainName={item.name}

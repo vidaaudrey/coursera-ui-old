@@ -7,7 +7,7 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 
-import DomainCard from 'src/prototypes/components/program-creation/DomainCard';
+import DomainSectionCards from 'src/prototypes/components/program-creation/DomainSectionCards';
 import DomainSectionSubDomainCard from 'src/prototypes/components/program-creation/DomainSectionSubDomainCard';
 
 
@@ -22,6 +22,7 @@ class DomainSection extends React.Component {
     onToggleCourseSelect: React.PropTypes.func.isRequired,
     onToggleS12nSelect: React.PropTypes.func.isRequired,
     onSelectChange: React.PropTypes.func,
+    index: React.PropTypes.number,
   }
 
   static defaultProps = {
@@ -45,11 +46,7 @@ class DomainSection extends React.Component {
 
     return (
       <section {...css(styles.DomainSection)}>
-        <DomainSectionSubDomainCard
-          onSelectChange={onSelectChange}
-          subdomainIds={subdomainIds}
-        />
-        <DomainCard
+        <DomainSectionCards
           domainName={domainName}
           domainId={domainId}
           searchKeyWord={searchKeyWord}
@@ -57,6 +54,8 @@ class DomainSection extends React.Component {
           selectedS12nIds={selectedS12nIds}
           onToggleCourseSelect={onToggleCourseSelect}
           onToggleS12nSelect={onToggleS12nSelect}
+          onSelectChange={onSelectChange}
+          subdomainIds={subdomainIds}
         />
       </section>
     );

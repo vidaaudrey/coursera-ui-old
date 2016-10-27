@@ -69,6 +69,8 @@
     "react-dom": "^15.3.2",
     "react-intl": "^2.1.5",
     "react-measure": "^1.2.0",
+    "react-responsive": "^1.2.1",
+    "react-scroll": "^1.4.4",
     "react-waypoint": "^4.0.2",
     "react-with-styles": "^1.0.0",
     "react-with-styles-interface-aphrodite": "^1.0.0",

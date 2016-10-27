@@ -67,9 +67,48 @@ const getAbsoluteBoundingRect = (el) => {
   };
 };
 
+/**
+ * Get the absolute coordiates of an element
+ */
+const getScreenCordinates = (elemArg, document)  => {
+  let elem = elemArg;
+  const pos = {};
+  pos.x = elem.offsetLeft;
+  pos.y = elem.offsetTop;
+  while (elem.offsetParent) {
+    pos.x += elem.offsetParent.offsetLeft;
+    pos.y += elem.offsetParent.offsetTop;
+    if (elem === document.getElementsByTagName('body')[0]) {
+      break;
+    } else {
+      elem = elem.offsetParent;
+    }
+  }
+  return pos;
+};
+
+const getSmoothScrollToTopDuration = (index, unitDuration) => {
+  let duration = unitDuration;
+  switch (index) {
+    case index < 3:
+      duration = unitDuration * (index + 1);
+      break;
+    case index < 6:
+      duration = (unitDuration * (index + 1) * 2) / 3;
+      break;
+
+    default:
+      duration = (unitDuration * (index + 1) * 1) / 3;
+      break;
+  }
+  return duration;
+};
+
 export {
   helloWorld,
   getInitialsFromFullName,
   getMiddleValueFromArray,
   getAbsoluteBoundingRect,
+  getScreenCordinates,
+  getSmoothScrollToTopDuration,
 };

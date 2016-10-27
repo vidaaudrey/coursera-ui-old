@@ -28,11 +28,13 @@ const Button = ({
   htmlAttributes = {},
   type = BUTTON_TYPES.default,
   size = 'md',
+  isSvgButton,
   children,
   label,
 }) => {
   const dynamicStyles = getStyles({size});
-  const mergedStyles = {...dynamicStyles.Button, ...style};
+  const svgButttonStyle = isSvgButton ? dynamicStyles.svgIconButton : {};
+  const mergedStyles = {...dynamicStyles.Button, ...svgButttonStyle, ...style};
   return (
     <button
       {...htmlAttributes}
@@ -63,6 +65,10 @@ Button.propTypes = {
   type: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
   size: PropTypes.oneOf(Object.keys(BUTTON_SIZES)),
 
+  // Whether the button contains svgIcon as the only child.
+  // Create adition component if you have other elements
+  isSvgButton: PropTypes.bool,
+
   // Can use to letters inside the avatar.
   children: PropTypes.node,
 
@@ -76,8 +82,12 @@ function getStyles({size}) {
   return {
     Button: {
     },
-    icon: {
-
+    svgIconButton: {
+      background: 'transparent',
+      width: size,
+      height: size,
+      padding: 0,
+      border: 'none',
     },
   };
 }
@@ -100,7 +110,7 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     filter: 'none',
     textDecoration: 'none',
-    minWidth: button.minWidth,
+    // minWidth: button.minWidth,
   },
   primary: {
     color: color.textIcon,
@@ -166,5 +176,5 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: color.primary,
-  },
+  }
 });

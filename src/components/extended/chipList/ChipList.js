@@ -94,7 +94,12 @@ class ChipList extends React.Component {
 
       // in case the parent component want to do some further work, pass the id, selected status and new list data back
       if (this.props.onSelectChange) {
-        this.props.onSelectChange(id, newIsSelect, newListData);
+        let allSelectedIds = _(newListData)
+          .chain()
+          .filter(item => !!item.isSelected)
+          .pluck('id')
+          .value();
+        this.props.onSelectChange(id, allSelectedIds, newListData);
       }
     }
   }
