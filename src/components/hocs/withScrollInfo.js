@@ -29,8 +29,6 @@ const withScrollInfo = ({delta = 5}) => {
       }
 
       shouldComponentUpdate(nextProps, {lastScrollPosition, isScrollingDown}) {
-        // console.warn('-should--', nextProps);
-        // return false;
         return lastScrollPosition !== this.state.lastScrollPosition ||
           isScrollingDown !== this.state.isScrollDown;
       }

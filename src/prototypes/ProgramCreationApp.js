@@ -52,6 +52,7 @@ class ProgramCreationApp extends React.Component {
       currentTotalSelectCount: 0,
       isInfiniteMode: false,
       headerHeight: DEFAULT_HEADER_HEIGHT,
+      visibleDomainSectionIndex: 0,
     };
   }
 
@@ -101,6 +102,10 @@ class ProgramCreationApp extends React.Component {
 
   onLeaveInfiniteMode = () => {
     this.setState({isInfiniteMode: false});
+  }
+
+  onSetVisibleDomainSectionIndex = (visibleDomainSectionIndex) => {
+    this.setState({visibleDomainSectionIndex});
   }
 
   onHeaderHeightChange = (headerHeight) => {
@@ -183,7 +188,8 @@ class ProgramCreationApp extends React.Component {
     const {
       step, programName, programSlug, programTagline, searchKeyWord,
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
-      seatLimit, currentTotalSelectCount, isInfiniteMode, headerHeight,
+      seatLimit, currentTotalSelectCount, isInfiniteMode,
+      headerHeight, visibleDomainSectionIndex,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
 
@@ -192,6 +198,7 @@ class ProgramCreationApp extends React.Component {
         <HeaderSmartScroll
           isInfiniteMode={isInfiniteMode}
           onHeaderHeightChange={this.onHeaderHeightChange}
+          visibleDomainSectionIndex={visibleDomainSectionIndex}
         >
           {showSelectCoursePage &&
             <SearchAndDomainSelectCard
@@ -231,6 +238,7 @@ class ProgramCreationApp extends React.Component {
               onToggleS12nSelect={this.onToggleS12nSelect}
               onEnterInfiniteMode={this.onEnterInfiniteMode}
               onLeaveInfiniteMode={this.onLeaveInfiniteMode}
+              onSetVisibleDomainSectionIndex={this.onSetVisibleDomainSectionIndex}
             />
           }
           {step === stepProgramPreview &&

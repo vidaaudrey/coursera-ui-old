@@ -10,6 +10,7 @@ import withApiMockData from 'src/components/hocs/withApiMockData';
 import { courseraLogo } from 'src/assets/pngAssets';
 import {HEADER_HEIGHT} from 'src/constants/ProgramCreationAppConstants';
 import Measure from 'react-measure';
+import withScrollInfo from 'src/components/hocs/withScrollInfo';
 
 class HeaderSmartScroll extends React.Component {
   static propTypes = {
@@ -17,20 +18,21 @@ class HeaderSmartScroll extends React.Component {
     isLoggedIn: React.PropTypes.bool,
     isInfiniteMode: React.PropTypes.bool,
     children: React.PropTypes.node,
+    visibleDomainSectionIndex: React.PropTypes.number,
   }
 
   state = {
-    containerHeight: 0,
+    containerHeight: 100,
   }
 
-  shouldComponentUpdate({
-    isInfiniteMode: nextIsInfiniteMode, children: nextChildren, ...restNextProps
-  }, nextState) {
-    const {isInfiniteMode, children, ...restProps} = this.props;
-    // If we are entering or leaving infiniteMode, or the children changes we don't want to update
-    if (nextIsInfiniteMode !== isInfiniteMode) return false;
-    return !_.isEqual(nextState, this.state) || !_.isEqual(restProps, restNextProps);
-  }
+  // shouldComponentUpdate({
+  //   isInfiniteMode: nextIsInfiniteMode, children: nextChildren, ...restNextProps
+  // }, nextState) {
+  //   const {isInfiniteMode, children, ...restProps} = this.props;
+  //   // If we are leaving infiniteMode, or the children changes we don't want to update
+  //   if (!nextIsInfiniteMode) return false;
+  //   return !_.isEqual(nextState, this.state) || !_.isEqual(restProps, restNextProps);
+  // }
 
   componentWillUpdate(nextProps, {containerHeight}) {
     if (this.state.containerHeight !== containerHeight) {
@@ -39,12 +41,20 @@ class HeaderSmartScroll extends React.Component {
   }
 
   render() {
-    const {isLoggedIn, isInfiniteMode, children} = this.props;
-    if (isInfiniteMode) return null;
+    const {
+      isLoggedIn, isInfiniteMode, children, visibleDomainSectionIndex,
+      didScroll, lastScrollPosition,
+    } = this.props;
     const {containerHeight} = this.state;
 
+    // Hide the container if we are in infiniteMode, or we reached a pointer beyond this container
+    // It will prevent a flash of the subdomain card at the top at infiniteMode
+    const hideContainer = isInfiniteMode && lastScrollPosition > containerHeight && didScroll;
+
+    console.warn('---', this.props, this.state, visibleDomainSectionIndex);
+
     return (
-      <SmartScrollWrapper delta={50} containerHeight={containerHeight} zIndex={1}>
+      <SmartScrollWrapper delta={50} containerHeight={containerHeight} zIndex={hideContainer ? -1 : 1}>
         <Measure
           onMeasure={dimensions => this.setState({containerHeight: dimensions.height})}
         >
@@ -73,7 +83,8 @@ class HeaderSmartScroll extends React.Component {
 }
 
 
-module.exports = HeaderSmartScroll;
+// module.exports = HeaderSmartScroll;
+module.exports = withScrollInfo({delta: 50})(HeaderSmartScroll);
 
 const styles = StyleSheet.create({
   HeaderSmartScroll: {
@@ -84,6 +95,9 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
 
+  },
+  hideContainer: {
+    display: 'none',
   },
   headerInner: {
     padding: '8px 0',

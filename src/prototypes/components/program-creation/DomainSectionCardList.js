@@ -38,6 +38,7 @@ class DomainSectionCardList extends React.Component {
     index: React.PropTypes.number,
     onEnterInfiniteMode: React.PropTypes.func.isRequired,
     onLeaveInfiniteMode: React.PropTypes.func.isRequired,
+    onExpand: React.PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -97,6 +98,7 @@ class DomainSectionCardList extends React.Component {
       duration: DEFAULT_EXPAND_DURATION,
     });
     this.props.onEnterInfiniteMode();
+    this.props.onExpand();
   }
 
   render() {

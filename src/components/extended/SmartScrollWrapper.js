@@ -21,9 +21,9 @@ const NAVBAR_HEIGHT = 60;
  */
 const SmartScrollWrapper = ({
   lastScrollPosition, isScrollingDown, children, containerHeight = NAVBAR_HEIGHT,
-  zIndex: zIndexProp,
+  zIndex: zIndexProp, alwaysHide,
 }) => {
-  const hideContainer = lastScrollPosition >= containerHeight && isScrollingDown;
+  const hideContainer = (lastScrollPosition >= containerHeight && isScrollingDown) || alwaysHide;
   const dynamicStyles = getStyles({containerHeight, zIndexProp});
   const hideStyle = (hideContainer && dynamicStyles.hideContainer) || {};
 
@@ -47,6 +47,9 @@ SmartScrollWrapper.propTypes = {
   // The height of the container, may be different if the window resizes
   // The parent container needs to pass the correct height
   containerHeight: React.PropTypes.number,
+
+  // Make the wrapper always not visible
+  alwaysHide: React.PropTypes.bool,
 };
 
 function getStyles({containerHeight, zIndexProp}) {

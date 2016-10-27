@@ -3,6 +3,7 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 
+import withScrollInfo from 'src/components/hocs/withScrollInfo';
 import {Avatar, Button} from 'src';
 import DomainSectionCardList from 'src/prototypes/components/program-creation/DomainSectionCardList';
 import NoDomainSelected from 'src/prototypes/components/program-creation/NoDomainSelected';
@@ -21,6 +22,11 @@ class ProgramSelectCoursePage extends React.Component {
     onLeaveInfiniteMode: React.PropTypes.func.isRequired,
   }
 
+  // componentWillReceiveProps({isScrollDown}) {
+  //   if (!isScrollDown) {
+  //
+  //   }
+  // }
   render() {
     const {
       headerHeight,
@@ -28,6 +34,7 @@ class ProgramSelectCoursePage extends React.Component {
       onToggleCourseSelect, onToggleS12nSelect,
       onSelectChange, domains, searchKeyWord,
       onEnterInfiniteMode, onLeaveInfiniteMode,
+      onSetVisibleDomainSectionIndex,
     } = this.props;
 
     if (_(selectedDomainIds).size() === 0) {
@@ -59,6 +66,8 @@ class ProgramSelectCoursePage extends React.Component {
               onToggleS12nSelect={onToggleS12nSelect}
               onEnterInfiniteMode={onEnterInfiniteMode}
               onLeaveInfiniteMode={onLeaveInfiniteMode}
+              onExpand={() => (onSetVisibleDomainSectionIndex(index))}
+              onCollapse={() => (onSetVisibleDomainSectionIndex(0))}
             />
           </div>
         ))}
