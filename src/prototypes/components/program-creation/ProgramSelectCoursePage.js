@@ -4,8 +4,7 @@ const {
 } = require('src/styles/theme');
 
 import {Avatar, Button} from 'src';
-import DomainSection from 'src/prototypes/components/program-creation/DomainSection';
-import DomainSectionSubDomainCard from 'src/prototypes/components/program-creation/DomainSectionSubDomainCard';
+import DomainSectionCards from 'src/prototypes/components/program-creation/DomainSectionCards';
 import NoDomainSelected from 'src/prototypes/components/program-creation/NoDomainSelected';
 import withApiMockData from 'src/components/hocs/withApiMockData';
 const _ = require('underscore');
@@ -43,7 +42,7 @@ class ProgramSelectCoursePage extends React.Component {
       <div {...css(styles.ProgramSelectCoursePage)}>
         {_(domainListData).map((item, index) => (
           <div className="m-b-3" key={`domain-container~${item.id}`}>
-            <DomainSection
+            <DomainSectionCards
               index={index}
               onSelectChange={onSelectChange}
               subdomainIds={item.subdomainIds}

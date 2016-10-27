@@ -24,13 +24,12 @@ const SCROLL_UNIT_DURATION = 600;
 const DEFAULT_EXPAND_DURATION =  400;
 const DEFAULT_UNIT_COLLAPSE_DURATION = 200;
 
-
-
 class DomainSectionCards extends React.Component {
   static propTypes = {
     selectedCourseIds: React.PropTypes.array,
     selectedS12nIds: React.PropTypes.array,
     domainId: React.PropTypes.string.isRequired,
+    subdomainIds: React.PropTypes.array.isRequired,
     domainName: React.PropTypes.string.isRequired,
     searchKeyWord: React.PropTypes.string,
     onToggleCourseSelect: React.PropTypes.func.isRequired,
@@ -41,31 +40,33 @@ class DomainSectionCards extends React.Component {
   static defaultProps = {
     selectedCourseIds: [],
     selectedS12nIds: [],
+    subdomainIds: [],
   }
 
   constructor(props, context) {
     super(props, context);
-    const {domainId, searchKeyWord, index} = props;
     this.state = {
       isCourseSectionExpanded: false,
       isS12nSectionExpanded: false,
     };
   }
 
-  componentWillUpdate(nextProps, {subdomainTopOffset, ...nextState}) {
-    if (this.state.subdomainTopOffset !== subdomainTopOffset) {
-      this._subdomainTopOffset = subdomainTopOffset;
-    }
-    // console.warn('--componentWillUpdate-', nextState);
-  }
-
   onS12nExpand = () => {
-    const pos = getScreenCordinates(this.containerRef, window.document);
     this.setState({isS12nSectionExpanded: true});
+    const pos = getScreenCordinates(this.containerRef, window.document);
     scroll.scrollTo(pos.y, {
       ...SCROLL_OPTIONS,
       duration: DEFAULT_EXPAND_DURATION,
-    })
+    });
+  }
+
+  onCourseExpand = () => {
+    this.setState({isCourseSectionExpanded: true});
+    const pos = getScreenCordinates(this.containerRef, window.document);
+    scroll.scrollTo(pos.y, {
+      ...SCROLL_OPTIONS,
+      duration: DEFAULT_EXPAND_DURATION,
+    });
   }
 
   onCollapse = () => {
@@ -126,19 +127,27 @@ class DomainSectionCards extends React.Component {
         </div>
 
         <h2 {...css(styles.domainName)}>{domainName}</h2>
-        <h5 {...css(styles.cardType)}> Specializations</h5>
-        <DomainSectionS12nList
-          s12nsIds={s12nIds}
-          onToggleS12nSelect={onToggleS12nSelect}
-          isExpanded={isS12nSectionExpanded}
-          onExpand={this.onS12nExpand}
-          selectedS12nIds={selectedS12nIds}
-        />
+
+        {!isCourseSectionExpanded &&
+          <div>
+            <h5 {...css(styles.cardType)}> Specializations</h5>
+            <DomainSectionS12nList
+              s12nIds={s12nIds}
+              onToggleS12nSelect={onToggleS12nSelect}
+              isExpanded={isS12nSectionExpanded}
+              onExpand={this.onS12nExpand}
+              selectedS12nIds={selectedS12nIds}
+            />
+          </div>
+        }
 
         <h4 {...css(styles.cardType)}> Courses</h4>
         <DomainSectionCourseList
-          courses={courses}
+          courseIds={courseIds}
           onToggleCourseSelect={onToggleCourseSelect}
+          isExpanded={isCourseSectionExpanded}
+          onExpand={this.onCourseExpand}
+          selectedCourseIds={selectedCourseIds}
         />
       </div>
     );

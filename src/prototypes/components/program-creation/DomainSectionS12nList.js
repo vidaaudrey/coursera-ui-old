@@ -46,7 +46,7 @@ class DomainSectionS12nList extends React.Component {
   render() {
     const {
       onToggleS12nSelect, selectedS12nIds,
-      isExpanded, onExpand, onCollapse,
+      isExpanded, onExpand,
     } = this.props;
 
     const {s12nIds} = this.state;
