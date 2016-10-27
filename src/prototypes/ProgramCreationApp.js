@@ -7,7 +7,7 @@ const {
 
 const _ = require('underscore');
 import withApiMockData from 'src/components/hocs/withApiMockData';
-import Header from 'src/prototypes/components/program-common/Header';
+import HeaderSmartScroll from 'src/prototypes/components/program-common/HeaderSmartScroll';
 import ProgramAddNamePage from 'src/prototypes/components/program-creation/ProgramAddNamePage';
 import ProgramSelectDomainPage from 'src/prototypes/components/program-creation/ProgramSelectDomainPage';
 import ProgramSelectCoursePage from 'src/prototypes/components/program-creation/ProgramSelectCoursePage';
@@ -32,6 +32,8 @@ const ALL_STEPS = [
   stepCreateProgramSuccess,
 ];
 
+const DEFAULT_HEADER_HEIGHT = 264;
+
 class ProgramCreationApp extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -48,6 +50,8 @@ class ProgramCreationApp extends React.Component {
       selectedS12nIds: [],
       seatLimit: 6,
       currentTotalSelectCount: 0,
+      isInfiniteMode: false,
+      headerHeight: DEFAULT_HEADER_HEIGHT,
     };
   }
 
@@ -89,6 +93,18 @@ class ProgramCreationApp extends React.Component {
     } else {
       this.handleRemoveS12n(s12nId, s12nCourseIds);
     }
+  }
+
+  onEnterInfiniteMode = () => {
+    this.setState({isInfiniteMode: true});
+  }
+
+  onLeaveInfiniteMode = () => {
+    this.setState({isInfiniteMode: false});
+  }
+
+  onHeaderHeightChange = (headerHeight) => {
+    this.setState({headerHeight});
   }
 
   handleAddCourse = (id) => {
@@ -167,23 +183,27 @@ class ProgramCreationApp extends React.Component {
     const {
       step, programName, programSlug, programTagline, searchKeyWord,
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
-      seatLimit, currentTotalSelectCount,
+      seatLimit, currentTotalSelectCount, isInfiniteMode, headerHeight,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
-        <Header />
-        {showSelectCoursePage &&
-          <SearchAndDomainSelectCard
-            onSetSearchKeyword={this.onSetSearchKeyword}
-            searchKeyWord={searchKeyWord}
-            onSetDomains={this.onSetDomains}
-            selectedDomainIds={selectedDomainIds}
-          />
-        }
+        <HeaderSmartScroll
+          isInfiniteMode={isInfiniteMode}
+          onHeaderHeightChange={this.onHeaderHeightChange}
+        >
+          {showSelectCoursePage &&
+            <SearchAndDomainSelectCard
+              onSetSearchKeyword={this.onSetSearchKeyword}
+              searchKeyWord={searchKeyWord}
+              onSetDomains={this.onSetDomains}
+              selectedDomainIds={selectedDomainIds}
+            />
+          }
+        </HeaderSmartScroll>
 
-        <div {...cssWithClass('container', styles.main)}>
+        <div {...css(styles.main)}>
           {step === stepCreateProgramName &&
             <ProgramAddNamePage
               programName={programName}
@@ -202,12 +222,15 @@ class ProgramCreationApp extends React.Component {
           }
           {showSelectCoursePage &&
             <ProgramSelectCoursePage
+              headerHeight={headerHeight}
               searchKeyWord={searchKeyWord}
               selectedCourseIds={selectedCourseIds}
               selectedS12nIds={selectedS12nIds}
               selectedDomainIds={selectedDomainIds}
               onToggleCourseSelect={this.onToggleCourseSelect}
               onToggleS12nSelect={this.onToggleS12nSelect}
+              onEnterInfiniteMode={this.onEnterInfiniteMode}
+              onLeaveInfiniteMode={this.onLeaveInfiniteMode}
             />
           }
           {step === stepProgramPreview &&

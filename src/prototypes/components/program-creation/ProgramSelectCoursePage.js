@@ -4,7 +4,7 @@ const {
 } = require('src/styles/theme');
 
 import {Avatar, Button} from 'src';
-import DomainSectionCards from 'src/prototypes/components/program-creation/DomainSectionCards';
+import DomainSectionCardList from 'src/prototypes/components/program-creation/DomainSectionCardList';
 import NoDomainSelected from 'src/prototypes/components/program-creation/NoDomainSelected';
 import withApiMockData from 'src/components/hocs/withApiMockData';
 const _ = require('underscore');
@@ -17,13 +17,17 @@ class ProgramSelectCoursePage extends React.Component {
     selectedDomainIds: React.PropTypes.array.isRequired,
     onToggleCourseSelect: React.PropTypes.func.isRequired,
     onToggleS12nSelect: React.PropTypes.func.isRequired,
+    onEnterInfiniteMode: React.PropTypes.func.isRequired,
+    onLeaveInfiniteMode: React.PropTypes.func.isRequired,
   }
 
   render() {
     const {
+      headerHeight,
       selectedCourseIds, selectedS12nIds, selectedDomainIds,
       onToggleCourseSelect, onToggleS12nSelect,
       onSelectChange, domains, searchKeyWord,
+      onEnterInfiniteMode, onLeaveInfiniteMode,
     } = this.props;
 
     if (_(selectedDomainIds).size() === 0) {
@@ -39,10 +43,10 @@ class ProgramSelectCoursePage extends React.Component {
     }, []);
 
     return (
-      <div {...css(styles.ProgramSelectCoursePage)}>
+      <div {...css(styles.ProgramSelectCoursePage)} style={{marginTop: headerHeight}}>
         {_(domainListData).map((item, index) => (
           <div className="m-b-3" key={`domain-container~${item.id}`}>
-            <DomainSectionCards
+            <DomainSectionCardList
               index={index}
               onSelectChange={onSelectChange}
               subdomainIds={item.subdomainIds}
@@ -53,6 +57,8 @@ class ProgramSelectCoursePage extends React.Component {
               selectedS12nIds={selectedS12nIds}
               onToggleCourseSelect={onToggleCourseSelect}
               onToggleS12nSelect={onToggleS12nSelect}
+              onEnterInfiniteMode={onEnterInfiniteMode}
+              onLeaveInfiniteMode={onLeaveInfiniteMode}
             />
           </div>
         ))}

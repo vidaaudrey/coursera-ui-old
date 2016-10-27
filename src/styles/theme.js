@@ -1,4 +1,5 @@
-/* eslint-disable no-param-reassign, no-bit-wise, no-extraneous-dependencies*/
+/* eslint-disable no-param-reassign, no-bitwise */
+
 const {StyleSheet, css} = require('aphrodite/no-important');
 const classNames = require('classnames');
 const {
@@ -10,6 +11,7 @@ const {
 } = require('./colors');
 const {coursera, strawberry} = require('./gradients');
 const transition = require('./transition');
+
 
 function lighten(col, amt) {
   let usePound = false;
@@ -94,7 +96,12 @@ module.exports = {
   },
   transition,
   zIndex: {
-    fixedContainer: 100,
+    none: 0,
+    xs: 1000,
+    sm: 2000, // FixedContainer
+    md: 3000,  // SmartScrollWrapper
+    lg: 4000,
+    xlg: 10000, // Critical, e.g. modal
   },
   button: {
     minWidth: 72,

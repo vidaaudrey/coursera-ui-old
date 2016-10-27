@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
 const {
-  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex,
 } = require('src/styles/theme');
 
 import withScrollInfo from 'src/components/hocs/withScrollInfo';
@@ -21,9 +21,10 @@ const NAVBAR_HEIGHT = 60;
  */
 const SmartScrollWrapper = ({
   lastScrollPosition, isScrollingDown, children, containerHeight = NAVBAR_HEIGHT,
+  zIndex: zIndexProp,
 }) => {
   const hideContainer = lastScrollPosition >= containerHeight && isScrollingDown;
-  const dynamicStyles = getStyles({containerHeight});
+  const dynamicStyles = getStyles({containerHeight, zIndexProp});
   const hideStyle = (hideContainer && dynamicStyles.hideContainer) || {};
 
   // mergedStyles is combination of component height and top offset
@@ -48,10 +49,11 @@ SmartScrollWrapper.propTypes = {
   containerHeight: React.PropTypes.number,
 };
 
-function getStyles({containerHeight}) {
+function getStyles({containerHeight, zIndexProp}) {
   return {
     SmartScrollWrapper: {
       height: containerHeight,
+      zIndex: zIndexProp || zIndex.md,
     },
     hideContainer: {
       top: -containerHeight,
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
     top: 0,
     transition: 'top 0.2s ease-in-out',
     width: '100%',
+    zIndex: zIndex.lg,
   },
   container: {
     width: '100%',

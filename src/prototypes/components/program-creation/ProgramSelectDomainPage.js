@@ -27,7 +27,7 @@ class ProgramSelectDomainPage extends React.Component {
   render() {
     const {selectedDomainIds} = this.props;
     return (
-      <div {...cssWithClass('vertical-box align-items-absolute-center', styles.ProgramSelectDomainPage)}>
+      <div {...cssWithClass('container vertical-box align-items-absolute-center', styles.ProgramSelectDomainPage)}>
         <h2>The skills I am looking for are in </h2>
         <div className="p-t-3 p-b-3 m-b-3">
           <DomainChipList

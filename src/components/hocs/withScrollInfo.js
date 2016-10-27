@@ -23,8 +23,16 @@ const withScrollInfo = ({delta = 5}) => {
         didScroll: false,
       }
 
+
       componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+      }
+
+      shouldComponentUpdate(nextProps, {lastScrollPosition, isScrollingDown}) {
+        // console.warn('-should--', nextProps);
+        // return false;
+        return lastScrollPosition !== this.state.lastScrollPosition ||
+          isScrollingDown !== this.state.isScrollDown;
       }
 
       componentWillUnmount() {
@@ -49,8 +57,6 @@ const withScrollInfo = ({delta = 5}) => {
       }
 
       render() {
-        console.warn('--withScrollInfo-', this.state);
-
         return (
           <Component
             {...this.props}

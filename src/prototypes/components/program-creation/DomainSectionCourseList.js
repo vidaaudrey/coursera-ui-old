@@ -12,7 +12,7 @@ const expandedCourseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9',
 
 class DomainSectionCourseList extends React.Component {
   static propTypes = {
-    courses: React.PropTypes.array.isRequired,
+    courseIds: React.PropTypes.array.isRequired,
     onToggleCourseSelect: React.PropTypes.func.isRequired,
     isExpanded: React.PropTypes.bool,
     onExpand: React.PropTypes.func.isRequired,
