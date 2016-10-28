@@ -103,6 +103,7 @@ class DomainSectionS12nList extends React.Component {
           </div>
         ))}
         {renderWayPoint && <Waypoint onEnter={this._loadMoreItems} />}
+        {reachedLimit && <span className="text-muted text-sm">You have reached the end. (total: {s12nIds.length})</span>}
         <div className="col-xs-12 text-xs-right">
           {!isExpanded &&
             <Button

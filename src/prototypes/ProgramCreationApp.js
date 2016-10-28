@@ -69,6 +69,7 @@ class ProgramCreationApp extends React.Component {
       isInfiniteMode: false,
       activeDomainSectionIndex: 0,
       isCourseExpanded: false,
+      isFirstDomainSectionVisibleAfterScroll: false,  // Use it to hide nav after scroll
     };
   }
 
@@ -92,10 +93,22 @@ class ProgramCreationApp extends React.Component {
     this.setState({selectedDomainIds, isInfiniteMode: false, activeDomainSectionIndex: -1});
     // If newly selected, scroll to that section, otherwise, scroll to top
     // Only scroll if it's beyong the first section
-    if (newIsSelect && _(this.state.selectedDomainIds).size() > 1) {
-      this._scrollToDomainSection(id);
-    } else {
-      this._scrollTo(50);
+    const shouldScrollToFirstSection = (!newIsSelect && _(this.state.selectedDomainIds).size() < 2) || this._allDomainIds[0] === id;
+    this._scrollToDomainSection(id, shouldScrollToFirstSection);
+    if (shouldScrollToFirstSection || !newIsSelect) {
+      this.setState({isFirstDomainSectionVisibleAfterScroll: true});
+    }
+
+    // if (newIsSelect && _(this.state.selectedDomainIds).size() > 1) {
+    //   this._scrollToDomainSection(id, false);
+    // } else {
+    //   this._scrollToDomainSection(this._allDomainIds[0]);
+    // }
+  }
+
+  onScrollPassFirstDomainSection = () => {
+    if (this.state.isFirstDomainSectionVisibleAfterScroll) {
+      this.setState({isFirstDomainSectionVisibleAfterScroll: false});
     }
   }
 
@@ -220,9 +233,9 @@ class ProgramCreationApp extends React.Component {
     this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
   }
 
-  _scrollToDomainSection = (domainId) => {
+  _scrollToDomainSection = (domainId, shouldScrollToFirstSection) => {
     // Get the domain index and scroll to the corresponding section
-    const domainIndex = _(this._allDomainIds).indexOf(domainId);
+    const domainIndex = shouldScrollToFirstSection ? 0 : _(this._allDomainIds).indexOf(domainId);
     if (this._subDomainContainerRefs[domainIndex]) {
       const pos = getScreenCordinates(this._subDomainContainerRefs[domainIndex], window.document);
       this._scrollTo(pos.y, DEFAULT_EXPAND_DURATION * 3);
@@ -251,6 +264,7 @@ class ProgramCreationApp extends React.Component {
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
       seatLimit, currentTotalSelectCount, isInfiniteMode,
       headerHeight, isCourseExpanded, activeDomainSectionIndex,
+      isFirstDomainSectionVisibleAfterScroll,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
     // console.warn('-render--', this.props, this.state);
@@ -262,6 +276,9 @@ class ProgramCreationApp extends React.Component {
           isInfiniteMode={isInfiniteMode}
           onHeaderHeightChange={this.onHeaderHeightChange}
           activeDomainSectionIndex={activeDomainSectionIndex}
+          isFirstDomainSectionVisibleAfterScroll={isFirstDomainSectionVisibleAfterScroll}
+          onScrollPassFirstDomainSection={this.onScrollPassFirstDomainSection}
+          alwaysShow={_(selectedDomainIds).size() === 0}
         >
           {showSelectCoursePage &&
             <SearchAndDomainSelectCard
