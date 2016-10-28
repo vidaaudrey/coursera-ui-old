@@ -24,6 +24,7 @@ const SCROLL_OPTIONS = {
 const DEFAULT_EXPAND_DURATION = 400;
 const DEFAULT_UNIT_COLLAPSE_DURATION = 600;
 const NAVBAR_HEIGHT = 20;
+const MAX_S12N_CONTAINER_HEIGHT = 2820;
 
 class DomainSectionCardList extends React.Component {
   static propTypes = {
@@ -138,11 +139,18 @@ class DomainSectionCardList extends React.Component {
     const s12nIds = ['s1', 's2', 's3'];
     const courseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
     const hideS12nCard = isInfiniteModeLocal && isCourseExpanded;
+    const showS12nInfinite = isInfiniteModeLocal && !isCourseExpanded;
+    let s12nContainerMaxHeight = 'auto';
+    if (hideS12nCard) {
+      s12nContainerMaxHeight = 0;
+    } else if (!isInfiniteModeLocal) {
+      s12nContainerMaxHeight = MAX_S12N_CONTAINER_HEIGHT;
+    }
 
     return (
       <div {...css(styles.DomainSectionCardList)}>
         <div
-          {...cssWithClass(isInfiniteModeLocal ? 'w-100' : 'container', isInfiniteModeLocal && styles.darkBg, styles.subDomainCardTransition)}
+          {...cssWithClass(isInfiniteModeLocal ? 'w-100' : 'container', isInfiniteModeLocal && styles.darkBg, styles.cardTransition)}
           ref={r => (this.containerRef = r)}
         >
           <div {...cssWithClass(isInfiniteModeLocal ? 'container' : '', !isInfiniteModeLocal && styles.w100)}>
@@ -152,11 +160,19 @@ class DomainSectionCardList extends React.Component {
               isInfiniteMode={isInfiniteModeLocal}
               onCollapse={onLeaveInfiniteMode}
               domainId={domainId}
+              domainName={domainName}
             />
           </div>
         </div>
         <div className="container">
-          <div {...css(styles.subDomainCardTransition, styles.s12nCardContainer, hideS12nCard && styles.hideS12nCardContainer)}>
+          <div
+            {...css(
+                styles.cardTransition,
+                hideS12nCard && styles.hideS12nCardContainer,
+              )
+            }
+            style={{maxHeight: s12nContainerMaxHeight}}
+          >
             <h2>{domainId}</h2>
             <div>
               <h5 {...css(styles.cardType)}> Specializations</h5>
@@ -169,7 +185,7 @@ class DomainSectionCardList extends React.Component {
               />
             </div>
           </div>
-          <div {...css(styles.subDomainCardTransition)}>
+          <div {...css(styles.cardTransition)}>
             <h4 {...css(styles.cardType)}>Courses</h4>
             <DomainSectionCourseList
               courseIds={courseIds}
@@ -191,9 +207,11 @@ module.exports = DomainSectionCardList;
 
 const styles = StyleSheet.create({
   DomainSectionCardList: {
+    transition: transition.easeOut(),
     textAlign: 'left',
+    maxHeight: 10000,
   },
-  subDomainCardTransition: {
+  cardTransition: {
     transition: transition.easeOut(),
   },
   w100: {
@@ -211,10 +229,9 @@ const styles = StyleSheet.create({
   },
   hideS12nCardContainer: {
     maxHeight: 0,
-    transition: transition.easeOut(),
     overflow: 'hidden',
   },
   s12nCardContainer: {
-    maxHeight: 1000,
+    maxHeight: 10000, // give a maxHeight for smooth transition
   },
 });

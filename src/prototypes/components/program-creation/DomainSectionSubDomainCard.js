@@ -1,13 +1,15 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 const {
-  cssWithClass, StyleSheet, css, color, spacing, font, transition, zIndex,
+  cssWithClass, StyleSheet, css, color, spacing, font, transition, zIndex, breakPoints,
 } = require('src/styles/theme');
 
 import {NavigationArrowBack} from 'src/components/svg/material';
 import {Avatar, Button, ChipList} from 'src';
 const _ = require('underscore');
 const classNames = require('classnames');
+
+const BackArrowOffset = 60;
 
 const mockListData = [
   {
@@ -39,7 +41,7 @@ const mockListData = [
 
 const ICON_SIZE = 44;
 const DomainSectionSubDomainCard = ({
-  listData = mockListData, onSelectChange, isInfiniteMode, onCollapse, domainId,
+  listData = mockListData, onSelectChange, isInfiniteMode, onCollapse, domainId, domainName,
 }) => {
   console.warn('-DomainSectionSubDomainCard--', isInfiniteMode, domainId);
   const toggleableContentClassName = classNames({'hidden-md-down': isInfiniteMode});
@@ -65,8 +67,8 @@ const DomainSectionSubDomainCard = ({
         </div>
       </div>
       <div className="horizontal-box align-items-vertical-center wrap">
-        <div className={toggleableContentClassName}>
-          <h2 {...css(styles.domainName)}>Data Science</h2>
+        <h2 {...css(styles.domainName)}>{domainName}</h2>
+        <div {...css(styles.hideMdDown)}>
           <div className="horizontal-box">
             <h3 {...css(styles.number)}>
               183
@@ -125,10 +127,15 @@ const styles = StyleSheet.create({
   navRow: {
     position: 'relative',
   },
-  shiftArrowLeftInBigScreens: {
-    '@media (min-width: 576px)': {
-      position: 'absolute',
-      left: -80,
+  hideMdDown: {
+    [`@media (max-width: ${breakPoints.md}px)`]: {
+      display: 'none',
     },
-  }
+  },
+  shiftArrowLeftInBigScreens: {
+    [`@media (min-width: ${breakPoints.md}px)`]: {
+      position: 'absolute',
+      left: -BackArrowOffset,
+    },
+  },
 });

@@ -66,6 +66,13 @@ module.exports = {
     lg: '1.5rem',
     xlg: '2.5rem',
   },
+  breakPoints: {
+    xs: 320,  // could be 0?
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xlg: 1200,
+  },
   color: {
     primary: blue500,
     darkPrimary: blue700,
