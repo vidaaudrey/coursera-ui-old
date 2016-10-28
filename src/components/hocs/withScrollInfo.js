@@ -28,10 +28,10 @@ const withScrollInfo = ({delta = 5}) => {
         window.addEventListener('scroll', this.handleScroll);
       }
 
-      shouldComponentUpdate(nextProps, {lastScrollPosition, isScrollingDown}) {
-        return lastScrollPosition !== this.state.lastScrollPosition ||
-          isScrollingDown !== this.state.isScrollDown;
-      }
+      // shouldComponentUpdate(nextProps, {lastScrollPosition, isScrollingDown}) {
+      //   return lastScrollPosition !== this.state.lastScrollPosition ||
+      //     isScrollingDown !== this.state.isScrollDown;
+      // }
 
       componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);

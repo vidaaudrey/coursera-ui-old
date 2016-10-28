@@ -14,6 +14,9 @@ import ProgramSelectCoursePage from 'src/prototypes/components/program-creation/
 import ProgramPreviewPage from 'src/prototypes/components/program-creation/ProgramPreviewPage';
 import ProgramFixedFooter from 'src/prototypes/components/program-creation/ProgramFixedFooter';
 import SearchAndDomainSelectCard from 'src/prototypes/components/program-creation/SearchAndDomainSelectCard';
+const Scroll  = require('react-scroll');
+const scroll = Scroll.animateScroll;
+const { getScreenCordinates } = require('src/utils/common');
 
 import {
   HEADER_HEIGHT, FOOTER_HEIGHT, CREATE_PROGRAM_STEPS,
@@ -33,10 +36,15 @@ const ALL_STEPS = [
 ];
 
 const DEFAULT_HEADER_HEIGHT = 264;
+const DEFAULT_EXPAND_DURATION = 400;
+const DEFAULT_UNIT_COLLAPSE_DURATION = 600;
+const NAVBAR_HEIGHT = 20;
 
 class ProgramCreationApp extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this._subDomainContainerRefs = [];
+
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
     this.state = {
@@ -50,9 +58,12 @@ class ProgramCreationApp extends React.Component {
       selectedS12nIds: [],
       seatLimit: 6,
       currentTotalSelectCount: 0,
-      isInfiniteMode: false,
       headerHeight: DEFAULT_HEADER_HEIGHT,
-      visibleDomainSectionIndex: 0,
+
+      // For Course Selection Page
+      isInfiniteMode: false,
+      activeDomainSectionIndex: 0,
+      isCourseExpanded: false,
     };
   }
 
@@ -96,20 +107,82 @@ class ProgramCreationApp extends React.Component {
     }
   }
 
-  onEnterInfiniteMode = () => {
-    this.setState({isInfiniteMode: true});
+  onEnterInfiniteModeByCourse = (activeDomainSectionIndex) => {
+    this._handleExpand({activeDomainSectionIndex, isCourseExpanded: true});
+  }
+
+  onEnterInfiniteModeByS12n = (activeDomainSectionIndex) => {
+    this._handleExpand({activeDomainSectionIndex, isCourseExpanded: false});
+
+    // console.warn('--onEnterInfiniteModeByS12n-', activeDomainSectionIndex);
+    // this.setState({isInfiniteMode: true, isCourseExpanded: false, activeDomainSectionIndex});
+  }
+
+
+  _handleExpand = ({activeDomainSectionIndex, isCourseExpanded}) => {
+    const pos = getScreenCordinates(this._subDomainContainerRefs[activeDomainSectionIndex], window.document);
+    console.warn('--_handleExpand-', activeDomainSectionIndex);
+    const scrollY = pos.y;
+    this.setState({
+      isInfiniteMode: true,
+      isCourseExpanded,
+      activeDomainSectionIndex,
+      scrollY,
+    });
+    this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
+  }
+  _scrollTo = (scrollY, duration) => {
+    scroll.scrollTo(scrollY, {
+      smooth: true,
+      duration,
+    });
   }
 
   onLeaveInfiniteMode = () => {
-    this.setState({isInfiniteMode: false});
+    console.warn('-onLeaveInfiniteMode--', this.state);
+    this.setState({isInfiniteMode: false, scrollY: 0});
+    // this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
   }
 
-  onSetVisibleDomainSectionIndex = (visibleDomainSectionIndex) => {
-    this.setState({visibleDomainSectionIndex});
+  onSetInfiniteScrollSection = ({index: activeDomainSectionIndex, isCourseExpanded}) => {
+    this.setState({activeDomainSectionIndex, isCourseExpanded});
   }
 
   onHeaderHeightChange = (headerHeight) => {
     this.setState({headerHeight});
+  }
+
+  onLoadSubdomainContainer = ({ref, index}) => {
+    // Keep a copy of all the containerRefs so we can query at runtime
+    this._subDomainContainerRefs[index] = ref;
+  }
+
+  onProgramNameNext = () => {
+    this.setState({step: stepSelectDomains});
+  }
+
+  onDomainSelectionPrev = () => {
+    this.setState({step: stepCreateProgramName});
+  }
+
+  onDomainSelectionNext = () => {
+    this.setState({step: stepSelectCourses});
+  }
+
+  onCourseSelectionPrev = () => {
+    this.setState({step: stepSelectDomains});
+  }
+
+  onCourseSelectionNext = () => {
+    this.setState({step: stepProgramPreview});
+  }
+
+  onProgramPreviewPrev = () => {
+    this.setState({step: stepSelectCourses});
+  }
+
+  onProgramPreviewNext = () => {
+    this.setState({step: stepInviteMembers});
   }
 
   handleAddCourse = (id) => {
@@ -148,34 +221,6 @@ class ProgramCreationApp extends React.Component {
     });
   }
 
-  onProgramNameNext = () => {
-    this.setState({step: stepSelectDomains});
-  }
-
-  onDomainSelectionPrev = () => {
-    this.setState({step: stepCreateProgramName});
-  }
-
-  onDomainSelectionNext = () => {
-    this.setState({step: stepSelectCourses});
-  }
-
-  onCourseSelectionPrev = () => {
-    this.setState({step: stepSelectDomains});
-  }
-
-  onCourseSelectionNext = () => {
-    this.setState({step: stepProgramPreview});
-  }
-
-  onProgramPreviewPrev = () => {
-    this.setState({step: stepSelectCourses});
-  }
-
-  onProgramPreviewNext = () => {
-    this.setState({step: stepInviteMembers});
-  }
-
   // handleInviteMemberPrev = () => {
   //   this.setState({step: stepSelectCourses});
   // }
@@ -189,16 +234,17 @@ class ProgramCreationApp extends React.Component {
       step, programName, programSlug, programTagline, searchKeyWord,
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
       seatLimit, currentTotalSelectCount, isInfiniteMode,
-      headerHeight, visibleDomainSectionIndex,
+      headerHeight, isCourseExpanded, activeDomainSectionIndex,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
+    console.warn('-render--', this.state);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
         <HeaderSmartScroll
           isInfiniteMode={isInfiniteMode}
           onHeaderHeightChange={this.onHeaderHeightChange}
-          visibleDomainSectionIndex={visibleDomainSectionIndex}
+          activeDomainSectionIndex={activeDomainSectionIndex}
         >
           {showSelectCoursePage &&
             <SearchAndDomainSelectCard
@@ -236,9 +282,13 @@ class ProgramCreationApp extends React.Component {
               selectedDomainIds={selectedDomainIds}
               onToggleCourseSelect={this.onToggleCourseSelect}
               onToggleS12nSelect={this.onToggleS12nSelect}
-              onEnterInfiniteMode={this.onEnterInfiniteMode}
+              onEnterInfiniteModeByCourse={this.onEnterInfiniteModeByCourse}
+              onEnterInfiniteModeByS12n={this.onEnterInfiniteModeByS12n}
               onLeaveInfiniteMode={this.onLeaveInfiniteMode}
-              onSetVisibleDomainSectionIndex={this.onSetVisibleDomainSectionIndex}
+              isInfiniteMode={isInfiniteMode}
+              isCourseExpanded={isCourseExpanded}
+              activeDomainSectionIndex={activeDomainSectionIndex}
+              onLoadSubdomainContainer={this.onLoadSubdomainContainer}
             />
           }
           {step === stepProgramPreview &&

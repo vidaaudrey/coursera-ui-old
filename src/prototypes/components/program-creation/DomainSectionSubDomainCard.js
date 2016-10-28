@@ -39,8 +39,9 @@ const mockListData = [
 
 const ICON_SIZE = 44;
 const DomainSectionSubDomainCard = ({
-  listData = mockListData, onSelectChange, isInfiniteMode, onCollapse,
+  listData = mockListData, onSelectChange, isInfiniteMode, onCollapse, domainId,
 }) => {
+  console.warn('-DomainSectionSubDomainCard--', isInfiniteMode, domainId);
   const toggleableContentClassName = classNames({'hidden-md-down': isInfiniteMode});
   return (
     <div {...cssWithClass('vertical-box p-a-1 m-b-2', styles.DomainSectionSubDomainCard)}>

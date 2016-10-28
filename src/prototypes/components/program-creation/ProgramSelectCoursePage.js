@@ -18,23 +18,24 @@ class ProgramSelectCoursePage extends React.Component {
     selectedDomainIds: React.PropTypes.array.isRequired,
     onToggleCourseSelect: React.PropTypes.func.isRequired,
     onToggleS12nSelect: React.PropTypes.func.isRequired,
-    onEnterInfiniteMode: React.PropTypes.func.isRequired,
+    onEnterInfiniteModeByCourse: React.PropTypes.func.isRequired,
+    onEnterInfiniteModeByS12n: React.PropTypes.func.isRequired,
     onLeaveInfiniteMode: React.PropTypes.func.isRequired,
+    activeDomainSectionIndex: React.PropTypes.number.isRequired,
+    onLoadSubdomainContainer: React.PropTypes.func.isRequired,
   }
 
-  // componentWillReceiveProps({isScrollDown}) {
-  //   if (!isScrollDown) {
-  //
-  //   }
-  // }
+
   render() {
     const {
       headerHeight,
       selectedCourseIds, selectedS12nIds, selectedDomainIds,
       onToggleCourseSelect, onToggleS12nSelect,
       onSelectChange, domains, searchKeyWord,
-      onEnterInfiniteMode, onLeaveInfiniteMode,
-      onSetVisibleDomainSectionIndex,
+      onEnterInfiniteModeByCourse, onEnterInfiniteModeByS12n, onLeaveInfiniteMode,
+      onLoadSubdomainContainer,
+      activeDomainSectionIndex, isCourseExpanded,
+      isInfiniteMode,
     } = this.props;
 
     if (_(selectedDomainIds).size() === 0) {
@@ -64,10 +65,14 @@ class ProgramSelectCoursePage extends React.Component {
               selectedS12nIds={selectedS12nIds}
               onToggleCourseSelect={onToggleCourseSelect}
               onToggleS12nSelect={onToggleS12nSelect}
-              onEnterInfiniteMode={onEnterInfiniteMode}
+              onEnterInfiniteModeByCourse={onEnterInfiniteModeByCourse}
+              onEnterInfiniteModeByS12n={onEnterInfiniteModeByS12n}
               onLeaveInfiniteMode={onLeaveInfiniteMode}
-              onExpand={() => (onSetVisibleDomainSectionIndex(index))}
-              onCollapse={() => (onSetVisibleDomainSectionIndex(0))}
+              isInfiniteMode={isInfiniteMode}
+              isInfiniteModeLocal={isInfiniteMode && index === activeDomainSectionIndex}
+              isCourseExpanded={isCourseExpanded}
+              activeDomainSectionIndex={activeDomainSectionIndex}
+              onLoadSubdomainContainer={onLoadSubdomainContainer}
             />
           </div>
         ))}

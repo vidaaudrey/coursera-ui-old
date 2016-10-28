@@ -36,9 +36,13 @@ class DomainSectionCardList extends React.Component {
     onToggleCourseSelect: React.PropTypes.func.isRequired,
     onToggleS12nSelect: React.PropTypes.func.isRequired,
     index: React.PropTypes.number,
-    onEnterInfiniteMode: React.PropTypes.func.isRequired,
+    isInfiniteModeLocal: React.PropTypes.bool,
+    onEnterInfiniteModeByCourse: React.PropTypes.func.isRequired,
+    onEnterInfiniteModeByS12n: React.PropTypes.func.isRequired,
     onLeaveInfiniteMode: React.PropTypes.func.isRequired,
-    onExpand: React.PropTypes.func.isRequired,
+    // onExpand: React.PropTypes.func.isRequired,
+    activeDomainSectionIndex: React.PropTypes.number.isRequired,
+    onLoadSubdomainContainer: React.PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -47,112 +51,135 @@ class DomainSectionCardList extends React.Component {
     subdomainIds: [],
   }
 
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      isCourseSectionExpanded: false,
-      isS12nSectionExpanded: false,
-      scrollPosY: 0,
-    };
+  // constructor(props, context) {
+  //   super(props, context);
+  //   this.state = {
+  //     isCourseSectionExpanded: false,
+  //     isS12nSectionExpanded: false,
+  //     scrollPosY: 0,
+  //   };
+  // }
+  //
+  // componentWillReceiveProps({activeDomainSectionIndex, index}) {
+  //   // If the user move to the next section, we'll get out of the infiniteMode
+  //   if (activeDomainSectionIndex !== index) {
+  //     this.setState({
+  //       isCourseSectionExpanded: false,
+  //       isS12nSectionExpanded: false,
+  //       scrollPosY: 0,
+  //     });
+  //   }
+  // }
+
+  componentDidMount() {
+    this.props.onLoadSubdomainContainer({ref: this.containerRef, index: this.props.index});
   }
 
-  onS12nExpand = () => {
-    const pos = getScreenCordinates(this.containerRef, window.document);
-    this.setState({
-      isS12nSectionExpanded: true,
-      scrollPosY: pos.y,
-    });
-    this.handleExpand(pos.y);
-  }
-
-  onCourseExpand = () => {
-    const pos = getScreenCordinates(this.containerRef, window.document);
-    this.setState({
-      isCourseSectionExpanded: true,
-      scrollPosY: pos.y,
-    });
-    this.handleExpand(pos.y);
-  }
-
-  onCollapse = () => {
-    scroll.scrollTo(this.state.scrollPosY, {
-      ...SCROLL_OPTIONS,
-      duration: DEFAULT_UNIT_COLLAPSE_DURATION,
-    });
-
-    if (this.state.isS12nSectionExpanded) {
-      this.setState({isS12nSectionExpanded: false});
-    } else {
-      this.setState({isCourseSectionExpanded: false});
-    }
-    this.props.onLeaveInfiniteMode();
-  }
-
+  // onS12nExpand = () => {
+  //   const pos = getScreenCordinates(this.containerRef, window.document);
+  //   this.setState({
+  //     isS12nSectionExpanded: true,
+  //     scrollPosY: pos.y,
+  //   });
+  //   this.handleExpand({scrollPosY: pos.y, isCourseExpanded: false});
+  // }
+  //
+  // onCourseExpand = () => {
+  //   const pos = getScreenCordinates(this.containerRef, window.document);
+  //   this.setState({
+  //     isCourseSectionExpanded: true,
+  //     scrollPosY: pos.y,
+  //   });
+  //   this.handleExpand({scrollPosY: pos.y, isCourseExpanded: true});
+  // }
+  //
+  // onCollapse = () => {
+  //   scroll.scrollTo(this.state.scrollPosY, {
+  //     ...SCROLL_OPTIONS,
+  //     duration: DEFAULT_UNIT_COLLAPSE_DURATION,
+  //   });
+  //
+  //   if (this.state.isS12nSectionExpanded) {
+  //     this.setState({isS12nSectionExpanded: false});
+  //   } else {
+  //     this.setState({isCourseSectionExpanded: false});
+  //   }
+  //   this.props.onLeaveInfiniteMode(); // delete later
+  // }
+  //
   onSelectSubdomainChange = (data, allSelectedIds) => {
     console.warn('onSelectSubdomainChange', allSelectedIds);
   }
-
-  handleExpand = (scrollPosY) => {
-    scroll.scrollTo(scrollPosY - NAVBAR_HEIGHT, {
-      ...SCROLL_OPTIONS,
-      duration: DEFAULT_EXPAND_DURATION,
-    });
-    this.props.onEnterInfiniteMode();
-    this.props.onExpand();
-  }
+  //
+  // handleExpand = ({scrollPosY, isCourseExpanded}) => {
+  //   scroll.scrollTo(scrollPosY - NAVBAR_HEIGHT, {
+  //     ...SCROLL_OPTIONS,
+  //     duration: DEFAULT_EXPAND_DURATION,
+  //   });
+  //
+  //   this.props.onEnterInfiniteMode();
+  //   this.props.onExpand({
+  //     index: this.props.index,
+  //     isCourseExpanded,
+  //   });
+  // }
 
   render() {
     const {
-      subdomainIds,
+      index,
+      subdomainIds, domainId,
       selectedCourseIds, selectedS12nIds,
       onToggleCourseSelect, onToggleS12nSelect,
       domainName,
+      onEnterInfiniteModeByCourse, onEnterInfiniteModeByS12n, onLeaveInfiniteMode,
+      isInfiniteModeLocal, isCourseExpanded, activeDomainSectionIndex,
     } = this.props;
-    const {
-      isCourseSectionExpanded, isS12nSectionExpanded
-    } = this.state;
 
     const s12nIds = ['s1', 's2', 's3'];
     const courseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
-    const isInfiniteMode = isCourseSectionExpanded || isS12nSectionExpanded;
+    const hideS12nCard = isInfiniteModeLocal && isCourseExpanded;
 
     return (
       <div {...css(styles.DomainSectionCardList)}>
         <div
-          {...cssWithClass(isInfiniteMode ? 'w-100' : 'container', isInfiniteMode && styles.darkBg, styles.subDomainCardTransition)}
+          {...cssWithClass(isInfiniteModeLocal ? 'w-100' : 'container', isInfiniteModeLocal && styles.darkBg, styles.subDomainCardTransition)}
           ref={r => (this.containerRef = r)}
         >
-          <div {...cssWithClass(isInfiniteMode ? 'container' : '', !isInfiniteMode && styles.w100)}>
+          <div {...cssWithClass(isInfiniteModeLocal ? 'container' : '', !isInfiniteModeLocal && styles.w100)}>
             <DomainSectionSubDomainCard
               onSelectChange={this.onSelectSubdomainChange}
               subdomainIds={subdomainIds}
-              isInfiniteMode={isInfiniteMode}
-              onCollapse={this.onCollapse}
+              isInfiniteMode={isInfiniteModeLocal}
+              onCollapse={onLeaveInfiniteMode}
+              domainId={domainId}
             />
           </div>
         </div>
         <div className="container">
-          {!isCourseSectionExpanded &&
+          <div {...css(styles.subDomainCardTransition, styles.s12nCardContainer, hideS12nCard && styles.hideS12nCardContainer)}>
+            <h2>{domainId}</h2>
             <div>
               <h5 {...css(styles.cardType)}> Specializations</h5>
               <DomainSectionS12nList
                 s12nIds={s12nIds}
                 onToggleS12nSelect={onToggleS12nSelect}
-                isExpanded={isS12nSectionExpanded}
-                onExpand={this.onS12nExpand}
+                isExpanded={isInfiniteModeLocal && !isCourseExpanded}
+                onExpand={() => (onEnterInfiniteModeByS12n(index))}
                 selectedS12nIds={selectedS12nIds}
               />
             </div>
-          }
+          </div>
+          <div {...css(styles.subDomainCardTransition)}>
+            <h4 {...css(styles.cardType)}>Courses</h4>
+            <DomainSectionCourseList
+              courseIds={courseIds}
+              onToggleCourseSelect={onToggleCourseSelect}
+              isExpanded={isInfiniteModeLocal && isCourseExpanded}
+              onExpand={() => (onEnterInfiniteModeByCourse(index))}
+              selectedCourseIds={selectedCourseIds}
+            />
+          </div>
 
-          <h4 {...css(styles.cardType)}>Courses</h4>
-          <DomainSectionCourseList
-            courseIds={courseIds}
-            onToggleCourseSelect={onToggleCourseSelect}
-            isExpanded={isCourseSectionExpanded}
-            onExpand={this.onCourseExpand}
-            selectedCourseIds={selectedCourseIds}
-          />
         </div>
       </div>
     );
@@ -181,5 +208,13 @@ const styles = StyleSheet.create({
   cardType: {
     textTransform: 'uppercase',
     color: color.secondaryText,
+  },
+  hideS12nCardContainer: {
+    maxHeight: 0,
+    transition: transition.easeOut(),
+    overflow: 'hidden',
+  },
+  s12nCardContainer: {
+    maxHeight: 1000,
   },
 });

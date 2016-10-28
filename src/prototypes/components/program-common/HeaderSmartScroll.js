@@ -18,7 +18,7 @@ class HeaderSmartScroll extends React.Component {
     isLoggedIn: React.PropTypes.bool,
     isInfiniteMode: React.PropTypes.bool,
     children: React.PropTypes.node,
-    visibleDomainSectionIndex: React.PropTypes.number,
+    activeDomainSectionIndex: React.PropTypes.number,
   }
 
   state = {
@@ -42,16 +42,17 @@ class HeaderSmartScroll extends React.Component {
 
   render() {
     const {
-      isLoggedIn, isInfiniteMode, children, visibleDomainSectionIndex,
-      didScroll, lastScrollPosition,
+      isLoggedIn, isInfiniteMode, children, activeDomainSectionIndex,
+      didScroll, lastScrollPosition, isScrollingDown,
     } = this.props;
     const {containerHeight} = this.state;
 
     // Hide the container if we are in infiniteMode, or we reached a pointer beyond this container
     // It will prevent a flash of the subdomain card at the top at infiniteMode
-    const hideContainer = isInfiniteMode && lastScrollPosition > containerHeight && didScroll;
+    // const hideContainer = isInfiniteMode && lastScrollPosition > containerHeight * 2 && didScroll && isScrollingDown;
+    const hideContainer = isInfiniteMode && activeDomainSectionIndex > 0;
 
-    console.warn('---', this.props, this.state, visibleDomainSectionIndex);
+    // console.warn('---', this.props, this.state, activeDomainSectionIndex);
 
     return (
       <SmartScrollWrapper delta={50} containerHeight={containerHeight} zIndex={hideContainer ? -1 : 1}>
