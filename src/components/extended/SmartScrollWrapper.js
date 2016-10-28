@@ -6,16 +6,13 @@ const {
 
 import withScrollInfo from 'src/components/hocs/withScrollInfo';
 
-import Measure from 'react-measure';
-
-
 const DELTA = 50;
 const NAVBAR_HEIGHT = 60;
 
 /**
  *  A wrapper component to create medium nav style container
  * 1. When user scroll down, the container will go up as usual
- * 2. As soon as user starts to scroll up, we'll show the container right away
+ * 2. As soon as user starts to scroll up, we'll show the container
  * User can config what's the delta scroll distance they want to trigger the update
  * and the delta (takes priority) can be prop or function argument
  */
@@ -40,6 +37,7 @@ const SmartScrollWrapper = ({
 SmartScrollWrapper.propTypes = {
   // From withScrollInfo, get the top position of the wrapper component
   lastScrollPosition: React.PropTypes.number,
+
   // From withScrollInfo, get the scroll direction
   isScrollingDown: React.PropTypes.bool,
 
@@ -50,6 +48,13 @@ SmartScrollWrapper.propTypes = {
 
   // Make the wrapper always not visible
   alwaysHide: React.PropTypes.bool,
+
+  // Customize zIndex when showing the content inside, defualt to zIndex.md,
+  zIndex: React.PropTypes.number,
+};
+
+SmartScrollWrapper.defaultProps = {
+  containerHeight: NAVBAR_HEIGHT,
 };
 
 function getStyles({containerHeight, zIndexProp}) {
@@ -79,8 +84,5 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '100%',
-  },
-  hideContainer: {
-    top: -NAVBAR_HEIGHT,
   },
 });

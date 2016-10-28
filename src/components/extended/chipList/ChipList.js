@@ -1,6 +1,9 @@
 const React = require('react');
 const _ = require('underscore');
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
+} = require('src/styles/theme');
+
 import Chip from './Chip';
 
 const SELECT_ALL_ID = -2;
@@ -42,11 +45,11 @@ class ChipList extends React.Component {
     selectAllId: SELECT_ALL_ID,
   }
 
-  componentWillReceiveProps({listData, showSelectAll}) {
-    if (this.props.listData !== listData || this.props.showSelectAll !== showSelectAll) {
-      this.setState(ChipList.createLocalState(listData, showSelectAll));
-    }
-  }
+  // componentWillReceiveProps({listData, showSelectAll}) {
+  //   if (this.props.listData !== listData || this.props.showSelectAll !== showSelectAll) {
+  //     this.setState(ChipList.createLocalState(listData, showSelectAll));
+  //   }
+  // }
 
   static createLocalState(listData = [], showSelectAll) {
     let newListData = listData;
@@ -119,14 +122,18 @@ class ChipList extends React.Component {
     });
 
     if (this.props.onSelectChange) {
-      this.props.onSelectChange(SELECT_ALL_ID, newIsAllSelected, newListData);
+      // default to the first id
+      const {listData} = this.props;
+      const allSelectedIds = newIsAllSelected ? _(listData).pluck('id') : [];
+      const defaultId = allSelectedIds[0];
+      this.props.onSelectChange(defaultId, allSelectedIds, newIsAllSelected, newListData);
     }
   }
 
 
   render() {
     const {
-      style, styles, showSelectAll, selectAllLabel, selectAllId, isDarkTheme,
+      style, showSelectAll, selectAllLabel, selectAllId, isDarkTheme,
       ChipAttributes, alignCenter,
     } = this.props;
 
@@ -168,7 +175,9 @@ function getStyles({alignCenter}) {
   };
 }
 
-export default withStyles(({color, transition, spacing}) => ({
+module.exports = ChipList;
+
+const styles = StyleSheet.create({
   ChipList: {
     transition: transition.easeOut(),
     border: 'none',
@@ -180,4 +189,4 @@ export default withStyles(({color, transition, spacing}) => ({
     whiteSpace: 'nowrap',
     cursor: 'pointer',
   },
-}))(ChipList);
+});

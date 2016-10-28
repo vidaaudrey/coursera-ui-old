@@ -60,7 +60,7 @@ class ProgramSelectCoursePage extends React.Component {
       <div {...css(styles.ProgramSelectCoursePage)} style={{marginTop: headerHeight}}>
         {_(selectedDomainIds).size() === 0 && <NoDomainSelected />}
         {_(domainListData).map((item, index) => (
-          <div key={`domain-container~${item.id}`}>
+          <div key={`domain-container~${item.id}`} style={ item.isSelected ? {} : {maxHeight: 0}}>
             <DomainSectionCardList
               activeDomainSectionIndex={activeDomainSectionIndex}
               domainId={item.id}
@@ -98,4 +98,7 @@ const styles = StyleSheet.create({
   ProgramSelectCoursePage: {
     minHeight: 450,
   },
+  domainSectionCardListContainer: {
+
+  }
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
+const _ = require('underscore');
 
 /**
  * A HOC to detect the window's scroll direction and position
@@ -7,7 +8,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
  * Check 'SmartScrollWrapper' for example
  */
 
-const withScrollInfo = ({delta = 5}) => {
+const withScrollInfo = ({delta = 5, updateInterval = 100 }) => {
   return (Component) => {
     const componentName = Component.displayName || Component.name || 'Component';
     class HOC extends React.Component {
@@ -23,35 +24,37 @@ const withScrollInfo = ({delta = 5}) => {
         didScroll: false,
       }
 
-
       componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
+        this._isMounted = true;
+        const throttled = _.throttle(this.handleScroll, updateInterval);
+        window.addEventListener('scroll', throttled);
       }
 
-      // shouldComponentUpdate(nextProps, {lastScrollPosition, isScrollingDown}) {
-      //   return lastScrollPosition !== this.state.lastScrollPosition ||
-      //     isScrollingDown !== this.state.isScrollDown;
-      // }
-
       componentWillUnmount() {
+        this._isMounted = false;
         window.removeEventListener('scroll', this.handleScroll);
       }
 
       handleScroll = () => {
-        const newScrollPosition = document.body.scrollTop;
-        const {lastScrollPosition} = this.state;
-        // Only update state if the scroll has reached delta.
-        const scrollDifference = Math.abs(lastScrollPosition - newScrollPosition);
-        // Prioritize prop delta over HOC delta.
-        const deltaLocal = this.props.delta || delta;
-        if (scrollDifference < deltaLocal) return;
+        // TODO: FF and IE Hack
+        if (window.scrollTop + 1 !== document.height - window.height) {
+          const newScrollPosition = document.body.scrollTop;
+          const {lastScrollPosition} = this.state;
+          // Only update state if the scroll has reached delta.
+          const scrollDifference = Math.abs(lastScrollPosition - newScrollPosition);
+          // Prioritize prop delta over HOC delta.
+          const deltaLocal = this.props.delta || delta;
+          if (scrollDifference + 1 < deltaLocal) return;
 
-        const isScrollingDown = lastScrollPosition <= newScrollPosition;
-        this.setState({
-          didScroll: true,
-          isScrollingDown,
-          lastScrollPosition: newScrollPosition,
-        });
+          const isScrollingDown = lastScrollPosition <= newScrollPosition;
+          if (this._isMounted) {
+            this.setState({
+              didScroll: true,
+              isScrollingDown,
+              lastScrollPosition: newScrollPosition,
+            });
+          }
+        }
       }
 
       render() {

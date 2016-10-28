@@ -19,6 +19,7 @@ const DomainChipList = ({
       showSelectAll={showSelectAll}
       selectAllLabel={'All Topics'}
       onSelectChange={onSelectChange}
+
       alignCenter={alignCenter}
     />
   );

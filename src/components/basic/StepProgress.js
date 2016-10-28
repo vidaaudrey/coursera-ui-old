@@ -18,11 +18,9 @@ const StepProgress = ({
   height = DEFAULT_HEIGHT,
   totalSteps = 1,
   currentStep = 0,
-  ...props,
 }) => {
   const dynamicStyles = getStyles({backgroundColor, progressColor, height, barMargin});
   const mergedRootStyle = {...dynamicStyles.StepProgress, ...style};
-  // const barStyle = {...dynamicStyles.bar, width: `${progress}%`};
   const barWidth = 1 / totalSteps;
   const barData = _.range(totalSteps)
     .map(item => ({
@@ -46,7 +44,7 @@ const StepProgress = ({
         />
       ))}
     </div>
- );
+  );
 };
 
 
@@ -58,7 +56,10 @@ StepProgress.propTypes = {
   backgroundColor: PropTypes.string,
 
   // The forground color of the progress bar
-  color: PropTypes.string,
+  progressColor: PropTypes.string,
+
+  // Space between each step bar
+  barMargin: PropTypes.number,
 
   // The height of the the progress bar
   height: PropTypes.number,

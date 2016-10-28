@@ -13,24 +13,40 @@ class ProgramSelectDomainPage extends React.Component {
 
   static propTypes = {
     onSetDomains: React.PropTypes.func.isRequired,
+    domains: React.PropTypes.array.isRequired,
+    selectedDomainIds: React.PropTypes.array.isRequired,
   }
 
-  onSelectChange = (id, newIsSelect, newListData) => {
+  static defaultProps = {
+    selectedDomainIds: [],
+    domains: [],
+  }
+
+  // onSelectChange = (id, newIsSelect, newListData) => {
+  //   const selectedDomainIds = _.chain(newListData)
+  //     .filter(item => item.isSelected)
+  //     .pluck('id')
+  //     .value();
+  //
+  //   this.props.onSetDomains(selectedDomainIds);
+  // }
+  onSelectChange = (id, allSelectedIds, newIsSelect, newListData) => {
     const selectedDomainIds = _.chain(newListData)
       .filter(item => item.isSelected)
       .pluck('id')
       .value();
-
-    this.props.onSetDomains(selectedDomainIds);
+    this.props.onSetDomains({selectedDomainIds, id, newIsSelect});
   }
 
   render() {
-    const {selectedDomainIds} = this.props;
+    const {selectedDomainIds, domains} = this.props;
+
     return (
       <div {...cssWithClass('container vertical-box align-items-absolute-center', styles.ProgramSelectDomainPage)}>
         <h2>The skills I am looking for are in </h2>
         <div className="p-t-3 p-b-3 m-b-3">
           <DomainChipList
+            domains={domains}
             showSelectAll
             onSelectChange={this.onSelectChange}
             alignCenter

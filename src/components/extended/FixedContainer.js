@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes} from 'react';
 const {
   StyleSheet, css, zIndex, transition,
@@ -15,7 +16,6 @@ const FIXED_POSITIONS = {
  */
 const FixedContainer = ({
   style = {},
-  theme,
   htmlAttributes = {},
   backgroundColor,
   fixedPosition = FIXED_POSITIONS.bottom,
@@ -33,8 +33,8 @@ const FixedContainer = ({
       {...css(styles.FixedContainer)}
       style={mergedStyles}
     >
-     {children}
-   </div>
+      {children}
+    </div>
  );
 };
 
