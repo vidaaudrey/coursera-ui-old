@@ -128,7 +128,6 @@ class ProgramCreationApp extends React.Component {
   }
 
   onLeaveInfiniteMode = () => {
-    console.warn('-onLeaveInfiniteMode--', this.state);
     this.setState({isInfiniteMode: false, scrollY: 0});
   }
 
