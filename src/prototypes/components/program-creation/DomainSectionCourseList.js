@@ -8,73 +8,78 @@ const _ = require('underscore');
 import {Button, CourseCard} from 'src';
 const Waypoint = require('react-waypoint');
 
-const collapsedCourseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
 const expandedCourseIds = [
+  'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8',
   'c9',
   'c10', 'c11', 'c12', 'c13', 'c14', 'c15', 'c16', 'c17', 'c18', 'c19',
-  'c20', 'c21', 'c22', 'c23', 'c24', 'c25', 'c26', 'c27', 'c28',
+  'c20', 'c21', 'c22', 'c23', 'c24', 'c25', 'c26', 'c27',
+  'c28',
 ];
 
 //Temp
-const DELTA = 50;
-let currentIndex = 0;
-const totalItemCount = 100;
-const generateItem = () => {
-  if (currentIndex < expandedCourseIds.length - 1) {
-    ++currentIndex;
-    return expandedCourseIds[currentIndex];
-  }
-}
+
+const generateItem = (index) => {
+  return expandedCourseIds[index];
+};
 
 class DomainSectionCourseList extends React.Component {
   static propTypes = {
-    courseIds: React.PropTypes.array.isRequired,
+    // courseIds: React.PropTypes.array.isRequired,
     onToggleCourseSelect: React.PropTypes.func.isRequired,
     isExpanded: React.PropTypes.bool,
     onExpand: React.PropTypes.func.isRequired,
+    limit: React.PropTypes.number,
+    selectedCourseIds: React.PropTypes.array.isRequired,
+    initialCourseCount: React.PropTypes.number,
+  }
+
+  static defaultProps = {
+    limit: 20,
+    courseIds: [],
+    selectedCourseIds: [],
   }
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      courseIds: props.courseIds,
-      reachedLimit: false,
+      courseIds: this.getCourseIds(props.initialCourseCount),
     };
   }
 
-  static defaultProps = {
-    courseIds: [],
-    selectedCourseIds: [],
+  componentWillReceiveProps({initialCourseCount, isExpanded}) {
+    if (isExpanded !== this.props.isExpanded) {
+      this.setState({
+        courseIds: this.getCourseIds(initialCourseCount),
+        reachedLimit: false
+      });
+    }
   }
 
   _loadMoreItems = () => {
     this.setState({ isLoading: true });
     // fake an async. ajax call with setTimeout
     window.setTimeout(() => {
-      if (!this.state.reachedLimit) {
+      const newIndex = this.state.courseIds.length;
+      if (newIndex < this.props.limit) {
         this.setState({
-          courseIds: [...this.state.courseIds, generateItem()],
+          courseIds: [...this.state.courseIds, generateItem(newIndex)],
           isLoading: false,
-          reachedLimit: currentIndex > expandedCourseIds.length,
         });
       }
-    }, 200);
+    }, 250);
   }
 
-  _handleLeave = (data) => {
-    console.warn('-handleLeave--', data);
-  }
-
-  _handlePositionChange = (data) => {
-    console.warn('-handlePositionChange--', data);
+  getCourseIds = (initialCourseCount) => {
+    return expandedCourseIds.slice(0, initialCourseCount);
   }
 
   render() {
     const {
-      onToggleCourseSelect, selectedCourseIds, isExpanded, onExpand,
+      onToggleCourseSelect, selectedCourseIds, isExpanded, onExpand, limit,
     } = this.props;
 
-    const {courseIds, reachedLimit, isLoading} = this.state;
+    const {courseIds, isLoading} = this.state;
+    const reachedLimit = courseIds.length >= limit;
     const courseIdsWithSelect = _.chain(courseIds)
       .map(id => ({
         id,
@@ -83,22 +88,9 @@ class DomainSectionCourseList extends React.Component {
       .value();
 
     const renderWayPoint = isExpanded && !reachedLimit && !isLoading;
-    console.warn('---', this.state.courseIds, renderWayPoint)
-    ;
+
     return (
       <div className="row m-b-2">
-        <div className="col-xs-12">
-          <p className="infinite-scroll-example__count">
-            Items Loaded: {this.state.courseIds.length}
-            isLoading: {isLoading}
-          </p>
-          {isLoading &&
-            <p {...css(styles.loadingMessage)}>
-              Loading...
-            </p>
-          }
-        </div>
-
         {courseIdsWithSelect.map(item => (
           <div key={`CourseCard~${item.id}`} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <CourseCard
@@ -108,13 +100,7 @@ class DomainSectionCourseList extends React.Component {
             />
           </div>
         ))}
-        {renderWayPoint &&
-          <Waypoint
-            onEnter={this._loadMoreItems}
-            onPositionChange={this._handlePositionChange}
-            onLeave={this._handleLeave}
-          />
-        }
+        {renderWayPoint && <Waypoint onEnter={this._loadMoreItems} />}
         <div className="col-xs-12 text-xs-right">
           {!isExpanded &&
             <Button

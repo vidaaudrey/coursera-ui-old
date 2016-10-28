@@ -39,7 +39,8 @@ class HeaderSmartScroll extends React.Component {
     const {containerHeight} = this.state;
     // Hide the container if we are in infiniteMode, or we reached a pointer close to this container
     // const hideContainer = isInfiniteMode && lastScrollPosition > containerHeight * 2 && !isScrollingDown;
-    const hideContainer = isInfiniteMode && lastScrollPosition > containerHeight * 2 && isScrollingDown;
+    const showContainer = lastScrollPosition < containerHeight * 2 ;
+    const hideContainer = isInfiniteMode && !isScrollingDown;
 
     // console.warn('-withScrollInfo--', this.props, this.state, activeDomainSectionIndex);
 

@@ -1,64 +1,98 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 const _ = require('underscore');
-import {Button, CourseCard, LayeredS12nCard} from 'src';
-
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 
+import {Button, LayeredS12nCard} from 'src';
+const Waypoint = require('react-waypoint');
+
+
 const collapsedS12nIds = ['s1', 's2', 's3'];
-const expandedS12nIds = ['s1', 's2', 's3', 's4', 's5', 's6'];
+const expandedS12nIds = [
+  's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10',
+  's11', 's12', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20',
+];
+
+const DELTA = 50;
+
+const generateItem = (index) => {
+  return expandedS12nIds[index];
+};
 
 class DomainSectionS12nList extends React.Component {
   static propTypes = {
-    s12nIds: React.PropTypes.array.isRequired,
+    // s12nIds: React.PropTypes.array.isRequired,
+    selectedS12nIds: React.PropTypes.array,
     onToggleS12nSelect: React.PropTypes.func.isRequired,
     isExpanded: React.PropTypes.bool,
     onExpand: React.PropTypes.func.isRequired,
-  }
-
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      s12nIds: props.s12nIds,
-    };
+    limit: React.PropTypes.number,
+    initialS12nCount: React.PropTypes.number,
   }
 
   static defaultProps = {
     s12nIds: [],
     selectedS12nIds: [],
+    limit: 20,
   }
 
-  componentWillReceiveProps({isExpanded, s12nIds}) {
-    if (!isExpanded) {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      s12nIds: this.getCourseIds(props.initialS12nCount),
+    };
+  }
+
+  componentWillReceiveProps({initialS12nCount, isExpanded}) {
+    if (isExpanded !== this.props.isExpanded) {
       this.setState({
-        s12nIds: collapsedS12nIds,
-      })
-    } else {
-      this.setState({
-        s12nIds: expandedS12nIds,
-      })
+        s12nIds: this.getCourseIds(initialS12nCount),
+        reachedLimit: false
+      });
     }
+  }
+
+  _loadMoreItems = () => {
+    this.setState({ isLoading: true });
+    // fake an async. ajax call with setTimeout
+    window.setTimeout(() => {
+      const newIndex = this.state.s12nIds.length;
+      if (newIndex < this.props.limit) {
+        this.setState({
+          s12nIds: [...this.state.s12nIds, generateItem(newIndex)],
+          isLoading: false,
+        });
+      }
+    }, 250);
+  }
+
+  getCourseIds = (initialS12nCount) => {
+    return expandedS12nIds.slice(0, initialS12nCount);
   }
 
 
   render() {
     const {
       onToggleS12nSelect, selectedS12nIds,
-      isExpanded, onExpand,
+      isExpanded, onExpand, limit,
     } = this.props;
 
-    const {s12nIds} = this.state;
+    const {s12nIds, isLoading} = this.state;
+    const reachedLimit = s12nIds.length >= limit;
+
     const s12nsIdsWithSelect = _.chain(s12nIds)
       .map(id => ({
         id,
         isSelected: _(selectedS12nIds).contains(id),
       }))
       .value();
+
+    const renderWayPoint = isExpanded && !reachedLimit && !isLoading;
+
     return (
       <div className="row m-b-2">
-
         {s12nsIdsWithSelect.map(item => (
           <div key={`LayeredS12nCard~${item.id}`} className="col-xs-12 col-md-6 col-lg-4">
             <LayeredS12nCard
@@ -68,13 +102,14 @@ class DomainSectionS12nList extends React.Component {
             />
           </div>
         ))}
+        {renderWayPoint && <Waypoint onEnter={this._loadMoreItems} />}
         <div className="col-xs-12 text-xs-right">
           {!isExpanded &&
             <Button
               type="secondary"
               label={'See All'}
               htmlAttributes={{
-                onClick: onExpand
+                onClick: onExpand,
               }}
             />
           }

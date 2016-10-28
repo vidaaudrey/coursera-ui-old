@@ -89,7 +89,7 @@ class ProgramCreationApp extends React.Component {
   }
 
   onSetDomains = ({selectedDomainIds, id, newIsSelect}) => {
-    this.setState({selectedDomainIds, isInfiniteMode: false, activeDomainSectionIndex: 0});
+    this.setState({selectedDomainIds, isInfiniteMode: false, activeDomainSectionIndex: -1});
     // If newly selected, scroll to that section, otherwise, scroll to top
     // Only scroll if it's beyong the first section
     if (newIsSelect && _(this.state.selectedDomainIds).size() > 1) {
@@ -257,6 +257,7 @@ class ProgramCreationApp extends React.Component {
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
+
         <HeaderSmartScroll
           isInfiniteMode={isInfiniteMode}
           onHeaderHeightChange={this.onHeaderHeightChange}
