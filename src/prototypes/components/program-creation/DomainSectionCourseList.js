@@ -1,11 +1,12 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
-const _ = require('underscore');
-import {Button, CourseCard} from 'src';
-
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
+
+const _ = require('underscore');
+import {Button, CourseCard} from 'src';
+const Waypoint = require('react-waypoint');
 
 const collapsedCourseIds = ['c1', 'c2', 'c3', 'c4'];
 const expandedCourseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10', 'c11', 'c12', 'c13', 'c14', 'c15', 'c16', 'c17', 'c18', 'c19'];

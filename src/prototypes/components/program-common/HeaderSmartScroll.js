@@ -25,15 +25,6 @@ class HeaderSmartScroll extends React.Component {
     containerHeight: 100,
   }
 
-  // shouldComponentUpdate({
-  //   isInfiniteMode: nextIsInfiniteMode, children: nextChildren, ...restNextProps
-  // }, nextState) {
-  //   const {isInfiniteMode, children, ...restProps} = this.props;
-  //   // If we are leaving infiniteMode, or the children changes we don't want to update
-  //   if (!nextIsInfiniteMode) return false;
-  //   return !_.isEqual(nextState, this.state) || !_.isEqual(restProps, restNextProps);
-  // }
-
   componentWillUpdate(nextProps, {containerHeight}) {
     if (this.state.containerHeight !== containerHeight) {
       this.props.onHeaderHeightChange(containerHeight);
@@ -46,13 +37,10 @@ class HeaderSmartScroll extends React.Component {
       didScroll, lastScrollPosition, isScrollingDown,
     } = this.props;
     const {containerHeight} = this.state;
+    // Hide the container if we are in infiniteMode, or we reached a pointer close to this container
+    const hideContainer = isInfiniteMode && lastScrollPosition > containerHeight * 3;
 
-    // Hide the container if we are in infiniteMode, or we reached a pointer beyond this container
-    // It will prevent a flash of the subdomain card at the top at infiniteMode
-    // const hideContainer = isInfiniteMode && lastScrollPosition > containerHeight * 2 && didScroll && isScrollingDown;
-    const hideContainer = isInfiniteMode && activeDomainSectionIndex > 0;
-
-    // console.warn('---', this.props, this.state, activeDomainSectionIndex);
+    // console.warn('-withScrollInfo--', this.props, this.state, activeDomainSectionIndex);
 
     return (
       <SmartScrollWrapper delta={50} containerHeight={containerHeight} zIndex={hideContainer ? -1 : 1}>
@@ -84,8 +72,8 @@ class HeaderSmartScroll extends React.Component {
 }
 
 
-// module.exports = HeaderSmartScroll;
-module.exports = withScrollInfo({delta: 50})(HeaderSmartScroll);
+
+module.exports = withScrollInfo({delta: 200})(HeaderSmartScroll);
 
 const styles = StyleSheet.create({
   HeaderSmartScroll: {

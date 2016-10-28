@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
@@ -12,18 +13,18 @@ const _ = require('underscore');
 
 class ProgramSelectCoursePage extends React.Component {
   static propTypes = {
-    searchKeyWord: React.PropTypes.string,
-    selectedCourseIds: React.PropTypes.array.isRequired,
-    selectedS12nIds: React.PropTypes.array.isRequired,
-    selectedDomainIds: React.PropTypes.array.isRequired,
-    onToggleCourseSelect: React.PropTypes.func.isRequired,
-    onToggleS12nSelect: React.PropTypes.func.isRequired,
+    activeDomainSectionIndex: React.PropTypes.number.isRequired,
+    domains: React.PropTypes.array.isRequired,
     onEnterInfiniteModeByCourse: React.PropTypes.func.isRequired,
     onEnterInfiniteModeByS12n: React.PropTypes.func.isRequired,
     onLeaveInfiniteMode: React.PropTypes.func.isRequired,
-    activeDomainSectionIndex: React.PropTypes.number.isRequired,
     onLoadSubdomainContainer: React.PropTypes.func.isRequired,
-    domains: React.PropTypes.array.isRequired,
+    onToggleCourseSelect: React.PropTypes.func.isRequired,
+    onToggleS12nSelect: React.PropTypes.func.isRequired,
+    searchKeyWord: React.PropTypes.string,
+    selectedCourseIds: React.PropTypes.array.isRequired,
+    selectedDomainIds: React.PropTypes.array.isRequired,
+    selectedS12nIds: React.PropTypes.array.isRequired,
   }
 
   static defaultProps = {
@@ -36,25 +37,24 @@ class ProgramSelectCoursePage extends React.Component {
   render() {
     const {
       headerHeight,
-      selectedCourseIds, selectedS12nIds, selectedDomainIds,
-      onToggleCourseSelect, onToggleS12nSelect,
-      onSelectChange, domains, searchKeyWord,
-      onEnterInfiniteModeByCourse, onEnterInfiniteModeByS12n, onLeaveInfiniteMode,
+      selectedCourseIds,
+      selectedS12nIds,
+      selectedDomainIds,
+      onToggleCourseSelect,
+      onToggleS12nSelect,
+      onSelectChange,
+      domains,
+      searchKeyWord,
+      onEnterInfiniteModeByCourse,
+      onEnterInfiniteModeByS12n,
+      onLeaveInfiniteMode,
       onLoadSubdomainContainer,
-      activeDomainSectionIndex, isCourseExpanded,
-      isInfiniteMode,
+      activeDomainSectionIndex,
+      isCourseExpanded,
+      isInfiniteMode
     } = this.props;
 
-
-
     const domainListData = domains.map(item => ({...item, isSelected: _(selectedDomainIds).contains(item.id)}));
-    // const domainListData = _(domains).reduce((total, item) => {
-    //   if (_(selectedDomainIds).contains(item.id)) {
-    //     total.push(item);
-    //     return total;
-    //   }
-    //   return total;
-    // }, []);
 
     return (
       <div {...css(styles.ProgramSelectCoursePage)} style={{marginTop: headerHeight}}>
@@ -62,24 +62,24 @@ class ProgramSelectCoursePage extends React.Component {
         {_(domainListData).map((item, index) => (
           <div key={`domain-container~${item.id}`}>
             <DomainSectionCardList
-              index={index}
-              subdomainIds={item.subdomainIds}
-              domainName={item.name}
+              activeDomainSectionIndex={activeDomainSectionIndex}
               domainId={item.id}
+              domainName={item.name}
+              index={index}
+              isCourseExpanded={isCourseExpanded}
+              isInfiniteMode={isInfiniteMode}
+              isInfiniteModeLocal={isInfiniteMode && index === activeDomainSectionIndex}
               isSelected={item.isSelected}
-              searchKeyWord={searchKeyWord}
-              selectedCourseIds={selectedCourseIds}
-              selectedS12nIds={selectedS12nIds}
-              onToggleCourseSelect={onToggleCourseSelect}
-              onToggleS12nSelect={onToggleS12nSelect}
               onEnterInfiniteModeByCourse={onEnterInfiniteModeByCourse}
               onEnterInfiniteModeByS12n={onEnterInfiniteModeByS12n}
               onLeaveInfiniteMode={onLeaveInfiniteMode}
-              isInfiniteMode={isInfiniteMode}
-              isInfiniteModeLocal={isInfiniteMode && index === activeDomainSectionIndex}
-              isCourseExpanded={isCourseExpanded}
-              activeDomainSectionIndex={activeDomainSectionIndex}
               onLoadSubdomainContainer={onLoadSubdomainContainer}
+              onToggleCourseSelect={onToggleCourseSelect}
+              onToggleS12nSelect={onToggleS12nSelect}
+              searchKeyWord={searchKeyWord}
+              selectedCourseIds={selectedCourseIds}
+              selectedS12nIds={selectedS12nIds}
+              subdomainIds={item.subdomainIds}
             />
           </div>
         ))}

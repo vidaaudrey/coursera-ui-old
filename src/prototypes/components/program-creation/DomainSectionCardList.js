@@ -28,24 +28,24 @@ const MAX_S12N_CONTAINER_HEIGHT = 2820;
 
 class DomainSectionCardList extends React.Component {
   static propTypes = {
-    selectedCourseIds: React.PropTypes.array,
-    selectedS12nIds: React.PropTypes.array,
+    activeDomainSectionIndex: React.PropTypes.number.isRequired,
     domainId: React.PropTypes.string.isRequired,
-    subdomainIds: React.PropTypes.array.isRequired,
     domainName: React.PropTypes.string.isRequired,
-    searchKeyWord: React.PropTypes.string,
-    onToggleCourseSelect: React.PropTypes.func.isRequired,
-    onToggleS12nSelect: React.PropTypes.func.isRequired,
     index: React.PropTypes.number,
     isInfiniteModeLocal: React.PropTypes.bool,
-    onEnterInfiniteModeByCourse: React.PropTypes.func.isRequired,
-    onEnterInfiniteModeByS12n: React.PropTypes.func.isRequired,
-    onLeaveInfiniteMode: React.PropTypes.func.isRequired,
-    activeDomainSectionIndex: React.PropTypes.number.isRequired,
-    onLoadSubdomainContainer: React.PropTypes.func.isRequired,
     // Hide if not selected, as we need to get the ref for subdomainContainer for scrolling,
     // We need to render it, but in a way that's hidden from the dom
     isSelected: React.PropTypes.bool.isRequired,
+    onEnterInfiniteModeByCourse: React.PropTypes.func.isRequired,
+    onEnterInfiniteModeByS12n: React.PropTypes.func.isRequired,
+    onLeaveInfiniteMode: React.PropTypes.func.isRequired,
+    onLoadSubdomainContainer: React.PropTypes.func.isRequired,
+    onToggleCourseSelect: React.PropTypes.func.isRequired,
+    onToggleS12nSelect: React.PropTypes.func.isRequired,
+    searchKeyWord: React.PropTypes.string,
+    selectedCourseIds: React.PropTypes.array,
+    selectedS12nIds: React.PropTypes.array,
+    subdomainIds: React.PropTypes.array.isRequired,
   }
 
   static defaultProps = {
@@ -104,7 +104,7 @@ class DomainSectionCardList extends React.Component {
         <div className="container">
           <div
             {...cssWithClass(
-              'm-b-0',
+              'p-t-2',
               styles.cardTransition,
               hideS12nCard && styles.hideS12nCardContainer,
             )}

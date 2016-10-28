@@ -7,6 +7,7 @@ const {
 
 const _ = require('underscore');
 import withApiMockData from 'src/components/hocs/withApiMockData';
+import withScrollInfo from 'src/components/hocs/withScrollInfo';
 import HeaderSmartScroll from 'src/prototypes/components/program-common/HeaderSmartScroll';
 import ProgramAddNamePage from 'src/prototypes/components/program-creation/ProgramAddNamePage';
 import ProgramSelectDomainPage from 'src/prototypes/components/program-creation/ProgramSelectDomainPage';
@@ -16,6 +17,7 @@ import ProgramFixedFooter from 'src/prototypes/components/program-creation/Progr
 import SearchAndDomainSelectCard from 'src/prototypes/components/program-creation/SearchAndDomainSelectCard';
 const Scroll  = require('react-scroll');
 const scroll = Scroll.animateScroll;
+
 const { getScreenCordinates } = require('src/utils/common');
 
 import {
@@ -37,8 +39,7 @@ const ALL_STEPS = [
 
 const DEFAULT_HEADER_HEIGHT = 264;
 const DEFAULT_EXPAND_DURATION = 400;
-const DEFAULT_UNIT_COLLAPSE_DURATION = 600;
-const NAVBAR_HEIGHT = 20;
+const NAVBAR_HEIGHT = 16;
 
 class ProgramCreationApp extends React.Component {
   static propTypes = {
@@ -49,7 +50,6 @@ class ProgramCreationApp extends React.Component {
     super(props, context);
     this._subDomainContainerRefs = [];
     this._allDomainIds = _(props.domains).pluck('id');
-
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
     this.state = {
@@ -88,11 +88,11 @@ class ProgramCreationApp extends React.Component {
     this.setState({searchKeyWord});
   }
 
-  onSetDomains = ({selectedDomainIds, id, newIsSelect, newListData}) => {
-    this.setState({selectedDomainIds});
+  onSetDomains = ({selectedDomainIds, id, newIsSelect}) => {
+    this.setState({selectedDomainIds, isInfiniteMode: false, activeDomainSectionIndex: 0});
     // If newly selected, scroll to that section, otherwise, scroll to top
-    console.warn('-newIsSelect--', newIsSelect, id, newListData);
-    if (newIsSelect) {
+    // Only scroll if it's beyong the first section
+    if (newIsSelect && _(this.state.selectedDomainIds).size() > 1) {
       this._scrollToDomainSection(id);
     } else {
       this._scrollTo(50);
@@ -125,35 +125,6 @@ class ProgramCreationApp extends React.Component {
 
   onEnterInfiniteModeByS12n = (activeDomainSectionIndex) => {
     this._handleExpand({activeDomainSectionIndex, isCourseExpanded: false});
-  }
-
-  _handleExpand = ({activeDomainSectionIndex, isCourseExpanded}) => {
-    const pos = getScreenCordinates(this._subDomainContainerRefs[activeDomainSectionIndex], window.document);
-    const scrollY = pos.y;
-    this.setState({
-      isInfiniteMode: true,
-      isCourseExpanded,
-      activeDomainSectionIndex,
-      scrollY,
-    });
-    this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
-  }
-
-  _scrollToDomainSection = (domainId) => {
-    // Get the domain index and scroll to the corresponding section
-    const domainIndex = _(this._allDomainIds).indexOf(domainId);
-    if (this._subDomainContainerRefs[domainIndex]) {
-      const pos = getScreenCordinates(this._subDomainContainerRefs[domainIndex], window.document);
-      console.warn('--_scrollToDomainSection-', domainId, domainIndex, pos);
-      this._scrollTo(pos.y, DEFAULT_EXPAND_DURATION * 3);
-      // console.warn('-domainIndex--', domainId, domainIndex);
-    }
-  }
-  _scrollTo = (scrollY, duration) => {
-    scroll.scrollTo(scrollY, {
-      smooth: true,
-      duration: duration || DEFAULT_EXPAND_DURATION,
-    });
   }
 
   onLeaveInfiniteMode = () => {
@@ -238,6 +209,34 @@ class ProgramCreationApp extends React.Component {
     });
   }
 
+  _handleExpand = ({activeDomainSectionIndex, isCourseExpanded}) => {
+    const pos = getScreenCordinates(this._subDomainContainerRefs[activeDomainSectionIndex], window.document);
+    const scrollY = pos.y;
+    this.setState({
+      isInfiniteMode: true,
+      isCourseExpanded,
+      activeDomainSectionIndex,
+      scrollY,
+    });
+    this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
+  }
+
+  _scrollToDomainSection = (domainId) => {
+    // Get the domain index and scroll to the corresponding section
+    const domainIndex = _(this._allDomainIds).indexOf(domainId);
+    if (this._subDomainContainerRefs[domainIndex]) {
+      const pos = getScreenCordinates(this._subDomainContainerRefs[domainIndex], window.document);
+      this._scrollTo(pos.y, DEFAULT_EXPAND_DURATION * 3);
+    }
+  }
+
+  _scrollTo = (scrollY, duration) => {
+    scroll.scrollTo(scrollY, {
+      smooth: true,
+      duration: duration || DEFAULT_EXPAND_DURATION,
+    });
+  }
+
   // handleInviteMemberPrev = () => {
   //   this.setState({step: stepSelectCourses});
   // }
@@ -255,7 +254,7 @@ class ProgramCreationApp extends React.Component {
       headerHeight, isCourseExpanded, activeDomainSectionIndex,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
-    console.warn('-render--', this.props, this.state, this._subDomainContainerRefs);
+    // console.warn('-render--', this.props, this.state);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
@@ -266,11 +265,11 @@ class ProgramCreationApp extends React.Component {
         >
           {showSelectCoursePage &&
             <SearchAndDomainSelectCard
+              domains={domains}
+              onSetDomains={this.onSetDomains}
               onSetSearchKeyword={this.onSetSearchKeyword}
               searchKeyWord={searchKeyWord}
-              onSetDomains={this.onSetDomains}
               selectedDomainIds={selectedDomainIds}
-              domains={domains}
             />
           }
         </HeaderSmartScroll>
@@ -278,12 +277,12 @@ class ProgramCreationApp extends React.Component {
         <div {...css(styles.main)}>
           {step === stepCreateProgramName &&
             <ProgramAddNamePage
-              programName={programName}
-              programSlug={programSlug}
-              programTagline={programTagline}
               onSetProgramName={this.onSetProgramName}
               onSetProgramSlug={this.onSetProgramSlug}
               onSetProgramTagline={this.onSetProgramTagline}
+              programName={programName}
+              programSlug={programSlug}
+              programTagline={programTagline}
             />
           }
           {step === stepSelectDomains &&
@@ -312,45 +311,43 @@ class ProgramCreationApp extends React.Component {
           }
           {step === stepProgramPreview &&
             <ProgramPreviewPage
+              currentTotalSelectCount={currentTotalSelectCount}
+              onCreateProgram={this.onCreateProgram}
               programName={programName}
               programSlug={programSlug}
               programTagline={programTagline}
+              seatLimit={seatLimit}
               selectedCourseIds={selectedCourseIds}
               selectedS12nIds={selectedS12nIds}
-              seatLimit={seatLimit}
-              currentTotalSelectCount={currentTotalSelectCount}
-              onCreateProgram={this.onCreateProgram}
             />
           }
         </div>
         <ProgramFixedFooter
-          step={step}
           currentStepNumber={_(ALL_STEPS).indexOf(step) + 1}
-          totalSteps={_(ALL_STEPS).size()}
-          selectedCourseIds={selectedCourseIds}
-          selectedS12nIds={selectedS12nIds}
-          selectedDomainIds={selectedDomainIds}
-          seatLimit={seatLimit}
           currentTotalSelectCount={currentTotalSelectCount}
-          onProgramNameNext={this.onProgramNameNext}
+          onCourseSelectionNext={this.onCourseSelectionNext}
+          onCourseSelectionPrev={this.onCourseSelectionPrev}
           onDomainSelectionNext={this.onDomainSelectionNext}
           onDomainSelectionPrev={this.onDomainSelectionPrev}
-          onCourseSelectionPrev={this.onCourseSelectionPrev}
-          onCourseSelectionNext={this.onCourseSelectionNext}
-          onProgramPreviewPrev={this.onProgramPreviewPrev}
+          onProgramNameNext={this.onProgramNameNext}
           onProgramPreviewNext={this.onProgramPreviewNext}
+          onProgramPreviewPrev={this.onProgramPreviewPrev}
+          seatLimit={seatLimit}
+          selectedCourseIds={selectedCourseIds}
+          selectedDomainIds={selectedDomainIds}
+          selectedS12nIds={selectedS12nIds}
+          step={step}
+          totalSteps={_(ALL_STEPS).size()}
         />
       </div>
     );
   }
 }
 
-const AppwithApiMockData = withApiMockData({dataType: 'LEADERBOARD'})(ProgramCreationApp);
-const AppwithApiMockDomainData = withApiMockData({dataType: 'DOMAINS'})(AppwithApiMockData);
+const AppwithApiMockData = withApiMockData({dataType: 'DOMAINS'})(ProgramCreationApp);
 
-module.exports = AppwithApiMockDomainData;
+module.exports = AppwithApiMockData;
 
-// export default withStyles(({color, gradient, transition, spacing}) => ({
 const styles = StyleSheet.create({
   ProgramCreationApp: {
     background: color.bgGray,

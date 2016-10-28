@@ -45,7 +45,7 @@ const DomainSectionSubDomainCard = ({
 }) => {
 
   return (
-    <div {...cssWithClass('vertical-box p-a-1 m-b-2', styles.DomainSectionSubDomainCard)}>
+    <div {...cssWithClass('vertical-box p-a-1', styles.DomainSectionSubDomainCard)}>
       <div {...cssWithClass('horizontal-box', styles.navRow)}>
         <div {...css(styles.buttonWrapper, styles.shiftArrowLeftInBigScreens)}>
           {isInfiniteMode &&
