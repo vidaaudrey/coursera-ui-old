@@ -41,9 +41,14 @@ const DEFAULT_UNIT_COLLAPSE_DURATION = 600;
 const NAVBAR_HEIGHT = 20;
 
 class ProgramCreationApp extends React.Component {
+  static propTypes = {
+    domains: React.PropTypes.array.isRequired,
+  }
+
   constructor(props, context) {
     super(props, context);
     this._subDomainContainerRefs = [];
+    this._allDomainIds = _(props.domains).pluck('id');
 
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
@@ -83,8 +88,15 @@ class ProgramCreationApp extends React.Component {
     this.setState({searchKeyWord});
   }
 
-  onSetDomains = (selectedDomainIds) => {
+  onSetDomains = ({selectedDomainIds, id, newIsSelect, newListData}) => {
     this.setState({selectedDomainIds});
+    // If newly selected, scroll to that section, otherwise, scroll to top
+    console.warn('-newIsSelect--', newIsSelect, id, newListData);
+    if (newIsSelect) {
+      this._scrollToDomainSection(id);
+    } else {
+      this._scrollTo(50);
+    }
   }
 
   onCreateProgram = () => {
@@ -113,15 +125,10 @@ class ProgramCreationApp extends React.Component {
 
   onEnterInfiniteModeByS12n = (activeDomainSectionIndex) => {
     this._handleExpand({activeDomainSectionIndex, isCourseExpanded: false});
-
-    // console.warn('--onEnterInfiniteModeByS12n-', activeDomainSectionIndex);
-    // this.setState({isInfiniteMode: true, isCourseExpanded: false, activeDomainSectionIndex});
   }
-
 
   _handleExpand = ({activeDomainSectionIndex, isCourseExpanded}) => {
     const pos = getScreenCordinates(this._subDomainContainerRefs[activeDomainSectionIndex], window.document);
-    console.warn('--_handleExpand-', activeDomainSectionIndex);
     const scrollY = pos.y;
     this.setState({
       isInfiniteMode: true,
@@ -131,17 +138,27 @@ class ProgramCreationApp extends React.Component {
     });
     this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
   }
+
+  _scrollToDomainSection = (domainId) => {
+    // Get the domain index and scroll to the corresponding section
+    const domainIndex = _(this._allDomainIds).indexOf(domainId);
+    if (this._subDomainContainerRefs[domainIndex]) {
+      const pos = getScreenCordinates(this._subDomainContainerRefs[domainIndex], window.document);
+      console.warn('--_scrollToDomainSection-', domainId, domainIndex, pos);
+      this._scrollTo(pos.y, DEFAULT_EXPAND_DURATION * 3);
+      // console.warn('-domainIndex--', domainId, domainIndex);
+    }
+  }
   _scrollTo = (scrollY, duration) => {
     scroll.scrollTo(scrollY, {
       smooth: true,
-      duration,
+      duration: duration || DEFAULT_EXPAND_DURATION,
     });
   }
 
   onLeaveInfiniteMode = () => {
     console.warn('-onLeaveInfiniteMode--', this.state);
     this.setState({isInfiniteMode: false, scrollY: 0});
-    // this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
   }
 
   onSetInfiniteScrollSection = ({index: activeDomainSectionIndex, isCourseExpanded}) => {
@@ -230,6 +247,7 @@ class ProgramCreationApp extends React.Component {
   // }
 
   render() {
+    const {domains} = this.props;
     const {
       step, programName, programSlug, programTagline, searchKeyWord,
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
@@ -237,7 +255,7 @@ class ProgramCreationApp extends React.Component {
       headerHeight, isCourseExpanded, activeDomainSectionIndex,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
-    console.warn('-render--', this.state);
+    console.warn('-render--', this.props, this.state, this._subDomainContainerRefs);
 
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
@@ -252,6 +270,7 @@ class ProgramCreationApp extends React.Component {
               searchKeyWord={searchKeyWord}
               onSetDomains={this.onSetDomains}
               selectedDomainIds={selectedDomainIds}
+              domains={domains}
             />
           }
         </HeaderSmartScroll>
@@ -327,8 +346,9 @@ class ProgramCreationApp extends React.Component {
 }
 
 const AppwithApiMockData = withApiMockData({dataType: 'LEADERBOARD'})(ProgramCreationApp);
+const AppwithApiMockDomainData = withApiMockData({dataType: 'DOMAINS'})(AppwithApiMockData);
 
-module.exports = AppwithApiMockData;
+module.exports = AppwithApiMockDomainData;
 
 // export default withStyles(({color, gradient, transition, spacing}) => ({
 const styles = StyleSheet.create({

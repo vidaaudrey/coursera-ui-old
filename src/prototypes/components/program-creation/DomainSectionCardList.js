@@ -41,9 +41,11 @@ class DomainSectionCardList extends React.Component {
     onEnterInfiniteModeByCourse: React.PropTypes.func.isRequired,
     onEnterInfiniteModeByS12n: React.PropTypes.func.isRequired,
     onLeaveInfiniteMode: React.PropTypes.func.isRequired,
-    // onExpand: React.PropTypes.func.isRequired,
     activeDomainSectionIndex: React.PropTypes.number.isRequired,
     onLoadSubdomainContainer: React.PropTypes.func.isRequired,
+    // Hide if not selected, as we need to get the ref for subdomainContainer for scrolling,
+    // We need to render it, but in a way that's hidden from the dom
+    isSelected: React.PropTypes.bool.isRequired,
   }
 
   static defaultProps = {
@@ -52,82 +54,17 @@ class DomainSectionCardList extends React.Component {
     subdomainIds: [],
   }
 
-  // constructor(props, context) {
-  //   super(props, context);
-  //   this.state = {
-  //     isCourseSectionExpanded: false,
-  //     isS12nSectionExpanded: false,
-  //     scrollPosY: 0,
-  //   };
-  // }
-  //
-  // componentWillReceiveProps({activeDomainSectionIndex, index}) {
-  //   // If the user move to the next section, we'll get out of the infiniteMode
-  //   if (activeDomainSectionIndex !== index) {
-  //     this.setState({
-  //       isCourseSectionExpanded: false,
-  //       isS12nSectionExpanded: false,
-  //       scrollPosY: 0,
-  //     });
-  //   }
-  // }
-
   componentDidMount() {
     this.props.onLoadSubdomainContainer({ref: this.containerRef, index: this.props.index});
   }
 
-  // onS12nExpand = () => {
-  //   const pos = getScreenCordinates(this.containerRef, window.document);
-  //   this.setState({
-  //     isS12nSectionExpanded: true,
-  //     scrollPosY: pos.y,
-  //   });
-  //   this.handleExpand({scrollPosY: pos.y, isCourseExpanded: false});
-  // }
-  //
-  // onCourseExpand = () => {
-  //   const pos = getScreenCordinates(this.containerRef, window.document);
-  //   this.setState({
-  //     isCourseSectionExpanded: true,
-  //     scrollPosY: pos.y,
-  //   });
-  //   this.handleExpand({scrollPosY: pos.y, isCourseExpanded: true});
-  // }
-  //
-  // onCollapse = () => {
-  //   scroll.scrollTo(this.state.scrollPosY, {
-  //     ...SCROLL_OPTIONS,
-  //     duration: DEFAULT_UNIT_COLLAPSE_DURATION,
-  //   });
-  //
-  //   if (this.state.isS12nSectionExpanded) {
-  //     this.setState({isS12nSectionExpanded: false});
-  //   } else {
-  //     this.setState({isCourseSectionExpanded: false});
-  //   }
-  //   this.props.onLeaveInfiniteMode(); // delete later
-  // }
-  //
   onSelectSubdomainChange = (data, allSelectedIds) => {
     console.warn('onSelectSubdomainChange', allSelectedIds);
   }
-  //
-  // handleExpand = ({scrollPosY, isCourseExpanded}) => {
-  //   scroll.scrollTo(scrollPosY - NAVBAR_HEIGHT, {
-  //     ...SCROLL_OPTIONS,
-  //     duration: DEFAULT_EXPAND_DURATION,
-  //   });
-  //
-  //   this.props.onEnterInfiniteMode();
-  //   this.props.onExpand({
-  //     index: this.props.index,
-  //     isCourseExpanded,
-  //   });
-  // }
 
   render() {
     const {
-      index,
+      index, isSelected,
       subdomainIds, domainId,
       selectedCourseIds, selectedS12nIds,
       onToggleCourseSelect, onToggleS12nSelect,
@@ -148,7 +85,7 @@ class DomainSectionCardList extends React.Component {
     }
 
     return (
-      <div {...css(styles.DomainSectionCardList)}>
+      <div {...css(styles.DomainSectionCardList, !isSelected && styles.visuallyHide)}>
         <div
           {...cssWithClass(isInfiniteModeLocal ? 'w-100' : 'container', isInfiniteModeLocal && styles.darkBg, styles.cardTransition)}
           ref={r => (this.containerRef = r)}
@@ -166,14 +103,13 @@ class DomainSectionCardList extends React.Component {
         </div>
         <div className="container">
           <div
-            {...css(
-                styles.cardTransition,
-                hideS12nCard && styles.hideS12nCardContainer,
-              )
-            }
+            {...cssWithClass(
+              'm-b-0',
+              styles.cardTransition,
+              hideS12nCard && styles.hideS12nCardContainer,
+            )}
             style={{maxHeight: s12nContainerMaxHeight}}
           >
-            <h2>{domainId}</h2>
             <div>
               <h5 {...css(styles.cardType)}> Specializations</h5>
               <DomainSectionS12nList
@@ -185,7 +121,7 @@ class DomainSectionCardList extends React.Component {
               />
             </div>
           </div>
-          <div {...css(styles.cardTransition)}>
+          <div {...cssWithClass('m-b-1', styles.cardTransition)}>
             <h4 {...css(styles.cardType)}>Courses</h4>
             <DomainSectionCourseList
               courseIds={courseIds}
@@ -210,6 +146,12 @@ const styles = StyleSheet.create({
     transition: transition.easeOut(),
     textAlign: 'left',
     maxHeight: 10000,
+    paddingBottom: spacing.lg,
+  },
+  visuallyHide: {
+    height: 0,
+    opacity: 0,
+    overflow: 'hidden',
   },
   cardTransition: {
     transition: transition.easeOut(),

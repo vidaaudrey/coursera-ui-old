@@ -99,7 +99,7 @@ class ChipList extends React.Component {
           .filter(item => !!item.isSelected)
           .pluck('id')
           .value();
-        this.props.onSelectChange(id, allSelectedIds, newListData);
+        this.props.onSelectChange(id, allSelectedIds, newIsSelect, newListData);
       }
     }
   }

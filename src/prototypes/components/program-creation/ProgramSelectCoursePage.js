@@ -23,6 +23,13 @@ class ProgramSelectCoursePage extends React.Component {
     onLeaveInfiniteMode: React.PropTypes.func.isRequired,
     activeDomainSectionIndex: React.PropTypes.number.isRequired,
     onLoadSubdomainContainer: React.PropTypes.func.isRequired,
+    domains: React.PropTypes.array.isRequired,
+  }
+
+  static defaultProps = {
+    selectedS12nIds: [],
+    selectedCourseIds: [],
+    domains: [],
   }
 
 
@@ -38,28 +45,28 @@ class ProgramSelectCoursePage extends React.Component {
       isInfiniteMode,
     } = this.props;
 
-    if (_(selectedDomainIds).size() === 0) {
-      return <NoDomainSelected />;
-    }
 
-    const domainListData = _(domains).reduce((total, item) => {
-      if (_(selectedDomainIds).contains(item.id)) {
-        total.push(item);
-        return total;
-      }
-      return total;
-    }, []);
+
+    const domainListData = domains.map(item => ({...item, isSelected: _(selectedDomainIds).contains(item.id)}));
+    // const domainListData = _(domains).reduce((total, item) => {
+    //   if (_(selectedDomainIds).contains(item.id)) {
+    //     total.push(item);
+    //     return total;
+    //   }
+    //   return total;
+    // }, []);
 
     return (
       <div {...css(styles.ProgramSelectCoursePage)} style={{marginTop: headerHeight}}>
+        {_(selectedDomainIds).size() === 0 && <NoDomainSelected />}
         {_(domainListData).map((item, index) => (
-          <div className="m-b-3" key={`domain-container~${item.id}`}>
+          <div key={`domain-container~${item.id}`}>
             <DomainSectionCardList
               index={index}
-              onSelectChange={onSelectChange}
               subdomainIds={item.subdomainIds}
               domainName={item.name}
               domainId={item.id}
+              isSelected={item.isSelected}
               searchKeyWord={searchKeyWord}
               selectedCourseIds={selectedCourseIds}
               selectedS12nIds={selectedS12nIds}

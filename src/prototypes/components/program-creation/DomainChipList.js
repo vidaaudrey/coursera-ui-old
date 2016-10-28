@@ -7,7 +7,7 @@ const DomainChipList = ({
   showSelectAll,
   alignCenter, selectedDomainIds = [], domains, onSelectChange,
 }) => {
-  const listDataWithSelect = _(domains).map(item => ({
+  const listDataWithSelect = _(domains).map(item=> ({
     id: item.id,
     label: item.name,
     isSelected: _(selectedDomainIds).contains(item.id),
@@ -24,5 +24,4 @@ const DomainChipList = ({
   );
 };
 
-
-export default withApiMockData({dataType: 'DOMAINS'})(DomainChipList);
+export default DomainChipList;

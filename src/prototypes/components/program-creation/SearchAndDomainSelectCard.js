@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
@@ -8,47 +9,6 @@ import {ContentFilterList} from 'src/components/svg/material';
 import DomainChipList from 'src/prototypes/components/program-creation/DomainChipList';
 const _ = require('underscore');
 
-const mockListData = [
-  {
-    id: 'computer-science',
-    label: 'Computer Science',
-    isSelected: true,
-  }, {
-    id: 'arts-and-humanities',
-    label: 'Arts & Humanities',
-    isSelected: false,
-  }, {
-    id: 'data-science',
-    label: 'Data Science',
-    isSelected: true,
-  }, {
-    id: 'social-sciences',
-    label: 'Social Science',
-    isSelected: false,
-  }, {
-    id: 'life-sciences',
-    label: 'Life Science',
-    isSelected: false,
-  }, {
-    id: 'business',
-    label: 'Business',
-    isSelected: false,
-  }, {
-    id: 'personal-development',
-    label: 'Personal Development',
-    isSelected: false,
-  }, {
-    id: 'math-and-logic',
-    label: 'Math & Logic',
-    isSelected: false,
-  }, {
-    id: 'physical-science-and-engineering',
-    label: 'Physical Science & Engineering',
-    isSelected: false,
-  },
-];
-
-
 class SearchAndDomainSelectCard extends React.Component {
 
   static propTypes = {
@@ -56,11 +16,12 @@ class SearchAndDomainSelectCard extends React.Component {
     onSetSearchKeyword: React.PropTypes.func.isRequired,
     selectedDomainIds: React.PropTypes.array.isRequired,
     searchKeyWord: React.PropTypes.string,
+    domains: React.PropTypes.array.isRequired,
   }
 
   static defaultProps = {
-    domainListData: mockListData,
     selectedDomainIds: [],
+    domains: [],
   }
 
   onSubmit = (e) => {
@@ -68,21 +29,21 @@ class SearchAndDomainSelectCard extends React.Component {
     this.props.onSetSearchKeyword(this.searchRef.value);
   }
 
-  onSelectChange = (id, newIsSelect, newListData) => {
+  onSelectChange = (id, allSelectedIds, newIsSelect, newListData) => {
     const selectedDomainIds = _.chain(newListData)
       .filter(item => item.isSelected)
       .pluck('id')
       .value();
-    this.props.onSetDomains(selectedDomainIds);
+    this.props.onSetDomains({selectedDomainIds, id, newIsSelect});
   }
 
   render() {
-    const {domainListData, selectedDomainIds, onSetSearchKeyword, searchKeyWord } = this.props;
-
+    const {domains, selectedDomainIds, onSetSearchKeyword, searchKeyWord } = this.props;
     return (
       <div {...cssWithClass('p-b-1', styles.SearchAndDomainSelectCard)}>
         <div {...cssWithClass('container-fluid vertical-box p-a-1 m-b-1', styles.domainContainer)}>
           <DomainChipList
+            domains={domains}
             showSelectAll={false}
             onSelectChange={this.onSelectChange}
             alignCenter
