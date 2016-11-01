@@ -5,7 +5,7 @@ const {
 } = require('src/styles/theme');
 
 import withScrollInfo from 'src/components/hocs/withScrollInfo';
-
+import {compose, pure} from 'recompose';
 const DELTA = 50;
 const NAVBAR_HEIGHT = 60;
 
@@ -61,15 +61,20 @@ function getStyles({containerHeight, zIndexProp}) {
   return {
     SmartScrollWrapper: {
       height: containerHeight,
-      zIndex: zIndexProp || zIndex.md,
+      zIndex: zIndexProp || zIndex.lg,
     },
     hideContainer: {
       top: -containerHeight,
+      maxHeight: 0,
+      overflow: 'hidden',
     },
   };
 }
 
-module.exports = withScrollInfo({delta: DELTA})(SmartScrollWrapper);
+module.exports = compose(
+  pure,
+  withScrollInfo({delta: DELTA}),
+)(SmartScrollWrapper);
 
 const styles = StyleSheet.create({
   SmartScrollWrapper: {

@@ -1,14 +1,19 @@
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
+
 import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+const {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, font,
+} = require('src/styles/theme');
+
 import { SvgCheckOutline } from 'src/components/svg/coursera';
 import withApiMockData from 'src/components/hocs/withApiMockData';
+import {compose, pure} from 'recompose';
 
 const CourseCard = ({
-  styles, theme,
   course, isSelected, id, onToggleCourseSelect,
 }) => {
   const {name, photoUrl, partnerIds, partnerName = 'John Hopken '} = course;
-  const iconColor = isSelected ? theme.color.primary : theme.color.icon;
+  const iconColor = isSelected ? color.primary : color.icon;
 
   return (
 
@@ -54,12 +59,18 @@ CourseCard.defaultProps = {
   id: 'c1', // Remove later
 };
 
-const CourseCardwithApiMockData = withApiMockData({
-  dataType: 'COURSE',
-})(CourseCard);
+// const CourseCardwithApiMockData = withApiMockData({
+//   dataType: 'COURSE',
+// })(CourseCard);
 
+module.exports = compose(
+  withApiMockData({
+    dataType: 'COURSE',
+  }),
+  pure,
+)(CourseCard);
 
-export default withStyles(({color, font, spacing}) => ({
+const styles = StyleSheet.create({
   CourseCard: {
     minHeight: 368,
     maxWidth: 480,
@@ -95,4 +106,4 @@ export default withStyles(({color, font, spacing}) => ({
   title: {
     marginBottom: 0,
   },
-}))(CourseCardwithApiMockData);
+});

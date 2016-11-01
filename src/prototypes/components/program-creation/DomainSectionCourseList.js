@@ -6,6 +6,8 @@ const {
 
 const _ = require('underscore');
 import {Button, CourseCard} from 'src';
+import {pure} from 'recompose';
+
 const Waypoint = require('react-waypoint');
 
 const expandedCourseIds = [
@@ -15,8 +17,6 @@ const expandedCourseIds = [
   'c20', 'c21', 'c22', 'c23', 'c24', 'c25', 'c26', 'c27',
   'c28',
 ];
-
-//Temp
 
 const generateItem = (index) => {
   return expandedCourseIds[index];
@@ -47,10 +47,10 @@ class DomainSectionCourseList extends React.Component {
   }
 
   componentWillReceiveProps({initialCourseCount, isExpanded}) {
-    if (isExpanded !== this.props.isExpanded) {
+    if (isExpanded !== this.props.isExpanded || initialCourseCount !== this.props.initialCourseCount) {
       this.setState({
         courseIds: this.getCourseIds(initialCourseCount),
-        reachedLimit: false
+        reachedLimit: false,
       });
     }
   }
@@ -92,7 +92,7 @@ class DomainSectionCourseList extends React.Component {
     return (
       <div className="row m-b-2">
         {courseIdsWithSelect.map(item => (
-          <div key={`CourseCard~${item.id}`} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div key={`CourseCard~${item.id}`} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xxl-2">
             <CourseCard
               id={item.id}
               isSelected={item.isSelected}
@@ -108,7 +108,7 @@ class DomainSectionCourseList extends React.Component {
               type="secondary"
               label={'See All'}
               htmlAttributes={{
-                onClick: onExpand
+                onClick: onExpand,
               }}
             />
           }
@@ -118,7 +118,7 @@ class DomainSectionCourseList extends React.Component {
   }
 }
 
-module.exports = DomainSectionCourseList;
+module.exports = pure(DomainSectionCourseList);
 
 const styles = StyleSheet.create({
   DomainSectionCourseList: {

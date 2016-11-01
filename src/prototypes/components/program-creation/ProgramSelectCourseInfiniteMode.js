@@ -10,11 +10,8 @@ import DomainSectionCardList from 'src/prototypes/components/program-creation/Do
 import NoDomainSelected from 'src/prototypes/components/program-creation/NoDomainSelected';
 import withApiMockData from 'src/components/hocs/withApiMockData';
 const _ = require('underscore');
-import HeaderSmartScroll from 'src/prototypes/components/program-common/HeaderSmartScroll';
-import SearchAndDomainSelectCard from 'src/prototypes/components/program-creation/SearchAndDomainSelectCard';
 
-
-class ProgramSelectCoursePage extends React.Component {
+class ProgramSelectCoursePageInfiniteMode extends React.Component {
   static propTypes = {
     activeDomainSectionIndex: React.PropTypes.number.isRequired,
     domains: React.PropTypes.array.isRequired,
@@ -54,16 +51,16 @@ class ProgramSelectCoursePage extends React.Component {
       onLoadSubdomainContainer,
       activeDomainSectionIndex,
       isCourseExpanded,
-      isInfiniteMode,
+      isInfiniteMode
     } = this.props;
 
     const domainListData = domains.map(item => ({...item, isSelected: _(selectedDomainIds).contains(item.id)}));
-    const containerMarginTop = isInfiniteMode ? 32 : headerHeight;
+
     return (
-      <div {...css(styles.ProgramSelectCoursePage)} style={{marginTop: containerMarginTop}}>
+      <div {...css(styles.ProgramSelectCoursePageInfiniteMode)} style={{marginTop: headerHeight}}>
         {_(selectedDomainIds).size() === 0 && <NoDomainSelected />}
         {_(domainListData).map((item, index) => (
-          <div key={`domain-container~${item.id}`} style={item.isSelected ? {} : {maxHeight: 0}}>
+          <div key={`domain-container~${item.id}`} style={ item.isSelected ? {} : {maxHeight: 0}}>
             <DomainSectionCardList
               activeDomainSectionIndex={activeDomainSectionIndex}
               domainId={item.id}
@@ -91,16 +88,15 @@ class ProgramSelectCoursePage extends React.Component {
   }
 }
 
-const ProgramSelectCoursePagewithApiMockData = withApiMockData({
+const ProgramSelectCoursePageInfiniteModewithApiMockData = withApiMockData({
   dataType: 'DOMAINS',
-})(ProgramSelectCoursePage);
+})(ProgramSelectCoursePageInfiniteMode);
 
-module.exports = ProgramSelectCoursePagewithApiMockData;
+module.exports = ProgramSelectCoursePageInfiniteModewithApiMockData;
 
 const styles = StyleSheet.create({
-  ProgramSelectCoursePage: {
+  ProgramSelectCoursePageInfiniteMode: {
     minHeight: 450,
-    backgroundColor: color.bgGray,
   },
   domainSectionCardListContainer: {
 

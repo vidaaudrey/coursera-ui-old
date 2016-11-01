@@ -71,7 +71,8 @@ module.exports = {
     sm: 576,
     md: 768,
     lg: 992,
-    xlg: 1200,
+    xl: 1200,
+    xxl: 1440,
   },
   color: {
     primary: blue500,

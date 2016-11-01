@@ -1,15 +1,21 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 const _ = require('underscore');
-import {Button, CourseCard, LayeredS12nCard} from 'src';
 const {
-  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, breakPoints,
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, breakPoints, zIndex
 } = require('src/styles/theme');
 
-const DomainSectionSubDomainCard = require('src/prototypes/components/program-creation/DomainSectionSubDomainCard');
-const DomainSectionS12nList = require('src/prototypes/components/program-creation/DomainSectionS12nList');
-const DomainSectionCourseList = require('src/prototypes/components/program-creation/DomainSectionCourseList');
-const MediaQuery = require('react-responsive');
+let DomainSectionSubDomainCard = require('src/prototypes/components/program-creation/DomainSectionSubDomainCard');
+let DomainSectionS12nList = require('src/prototypes/components/program-creation/DomainSectionS12nList');
+let DomainSectionCourseList = require('src/prototypes/components/program-creation/DomainSectionCourseList');
+const withResponsiveConfig = require('src/components/hocs/withResponsiveConfig');
+const withDimensions = require('src/components/hocs/withDimensions');
+import {compose} from 'recompose';
+DomainSectionSubDomainCard = compose(withDimensions({}), withResponsiveConfig)(DomainSectionSubDomainCard);
+DomainSectionS12nList = withResponsiveConfig(DomainSectionS12nList);
+DomainSectionCourseList = withResponsiveConfig(DomainSectionCourseList);
+const withScrollTo = require('src/components/hocs/withScrollTo');
+
 const MAX_S12N_CONTAINER_HEIGHT = 2820;
 
 class DomainSectionCardList extends React.Component {
@@ -33,6 +39,8 @@ class DomainSectionCardList extends React.Component {
     selectedCourseIds: React.PropTypes.array,
     selectedS12nIds: React.PropTypes.array,
     subdomainIds: React.PropTypes.array.isRequired,
+
+    scrollToTop: React.PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -41,12 +49,28 @@ class DomainSectionCardList extends React.Component {
     subdomainIds: [],
   }
 
+  state = {
+    subDomainCardHeight: 350,
+  }
+
   componentDidMount() {
     this.props.onLoadSubdomainContainer({ref: this.containerRef, index: this.props.index});
   }
+  onExpandCourse = (index) => {
+    this.props.scrollToTop();
+    this.props.onEnterInfiniteModeByCourse(index);
+  }
 
+  onExpandS12n = (index) => {
+    this.props.scrollToTop();
+    this.props.onEnterInfiniteModeByS12n(index);
+  }
   onSelectSubdomainChange = (data, allSelectedIds) => {
     console.warn('onSelectSubdomainChange', allSelectedIds);
+  }
+
+  onSubDomainCardDimensionChange = (dimensions) => {
+    this.setState({subDomainCardHeight: dimensions.height});
   }
 
   render() {
@@ -55,10 +79,9 @@ class DomainSectionCardList extends React.Component {
       domainName,
       index,
       isCourseExpanded,
+      isInfiniteMode,
       isInfiniteModeLocal,
       isSelected,
-      onEnterInfiniteModeByCourse,
-      onEnterInfiniteModeByS12n,
       onLeaveInfiniteMode,
       onToggleCourseSelect,
       onToggleS12nSelect,
@@ -67,18 +90,25 @@ class DomainSectionCardList extends React.Component {
       subdomainIds,
     } = this.props;
 
-    const s12nIds = ['s1', 's2', 's3'];
-    const courseIds = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
-    const hideS12nCard = isInfiniteModeLocal && isCourseExpanded;
-    const dynamicStyles = getStyles({hideS12nCard, isInfiniteModeLocal, isCourseExpanded});
+    const {subDomainCardHeight} = this.state;
 
+    // Render nothing if some other card is in isInfiniteMode
+    if (isInfiniteMode && !isInfiniteModeLocal) {
+      return null;
+    }
+
+    const mainCardContainerStyle = {
+      paddingTop: isInfiniteMode ? subDomainCardHeight - 48 : 0,
+    };
+
+    console.warn('--DomainSectionCardList-', this.props);
     return (
       <div {...css(styles.DomainSectionCardList, !isSelected && styles.visuallyHide)}>
         <div
-          {...cssWithClass(isInfiniteModeLocal ? 'w-100' : 'container', isInfiniteModeLocal && styles.darkBg, styles.cardTransition)}
+          {...cssWithClass(isInfiniteMode ? 'w100' : 'container', styles.cardTransition, isInfiniteMode ? styles.subDomainCardInfiniteMode : styles.subDomainCardNotInfiniteMode)}
           ref={r => (this.containerRef = r)}
         >
-          <div {...cssWithClass(isInfiniteModeLocal ? 'container' : '', !isInfiniteModeLocal && styles.w100)}>
+          <div {...cssWithClass(isInfiniteMode ? 'container' : '', styles.subDomainCardInnerContainer)}>
             <DomainSectionSubDomainCard
               onSelectChange={this.onSelectSubdomainChange}
               subdomainIds={subdomainIds}
@@ -86,64 +116,52 @@ class DomainSectionCardList extends React.Component {
               onCollapse={onLeaveInfiniteMode}
               domainId={domainId}
               domainName={domainName}
+              onDimensionChange={this.onSubDomainCardDimensionChange}
             />
           </div>
         </div>
-        <div className="container">
+        <div className="container" style={mainCardContainerStyle}>
           <div
-            {...cssWithClass(
-              'p-t-2',
-              styles.cardTransition,
-              hideS12nCard && styles.hideS12nCardContainer,
-            )}
-            style={dynamicStyles.s12nContainerStyle}
+            {...cssWithClass('p-t-2', styles.cardTransition)}
+            ref={r => (this.s12nContainerRef = r)}
           >
-            <div>
-              <h5 {...css(styles.cardType)}> Specializations</h5>
-              <MediaQuery maxWidth={breakPoints.lg}>
-                <DomainSectionS12nList
-                  limit={16}
-                  initialS12nCount={4}
-                  onToggleS12nSelect={onToggleS12nSelect}
-                  isExpanded={isInfiniteModeLocal && !isCourseExpanded}
-                  onExpand={() => (onEnterInfiniteModeByS12n(index))}
-                  selectedS12nIds={selectedS12nIds}
-                />
-              </MediaQuery>
-              <MediaQuery minWidth={breakPoints.lg}>
-                <DomainSectionS12nList
-                  limit={16}
-                  initialS12nCount={6}
-                  onToggleS12nSelect={onToggleS12nSelect}
-                  isExpanded={isInfiniteModeLocal && !isCourseExpanded}
-                  onExpand={() => (onEnterInfiniteModeByS12n(index))}
-                  selectedS12nIds={selectedS12nIds}
-                />
-              </MediaQuery>
-            </div>
+            <h5 {...css(styles.cardType)}> Specializations</h5>
+            <DomainSectionS12nList
+              responsiveConfig={{
+                xs: {initialS12nCount: 2},
+                sm: {initialS12nCount: 2},
+                md: {initialS12nCount: 2},
+                lg: {initialS12nCount: 6},
+                xl: {initialS12nCount: 8},
+                xxl: {initialS12nCount: 8},
+              }}
+              limit={16}
+              onToggleS12nSelect={onToggleS12nSelect}
+              isExpanded={isInfiniteModeLocal && !isCourseExpanded}
+              onExpand={() => (this.onExpandS12n(index))}
+              selectedS12nIds={selectedS12nIds}
+            />
           </div>
-          <div {...cssWithClass('m-b-1', styles.cardTransition)}>
+          <div
+            {...cssWithClass('m-b-1', styles.cardTransition)}
+            ref={r => (this.courseContainerRef = r)}
+          >
             <h4 {...css(styles.cardType)}>Courses</h4>
-            <MediaQuery maxWidth={breakPoints.lg}>
-              <DomainSectionCourseList
-                limit={27}
-                initialCourseCount={6}
-                onToggleCourseSelect={onToggleCourseSelect}
-                isExpanded={isInfiniteModeLocal && isCourseExpanded}
-                onExpand={() => (onEnterInfiniteModeByCourse(index))}
-                selectedCourseIds={selectedCourseIds}
-              />
-            </MediaQuery>
-            <MediaQuery minWidth={breakPoints.lg}>
-              <DomainSectionCourseList
-                limit={27}
-                initialCourseCount={8}
-                onToggleCourseSelect={onToggleCourseSelect}
-                isExpanded={isInfiniteModeLocal && isCourseExpanded}
-                onExpand={() => (onEnterInfiniteModeByCourse(index))}
-                selectedCourseIds={selectedCourseIds}
-              />
-            </MediaQuery>
+            <DomainSectionCourseList
+              limit={27}
+              responsiveConfig={{
+                xs: {initialCourseCount: 2},
+                sm: {initialCourseCount: 4},
+                md: {initialCourseCount: 4},
+                lg: {initialCourseCount: 8},
+                xl: {initialCourseCount: 8},
+                xxl: {initialCourseCount: 12},
+              }}
+              onToggleCourseSelect={onToggleCourseSelect}
+              isExpanded={isInfiniteModeLocal && isCourseExpanded}
+              onExpand={() => (this.onExpandCourse(index))}
+              selectedCourseIds={selectedCourseIds}
+            />
           </div>
         </div>
       </div>
@@ -151,19 +169,8 @@ class DomainSectionCardList extends React.Component {
   }
 }
 
-module.exports = DomainSectionCardList;
+module.exports = compose(withScrollTo({duration: 1500}))(DomainSectionCardList);
 
-function getStyles({hideS12nCard, isInfiniteModeLocal, isCourseExpanded}) {
-  let s12nContainerStyle = {};
-  if (hideS12nCard) {
-    s12nContainerStyle = {maxHeight: 0};
-  } else if (!isInfiniteModeLocal) {
-    s12nContainerStyle = {maxHeight: MAX_S12N_CONTAINER_HEIGHT};
-  }
-  return {
-    s12nContainerStyle,
-  };
-}
 
 const styles = StyleSheet.create({
   DomainSectionCardList: {
@@ -193,11 +200,21 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: color.secondaryText,
   },
-  hideS12nCardContainer: {
-    maxHeight: 0,
-    overflow: 'hidden',
-  },
   s12nCardContainer: {
     maxHeight: 10000, // give a maxHeight for smooth transition
+  },
+  subDomainCard: {
+    backgroundColor: color.darkPrimary,
+  },
+  subDomainCardNotInfiniteMode: {
+    width: '100%',
+  },
+  subDomainCardInfiniteMode: {
+    backgroundColor: color.darkPrimary,
+    position: 'fixed',
+    zIndex: zIndex.md,
+    top: 0,
+    left: 0,
+    right: 0,
   },
 });

@@ -267,14 +267,14 @@ class ProgramCreationApp extends React.Component {
       isFirstDomainSectionVisibleAfterScroll,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
-    // console.warn('-render--', this.props, this.state);
-
+    console.warn('-render--', this.state);
+    const alwaysHideHeader = step === stepSelectCourses && isInfiniteMode;
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
 
         <HeaderSmartScroll
           activeDomainSectionIndex={activeDomainSectionIndex}
-          alwaysShow={_(selectedDomainIds).size() === 0}
+          alwaysHide={alwaysHideHeader}
           isFirstDomainSectionVisibleAfterScroll={isFirstDomainSectionVisibleAfterScroll}
           isInfiniteMode={isInfiniteMode}
           onHeaderHeightChange={this.onHeaderHeightChange}

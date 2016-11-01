@@ -7,9 +7,8 @@ const {
 
 import {Button, LayeredS12nCard} from 'src';
 const Waypoint = require('react-waypoint');
+import {pure} from 'recompose';
 
-
-const collapsedS12nIds = ['s1', 's2', 's3'];
 const expandedS12nIds = [
   's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10',
   's11', 's12', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20',
@@ -46,10 +45,10 @@ class DomainSectionS12nList extends React.Component {
   }
 
   componentWillReceiveProps({initialS12nCount, isExpanded}) {
-    if (isExpanded !== this.props.isExpanded) {
+    if (isExpanded !== this.props.isExpanded || initialS12nCount !== this.props.initialS12nCount) {
       this.setState({
         s12nIds: this.getCourseIds(initialS12nCount),
-        reachedLimit: false
+        reachedLimit: false,
       });
     }
   }
@@ -92,9 +91,9 @@ class DomainSectionS12nList extends React.Component {
     const renderWayPoint = isExpanded && !reachedLimit && !isLoading;
 
     return (
-      <div className="row m-b-2">
+      <div {...cssWithClass('row m-b-2', styles.DomainSectionS12nList)}>
         {s12nsIdsWithSelect.map(item => (
-          <div key={`LayeredS12nCard~${item.id}`} className="col-xs-12 col-md-6 col-lg-4">
+          <div key={`LayeredS12nCard~${item.id}`} className="col-xs-12 col-md-6 col-lg-4 col-xl-3">
             <LayeredS12nCard
               id={item.id}
               isSelected={item.isSelected}
@@ -120,7 +119,8 @@ class DomainSectionS12nList extends React.Component {
   }
 }
 
-module.exports = DomainSectionS12nList;
+
+module.exports = pure(DomainSectionS12nList);
 
 const styles = StyleSheet.create({
   DomainSectionS12nList: {

@@ -10,13 +10,14 @@ import withApiMockData from 'src/components/hocs/withApiMockData';
 import { courseraLogo } from 'src/assets/pngAssets';
 import Measure from 'react-measure';
 import withScrollInfo from 'src/components/hocs/withScrollInfo';
+import {compose, pure} from 'recompose';
 
 const FIRST_SECTION_SCROLL_POINT = 360;  // adjust later
 
 class HeaderSmartScroll extends React.Component {
   static propTypes = {
     activeDomainSectionIndex: React.PropTypes.number,
-    alwaysShow: React.PropTypes.bool, // Allow overwrite
+    alwaysHide: React.PropTypes.bool, // Allow overwrite
     children: React.PropTypes.node,
     isFirstDomainSectionVisibleAfterScroll: React.PropTypes.bool,
     isInfiniteMode: React.PropTypes.bool,
@@ -33,25 +34,25 @@ class HeaderSmartScroll extends React.Component {
     this._isMounted = true;
   }
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
   componentWillReceiveProps({lastScrollPosition}) {
-    if (lastScrollPosition > FIRST_SECTION_SCROLL_POINT ) {
+    if (lastScrollPosition > FIRST_SECTION_SCROLL_POINT) {
       this.props.onScrollPassFirstDomainSection();
-    }
-  }
-
-  onMeasure = (dimensions) => {
-    if (this._isMounted) {
-      this.setState({containerHeight: dimensions.height})
     }
   }
 
   componentWillUpdate(nextProps, {containerHeight}) {
     if (this.state.containerHeight !== containerHeight) {
       this.props.onHeaderHeightChange(containerHeight);
+    }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  onMeasure = (dimensions) => {
+    if (this._isMounted) {
+      this.setState({containerHeight: dimensions.height});
     }
   }
 
@@ -65,23 +66,27 @@ class HeaderSmartScroll extends React.Component {
       lastScrollPosition,
       isScrollingDown,
       isFirstDomainSectionVisibleAfterScroll,
-      alwaysShow,
+      alwaysHide,
     } = this.props;
     const {containerHeight} = this.state;
-    // Hide the container if we are in infiniteMode, or we reached a pointer close to this container
-    // Quite tricky here, will investgiate more later
-    const hideContainer = (!alwaysShow && isFirstDomainSectionVisibleAfterScroll) || (isInfiniteMode && lastScrollPosition > 200);
-    console.warn('---', this.props);
+
+    const hideContainer = alwaysHide;
+    console.warn('--hideContainer-', hideContainer, containerHeight, lastScrollPosition);
 
     return (
-      <SmartScrollWrapper delta={50} containerHeight={containerHeight} zIndex={hideContainer ? -1 : 1}>
+      <SmartScrollWrapper
+        delta={50}
+        containerHeight={containerHeight}
+        alwaysHide={alwaysHide}
+        zIndex={zIndex.xlg}
+      >
         <Measure
           onMeasure={this.onMeasure}
         >
           <div {...css(styles.mainContainer)}>
             <header {...cssWithClass('container-fluid', styles.HeaderSmartScroll)} >
               <div {...cssWithClass('container horizontal-box align-items-spacebetween wrap', styles.headerInner)}>
-                <a href="/"> <img src={courseraLogo} alt="Coursera Logo"/></a>
+                <a href="/"> <img src={courseraLogo} alt="Coursera Logo" /></a>
                 {isInfiniteMode && <p>Infinite Mode</p>}
                 <div className="horizontal-box align-items-vertical-center">
                   {isLoggedIn &&
@@ -103,7 +108,14 @@ class HeaderSmartScroll extends React.Component {
 }
 
 
-module.exports = withScrollInfo({delta: 160, updateInterval: 400})(HeaderSmartScroll);
+
+
+module.exports = compose(
+  withScrollInfo({delta: 160, updateInterval: 400}),
+  // pure,
+)(HeaderSmartScroll);
+// module.exports = withScrollInfo({delta: 160, updateInterval: 400})(HeaderSmartScroll);
+// module.exports = HeaderSmartScroll;
 
 const styles = StyleSheet.create({
   HeaderSmartScroll: {
