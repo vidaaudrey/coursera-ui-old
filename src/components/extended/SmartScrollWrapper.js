@@ -23,7 +23,6 @@ const SmartScrollWrapper = ({
   const hideContainer = (lastScrollPosition >= containerHeight && isScrollingDown) || alwaysHide;
   const dynamicStyles = getStyles({containerHeight, zIndexProp});
   const hideStyle = (hideContainer && dynamicStyles.hideContainer) || {};
-
   // mergedStyles is combination of component height and top offset
   const mergedStyles = {...dynamicStyles.SmartScrollWrapper, ...hideStyle};
 
@@ -72,8 +71,8 @@ function getStyles({containerHeight, zIndexProp}) {
 }
 
 module.exports = compose(
-  pure,
   withScrollInfo({delta: DELTA}),
+  pure,
 )(SmartScrollWrapper);
 
 const styles = StyleSheet.create({

@@ -40,6 +40,7 @@ class DomainSectionCardList extends React.Component {
     selectedS12nIds: React.PropTypes.array,
     subdomainIds: React.PropTypes.array.isRequired,
 
+    // HOC
     scrollToTop: React.PropTypes.func.isRequired,
   }
 
@@ -54,7 +55,9 @@ class DomainSectionCardList extends React.Component {
   }
 
   componentDidMount() {
-    this.props.onLoadSubdomainContainer({ref: this.containerRef, index: this.props.index});
+    if (this.domainContainerRef) {
+      this.props.onLoadSubdomainContainer({ref: this.domainContainerRef, index: this.props.index});
+    }
   }
   onExpandCourse = (index) => {
     this.props.scrollToTop();
@@ -65,6 +68,7 @@ class DomainSectionCardList extends React.Component {
     this.props.scrollToTop();
     this.props.onEnterInfiniteModeByS12n(index);
   }
+
   onSelectSubdomainChange = (data, allSelectedIds) => {
     console.warn('onSelectSubdomainChange', allSelectedIds);
   }
@@ -101,12 +105,12 @@ class DomainSectionCardList extends React.Component {
       paddingTop: isInfiniteMode ? subDomainCardHeight - 48 : 0,
     };
 
-    console.warn('--DomainSectionCardList-', this.props);
+    console.warn('--DomainSectionCardList-', subDomainCardHeight);
     return (
-      <div {...css(styles.DomainSectionCardList, !isSelected && styles.visuallyHide)}>
+      <div {...css(styles.DomainSectionCardList, !isSelected && styles.visuallyHide)} >
         <div
+          ref={r => (this.domainContainerRef = r)}
           {...cssWithClass(isInfiniteMode ? 'w100' : 'container', styles.cardTransition, isInfiniteMode ? styles.subDomainCardInfiniteMode : styles.subDomainCardNotInfiniteMode)}
-          ref={r => (this.containerRef = r)}
         >
           <div {...cssWithClass(isInfiniteMode ? 'container' : '', styles.subDomainCardInnerContainer)}>
             <DomainSectionSubDomainCard
@@ -152,7 +156,7 @@ class DomainSectionCardList extends React.Component {
               responsiveConfig={{
                 xs: {initialCourseCount: 2},
                 sm: {initialCourseCount: 4},
-                md: {initialCourseCount: 4},
+                md: {initialCourseCount: 6},
                 lg: {initialCourseCount: 8},
                 xl: {initialCourseCount: 8},
                 xxl: {initialCourseCount: 12},
@@ -169,6 +173,7 @@ class DomainSectionCardList extends React.Component {
   }
 }
 
+// module.exports = DomainSectionCardList;
 module.exports = compose(withScrollTo({duration: 1500}))(DomainSectionCardList);
 
 

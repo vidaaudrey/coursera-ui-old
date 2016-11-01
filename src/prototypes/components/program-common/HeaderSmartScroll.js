@@ -12,18 +12,14 @@ import Measure from 'react-measure';
 import withScrollInfo from 'src/components/hocs/withScrollInfo';
 import {compose, pure} from 'recompose';
 
-const FIRST_SECTION_SCROLL_POINT = 360;  // adjust later
 
 class HeaderSmartScroll extends React.Component {
   static propTypes = {
     activeDomainSectionIndex: React.PropTypes.number,
     alwaysHide: React.PropTypes.bool, // Allow overwrite
     children: React.PropTypes.node,
-    isFirstDomainSectionVisibleAfterScroll: React.PropTypes.bool,
-    isInfiniteMode: React.PropTypes.bool,
     isLoggedIn: React.PropTypes.bool,
-    onHeaderHeightChange: React.PropTypes.func.isRequired,
-    onScrollPassFirstDomainSection: React.PropTypes.func.isRequired,
+    onHeaderHeightChange: React.PropTypes.func,
   }
 
   state = {
@@ -34,14 +30,8 @@ class HeaderSmartScroll extends React.Component {
     this._isMounted = true;
   }
 
-  componentWillReceiveProps({lastScrollPosition}) {
-    if (lastScrollPosition > FIRST_SECTION_SCROLL_POINT) {
-      this.props.onScrollPassFirstDomainSection();
-    }
-  }
-
   componentWillUpdate(nextProps, {containerHeight}) {
-    if (this.state.containerHeight !== containerHeight) {
+    if (this.state.containerHeight !== containerHeight && this.props.onHeaderHeightChange) {
       this.props.onHeaderHeightChange(containerHeight);
     }
   }
@@ -59,26 +49,20 @@ class HeaderSmartScroll extends React.Component {
   render() {
     const {
       isLoggedIn,
-      isInfiniteMode,
       children,
-      activeDomainSectionIndex,
-      didScroll,
-      lastScrollPosition,
-      isScrollingDown,
-      isFirstDomainSectionVisibleAfterScroll,
       alwaysHide,
     } = this.props;
     const {containerHeight} = this.state;
 
     const hideContainer = alwaysHide;
-    console.warn('--hideContainer-', hideContainer, containerHeight, lastScrollPosition);
+    console.warn('--hideContainer-', hideContainer, containerHeight, alwaysHide);
 
     return (
       <SmartScrollWrapper
         delta={50}
         containerHeight={containerHeight}
-        alwaysHide={alwaysHide}
         zIndex={zIndex.xlg}
+        alwaysHide={alwaysHide}
       >
         <Measure
           onMeasure={this.onMeasure}
@@ -87,7 +71,6 @@ class HeaderSmartScroll extends React.Component {
             <header {...cssWithClass('container-fluid', styles.HeaderSmartScroll)} >
               <div {...cssWithClass('container horizontal-box align-items-spacebetween wrap', styles.headerInner)}>
                 <a href="/"> <img src={courseraLogo} alt="Coursera Logo" /></a>
-                {isInfiniteMode && <p>Infinite Mode</p>}
                 <div className="horizontal-box align-items-vertical-center">
                   {isLoggedIn &&
                     <Avatar size={44} imgSrc="https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg" />
@@ -108,14 +91,11 @@ class HeaderSmartScroll extends React.Component {
 }
 
 
-
-
 module.exports = compose(
   withScrollInfo({delta: 160, updateInterval: 400}),
-  // pure,
+  pure,
 )(HeaderSmartScroll);
-// module.exports = withScrollInfo({delta: 160, updateInterval: 400})(HeaderSmartScroll);
-// module.exports = HeaderSmartScroll;
+
 
 const styles = StyleSheet.create({
   HeaderSmartScroll: {

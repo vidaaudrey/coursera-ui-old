@@ -22,7 +22,6 @@ module.exports = ({duration = 2000}) => (
         smooth: true,
         duration,
       });
-      // console.warn('-scrollTo--', pos, pos.y, offSetY, pos.y + offSetY);
     },
     scrollToTop: props => () => (
       scroll.scrollToTop({

@@ -14,7 +14,6 @@ import ProgramSelectDomainPage from 'src/prototypes/components/program-creation/
 import ProgramSelectCoursePage from 'src/prototypes/components/program-creation/ProgramSelectCoursePage';
 import ProgramPreviewPage from 'src/prototypes/components/program-creation/ProgramPreviewPage';
 import ProgramFixedFooter from 'src/prototypes/components/program-creation/ProgramFixedFooter';
-import SearchAndDomainSelectCard from 'src/prototypes/components/program-creation/SearchAndDomainSelectCard';
 const Scroll  = require('react-scroll');
 const scroll = Scroll.animateScroll;
 
@@ -48,7 +47,7 @@ class ProgramCreationApp extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    this._subDomainContainerRefs = [];
+    // this._subDomainContainerRefs = [];
     this._allDomainIds = _(props.domains).pluck('id');
     // Keep a record of all courseIds in a s12n
     this._selectedS12nRecord = {};
@@ -85,76 +84,8 @@ class ProgramCreationApp extends React.Component {
     this.setState({programTagline});
   }
 
-  onSetSearchKeyword = (searchKeyWord) => {
-    this.setState({searchKeyWord});
-  }
-
-  onSetDomains = ({selectedDomainIds, id, newIsSelect}) => {
-    this.setState({selectedDomainIds, isInfiniteMode: false, activeDomainSectionIndex: -1});
-    // If newly selected, scroll to that section, otherwise, scroll to top
-    // Only scroll if it's beyong the first section
-    const shouldScrollToFirstSection = (!newIsSelect && _(this.state.selectedDomainIds).size() < 2) || this._allDomainIds[0] === id;
-    this._scrollToDomainSection(id, shouldScrollToFirstSection);
-    if (shouldScrollToFirstSection || !newIsSelect) {
-      this.setState({isFirstDomainSectionVisibleAfterScroll: true});
-    }
-
-    // if (newIsSelect && _(this.state.selectedDomainIds).size() > 1) {
-    //   this._scrollToDomainSection(id, false);
-    // } else {
-    //   this._scrollToDomainSection(this._allDomainIds[0]);
-    // }
-  }
-
-  onScrollPassFirstDomainSection = () => {
-    if (this.state.isFirstDomainSectionVisibleAfterScroll) {
-      this.setState({isFirstDomainSectionVisibleAfterScroll: false});
-    }
-  }
-
   onCreateProgram = () => {
     this.setState({step: stepCreateProgram});
-  }
-
-  onToggleCourseSelect = (courseId, isSelected) => {
-    if (isSelected) {
-      this.handleAddCourse(courseId);
-    } else {
-      this.handleRemoveCourse(courseId);
-    }
-  }
-
-  onToggleS12nSelect = (s12nId, isSelected, s12nCourseIds = []) => {
-    if (isSelected) {
-      this.handleAddS12n(s12nId, s12nCourseIds);
-    } else {
-      this.handleRemoveS12n(s12nId, s12nCourseIds);
-    }
-  }
-
-  onEnterInfiniteModeByCourse = (activeDomainSectionIndex) => {
-    this._handleExpand({activeDomainSectionIndex, isCourseExpanded: true});
-  }
-
-  onEnterInfiniteModeByS12n = (activeDomainSectionIndex) => {
-    this._handleExpand({activeDomainSectionIndex, isCourseExpanded: false});
-  }
-
-  onLeaveInfiniteMode = () => {
-    this.setState({isInfiniteMode: false, scrollY: 0});
-  }
-
-  onSetInfiniteScrollSection = ({index: activeDomainSectionIndex, isCourseExpanded}) => {
-    this.setState({activeDomainSectionIndex, isCourseExpanded});
-  }
-
-  onHeaderHeightChange = (headerHeight) => {
-    this.setState({headerHeight});
-  }
-
-  onLoadSubdomainContainer = ({ref, index}) => {
-    // Keep a copy of all the containerRefs so we can query at runtime
-    this._subDomainContainerRefs[index] = ref;
   }
 
   onProgramNameNext = () => {
@@ -185,70 +116,6 @@ class ProgramCreationApp extends React.Component {
     this.setState({step: stepInviteMembers});
   }
 
-  handleAddCourse = (id) => {
-    let selectedCourseIds = [...this.state.selectedCourseIds, id];
-    selectedCourseIds = _.uniq(selectedCourseIds);
-    this.setState({
-      selectedCourseIds,
-      currentTotalSelectCount: this.state.currentTotalSelectCount + 1,
-    });
-  }
-
-  handleRemoveCourse = (id) => {
-    const selectedCourseIds = _.reject(this.state.selectedCourseIds, item => item === id);
-    this.setState({
-      selectedCourseIds,
-      currentTotalSelectCount: this.state.currentTotalSelectCount - 1,
-    });
-  }
-
-  handleAddS12n = (id, s12nCourseIds = []) => {
-    let selectedS12nIds = [...this.state.selectedS12nIds, id];
-    selectedS12nIds = _.uniq(selectedS12nIds);
-    this.setState({
-      selectedS12nIds,
-      currentTotalSelectCount: this.state.currentTotalSelectCount + _(s12nCourseIds).size(),
-    });
-
-    this._selectedS12nRecord[id] = s12nCourseIds;
-  }
-
-  handleRemoveS12n = (id, s12nCourseIds = []) => {
-    const selectedS12nIds = _.reject(this.state.selectedS12nIds, item => item === id);
-    this.setState({
-      selectedS12nIds,
-      currentTotalSelectCount: this.state.currentTotalSelectCount - _(s12nCourseIds).size(),
-    });
-  }
-
-  _handleExpand = ({activeDomainSectionIndex, isCourseExpanded}) => {
-    const pos = getScreenCordinates(this._subDomainContainerRefs[activeDomainSectionIndex], window.document);
-    const scrollY = pos.y;
-    this.setState({
-      isInfiniteMode: true,
-      isCourseExpanded,
-      activeDomainSectionIndex,
-      scrollY,
-    });
-    this._scrollTo(scrollY - NAVBAR_HEIGHT, DEFAULT_EXPAND_DURATION);
-  }
-
-  _scrollToDomainSection = (domainId, shouldScrollToFirstSection) => {
-    // Get the domain index and scroll to the corresponding section
-    const domainIndex = shouldScrollToFirstSection ? 0 : _(this._allDomainIds).indexOf(domainId);
-    if (this._subDomainContainerRefs[domainIndex]) {
-      const pos = getScreenCordinates(this._subDomainContainerRefs[domainIndex], window.document);
-      this._scrollTo(pos.y, DEFAULT_EXPAND_DURATION * 3);
-    }
-  }
-
-  _scrollTo = (scrollY, duration) => {
-    scroll.scrollTo(scrollY, {
-      smooth: true,
-      duration: duration || DEFAULT_EXPAND_DURATION,
-    });
-  }
-
   // handleInviteMemberPrev = () => {
   //   this.setState({step: stepSelectCourses});
   // }
@@ -264,33 +131,13 @@ class ProgramCreationApp extends React.Component {
       selectedDomainIds, selectedCourseIds, selectedS12nIds,
       seatLimit, currentTotalSelectCount, isInfiniteMode,
       headerHeight, isCourseExpanded, activeDomainSectionIndex,
-      isFirstDomainSectionVisibleAfterScroll,
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
-    console.warn('-render--', this.state);
-    const alwaysHideHeader = step === stepSelectCourses && isInfiniteMode;
+    const alwaysHideHeader = step === stepSelectCourses;
+    // console.warn('-render--', alwaysHideHeader, this.state);
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
-
-        <HeaderSmartScroll
-          activeDomainSectionIndex={activeDomainSectionIndex}
-          alwaysHide={alwaysHideHeader}
-          isFirstDomainSectionVisibleAfterScroll={isFirstDomainSectionVisibleAfterScroll}
-          isInfiniteMode={isInfiniteMode}
-          onHeaderHeightChange={this.onHeaderHeightChange}
-          onScrollPassFirstDomainSection={this.onScrollPassFirstDomainSection}
-        >
-          {showSelectCoursePage &&
-            <SearchAndDomainSelectCard
-              domains={domains}
-              onSetDomains={this.onSetDomains}
-              onSetSearchKeyword={this.onSetSearchKeyword}
-              searchKeyWord={searchKeyWord}
-              selectedDomainIds={selectedDomainIds}
-            />
-          }
-        </HeaderSmartScroll>
-
+        {!alwaysHideHeader && <HeaderSmartScroll />}
         <div {...css(styles.main)}>
           {step === stepCreateProgramName &&
             <ProgramAddNamePage
@@ -311,6 +158,7 @@ class ProgramCreationApp extends React.Component {
           }
           {showSelectCoursePage &&
             <ProgramSelectCoursePage
+              domains={domains}
               headerHeight={headerHeight}
               searchKeyWord={searchKeyWord}
               selectedCourseIds={selectedCourseIds}
