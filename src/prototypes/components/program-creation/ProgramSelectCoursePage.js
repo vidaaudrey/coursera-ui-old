@@ -200,7 +200,8 @@ class ProgramSelectCoursePage extends React.Component {
       searchKeyWord,
       headerHeight,
     } = this.state;
-    console.warn('-page--', this.props, this.state);
+    // console.warn('-page--', this.props, this.state);
+
     const domainListData = domains.map(item => ({...item, isSelected: _(selectedDomainIds).contains(item.id)}));
     const mainContainerStyle = {
       paddingTop: isInfiniteMode ? 0 : headerHeight,
