@@ -57,8 +57,12 @@ module.exports = {
     primaryText: midnight600,
     secondaryText: midnight300,
     divider: dusk200,
+
+    // Need further discuss with design
     bgGray: dawn400,
     disabled: dawn400,
+    disabledText: dusk200,
+    disabledTextThemeDark: dusk200,
     lightGray: dawn300,
     gray: dusk100,
     darkGray: dusk400,
@@ -68,7 +72,7 @@ module.exports = {
     success: turquoise500,
     info: blue500,
     white: '#fff',
-    whiteHalf: 'rgba(255,255,255,0.50)', // Todo: discuss about opacity
+    white50: 'rgba(255,255,255,0.50)', // Todo: discuss about opacity
     icon: midnight600,
     shadow: dawn500,
   },
@@ -84,25 +88,5 @@ module.exports = {
     md: 3000,  // SmartScrollWrapper
     lg: 4000,
     xlg: 10000, // Critical, e.g. modal
-  },
-  // Component specific config may get moved out later
-  button: {
-    minWidth: 72,
-    disabledTextColor: dusk200,
-    disabledTextColorThemeDark: dusk500,
-    size: {
-      sm: {
-        fontSize: '0.8rem',
-        padding: '0.3rem 0.8rem',
-      },
-      md: {
-        fontSize: '1rem',
-        padding: '0.6rem 1rem',
-      },
-      lg: {
-        fontSize: '1.2rem',
-        padding: '1rem 1.6rem',
-      },
-    },
   },
 };

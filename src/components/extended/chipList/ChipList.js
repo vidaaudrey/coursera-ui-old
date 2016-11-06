@@ -1,55 +1,43 @@
-const React = require('react');
-const _ = require('underscore');
-const {
-  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
-} = require('src/styles/theme');
-
+/* eslint-disable no-use-before-define, react/no-unused-prop-types */
+import React, {PropTypes, Component} from 'react';
+import {css, StyleSheet, color, spacing, transition} from 'src/styles/theme';
+import _ from 'underscore';
 import Chip from './Chip';
 
-const SELECT_ALL_ID = -2;
+const SELECT_ALL_ID = -1;
 
 const idType = [
-  React.PropTypes.string,
-  React.PropTypes.number,
+  PropTypes.string,
+  PropTypes.number,
 ];
-class ChipList extends React.Component {
-  static propTypes = {
-    listData: React.PropTypes.arrayOf(React.PropTypes.shape({
-      id: React.PropTypes.oneOfType(idType).isRequired,
-      label: React.PropTypes.string.isRequired,
-      isSelected: React.PropTypes.bool,
-    }).isRequired).isRequired,
-    showSelectAll: React.PropTypes.bool,
-    selectAllLabel: React.PropTypes.string,
-    onSelectChange: React.PropTypes.func,
-    selectAllId: React.PropTypes.oneOfType(idType),
-    isDarkTheme: React.PropTypes.bool,
-    ChipAttributes: React.PropTypes.shape({
-      isDarkTheme: React.PropTypes.bool,
-      height: React.PropTypes.nubmer,
-      fontSize: React.PropTypes.string,
-    }),
-    alignCenter: React.PropTypes.bool,
-  };
 
-  constructor(props, context) {
-    super(props, context);
-    const {listData, showSelectAll} = props;
-    // Overwrite isSelected properties
-    this.state = ChipList.createLocalState(listData, showSelectAll);
-  }
+class ChipList extends Component {
+  static propTypes = {
+    alignCenter: PropTypes.bool,
+    listData: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType(idType).isRequired,
+      label: PropTypes.string.isRequired,
+      isSelected: PropTypes.bool,
+    }).isRequired).isRequired,
+    ChipAttributes: PropTypes.shape({
+      isThemeDark: PropTypes.bool,
+      height: PropTypes.nubmer,
+      fontSize: PropTypes.string,
+    }),
+    isThemeDark: PropTypes.bool,
+    onSelectChange: PropTypes.func,
+    selectAllId: PropTypes.oneOfType(idType),
+    selectAllLabel: PropTypes.string,
+    showSelectAll: PropTypes.bool,
+    style: PropTypes.object,
+  };
 
   static defaultProps = {
     listData: [],
-    selectAllLabel: 'Select All',
     selectAllId: SELECT_ALL_ID,
+    selectAllLabel: 'Select All',
+    style: {},
   }
-
-  // componentWillReceiveProps({listData, showSelectAll}) {
-  //   if (this.props.listData !== listData || this.props.showSelectAll !== showSelectAll) {
-  //     this.setState(ChipList.createLocalState(listData, showSelectAll));
-  //   }
-  // }
 
   static createLocalState(listData = [], showSelectAll) {
     let newListData = listData;
@@ -69,6 +57,13 @@ class ChipList extends React.Component {
       listData: newListData,
       isAllSelected,
     };
+  }
+
+  constructor(props, context) {
+    super(props, context);
+    const {listData, showSelectAll} = props;
+    // Overwrite isSelected properties
+    this.state = ChipList.createLocalState(listData, showSelectAll);
   }
 
   toggleSelect = (id) => {
@@ -97,7 +92,7 @@ class ChipList extends React.Component {
 
       // in case the parent component want to do some further work, pass the id, selected status and new list data back
       if (this.props.onSelectChange) {
-        let allSelectedIds = _(newListData)
+        const allSelectedIds = _(newListData)
           .chain()
           .filter(item => !!item.isSelected)
           .pluck('id')
@@ -108,7 +103,6 @@ class ChipList extends React.Component {
   }
 
   toggleSelectAll = () => {
-    const {isAllSelected} = this.state;
     const newIsAllSelected = !this.state.isAllSelected;
     /* eslint-disable no-param-reassign */
     const newListData = this.state.listData.map((item) => {
@@ -130,18 +124,25 @@ class ChipList extends React.Component {
     }
   }
 
-
   render() {
     const {
-      style, showSelectAll, selectAllLabel, selectAllId, isDarkTheme,
-      ChipAttributes, alignCenter,
+      alignCenter,
+      ChipAttributes,
+      isThemeDark,
+      selectAllId,
+      selectAllLabel,
+      showSelectAll,
+      style,
     } = this.props;
 
     const dynamicStyles = getStyles({alignCenter});
     const { isAllSelected, listData } = this.state;
+    if (isThemeDark) {
+      ChipAttributes.isThemeDark = isThemeDark;
+    }
 
     return (
-      <div style={dynamicStyles}>
+      <div {...css(styles.ChipList)} style={{...dynamicStyles, ...style}}>
         {showSelectAll &&
           <Chip
             {...ChipAttributes}
@@ -155,7 +156,7 @@ class ChipList extends React.Component {
           {_(listData).map(item =>
             <Chip
               {...ChipAttributes}
-              key={`ChipList~${item.id}`}
+              key={`Chip~${item.id}`}
               label={item.label}
               isSelected={item.isSelected}
               onClick={() => (this.toggleSelect(item.id))}
@@ -180,13 +181,5 @@ module.exports = ChipList;
 const styles = StyleSheet.create({
   ChipList: {
     transition: transition.easeOut(),
-    border: 'none',
-    overflow: 'hidden',
-    padding: '0 1rem',
-    margin: 0,
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    whiteSpace: 'nowrap',
-    cursor: 'pointer',
   },
 });

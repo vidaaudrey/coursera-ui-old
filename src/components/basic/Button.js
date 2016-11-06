@@ -1,6 +1,24 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes, Component} from 'react';
-import {css, StyleSheet, color, spacing, transition, button} from 'src/styles/theme';
+import {css, StyleSheet, color, spacing, transition} from 'src/styles/theme';
+
+const CONFIG = {
+  minWidth: 72,
+  size: {
+    sm: {
+      fontSize: '0.8rem',
+      padding: '0.3rem 0.8rem',
+    },
+    md: {
+      fontSize: '1rem',
+      padding: '0.6rem 1rem',
+    },
+    lg: {
+      fontSize: '1.2rem',
+      padding: '1rem 1.6rem',
+    },
+  },
+};
 
 const BUTTON_TYPES = {
   primary: 'primary',
@@ -23,14 +41,14 @@ const BUTTON_SIZES = {
  */
 // TODO[Audrey]:
 const Button = ({
-  style,
-  htmlAttributes = {},
-  type = BUTTON_TYPES.default,
-  size = 'md',
   children,
+  htmlAttributes = {},
+  isThemeDark,
   label,
   onClick,
-  isThemeDark,
+  size = 'md',
+  style,
+  type = BUTTON_TYPES.default,
 }) => {
   const dynamicStyles = getStyles({size});
   const mergedStyles = {...dynamicStyles.Button, ...style};
@@ -50,38 +68,34 @@ const Button = ({
       {label}
       {children}
     </button>
- );
+  );
 };
 
 // Explicity declare the default props for documentation purpose,
 Button.defaultProps = {
-  style: {},
   htmlAttributes: {},
   size: 'md',
+  style: {},
   type: BUTTON_TYPES.default,
 };
 
 Button.propTypes = {
-  // Override the inline-styles of the root element.
-  style: PropTypes.object,
-
-  htmlAttributes: PropTypes.object,
-
-  // Button types.
-  type: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
-  size: PropTypes.oneOf(Object.keys(BUTTON_SIZES)),
-
   // Can use to letters inside the avatar.
   children: PropTypes.node,
 
-  // The text for the button
+  htmlAttributes: PropTypes.object,
+  // Whether button has dark bg parent element.
+  isThemeDark: PropTypes.bool,
+  // The text for the button.
   label: PropTypes.string,
-
-  // click event
+  // click event.
   onClick: PropTypes.func,
 
-  // Whether button has dark bg parent element
-  isThemeDark: PropTypes.bool,
+  size: PropTypes.oneOf(Object.keys(BUTTON_SIZES)),
+  // Override the inline-styles of the root element.
+  style: PropTypes.object,
+  // Button types.
+  type: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
 };
 
 // Dynamic styles
@@ -103,8 +117,8 @@ const styles = StyleSheet.create({
     userSelect: 'none',
     position: 'relative',
     textAlign: 'center',
-    fontSize: button.fontSize,
-    lineHeight: button.fontSize,
+    fontSize: CONFIG.fontSize,
+    lineHeight: CONFIG.fontSize,
     display: 'inline-block',
     verticalAlign: 'middle',
     whiteSpace: 'nowrap',
@@ -113,7 +127,10 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     filter: 'none',
     textDecoration: 'none',
-    minWidth: button.minWidth,
+    minWidth: CONFIG.minWidth,
+    ':focus' : {
+      outline: 'none',
+    },
   },
   primary: {
     color: color.textIcon,
@@ -171,14 +188,14 @@ const styles = StyleSheet.create({
   disabled: {
     backgroundColor: color.disabled,
     border: `1px solid ${color.disabled}`,
-    color: button.disabledTextColor,
+    color: color.disabledText,
     cursor: 'not-allowed',
     pointerEvents: 'none',
   },
   disabledThemeDark: {
     backgroundColor: 'transparent',
-    border: `1px solid ${button.disabledTextColorThemeDark}`,
-    color: button.disabledTextColorThemeDark,
+    border: `1px solid ${color.disabledTextThemeDark}`,
+    color: color.disabledTextThemeDark,
   },
   noStyle: {
     backgroundColor: 'transparent',
@@ -192,16 +209,16 @@ const styles = StyleSheet.create({
     color: color.white,
   },
   sm: {
-    padding: button.size.sm.padding,
-    fontSize: button.size.sm.fontSize,
+    padding: CONFIG.size.sm.padding,
+    fontSize: CONFIG.size.sm.fontSize,
   },
   md: {
-    padding: button.size.md.padding,
-    fontSize: button.size.md.fontSize,
+    padding: CONFIG.size.md.padding,
+    fontSize: CONFIG.size.md.fontSize,
   },
   lg: {
-    padding: button.size.lg.padding,
-    fontSize: button.size.lg.fontSize,
+    padding: CONFIG.size.lg.padding,
+    fontSize: CONFIG.size.lg.fontSize,
   },
   icon: {
     color: color.primary,

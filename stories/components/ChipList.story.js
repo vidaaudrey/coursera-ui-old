@@ -96,8 +96,8 @@ storiesOf('extended.ChipList', module)
           selectAllLabel={'All Topics'}
           listData={listData}
           onSelectChange={action('select changed')}
+          isThemeDark
           ChipAttributes={{
-            isDarkTheme: true,
             height: 32,
             fontSize: 'sm',
           }}
@@ -120,7 +120,7 @@ storiesOf('extended.ChipList', module)
       <Chip
         label="dark theme, selected, height 28, fontsize xs"
         isSelected={true}
-        isDarkTheme={true}
+        isThemeDark={true}
         height={28}
         fontSize={'xs'}
         onClick={action('clicked')}
@@ -144,13 +144,13 @@ storiesOf('extended.ChipList', module)
         <div className="m-b-3 bg-primary p-a-3">
           <Chip
             label="dark theme"
-            isDarkTheme
+            isThemeDark
             onClick={action('clicked')}
           />
           <Chip
             label="dark theme, selected, height 28, fontsize xs"
             isSelected
-            isDarkTheme
+            isThemeDark
             height={28}
             fontSize={'xs'}
             onClick={action('clicked')}

@@ -1,49 +1,60 @@
-const React = require('react');
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+/* eslint-disable no-use-before-define */
+import React, {PropTypes, Component} from 'react';
+import {css, cssWithClass, StyleSheet, color, spacing, transition, font} from 'src/styles/theme';
 import {SvgCheckOutline, SvgCheckSolid} from 'src/components/svg/coursera';
 
-const DEFAULT_HEIGHT = 36;
-const HEIGHT_TO_ICON_RATIO = 0.6;
+const CONFIG = {
+  defaultHeight: 36,
+  heightToIconRatio: 0.6,
+};
 
 const Chip = ({
-  style = {}, styles, htmlAttributes = {},
-  label, theme, isDarkTheme, isSelected, onClick, fontSize = 'md',
-  height = DEFAULT_HEIGHT,
+  fontSize = 'md',
+  height = CONFIG.defaultHeight,
+  htmlAttributes = {},
+  isSelected,
+  isThemeDark,
+  label,
+  onClick,
+  style = {},
 }) => {
-  const dynamicStyles = getStyles({isDarkTheme, theme, isSelected, height, fontSize});
+  const dynamicStyles = getStyles({ height, fontSize, isSelected, isThemeDark });
   const mergedStyles = {...dynamicStyles.Chip, ...style};
+
+  // Generate string such as 'NotSelected', 'NotSelectedThemeDark'...
+  const styleNamePartials = `${isSelected ? 'Selected' : 'NotSelected'}${isThemeDark ? 'ThemeDark' : ''}`;
 
   return (
     <button
       {...css(
         styles.Chip,
-        styles.activeButtonStyle,
-        styles.hoverButtonStyle,
-        isDarkTheme ? styles.borderLine : styles.boxShadow,
+        styles[`chip${styleNamePartials}`],
+        isThemeDark ? styles.borderLine : styles.boxShadow,
       )}
       style={mergedStyles}
       onClick={onClick}
       {...htmlAttributes}
     >
       <span className="horizontal-box align-items-vertical-center">
-        <span {...css(styles.text)} style={dynamicStyles.text}>{label}</span>
+        <span {...css(styles.label, styles[`label${styleNamePartials}`])}>{label}</span>
         <span
           {...cssWithClass(
             'horizontal-box align-items-absolute-center',
-            styles.iconContainer,
+            styles.iconContainer
           )}
         >
           {!isSelected &&
             <SvgCheckOutline
-              size={height * HEIGHT_TO_ICON_RATIO}
+              size={height * CONFIG.heightToIconRatio}
               style={dynamicStyles.icon}
+              {...css(styles.icon)}
             />
           }
           {isSelected &&
             <SvgCheckSolid
-              size={height * HEIGHT_TO_ICON_RATIO}
+              size={height * CONFIG.heightToIconRatio}
               style={dynamicStyles.icon}
-              stroke={theme.color.primary}
+              stroke={color.primary}
             />
           }
         </span>
@@ -57,93 +68,51 @@ Chip.defaultProps = {
   style: {},
   styles: {},
   htmlAttributes: {},
-  height: DEFAULT_HEIGHT,
+  height: CONFIG.defaultHeight,
 };
 
 Chip.propTypes = {
-  label: React.PropTypes.string.isRequired,
+  fontSize: PropTypes.oneOf(Object.keys(font)),
+  // Height of the chip.
+  height: PropTypes.number,
+  htmlAttributes: PropTypes.object,
   isSelected: React.PropTypes.bool,
-  isDarkTheme: React.PropTypes.bool,
+  // Whether chip has dark bg parent element.
+  isThemeDark: React.PropTypes.bool,
+  label: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired,
+  // Override the inline-styles of the root element.
+  style: PropTypes.object,
 };
 
 
-function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
-  const {color} = theme;
-  const baseStyle = {
+function getStyles({ height, fontSize, isSelected, isThemeDark }) {
+  const primaryStroke = { stroke: color.primary };
+  const whiteFill = { fill: color.white };
+  const secondaryTextFill = { fill: color.secondaryText };
+  let iconStyle = {};
+  if (isThemeDark) {
+    iconStyle = whiteFill;
+  } else if (isSelected) {
+    iconStyle = { ...whiteFill, ...primaryStroke };
+  } else {
+    iconStyle = secondaryTextFill;
+  }
+
+  return {
     Chip: {
       height,
       borderRadius: height / 2,
-      fontSize: theme.font[fontSize],
+      fontSize: font[fontSize],
       paddingLeft: height / 2,
     },
-    text: {
-    },
-    icon: {
-      fill: `${color.primary}`,
-      color: `${color.primary}`,
-    },
+    icon: iconStyle,
   };
-
-  // check different cases for theme and selected state
-  if (!isSelected && !isDarkTheme) {
-    return {
-      Chip: {
-        ...baseStyle.Chip,
-        backgroundColor: color.white,
-      },
-      text: {
-        color: color.secondaryText,
-      },
-      icon: {
-        fill: `${color.secondaryText}`,
-      },
-    };
-  } else if (!isSelected && isDarkTheme) {
-    return {
-      Chip: {
-        ...baseStyle.Chip,
-        backgroundColor: 'transparent',
-      },
-      text: {
-        color: color.white,
-      },
-      icon: {
-        fill: `${color.white}`,
-      },
-    };
-  } else if (isSelected && !isDarkTheme) {
-    return {
-      Chip: {
-        ...baseStyle.Chip,
-        color: color.white,
-        backgroundColor: color.darkPrimary,
-      },
-      text: {
-        color: color.white,
-      },
-      icon: {
-        fill: `${color.white}`,
-        stroke: color.primary,
-      },
-    };
-  } else {
-    return {
-      Chip: {
-        ...baseStyle.Chip,
-        backgroundColor: color.whiteHalf,
-      },
-      text: {
-        color: color.white,
-      },
-      icon: {
-        fill: `${color.white}`,
-      },
-    };
-  }
 }
 
-export default withStyles(({color, transition, spacing}) => ({
+module.exports = Chip;
+
+const styles = StyleSheet.create({
   Chip: {
     transition: transition.easeOut(),
     border: 'none',
@@ -153,6 +122,15 @@ export default withStyles(({color, transition, spacing}) => ({
     verticalAlign: 'middle',
     whiteSpace: 'nowrap',
     cursor: 'pointer',
+    ':active': {
+      outline: 'none',
+    },
+    ':focus': {
+      outline: 'none',
+    },
+    ':hover': {
+      color: color.primary,
+    },
   },
   boxShadow: {
     boxShadow: `1px 1px 1px ${color.shadow}`,
@@ -160,20 +138,43 @@ export default withStyles(({color, transition, spacing}) => ({
   borderLine: {
     border: `1px solid ${color.white}`,
   },
-  activeButtonStyle: {
-    ':active': {
-      outline: 'none',
-    },
-    ':focus': {
-      outline: 'none',
-    },
-  },
-  hoverButtonStyle: {
-    ':hover': {
-      color: color.primary,
-    },
-  },
-  text: {
+  label: {
     paddingRight: spacing.sm,
+    color: `${color.primary}`,
   },
-}))(Chip);
+  icon: {
+    fill: `${color.primary}`,
+    color: `${color.primary}`,
+  },
+  chipNotSelected: {
+    backgroundColor: color.white,
+  },
+  chipNotSelectedThemeDark: {
+    backgroundColor: 'transparent',
+  },
+  labelNotSelected: {
+    color: color.secondaryText,
+  },
+  labelNotSelectedThemeDark: {
+    color: color.white,
+  },
+  iconNotSelected: {
+    fill: `${color.secondaryText}`,
+  },
+  iconNotSelectedThemeDark: {
+    fill: `${color.white}`,
+  },
+  chipSelected: {
+    color: color.white,
+    backgroundColor: color.darkPrimary,
+  },
+  chipSelectedThemeDark: {
+    backgroundColor: color.white50,
+  },
+  labelSelected: {
+    color: color.white,
+  },
+  labelSelectedThemeDark: {
+    color: color.white,
+  },
+});

@@ -131,7 +131,7 @@ function getStyles({isDarkTheme, isSelected, height, theme, fontSize}) {
     return {
       Chip: {
         ...baseStyle.Chip,
-        backgroundColor: color.whiteHalf,
+        backgroundColor: color.white50,
       },
       text: {
         color: color.white,
