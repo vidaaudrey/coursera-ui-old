@@ -51,16 +51,19 @@ const DomainSectionSubDomainCard = ({
           {isInfiniteMode &&
             <Button
               isSvgButton
-              size={'sm'}
+              size={'md'}
+              type="noStyle"
+              isThemeDark
               htmlAttributes={{
                 onClick: onCollapse,
               }}
-              >
+              style={{minWidth: ICON_SIZE, padding: 0}}
+            >
               <NavigationArrowBack
                 size={ICON_SIZE}
                 color={color.white}
                 hoverColor={color.lightPrimary}
-                />
+              />
             </Button>
           }
         </div>
@@ -113,6 +116,9 @@ const styles = StyleSheet.create({
   domainName: {
     fontWeight: 'normal',
     marginRight: spacing.lg,
+  },
+  buttonWrapper: {
+
   },
   number: {
     marginRight: spacing.lg,
