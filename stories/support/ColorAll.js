@@ -1,8 +1,6 @@
-/* eslint-disable max-len */
-import React from 'react';
-import { storiesOf, action, linkTo } from '@kadira/storybook';
+import React, {PropTypes} from 'react';
 const _ = require('underscore');
-import ColorTable from '../support/ColorTable';
+import ColorTable from './ColorTable';
 
 import {
   red50, red100, red200, red300, red400, red500, red600, red700, red800, red900,
@@ -35,11 +33,15 @@ const dawn = {dawn200, dawn300, dawn400, dawn500, dawn600, dawn700, dawn800, daw
 
 const colorTableData = {red, corral, purple, pink, blue, teal, turquoise, green, yellow, midnight, dusk, dawn};
 
-storiesOf('ui.Colors', module)
-  .add('colors', () => (
+
+const ColorAll = () => {
+  return (
     <div className="horizontal-box wrap">
       {_(colorTableData).map((colors, key) => (
         <ColorTable name={key} colors={colors} key={`ColorTable~${key}`} />
       ))}
     </div>
-  ));
+  );
+};
+
+module.exports = ColorAll;

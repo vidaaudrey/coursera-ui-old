@@ -6,7 +6,12 @@ const {
 import {Avatar, Button} from 'src';
 
 class ProgramAddName extends React.Component {
-
+  static propTypes = {
+    programName: React.PropTypes.string,
+    programSlug: React.PropTypes.string,
+    programTagline: React.PropTypes.string,
+    onCreateProgram: React.PropTypes.func.isRequired,
+  }
   render() {
     const {
       programName, programSlug, programTagline,
@@ -28,18 +33,18 @@ class ProgramAddName extends React.Component {
               />
             </div>
 
-           {/*
-             <div className="m-b-1">
-               <input type="text"
-                 {...css(styles.input)}
-                 ref={(r) => (this.programSlugRef = r)}
-                 placeholder="Program Slug"
-                 defaultValue={programSlug}
-                 onChange={() => onSetProgramSlug(this.programSlugRef.value)}
-                 />
-             </div>
-             */
-           }
+            {/*
+              <div className="m-b-1">
+                <input type="text"
+                  {...css(styles.input)}
+                  ref={(r) => (this.programSlugRef = r)}
+                  placeholder="Program Slug"
+                  defaultValue={programSlug}
+                  onChange={() => onSetProgramSlug(this.programSlugRef.value)}
+                  />
+              </div>
+              */
+            }
             <div className="m-b-1">
               <input
                 type="text"

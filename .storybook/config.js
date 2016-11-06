@@ -6,6 +6,7 @@ import 'src/styles/css/bootstrap-card.css';
 import 'src/styles/css/utilities.css';
 import 'src/styles/css/box.css';
 
+import 'src/styles/css/coursera.css';
 
 setAddon(infoAddon);
 

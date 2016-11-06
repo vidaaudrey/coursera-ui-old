@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
-import React, {PropTypes} from 'react';
-const {
-  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, button,
-} = require('src/styles/theme');
+import React, {PropTypes, Component} from 'react';
+import {css, StyleSheet, color, spacing, transition, button} from 'src/styles/theme';
 
 const BUTTON_TYPES = {
   primary: 'primary',
@@ -11,6 +9,7 @@ const BUTTON_TYPES = {
   disabled: 'disabled',
   noStyle: 'noStyle',
 };
+
 const BUTTON_SIZES = {
   sm: 'sm',
   md: 'md',
@@ -28,17 +27,24 @@ const Button = ({
   htmlAttributes = {},
   type = BUTTON_TYPES.default,
   size = 'md',
-  isSvgButton,
   children,
   label,
+  onClick,
+  isThemeDark,
 }) => {
   const dynamicStyles = getStyles({size});
-  const svgButttonStyle = isSvgButton ? dynamicStyles.svgIconButton : {};
-  const mergedStyles = {...dynamicStyles.Button, ...svgButttonStyle, ...style};
+  const mergedStyles = {...dynamicStyles.Button, ...style};
   return (
     <button
+      onClick={onClick}
       {...htmlAttributes}
-      {...css(styles.Button, styles[type], styles[size], styles[`${type}Hover`])}
+      {...css(
+        styles.Button,
+        styles[type],
+        styles[size],
+        isThemeDark && styles[`${type}ThemeDark`],
+        isThemeDark && styles[`${size}ThemeDark`],
+      )}
       style={mergedStyles}
     >
       {label}
@@ -65,16 +71,17 @@ Button.propTypes = {
   type: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
   size: PropTypes.oneOf(Object.keys(BUTTON_SIZES)),
 
-  // Whether the button contains svgIcon as the only child.
-  // Create adition component if you have other elements
-  isSvgButton: PropTypes.bool,
-
   // Can use to letters inside the avatar.
   children: PropTypes.node,
 
   // The text for the button
   label: PropTypes.string,
 
+  // click event
+  onClick: PropTypes.func,
+
+  // Whether button has dark bg parent element
+  isThemeDark: PropTypes.bool,
 };
 
 // Dynamic styles
@@ -82,12 +89,8 @@ function getStyles({size}) {
   return {
     Button: {
     },
-    svgIconButton: {
-      background: 'transparent',
-      width: size,
-      height: size,
-      padding: 0,
-      border: 'none',
+    icon: {
+
     },
   };
 }
@@ -110,39 +113,59 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     filter: 'none',
     textDecoration: 'none',
-    // minWidth: button.minWidth,
+    minWidth: button.minWidth,
   },
   primary: {
     color: color.textIcon,
     backgroundColor: color.primary,
     border: `1px solid ${color.primary}`,
-  },
-  primaryHover: {
     ':hover': {
       backgroundColor: color.darkPrimary,
+    },
+  },
+  primaryThemeDark: {
+    color: color.primary,
+    backgroundColor: color.white,
+    border: `1px solid ${color.white}`,
+    ':hover': {
+      backgroundColor: color.lightPrimary,
     },
   },
   secondary: {
     color: color.primary,
     backgroundColor: color.textIcon,
     border: `1px solid ${color.primary}`,
-  },
-  secondaryHover: {
     ':hover': {
       color: color.textIcon,
+      border: `1px solid ${color.primary}`,
       backgroundColor: color.darkPrimary,
+    },
+  },
+  secondaryThemeDark: {
+    color: color.white,
+    backgroundColor: 'transparent',
+    border: `1px solid ${color.white}`,
+    ':hover': {
+      color: color.primary,
+      backgroundColor: 'transparent',
     },
   },
   default: {
     color: color.primaryText,
     backgroundColor: color.textIcon,
     border: `1px solid ${color.divider}`,
-  },
-  defaultHover: {
     ':hover': {
       color: color.textIcon,
       backgroundColor: color.darkPrimary,
       border: `1px solid ${color.primary}`,
+    },
+  },
+  defaultThemeDark: {
+    color: color.primaryText,
+    backgroundColor: color.textIcon,
+    border: `1px solid ${color.divider}`,
+    ':hover': {
+      borderColor: 'transparent',
     },
   },
   disabled: {
@@ -152,15 +175,21 @@ const styles = StyleSheet.create({
     cursor: 'not-allowed',
     pointerEvents: 'none',
   },
+  disabledThemeDark: {
+    backgroundColor: 'transparent',
+    border: `1px solid ${button.disabledTextColorThemeDark}`,
+    color: button.disabledTextColorThemeDark,
+  },
   noStyle: {
     backgroundColor: 'transparent',
     color: color.primaryText,
     border: 'none',
-  },
-  noStyleHover: {
     ':hover': {
       color: color.primary,
     },
+  },
+  noStyleThemeDark: {
+    color: color.white,
   },
   sm: {
     padding: button.size.sm.padding,
@@ -176,5 +205,5 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: color.primary,
-  }
+  },
 });

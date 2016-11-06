@@ -1,2 +1,1 @@
-import './Colors.story';
-import './Theme.story';
+import './UI.story';

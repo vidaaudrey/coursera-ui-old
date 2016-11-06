@@ -1,9 +1,9 @@
 /* eslint-disable react/no-did-mount-set-state */
 import React from 'react';
-import hoistNonReactStatic from 'hoist-non-react-statics';
+import {hoistStatics} from 'recompose';
 
 /**
- * A HOC to detect the whether component is mounted
+ * A HOC to detect whether component is mounted
  * Can use together with SSR/CSR specific logic or branching
  */
 
@@ -30,7 +30,7 @@ const withIsMounted = (Component) => {
     }
   }
 
-  hoistNonReactStatic(Component, HOC);
+  hoistStatics(Component, HOC);
   return HOC;
 };
 

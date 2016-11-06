@@ -7,43 +7,18 @@ const {
   yellow500, red500, blue700, blue100,
   dawn200, dawn400, dawn300, dawn500,
   dusk100, dusk400,
-  midnight600, midnight300, dusk200,
+  midnight600, midnight300, dusk200, red300,
+  dusk500,
 } = require('./colors');
 const {coursera, strawberry} = require('./gradients');
 const transition = require('./transition');
 
-
-function lighten(col, amt) {
-  let usePound = false;
-  if (col[0] === '#') {
-    col = col.slice(1);
-    usePound = true;
-  }
-
-  const num = parseInt(col, 16);
-  let r = (num >> 16) + amt;
-
-  if (r > 255) r = 255;
-  else if (r < 0) r = 0;
-
-  let b = ((num >> 8) & 0x00FF) + amt;
-
-  if (b > 255) b = 255;
-  else if (b < 0) b = 0;
-
-  let g = (num & 0x0000FF) + amt;
-
-  if (g > 255) g = 255;
-  else if (g < 0) g = 0;
-
-  return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
-}
-
-function cssWithClass(className, cssObject, ...rest) {
-  const dynamicClassName = css(cssObject, ...rest);
+function cssWithClass(className, cssObj, ...rest) {
+  const dynamicClassName = css(cssObj, ...rest);
   return {className: classNames(dynamicClassName, className)};
 }
 
+// Easier to write with ...css than always use className as it's not strictly className
 function cssWith(cssObj, ...rest) {
   return {className: css(cssObj, ...rest)};
 }
@@ -52,7 +27,6 @@ module.exports = {
   StyleSheet,
   css: cssWith,
   cssWithClass,
-  lighten,
   spacing: {
     minWidth: 320,
     sm: '0.5rem',
@@ -90,7 +64,7 @@ module.exports = {
     darkGray: dusk400,
 
     warning: yellow500,
-    danger: red500,
+    danger: red300,
     success: turquoise500,
     info: blue500,
     white: '#fff',
@@ -111,9 +85,11 @@ module.exports = {
     lg: 4000,
     xlg: 10000, // Critical, e.g. modal
   },
+  // Component specific config may get moved out later
   button: {
     minWidth: 72,
     disabledTextColor: dusk200,
+    disabledTextColorThemeDark: dusk500,
     size: {
       sm: {
         fontSize: '0.8rem',
