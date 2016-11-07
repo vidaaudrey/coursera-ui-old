@@ -1,7 +1,5 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import IconLibrary from '../support/IconLibrary';
-// import { ChipList, Chip } from 'src';
 import InfiniteScrollDemo from 'src/components/extended/InfiniteScrollDemo';
 
 class InfiniteScrollDemoWrapper extends React.Component {
@@ -33,7 +31,8 @@ class InfiniteScrollDemoWrapper extends React.Component {
 
   render() {
     return (
-      <div className="rc-InfiniteScrollDemoWrapper border-a"
+      <div
+        className="rc-InfiniteScrollDemoWrapper border-a"
         onScroll={this.handleScroll}
       >
         <h2>wrapper</h2>

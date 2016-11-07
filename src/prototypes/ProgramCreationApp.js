@@ -37,8 +37,6 @@ const ALL_STEPS = [
 ];
 
 const DEFAULT_HEADER_HEIGHT = 264;
-const DEFAULT_EXPAND_DURATION = 400;
-const NAVBAR_HEIGHT = 16;
 
 class ProgramCreationApp extends React.Component {
   static propTypes = {

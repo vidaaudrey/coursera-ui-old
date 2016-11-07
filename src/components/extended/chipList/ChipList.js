@@ -81,16 +81,13 @@ class ChipList extends Component {
       });
       // If every item is selected or not selected, change the all state
       const isAllSelected = _.every(newListData, ({isSelected}) => isSelected);
-      const isAllNotSelected = _.every(newListData, ({isSelected}) => !isSelected);
+      // const isAllNotSelected = _.every(newListData, ({isSelected}) => !isSelected);
       if (isAllSelected) {
         this.setState({ listData: newListData, isAllSelected: true});
-      }
-      if (isAllNotSelected) {
+      } else {
         this.setState({ listData: newListData, isAllSelected: false});
       }
-      this.forceUpdate();
 
-      // in case the parent component want to do some further work, pass the id, selected status and new list data back
       if (this.props.onSelectChange) {
         const allSelectedIds = _(newListData)
           .chain()

@@ -10,7 +10,7 @@ class ProgramAddName extends React.Component {
     programName: React.PropTypes.string,
     programSlug: React.PropTypes.string,
     programTagline: React.PropTypes.string,
-    onCreateProgram: React.PropTypes.func.isRequired,
+    onCreateProgram: React.PropTypes.func,
   }
   render() {
     const {
