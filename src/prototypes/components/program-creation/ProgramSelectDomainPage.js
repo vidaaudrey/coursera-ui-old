@@ -12,7 +12,7 @@ const _ = require('underscore');
 class ProgramSelectDomainPage extends React.Component {
 
   static propTypes = {
-    onSetDomains: React.PropTypes.func.isRequired,
+    onSetSelectedDomainIds: React.PropTypes.func.isRequired,
     domains: React.PropTypes.array.isRequired,
     selectedDomainIds: React.PropTypes.array.isRequired,
   }
@@ -27,7 +27,7 @@ class ProgramSelectDomainPage extends React.Component {
       .filter(item => item.isSelected)
       .pluck('id')
       .value();
-    this.props.onSetDomains({selectedDomainIds, id, newIsSelect});
+    this.props.onSetSelectedDomainIds({selectedDomainIds, id, newIsSelect});
   }
 
   render() {

@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes, Component} from 'react';
 import {css, cssWithClass, StyleSheet, color, spacing, transition} from 'src/styles/theme';
-
+import withScrollTo from 'src/components/hocs/withScrollTo';
+import Chip from 'src/components/extended/chipList/Chip';
 import {
-  Link, DirectLink, Element, Events, scrollSpy, animateScroll as scroll
+  Link, DirectLink, Element, Events, scrollSpy, animateScroll as scroll, scroller
 }  from 'react-scroll';
 
 function durationFn (deltaTop) {
@@ -12,30 +13,50 @@ function durationFn (deltaTop) {
 
 class ScrollDemo extends React.Component {
 
-  componentDidMount() {
-    Events.scrollEvent.register('begin', (args) => {
-      console.log('--begin--',  args, arguments);
-    })
-    Events.scrollEvent.register('end', (args) => {
-      console.log('--end--',  args, arguments);
-    })
-    scrollSpy.update();
+  // componentDidMount() {
+  //   Events.scrollEvent.register('begin', (args) => {
+  //     console.log('--begin--',  args, arguments);
+  //   })
+  //   Events.scrollEvent.register('end', (args) => {
+  //     console.log('--end--',  args, arguments);
+  //   })
+  //   scrollSpy.update();
+  // }
+  scrollToTop = () => {
+    this.props.scrollToTop({});
   }
-  scrollToTop() {
-    scroll.scrollToTop();
+  scrollToBottom = () => {
+    this.props.scrollToBottom({});
   }
 
   componentWillUnmount() {
     Events.scrollEvent.remove('begin');
     Events.scrollEvent.remove('end');
   }
+
+  onClick = ()  => {
+    this.props.scrollToElement('same', {smooth: true});
+  }
+
   render() {
+    console.warn('---', this.props);
     return (
       <div {...cssWithClass('container', styles.ScrollDemo)}>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
+                <li><button onClick={this.onClick}>To test 3</button></li>
+                <li><button onClick={this.scrollToBottom}>To Bottom</button></li>
+
+                <li>
+                  <Link activeClass="active" to="test4" spy={true} smooth={true} duration={500} offset={-200} >
+                    <Chip
+                      label="light theme"
+                      onClick={() => {}}
+                    />
+                  </Link>
+                </li>
                 <li><Link activeClass="active" className="test1" to="test1" spy={true} smooth={true} duration={500} >Test 1</Link></li>
                 <li><Link activeClass="active" className="test2" to="test2" spy={true} smooth={true} duration={500}>Test 2</Link></li>
                 <li><Link activeClass="active" className="test3" to="test3" spy={true} smooth={true} duration={500} >Test 3</Link></li>
@@ -112,21 +133,24 @@ class ScrollDemo extends React.Component {
         </Element>
 
         <a onClick={this.scrollToTop}>To the top!</a>
-
+        <button onClick={this.scrollToTop}>To Top</button>
       </div>
     );
   }
 }
 
-module.exports = ScrollDemo;
+module.exports = withScrollTo({})(ScrollDemo);
 
 const styles = StyleSheet.create({
   ScrollDemo: {
     minHeight: 300,
     transition: transition.easeOut(),
   },
+  active: {
+    color: 'red',
+  },
   element: {
-    height:1000,
+    height:600,
   	backgroundColor: '#ededed',
   	borderTop:'1px solid #000',
   	paddingTop:55,

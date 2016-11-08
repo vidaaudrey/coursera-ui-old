@@ -12,7 +12,7 @@ const _ = require('underscore');
 class SearchAndDomainSelectCard extends React.Component {
 
   static propTypes = {
-    onSetDomains: React.PropTypes.func.isRequired,
+    onSetSelectedDomainIds: React.PropTypes.func.isRequired,
     onSetSearchKeyword: React.PropTypes.func.isRequired,
     selectedDomainIds: React.PropTypes.array.isRequired,
     searchKeyWord: React.PropTypes.string,
@@ -29,23 +29,17 @@ class SearchAndDomainSelectCard extends React.Component {
     this.props.onSetSearchKeyword(this.searchRef.value);
   }
 
-  onSelectChange = (id, allSelectedIds, newIsSelect, newListData) => {
-    const selectedDomainIds = _.chain(newListData)
-      .filter(item => item.isSelected)
-      .pluck('id')
-      .value();
-    this.props.onSetDomains({selectedDomainIds, id, newIsSelect});
-  }
-
   render() {
-    const {domains, selectedDomainIds, onSetSearchKeyword, searchKeyWord } = this.props;
+    const {
+      domains, selectedDomainIds, onSetSearchKeyword, searchKeyWord, onSetSelectedDomainIds
+    } = this.props;
     return (
       <div {...cssWithClass('p-b-1', styles.SearchAndDomainSelectCard)}>
         <div {...cssWithClass('container-fluid vertical-box p-a-1 m-b-1', styles.domainContainer)}>
           <DomainChipList
             domains={domains}
             showSelectAll={false}
-            onSelectChange={this.onSelectChange}
+            onSetSelectedDomainIds={onSetSelectedDomainIds}
             alignCenter
             selectedDomainIds={selectedDomainIds}
           />

@@ -1,11 +1,12 @@
 /* eslint-disable no-use-before-define */
-import React from 'react';
-const {
+import React, {PropTypes, Component} from 'react';
+import {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex,
-} = require('src/styles/theme');
+} from 'src/styles/theme';
 
 import withScrollInfo from 'src/components/hocs/withScrollInfo';
 import {compose, pure} from 'recompose';
+
 const DELTA = 50;
 const NAVBAR_HEIGHT = 60;
 
@@ -18,9 +19,9 @@ const NAVBAR_HEIGHT = 60;
  */
 const SmartScrollWrapper = ({
   lastScrollPosition, isScrollingDown, children, containerHeight = NAVBAR_HEIGHT,
-  zIndex: zIndexProp, alwaysHide,
+  zIndex: zIndexProp, alwaysHide, isAutoScroll,
 }) => {
-  const hideContainer = (lastScrollPosition >= containerHeight && isScrollingDown) || alwaysHide;
+  const hideContainer = (lastScrollPosition >= containerHeight && isScrollingDown && !isAutoScroll) || alwaysHide;
   const dynamicStyles = getStyles({containerHeight, zIndexProp});
   const hideStyle = (hideContainer && dynamicStyles.hideContainer) || {};
   // mergedStyles is combination of component height and top offset
@@ -50,6 +51,9 @@ SmartScrollWrapper.propTypes = {
 
   // Customize zIndex when showing the content inside, defualt to zIndex.md,
   zIndex: React.PropTypes.number,
+
+  // If in autoscroll mode, we'll default to not hide
+  isAutoScroll: PropTypes.bool,
 };
 
 SmartScrollWrapper.defaultProps = {

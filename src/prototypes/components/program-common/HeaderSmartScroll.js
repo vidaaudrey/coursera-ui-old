@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
-import React from 'react';
-const {
+import React, {PropTypes, Component} from 'react';
+import {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex
-} = require('src/styles/theme');
+} from 'src/styles/theme';
 
 const _ = require('underscore');
 import { Avatar, Button, SmartScrollWrapper } from 'src';
@@ -13,13 +13,14 @@ import withScrollInfo from 'src/components/hocs/withScrollInfo';
 import {compose, pure} from 'recompose';
 
 
-class HeaderSmartScroll extends React.Component {
+class HeaderSmartScroll extends Component {
   static propTypes = {
-    activeDomainSectionIndex: React.PropTypes.number,
-    alwaysHide: React.PropTypes.bool, // Allow overwrite
-    children: React.PropTypes.node,
-    isLoggedIn: React.PropTypes.bool,
-    onHeaderHeightChange: React.PropTypes.func,
+    activeDomainSectionIndex: PropTypes.number,
+    alwaysHide: PropTypes.bool, // Allow overwrite
+    children: PropTypes.node,
+    isLoggedIn: PropTypes.bool,
+    onHeaderHeightChange: PropTypes.func,
+    isAutoScroll: PropTypes.bool,
   }
 
   state = {
@@ -51,11 +52,9 @@ class HeaderSmartScroll extends React.Component {
       isLoggedIn,
       children,
       alwaysHide,
+      isAutoScroll,
     } = this.props;
     const {containerHeight} = this.state;
-
-    const hideContainer = alwaysHide;
-    console.warn('--hideContainer-', hideContainer, containerHeight, alwaysHide);
 
     return (
       <SmartScrollWrapper
@@ -63,6 +62,7 @@ class HeaderSmartScroll extends React.Component {
         containerHeight={containerHeight}
         zIndex={zIndex.xlg}
         alwaysHide={alwaysHide}
+        isAutoScroll={isAutoScroll}
       >
         <Measure
           onMeasure={this.onMeasure}

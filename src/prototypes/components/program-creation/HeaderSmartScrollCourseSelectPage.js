@@ -45,7 +45,7 @@ class HeaderScrollCourseSelectPage extends React.Component {
       isLoggedIn,
       alwaysHide,
       headerHeight,
-      domains, onSetDomains, onSetSearchKeyword, searchKeyWord, selectedDomainIds
+      domains, onSetSelectedDomainIds, onSetSearchKeyword, searchKeyWord, selectedDomainIds
     } = this.props;
 
     const hideContainer = alwaysHide;
@@ -76,7 +76,7 @@ class HeaderScrollCourseSelectPage extends React.Component {
           </header>
           <SearchAndDomainSelectCard
             domains={domains}
-            onSetDomains={onSetDomains}
+            onSetSelectedDomainIds={onSetSelectedDomainIds}
             onSetSearchKeyword={onSetSearchKeyword}
             searchKeyWord={searchKeyWord}
             selectedDomainIds={selectedDomainIds}

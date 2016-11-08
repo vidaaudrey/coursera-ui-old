@@ -150,7 +150,7 @@ class ProgramCreationApp extends React.Component {
           {step === stepSelectDomains &&
             <ProgramSelectDomainPage
               domains={domains}
-              onSetDomains={this.onSetDomains}
+              onSetSelectedDomainIds={this.onSetSelectedDomainIds}
               selectedDomainIds={selectedDomainIds}
             />
           }
