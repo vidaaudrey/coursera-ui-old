@@ -1,13 +1,15 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
-
-import React from 'react';
-const {
+import React, { PropTypes }from 'react';
+import {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition, font,
-} = require('src/styles/theme');
+} from 'src/styles/theme';
+import withApiMockData from 'src/components/hocs/withApiMockData';
 
 import { SvgCheckOutline } from 'src/components/svg/coursera';
-import withApiMockData from 'src/components/hocs/withApiMockData';
-import {compose, pure} from 'recompose';
+import { compose, pure } from 'recompose';
+
+// TODO[Audrey]: add container, use Imgix, remove withApiMockData and use real data
+// Make select optional, remove some of the classNames, use PartnerName component
 
 const CourseCard = ({
   course, isSelected, id, onToggleCourseSelect,
@@ -51,17 +53,15 @@ const CourseCard = ({
 };
 
 CourseCard.propTypes = {
-  id: React.PropTypes.string.isRequired,
-  onToggleCourseSelect: React.PropTypes.func.isRequired,
+  course: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  onToggleCourseSelect: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool,
 };
 
 CourseCard.defaultProps = {
   id: 'c1', // Remove later
 };
-
-// const CourseCardwithApiMockData = withApiMockData({
-//   dataType: 'COURSE',
-// })(CourseCard);
 
 module.exports = compose(
   withApiMockData({

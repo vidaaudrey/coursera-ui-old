@@ -174,7 +174,7 @@ class DomainSectionCard extends Component {
                 responsiveConfig={{
                   xs: {initialS12nCount: 2},
                   sm: {initialS12nCount: 2},
-                  md: {initialS12nCount: 2},
+                  md: {initialS12nCount: 4},
                   lg: {initialS12nCount: 6},
                   xl: {initialS12nCount: 8},
                   xxl: {initialS12nCount: 8},

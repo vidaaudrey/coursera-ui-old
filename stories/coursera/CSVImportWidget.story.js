@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import { S12nCard, LayeredS12nCard, CourseCard } from 'src';
+import { S12nCard, S12nCardWithLayer, CourseCard } from 'src';
 
 import CSVImportWidget from 'src/components/coursera/csvImportWidget/CSVImportWidget';
 import FileUploadWidget from 'src/components/coursera/fileUploadWidget/FileUploadWidget';

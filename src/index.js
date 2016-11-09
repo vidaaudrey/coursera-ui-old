@@ -3,6 +3,7 @@
 // Only use when we have components open sourced
 import App from './containers/App';
 import Button from './components/basic/Button';
+import SearchInput from './components/basic/SearchInput';
 import TextField from './components/basic/TextField';
 import TextFit from './components/basic/TextFit';
 import CourseCard from './components/rich/CourseCard';
@@ -12,7 +13,7 @@ import Avatar from './components/basic/Avatar';
 import FixedContainer from './components/extended/FixedContainer';
 import SmartScrollWrapper from './components/extended/SmartScrollWrapper';
 import SmartScrollWrapperResponsive from './components/extended/SmartScrollWrapperResponsive';
-import LayeredS12nCard from './components/rich/LayeredS12nCard';
+import S12nCardWithLayer from './components/rich/S12nCardWithLayer';
 import S12nCard from './components/rich/S12nCard';
 import SvgIcon from './components/svg/SvgIcon';
 import Chip from './components/extended/chipList/Chip';
@@ -50,12 +51,13 @@ export {
   App,
   Button,
   TextField,
+  SearchInput,
   TextFit,
   CourseCard,
   FixedContainer,
   SmartScrollWrapper,
   SmartScrollWrapperResponsive,
-  LayeredS12nCard,
+  S12nCardWithLayer,
   S12nCard,
   SvgIcon,
   Chip,

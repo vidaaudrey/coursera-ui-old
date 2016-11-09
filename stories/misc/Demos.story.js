@@ -2,10 +2,22 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import ScrollDemo from '../support/ScrollDemo';
 import InfiniteScrollDemoWrapper from '../support/InfiniteScrollDemoWrapper';
+import withBreakPoint from 'src/components/hocs/withBreakPoint';
+
+const BreakPointDemo = ({ breakPoint }) => {
+  return (
+    <div className="rc-App">
+      <h1>withBreakPoint Demo</h1>
+      <p>Resize the window to see the break point change</p>
+      <h2>Current breakPoint: {breakPoint}</h2>
+    </div>
+  );
+};
+const BreakPointDemoWithBreakPoint = withBreakPoint(BreakPointDemo);
 
 storiesOf('Demos', module)
   .addWithInfo(
-    'simple usage',
+    'Scroll Demo',
     `
       Scroll Demo
     ~~~js
@@ -38,6 +50,29 @@ storiesOf('Demos', module)
     () => (
       <div className="container">
         <InfiniteScrollDemoWrapper />
+      </div>
+    ),
+  )
+  .addWithInfo(
+    'withBreakPoint',
+    `
+      Usage
+
+      ~~~js
+      import { Chip } from 'coursera-ui';
+
+      <ChipList
+        listData={listData}
+        showSelectAll={true}
+        selectAllLabel={'All Topics'}
+        alignCenter={true}
+        onSelectChange={action('select changed')}
+      />
+      ~~~
+    `,
+    () => (
+      <div className="container">
+        <BreakPointDemoWithBreakPoint />
       </div>
     ),
   );

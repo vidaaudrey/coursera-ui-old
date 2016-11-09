@@ -41,12 +41,21 @@ module.exports = {
     xlg: '2.5rem',
   },
   breakPoints: {
-    xs: 320,  // could be 0?
+    xxs: 0,
+    xs: 320,
     sm: 576,
     md: 768,
     lg: 992,
     xl: 1200,
     xxl: 1440,
+  },
+  containerMaxWidth: {
+    xs: 288,
+    sm: 540,
+    md: 720,
+    lg: 960,
+    xl: 1140,
+    xxl: 1380,
   },
   color: {
     primary: blue500,

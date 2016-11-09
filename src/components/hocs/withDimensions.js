@@ -1,24 +1,24 @@
 import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 const {
-  breakPoints,
+  breakPoints, containerMaxWidth,
 } = require('src/styles/theme');
 const Measure = require('react-measure');
 const _ = require('underscore');
 
 function getBreakPointByWidth(width) {
-  if (width < breakPoints.xs) {
-    return 'xs';
-  } else if (width < breakPoints.sm) {
-    return 'sm';
-  } else if (width < breakPoints.md) {
-    return 'md';
-  } else if (width < breakPoints.lg) {
-    return 'lg';
-  } else if (width < breakPoints.xl) {
+  if (width > containerMaxWidth.xxl) {
+    return 'xxl';
+  } else if (width > containerMaxWidth.xl) {
     return 'xl';
+  } else if (width > containerMaxWidth.lg) {
+    return 'lg';
+  } else if (width > containerMaxWidth.md) {
+    return 'md';
+  } else if (width > containerMaxWidth.sm) {
+    return 'sm';
   }
-  return 'xxl';
+  return 'xs';
 }
 
 /**
@@ -46,6 +46,7 @@ const withDimensions = ({showBreakPoint = false, onlyShowBreakPoint, updateInter
       onMeasure = (dimensions) => {
         const breakPoint = getBreakPointByWidth(dimensions.width);
         if (!_.isEqual(dimensions, this.state.dimensions)) {
+          console.warn('--breakPoints-', breakPoint, 'width', dimensions.width);
           this.setState({ dimensions, breakPoint });
           if (this.props.onDimensionChange) {
             this.props.onDimensionChange(dimensions);

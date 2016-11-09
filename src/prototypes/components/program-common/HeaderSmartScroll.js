@@ -3,15 +3,12 @@ import React, {PropTypes, Component} from 'react';
 import {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex
 } from 'src/styles/theme';
-
-const _ = require('underscore');
+import _ from 'underscore';
 import { Avatar, Button, SmartScrollWrapper } from 'src';
 import withApiMockData from 'src/components/hocs/withApiMockData';
 import { courseraLogo } from 'src/assets/pngAssets';
 import Measure from 'react-measure';
-import withScrollInfo from 'src/components/hocs/withScrollInfo';
 import {compose, pure} from 'recompose';
-
 
 class HeaderSmartScroll extends Component {
   static propTypes = {
@@ -92,7 +89,6 @@ class HeaderSmartScroll extends Component {
 
 
 module.exports = compose(
-  withScrollInfo({delta: 160, updateInterval: 400}),
   pure,
 )(HeaderSmartScroll);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import { S12nCard, LayeredS12nCard, CourseCard } from 'src';
+import { S12nCard, S12nCardWithLayer, CourseCard } from 'src';
 
 storiesOf('rich.coursera', module)
 .addWithInfo(
@@ -18,7 +18,7 @@ storiesOf('rich.coursera', module)
         <S12nCard id={'s1'} onToggleS12nSelect={action('onToggleS12nSelect')}/>
       </div>
       <div className="col-md-6">
-        <LayeredS12nCard id={'s1'} onToggleS12nSelect={action('onToggleS12nSelect')}/>
+        <S12nCardWithLayer id={'s1'} onToggleS12nSelect={action('onToggleS12nSelect')}/>
       </div>
     </div>
   ),

@@ -229,7 +229,6 @@ class ProgramSelectCoursePage extends Component {
             onSetSearchKeyword={this.onSetSearchKeyword}
             searchKeyWord={searchKeyWord}
             selectedDomainIds={selectedDomainIds}
-            onHeaderHeightChange={this.onHeaderHeightChange}
           />
         </HeaderSmartScroll>
         <div

@@ -1,16 +1,14 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
-import React from 'react';
-const {
+import React, {PropTypes, Component} from 'react';
+import {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
-} = require('src/styles/theme');
+} from 'src/styles/theme';
 
-import {Avatar, Button, ChipList} from 'src';
+import {ChipList} from 'src';
 import {ContentFilterList} from 'src/components/svg/material';
 import DomainChipList from 'src/prototypes/components/program-creation/DomainChipList';
-const _ = require('underscore');
 
 class SearchAndDomainSelectCard extends React.Component {
-
   static propTypes = {
     onSetSelectedDomainIds: React.PropTypes.func.isRequired,
     onSetSearchKeyword: React.PropTypes.func.isRequired,

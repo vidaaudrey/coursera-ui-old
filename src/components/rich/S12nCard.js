@@ -1,12 +1,15 @@
-import React from 'react';
-import { css, cssWithClass, withStyles, ThemedStyleSheet } from 'src';
+/* eslint-disable no-param-reassign, no-use-before-define, max-len */
+import React, { PropTypes }from 'react';
+import {
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, font,
+} from 'src/styles/theme';
+import { compose, pure } from 'recompose';
+import _ from 'underscore';
+
 import { SvgCheckOutline } from 'src/components/svg/coursera';
-const _ = require('underscore');
 import withApiMockData from 'src/components/hocs/withApiMockData';
 
 const S12nCard = ({
-  styles,
-  theme,
   id,
   s12n,
   weekCount = 26,
@@ -16,7 +19,7 @@ const S12nCard = ({
   isSelected,
   onToggleS12nSelect,
 }) => {
-  const iconColor = isSelected ? theme.color.primary : theme.color.icon;
+  const iconColor = isSelected ? color.primary : color.icon;
   const {courseIds, name, partnerName, partnerIds, promoPhoto} = s12n;
   const courseCount = _(courseIds).size() - 1;
   const capstoneCount = 1;
@@ -69,22 +72,26 @@ const S12nCard = ({
   );
 };
 
-// Add this for documentation
 S12nCard.propTypes = {
-  id: React.PropTypes.string.isRequired,
-  onToggleS12nSelect: React.PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  onToggleS12nSelect: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool,
 };
 
+// Add this for documentation
 S12nCard.defaultProps = {
   id: 's1', // Remove later
 };
 
-const S12nCardwithApiMockData = withApiMockData({
-  dataType: 'S12N',
-})(S12nCard);
+module.exports = compose(
+  withApiMockData({
+    dataType: 'S12N',
+  }),
+  pure,
+)(S12nCard);
 
 
-export default withStyles(({color, font, spacing}) => ({
+const styles = StyleSheet.create({
   S12nCard: {
     marginBottom: spacing.md,
     maxWidth: 560,
@@ -151,4 +158,4 @@ export default withStyles(({color, font, spacing}) => ({
   title: {
     marginBottom: 0,
   },
-}))(S12nCardwithApiMockData);
+});

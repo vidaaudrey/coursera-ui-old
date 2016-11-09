@@ -1,22 +1,20 @@
-import React from 'react';
-import hoistNonReactStatic from 'hoist-non-react-statics';
-const {
-  breakPoints,
-} = require('src/styles/theme');
+import React, { PropTypes } from 'react';
+import { breakPoints } from 'src/styles/theme';
+import withBreakPoint from 'src/components/hocs/withBreakPoint';
+import { compose, pure, hoistStatics } from 'recompose';
+import _ from 'underscore';
 
-const withDimensions = require('src/components/hocs/withDimensions');
-import {compose, pure} from 'recompose';
-
+// TODO[Audrey]: add option to omit certain configs
+// const breakPointKeys = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 /**
- * if
  * @param  {[type]} breakPoint [description]
  * @return {[type]}            [description]
  */
-function getClosestBreakPointFromSelections(breakPoint, selections = []) {
-  if (!breakPoint || _(selections).isEmpty()) {
-    return undefined
-  }
-}
+// function getClosestBreakPointFromSelections(breakPoint, selections = []) {
+//   if (!breakPoint || _(selections).isEmpty()) {
+//     return undefined
+//   }
+// }
 /**
  * A HOC to allow config for different device sizes
  * Sample usage:
@@ -49,20 +47,18 @@ const withResponsiveConfig = (Component) => {
   };
 
   HOC.propTypes = {
-    // ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
-    breakPoint: React.PropTypes.oneOf(Object.keys(breakPoints)),
-    responsiveConfig: React.PropTypes.object,
+    // ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+    breakPoint: PropTypes.oneOf(Object.keys(breakPoints)),
+    responsiveConfig: PropTypes.object,
   };
 
   const componentName = Component.displayName || Component.name;
   HOC.displayName = `HOC(${componentName})`;
+  hoistStatics(Component, HOC);
+
   return compose(
-    withDimensions({
-      onlyShowBreakPoint: true,
-      updateInterval: 300,
-      blackList: ['height', 'top', 'right', 'bottom', 'left'],
-    }),
-   pure,
+    withBreakPoint,
+    pure,
   )(HOC);
 };
 
