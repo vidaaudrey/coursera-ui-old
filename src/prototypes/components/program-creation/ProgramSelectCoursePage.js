@@ -29,6 +29,7 @@ class ProgramSelectCoursePage extends Component {
 
     scrollToElement: PropTypes.func.isRequired,
     scrollToTop: PropTypes.func.isRequired,
+    scrollTo: PropTypes.func.isRequired,
     isScrolling: PropTypes.bool,
   }
 
@@ -56,7 +57,6 @@ class ProgramSelectCoursePage extends Component {
       isInfiniteMode: false,
       activeDomainSectionIndex: 0,
       isCourseExpanded: false,
-      isFirstDomainSectionVisibleAfterScroll: false,  // Use it to hide nav after scroll
     };
   }
 
@@ -65,7 +65,6 @@ class ProgramSelectCoursePage extends Component {
   }
 
   onSetSelectedDomainIds = ({selectedDomainIds, id, newIsSelect}) => {
-    console.warn('-onSetSelectedDomainIds--', selectedDomainIds, id, newIsSelect );
     this.setState({selectedDomainIds, isInfiniteMode: false, activeDomainSectionIndex: -1});
     const domainIdIndex = _(this._allDomainIds).indexOf(id);
     let scrollToDomainId = id;
@@ -76,24 +75,19 @@ class ProgramSelectCoursePage extends Component {
     this._scrollToDomainSection(scrollToDomainId);
   }
 
-  onScrollPassFirstDomainSection = () => {
-    if (this.state.isFirstDomainSectionVisibleAfterScroll) {
-      this.setState({isFirstDomainSectionVisibleAfterScroll: false});
-    }
-  }
   onToggleCourseSelect = (courseId, isSelected) => {
     if (isSelected) {
-      this.handleAddCourse(courseId);
+      this._addCourse(courseId);
     } else {
-      this.handleRemoveCourse(courseId);
+      this._removeCourse(courseId);
     }
   }
 
   onToggleS12nSelect = (s12nId, isSelected, s12nCourseIds = []) => {
     if (isSelected) {
-      this.handleAddS12n(s12nId, s12nCourseIds);
+      this._addS12n(s12nId, s12nCourseIds);
     } else {
-      this.handleRemoveS12n(s12nId, s12nCourseIds);
+      this._removeS12n(s12nId, s12nCourseIds);
     }
   }
 
@@ -111,21 +105,11 @@ class ProgramSelectCoursePage extends Component {
     this.setState({isInfiniteMode: false});
   }
 
-  onSetInfiniteScrollSection = ({index: activeDomainSectionIndex, isCourseExpanded}) => {
-    this.setState({activeDomainSectionIndex, isCourseExpanded});
+  onS12nContainerHeightChange = (s12nContainerHeight) => {
+    this._s12nContainerHeight = s12nContainerHeight;
   }
 
-  onHeaderHeightChange = (headerHeight) => {
-    this.setState({headerHeight});
-  }
-
-  onLoadSubdomainContainer = ({ref, index}) => {
-    console.warn('--onLoadSubdomainContainer-', ref, index);
-    // Keep a copy of all the containerRefs so we can query at runtime
-    // this._subDomainContainerRefs[index] = ref;
-  }
-
-  handleAddCourse = (id) => {
+  _addCourse = (id) => {
     let selectedCourseIds = [...this.state.selectedCourseIds, id];
     selectedCourseIds = _.uniq(selectedCourseIds);
     this.setState({
@@ -134,7 +118,7 @@ class ProgramSelectCoursePage extends Component {
     });
   }
 
-  handleRemoveCourse = (id) => {
+  _removeCourse = (id) => {
     const selectedCourseIds = _.reject(this.state.selectedCourseIds, item => item === id);
     this.setState({
       selectedCourseIds,
@@ -142,7 +126,7 @@ class ProgramSelectCoursePage extends Component {
     });
   }
 
-  handleAddS12n = (id, s12nCourseIds = []) => {
+  _addS12n = (id, s12nCourseIds = []) => {
     let selectedS12nIds = [...this.state.selectedS12nIds, id];
     selectedS12nIds = _.uniq(selectedS12nIds);
     this.setState({
@@ -153,16 +137,12 @@ class ProgramSelectCoursePage extends Component {
     this._selectedS12nRecord[id] = s12nCourseIds;
   }
 
-  handleRemoveS12n = (id, s12nCourseIds = []) => {
+  _removeS12n = (id, s12nCourseIds = []) => {
     const selectedS12nIds = _.reject(this.state.selectedS12nIds, item => item === id);
     this.setState({
       selectedS12nIds,
       currentTotalSelectCount: this.state.currentTotalSelectCount - _(s12nCourseIds).size(),
     });
-  }
-
-  onS12nContainerHeightChange = (s12nContainerHeight) => {
-    this._s12nContainerHeight = s12nContainerHeight;
   }
 
   _handleExpand = ({activeDomainSectionIndex, isCourseExpanded}) => {
@@ -176,28 +156,21 @@ class ProgramSelectCoursePage extends Component {
     const domainIdIndex = _(this.state.selectedDomainIds).indexOf(domainId);
     const indexGap = Math.abs(domainIdIndex, this.state.activeDomainSectionIndex);
     const duration = ((indexGap + 1) * DEFAULT_SCROLL_DURATION) / 2;
-    this.props.scrollToElement(domainId, {offset, duration});
+    this.props.scrollToElement(domainId, { offset, duration });
   }
 
   _scrollToDomainSectionDetail = (isCourseExpanded) => {
     if (isCourseExpanded) {
       // TODO[Audrey]: confirm with design about the behavior
-      const domainId = this._allDomainIds[this.state.activeDomainSectionIndex]
-      // this.props.scrollToElement(`${domainId}-course`, {
-      //   offset: this._subdomainHeaderHeight,
-      //   isDynamic: true,
-      // });
+      // const domainId = this._allDomainIds[this.state.activeDomainSectionIndex]
       const scrollY = this._s12nContainerHeight + this._subdomainHeaderHeight;
-      console.warn('--_scrollToDomainSectionDetail-', scrollY, this._s12nContainerHeight, this._subdomainHeaderHeight);
       this.props.scrollTo(scrollY - 160, {
-        isDynamic: true
+        isDynamic: true,
       });
-
     } else {
       this.props.scrollToTop();
     }
   }
-
 
   render() {
     const {
@@ -214,7 +187,7 @@ class ProgramSelectCoursePage extends Component {
       searchKeyWord,
       headerHeight,
     } = this.state;
-    console.warn('-page--', this.props, this.state);
+    // console.warn('-page--', this.props, this.state);
 
     const domainListData = domains.map(item => ({...item, isSelected: _(selectedDomainIds).contains(item.id)}));
     const mainContainerStyle = {
@@ -231,6 +204,7 @@ class ProgramSelectCoursePage extends Component {
             selectedDomainIds={selectedDomainIds}
           />
         </HeaderSmartScroll>
+
         <div
           className={isInfiniteMode ? 'w-100' : 'container'}
           style={mainContainerStyle}
@@ -254,7 +228,6 @@ class ProgramSelectCoursePage extends Component {
                 onEnterInfiniteModeByCourse={this.onEnterInfiniteModeByCourse}
                 onEnterInfiniteModeByS12n={this.onEnterInfiniteModeByS12n}
                 onLeaveInfiniteMode={this.onLeaveInfiniteMode}
-                onLoadSubdomainContainer={this.onLoadSubdomainContainer}
                 onToggleCourseSelect={this.onToggleCourseSelect}
                 onToggleS12nSelect={this.onToggleS12nSelect}
                 searchKeyWord={searchKeyWord}
@@ -265,7 +238,6 @@ class ProgramSelectCoursePage extends Component {
               />
             </div>
           ))}
-
         </div>
       </div>
     );

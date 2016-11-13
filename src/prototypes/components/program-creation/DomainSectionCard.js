@@ -7,19 +7,17 @@ import _ from 'underscore';
 import Measure from 'react-measure';
 
 import HeaderSmartScroll from 'src/prototypes/components/program-common/HeaderSmartScroll';
-let DomainSectionSubDomainCard = require('src/prototypes/components/program-creation/DomainSectionSubDomainCard');
+let SubdomainChipList = require('src/prototypes/components/program-creation/SubdomainChipList');
 let DomainSectionS12nList = require('src/prototypes/components/program-creation/DomainSectionS12nList');
 let DomainSectionCourseList = require('src/prototypes/components/program-creation/DomainSectionCourseList');
 
 const withResponsiveConfig = require('src/components/hocs/withResponsiveConfig');
 const withDimensions = require('src/components/hocs/withDimensions');
 import {compose} from 'recompose';
-DomainSectionSubDomainCard = compose(withDimensions({}), withResponsiveConfig)(DomainSectionSubDomainCard);
+SubdomainChipList = compose(withDimensions({}), withResponsiveConfig)(SubdomainChipList);
 DomainSectionS12nList = withResponsiveConfig(DomainSectionS12nList);
 DomainSectionCourseList = withResponsiveConfig(DomainSectionCourseList);
-const withScrollTo = require('src/components/hocs/withScrollTo');
 
-const MAX_S12N_CONTAINER_HEIGHT = 2820;
 const DEFAULT_HEADER_HEIGHT = 168;
 
 class DomainSectionCard extends Component {
@@ -36,18 +34,17 @@ class DomainSectionCard extends Component {
     onEnterInfiniteModeByCourse: PropTypes.func.isRequired,
     onEnterInfiniteModeByS12n: PropTypes.func.isRequired,
     onLeaveInfiniteMode: PropTypes.func.isRequired,
-    onLoadSubdomainContainer: PropTypes.func.isRequired,
     onToggleCourseSelect: PropTypes.func.isRequired,
     onToggleS12nSelect: PropTypes.func.isRequired,
     searchKeyWord: PropTypes.string,
-    selectedCourseIds: PropTypes.array,
-    selectedS12nIds: PropTypes.array,
-    subdomainIds: PropTypes.array.isRequired,
+    selectedCourseIds: PropTypes.arrayOf(PropTypes.string.isRequired),
+    selectedS12nIds: PropTypes.arrayOf(PropTypes.string.isRequired),
+    subdomainIds: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 
     onS12nContainerHeightChange: PropTypes.func.isRequired,
     isAutoScroll: PropTypes.bool,
-    // HOC
-    scrollToTop: PropTypes.func.isRequired,
+
+    isInfiniteMode: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -60,11 +57,6 @@ class DomainSectionCard extends Component {
     subdomainHeaderHeight: DEFAULT_HEADER_HEIGHT,
   }
 
-  componentDidMount() {
-    if (this.domainContainerRef) {
-      this.props.onLoadSubdomainContainer({ref: this.domainContainerRef, index: this.props.index});
-    }
-  }
   onExpandCourse = (index) => {
     this.props.onEnterInfiniteModeByCourse(index, this.state.subdomainHeaderHeight);
   }
@@ -73,13 +65,9 @@ class DomainSectionCard extends Component {
     this.props.onEnterInfiniteModeByS12n(index, this.state.subdomainHeaderHeight);
   }
 
-  onSelectSubdomainChange = (data, allSelectedIds) => {
-    console.warn('onSelectSubdomainChange', allSelectedIds);
+  onSubdomainSelectChange = (data, allSelectedIds) => {
+    console.warn('onSubdomainSelectChange', allSelectedIds);
   }
-
-  // onSubDomainCardDimensionChange = (dimensions) => {
-  //   this.setState({subDomainCardHeight: dimensions.height});
-  // }
 
   onSubdomainHeaderHeightChange = (subdomainHeaderHeight) => {
     this.setState({subdomainHeaderHeight});
@@ -96,6 +84,7 @@ class DomainSectionCard extends Component {
     const {
       domainId,
       domainName,
+      subdomainIds,
       index,
       isCourseExpanded,
       isInfiniteMode,
@@ -107,8 +96,6 @@ class DomainSectionCard extends Component {
       onToggleS12nSelect,
       selectedCourseIds,
       selectedS12nIds,
-      subdomainIds,
-      onS12nContainerHeightChange,
     } = this.props;
 
     const { subdomainHeaderHeight } = this.state;
@@ -117,8 +104,6 @@ class DomainSectionCard extends Component {
     if (isInfiniteMode && !isInfiniteModeLocal) {
       return null;
     }
-
-    console.warn('--DomainSectionCard-', subdomainHeaderHeight);
 
     return (
       <div
@@ -134,8 +119,8 @@ class DomainSectionCard extends Component {
               {...cssWithClass('w100', styles.cardTransition, styles.subDomainCardInfiniteMode)}
             >
               <div {...cssWithClass('container', styles.subDomainCardInnerContainer)}>
-                <DomainSectionSubDomainCard
-                  onSelectChange={this.onSelectSubdomainChange}
+                <SubdomainChipList
+                  onSelectChange={this.onSubdomainSelectChange}
                   subdomainIds={subdomainIds}
                   isInfiniteMode={isInfiniteModeLocal}
                   onCollapse={onLeaveInfiniteMode}
@@ -153,8 +138,8 @@ class DomainSectionCard extends Component {
             {...cssWithClass('container', styles.cardTransition, styles.subDomainCardNotInfiniteMode)}
           >
             <div {...cssWithClass(styles.subDomainCardInnerContainer)}>
-              <DomainSectionSubDomainCard
-                onSelectChange={this.onSelectSubdomainChange}
+              <SubdomainChipList
+                onSelectChange={this.onSubdomainSelectChange}
                 subdomainIds={subdomainIds}
                 isInfiniteMode={isInfiniteModeLocal}
                 onCollapse={onLeaveInfiniteMode}
@@ -211,8 +196,7 @@ class DomainSectionCard extends Component {
   }
 }
 
-// module.exports = DomainSectionCard;
-module.exports = compose(withScrollTo({duration: 1500}))(DomainSectionCard);
+module.exports = DomainSectionCard;
 
 
 const styles = StyleSheet.create({

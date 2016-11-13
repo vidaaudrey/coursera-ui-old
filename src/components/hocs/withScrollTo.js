@@ -1,18 +1,17 @@
 import React from 'react';
-import { compose, withHandlers, hoistStatics } from 'recompose';
+import { hoistStatics } from 'recompose';
 
-// const { getScreenCordinates } = require('src/utils/common');
 import {
   Link, DirectLink, Element, Events, scrollSpy, animateScroll as scroll, scroller,
-}  from 'react-scroll';
+} from 'react-scroll';
 
 /**
- * A HOC to add scroll handlers
+ * A HOC to add scroll handlers and pass isScrolling to the child component
  * As scrolling is related to dom manipulation, we may only want to load the HOC
  * at CSR (use with withIsMounted)
  * Sample usage:
  *  onExpandCourse = (index) => {
- *   this.props.scrollToRef(this.courseContainerRef, 400);
+ *   this.props.scrollToElement('id-or-name-of-element', 400);
  *  }
  * module.exports = compose(
  * withIsMounted,
@@ -37,10 +36,10 @@ const withScrollTo = ({
         this._isMounted = true;
         Events.scrollEvent.register('begin', () => {
           this.updateScroll(true);
-        })
+        });
         Events.scrollEvent.register('end', () => {
           this.updateScroll(false);
-        })
+        });
         scrollSpy.update();
       }
 
@@ -109,6 +108,7 @@ const withScrollTo = ({
         );
       }
     }
+
     hoistStatics(Component, HOC);
     return HOC;
   };

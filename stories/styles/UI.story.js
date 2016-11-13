@@ -6,7 +6,7 @@ import ColorAll from '../support/ColorAll';
 import Gradient from '../support/Gradient';
 import Typography from '../support/Typography';
 
-storiesOf('UI', module)
+storiesOf('UI.all', module)
   .add('Colors', () => (
     <ColorAll />
   ))

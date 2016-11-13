@@ -7,7 +7,6 @@ const {
 import {NavigationArrowBack} from 'src/components/svg/material';
 import {Avatar, Button, ChipList} from 'src';
 const _ = require('underscore');
-const classNames = require('classnames');
 
 const BackArrowOffset = 60;
 
@@ -40,12 +39,12 @@ const mockListData = [
 ];
 
 const ICON_SIZE = 44;
-const DomainSectionSubDomainCard = ({
+const SubdomainChipList = ({
   listData = mockListData, onSelectChange, isInfiniteMode, onCollapse, domainId, domainName,
 }) => {
 
   return (
-    <div {...cssWithClass('vertical-box p-a-1', styles.DomainSectionSubDomainCard)}>
+    <div {...cssWithClass('vertical-box p-a-1', styles.SubdomainChipList)}>
       <div {...cssWithClass('horizontal-box', styles.navRow)}>
         <div {...css(styles.buttonWrapper, styles.shiftArrowLeftInBigScreens)}>
           {isInfiniteMode &&
@@ -86,7 +85,7 @@ const DomainSectionSubDomainCard = ({
       <ChipList
         listData={listData}
         onSelectChange={onSelectChange}
-        ChipAttributes={{
+        chipAttributes={{
           isDarkTheme: true,
           height: 28,
           fontSize: 'xs',
@@ -96,16 +95,16 @@ const DomainSectionSubDomainCard = ({
   );
 };
 
-DomainSectionSubDomainCard.propTypes = {
+SubdomainChipList.propTypes = {
   isInfiniteMode: React.PropTypes.bool,
   onSelectChange: React.PropTypes.func.isRequired,
   onCollapse: React.PropTypes.func.isRequired,
 };
 
-module.exports = DomainSectionSubDomainCard;
+module.exports = SubdomainChipList;
 
 const styles = StyleSheet.create({
-  DomainSectionSubDomainCard: {
+  SubdomainChipList: {
     transition: transition.easeOut(),
     color: color.white,
     width: '100%',

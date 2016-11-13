@@ -3,7 +3,13 @@ const {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
 } = require('src/styles/theme');
 
-const NoDomainSelected = (props) => {
+const styles = StyleSheet.create({
+  NoDomainSelected: {
+    minHeight: 300,
+  },
+});
+
+const NoDomainSelected = () => {
   return (
     <div {...cssWithClass('vertical-box align-items-absolute-center', styles.NoDomainSelected)}>
       <h2 className="m-b-3">
@@ -14,9 +20,3 @@ const NoDomainSelected = (props) => {
 };
 
 module.exports = NoDomainSelected;
-
-const styles = StyleSheet.create({
-  NoDomainSelected: {
-    minHeight: 300,
-  },
-});

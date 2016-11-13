@@ -19,7 +19,7 @@ class ChipList extends Component {
       label: PropTypes.string.isRequired,
       isSelected: PropTypes.bool,
     }).isRequired).isRequired,
-    ChipAttributes: PropTypes.shape({
+    chipAttributes: PropTypes.shape({
       isThemeDark: PropTypes.bool,
       height: PropTypes.nubmer,
       fontSize: PropTypes.string,
@@ -124,7 +124,7 @@ class ChipList extends Component {
   render() {
     const {
       alignCenter,
-      ChipAttributes,
+      chipAttributes,
       isThemeDark,
       selectAllId,
       selectAllLabel,
@@ -135,14 +135,14 @@ class ChipList extends Component {
     const dynamicStyles = getStyles({alignCenter});
     const { isAllSelected, listData } = this.state;
     if (isThemeDark) {
-      ChipAttributes.isThemeDark = isThemeDark;
+      chipAttributes.isThemeDark = isThemeDark;
     }
 
     return (
       <div {...css(styles.ChipList)} style={{...dynamicStyles, ...style}}>
         {showSelectAll &&
           <Chip
-            {...ChipAttributes}
+            {...chipAttributes}
             label={selectAllLabel}
             isSelected={isAllSelected}
             onClick={() => (this.toggleSelectAll(selectAllId))}
@@ -152,7 +152,7 @@ class ChipList extends Component {
         <div>
           {_(listData).map(item =>
             <Chip
-              {...ChipAttributes}
+              {...chipAttributes}
               key={`Chip~${item.id}`}
               label={item.label}
               isSelected={item.isSelected}

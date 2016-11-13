@@ -21,7 +21,7 @@ class ChipList extends React.Component {
     onSelectChange: React.PropTypes.func,
     selectAllId: React.PropTypes.oneOfType(idType),
     isDarkTheme: React.PropTypes.bool,
-    ChipAttributes: React.PropTypes.shape({
+    chipAttributes: React.PropTypes.shape({
       isDarkTheme: React.PropTypes.bool,
       height: React.PropTypes.nubmer,
       fontSize: React.PropTypes.string,
@@ -122,7 +122,7 @@ class ChipList extends React.Component {
   render() {
     const {
       style, styles, showSelectAll, selectAllLabel, selectAllId, isDarkTheme,
-      ChipAttributes, alignCenter,
+      chipAttributes, alignCenter,
     } = this.props;
 
     const dynamicStyles = getStyles({alignCenter});
@@ -132,7 +132,7 @@ class ChipList extends React.Component {
       <div style={dynamicStyles}>
         {showSelectAll &&
           <Chip
-            {...ChipAttributes}
+            {...chipAttributes}
             label={selectAllLabel}
             isSelected={isAllSelected}
             onClick={() => (this.toggleSelectAll(selectAllId))}
@@ -142,7 +142,7 @@ class ChipList extends React.Component {
         <div>
           {_(listData).map(item =>
             <Chip
-              {...ChipAttributes}
+              {...chipAttributes}
               key={`ChipList~${item.id}`}
               label={item.label}
               isSelected={item.isSelected}

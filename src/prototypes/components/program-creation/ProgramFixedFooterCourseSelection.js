@@ -30,7 +30,7 @@ const ProgramFixedFooterDomainSelection = ({
       </div>
 
       <Button
-        type={currentTotalSelectCount > 0 ? 'primary' : 'disabled'}
+        type={'primary'}
         size="sm"
         label={'Preview'}
         htmlAttributes={{onClick: onNext}}

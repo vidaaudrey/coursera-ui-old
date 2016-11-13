@@ -97,7 +97,7 @@ storiesOf('extended.ChipList', module)
           listData={listData}
           onSelectChange={action('select changed')}
           isThemeDark
-          ChipAttributes={{
+          chipAttributes={{
             height: 32,
             fontSize: 'sm',
           }}

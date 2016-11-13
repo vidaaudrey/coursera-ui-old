@@ -16,43 +16,43 @@ const BreakPointDemo = ({ breakPoint }) => {
 const BreakPointDemoWithBreakPoint = withBreakPoint(BreakPointDemo);
 
 storiesOf('Demos', module)
-  .addWithInfo(
-    'Scroll Demo',
-    `
-      Scroll Demo
-    ~~~js
-    hello
-    ~~~
-    `,
-    () => (
-      <div className="container">
-        <ScrollDemo />
-      </div>
-    ),
-  )
-  .addWithInfo(
-    'InfiniteScrollDemo',
-    `
-      Usage
-
-      ~~~js
-      import { Chip } from 'coursera-ui';
-
-      <ChipList
-        listData={listData}
-        showSelectAll={true}
-        selectAllLabel={'All Topics'}
-        alignCenter={true}
-        onSelectChange={action('select changed')}
-      />
-      ~~~
-    `,
-    () => (
-      <div className="container">
-        <InfiniteScrollDemoWrapper />
-      </div>
-    ),
-  )
+  // .addWithInfo(
+  //   'Scroll Demo',
+  //   `
+  //     Scroll Demo
+  //   ~~~js
+  //   hello
+  //   ~~~
+  //   `,
+  //   () => (
+  //     <div className="container">
+  //       <ScrollDemo />
+  //     </div>
+  //   ),
+  // )
+  // .addWithInfo(
+  //   'InfiniteScrollDemo',
+  //   `
+  //     Usage
+  //
+  //     ~~~js
+  //     import { Chip } from 'coursera-ui';
+  //
+  //     <ChipList
+  //       listData={listData}
+  //       showSelectAll={true}
+  //       selectAllLabel={'All Topics'}
+  //       alignCenter={true}
+  //       onSelectChange={action('select changed')}
+  //     />
+  //     ~~~
+  //   `,
+  //   () => (
+  //     <div className="container">
+  //       <InfiniteScrollDemoWrapper />
+  //     </div>
+  //   ),
+  // )
   .addWithInfo(
     'withBreakPoint',
     `
