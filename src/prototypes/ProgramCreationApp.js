@@ -132,7 +132,6 @@ class ProgramCreationApp extends React.Component {
     } = this.state;
     const showSelectCoursePage = (step === stepSelectCourses || step === stepCreateProgram || step === stepCreateProgramSuccess);
     const alwaysHideHeader = step === stepSelectCourses;
-    // console.warn('-render--', alwaysHideHeader, this.state);
     return (
       <div {...cssWithClass('ProgramCreationApp bg-gray w-100 h-100', styles.ProgramCreationApp)}>
         {!alwaysHideHeader && <HeaderSmartScroll />}

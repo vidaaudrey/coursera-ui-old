@@ -46,7 +46,6 @@ const withDimensions = ({showBreakPoint = false, onlyShowBreakPoint, updateInter
       onMeasure = (dimensions) => {
         const breakPoint = getBreakPointByWidth(dimensions.width);
         if (!_.isEqual(dimensions, this.state.dimensions)) {
-          console.warn('--breakPoints-', breakPoint, 'width', dimensions.width);
           this.setState({ dimensions, breakPoint });
           if (this.props.onDimensionChange) {
             this.props.onDimensionChange(dimensions);

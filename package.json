@@ -62,7 +62,7 @@
     "style-loader": "^0.13.1"
   },
   "dependencies": {
-    "aphrodite": "^0.5.0",
+    "aphrodite": "^1.1.0",
     "copy-to-clipboard": "^3.0.5",
     "element-resize-detector": "^1.1.9",
     "faker": "^3.1.0",
