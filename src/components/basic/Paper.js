@@ -72,9 +72,7 @@ Paper.propTypes = {
   isThemeDark: PropTypes.bool,
   // Override the inline-styles of the root element.
   style: PropTypes.object,
-
   ref: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-
   isCircle: PropTypes.bool,
   isRounded: PropTypes.bool,
   isTransitionDisabled: PropTypes.bool,

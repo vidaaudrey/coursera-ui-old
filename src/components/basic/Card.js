@@ -1,9 +1,10 @@
-/* eslint-disable no-param-reassign, no-use-before-define, max-len */
+/* eslint-disable no-param-reassign, no-use-before-define, arrow-body-style */
 import React, {PropTypes } from 'react';
 import {
   css, StyleSheet, font, color, spacing, transition
 } from 'src/styles/theme';
 import Paper from 'src/components/basic/Paper';
+
 const CONFIG = {
   cardPadding: spacing.md,
   subtitleColor: color.secondaryText,
@@ -13,11 +14,8 @@ const CONFIG = {
   darkThemeBackground: color.black,
 };
 
-/**
- * A generic Card that accepts children, imgSrc and icon.
- * Sample Usage:
- * <Card type="primary" size="sm" label={'sm'}/>
- */
+// TODO[Audrey]: add comments and ImageOverlay
+// Work with design to figure out theme related colors
 export const Card = ({
   children,
   htmlAttributes = {},
@@ -56,7 +54,6 @@ Card.defaultProps = {
 Card.propTypes = {
   // Can use to letters inside the avatar.
   children: PropTypes.node,
-
   htmlAttributes: PropTypes.object,
   // The attributes we want to spread for the specific tag
   tagAttrributes: PropTypes.object,
@@ -64,20 +61,11 @@ Card.propTypes = {
   isThemeDark: PropTypes.bool,
   // Override the inline-styles of the root element.
   style: PropTypes.object,
-
   // The root element to render, default to Paper, but also can user other elements.
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   // Apply the card padding if the root element is block.
   isCardBlock: PropTypes.bool,
 };
-
-// Dynamic styles
-function getStyles({size}) {
-  return {
-    Card: {
-    },
-  };
-}
 
 export const CardBlock = ({ isThemeDark, children }) => {
   return (
@@ -131,7 +119,10 @@ export const CardSubtitle = ({ isThemeDark, subtitle, htmlAttributes, children }
     return (
       <h5
         {...htmlAttributes}
-        {...css(styles.CardSubtitle, styles.cardSubtitleHeading, isThemeDark && styles.darkThemePrimaryText)}
+        {...css(styles.CardSubtitle,
+          styles.cardSubtitleHeading,
+          isThemeDark && styles.darkThemePrimaryText
+        )}
       >
         {subtitle}
       </h5>
@@ -139,7 +130,11 @@ export const CardSubtitle = ({ isThemeDark, subtitle, htmlAttributes, children }
   }
   return (
     <div
-      {...css(styles.CardSubtitle, styles.clearfix, isThemeDark && styles.darkThemePrimaryText)}
+      {...css(
+        styles.CardSubtitle,
+        styles.clearfix,
+        isThemeDark && styles.darkThemePrimaryText
+      )}
     >
       {children}
     </div>
@@ -162,7 +157,11 @@ export const CardHeader = ({ isThemeDark, text, htmlAttributes, children }) => {
     return (
       <h4
         {...htmlAttributes}
-        {...css(styles.CardHeader, styles.cardHeaderText, isThemeDark && styles.darkThemePrimaryText)}
+        {...css(
+          styles.CardHeader,
+          styles.cardHeaderText,
+          isThemeDark && styles.darkThemePrimaryText
+        )}
       >
         {text}
       </h4>
@@ -193,7 +192,11 @@ export const CardFooter = ({ isThemeDark, text, htmlAttributes, children }) => {
     return (
       <span
         {...htmlAttributes}
-        {...css(styles.CardFooter, styles.cardFooterText, isThemeDark && styles.darkThemePrimaryText)}
+        {...css(
+          styles.CardFooter,
+          styles.cardFooterText,
+          isThemeDark && styles.darkThemePrimaryText
+        )}
       >
         {text}
       </span>
