@@ -39,7 +39,6 @@ const BUTTON_SIZES = {
  * Sample Usage:
  * <Button type="primary" size="sm" label={'sm'}/>
  */
-// TODO[Audrey]:
 const Button = ({
   children,
   htmlAttributes = {},
@@ -49,11 +48,16 @@ const Button = ({
   size = 'md',
   style,
   type = BUTTON_TYPES.default,
+  tag = 'button',
+  ref,
 }) => {
   const dynamicStyles = getStyles({size});
   const mergedStyles = {...dynamicStyles.Button, ...style};
+  const Tag = tag;
+
   return (
-    <button
+    <Tag
+      ref={ref}
       onClick={onClick}
       {...htmlAttributes}
       {...css(
@@ -67,7 +71,7 @@ const Button = ({
     >
       {label}
       {children}
-    </button>
+    </Tag>
   );
 };
 
@@ -77,6 +81,7 @@ Button.defaultProps = {
   size: 'md',
   style: {},
   type: BUTTON_TYPES.default,
+  tag: 'button',
 };
 
 Button.propTypes = {
@@ -96,6 +101,10 @@ Button.propTypes = {
   style: PropTypes.object,
   // Button types.
   type: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
+  // Allow rendering of different tags, e.g. a link button
+  tag: PropTypes.oneOf(['button', 'a', 'Link']),
+  // Dom ref
+  ref: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 // Dynamic styles
@@ -128,8 +137,11 @@ const styles = StyleSheet.create({
     filter: 'none',
     textDecoration: 'none',
     minWidth: CONFIG.minWidth,
-    ':focus' : {
+    ':focus': {
       outline: 'none',
+    },
+    ':hover': {
+      textDecoration: 'none',
     },
   },
   primary: {

@@ -8,7 +8,7 @@ const {
   dawn200, dawn400, dawn300, dawn500,
   dusk100, dusk400,
   midnight600, midnight300, dusk200, red300,
-  dusk500,
+  dusk500, midnight500,
 } = require('./colors');
 const {coursera, strawberry} = require('./gradients');
 const transition = require('./transition');
@@ -29,6 +29,7 @@ module.exports = {
   cssWithClass,
   spacing: {
     minWidth: 320,
+    xs: '0.3rem',
     sm: '0.5rem',
     md: '1rem',
     lg: '1.5rem',
@@ -82,6 +83,8 @@ module.exports = {
     info: blue500,
     white: '#fff',
     white50: 'rgba(255,255,255,0.50)', // Todo: discuss about opacity
+    black: '#000',
+    darkThemeBg: midnight600,
     icon: midnight600,
     shadow: dawn500,
   },

@@ -3,6 +3,8 @@
 // Only use when we have components open sourced
 import App from './containers/App';
 import Button from './components/basic/Button';
+import Card from './components/basic/Card';
+import Paper from './components/basic/Paper';
 import SearchInput from './components/basic/SearchInput';
 import TextField from './components/basic/TextField';
 import TextFit from './components/basic/TextFit';
@@ -50,6 +52,8 @@ export {
 
   App,
   Button,
+  Card,
+  Paper,
   TextField,
   SearchInput,
   TextFit,

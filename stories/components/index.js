@@ -1,4 +1,6 @@
 import './Button.story';
+import './Paper.story';
+import './Card.story';
 import './TextField.story';
 import './SearchInput.story';
 import './Avatar.story';
