@@ -3,12 +3,23 @@
 const {StyleSheet, css} = require('aphrodite/no-important');
 const classNames = require('classnames');
 const {
-  turquoise500, blue500, yellow600,
-  yellow500, red500, blue700, blue100,
-  dawn200, dawn400, dawn300, dawn500,
-  dusk100, dusk400,
-  midnight600, midnight300, dusk200, red300,
-  dusk500, midnight500,
+  dawn200,
+  dawn400,
+  dawn300,
+  dawn500,
+  dusk100,
+  dusk400,
+  midnight600,
+  midnight300,
+  dusk200,
+  red300,
+  turquoise500,
+  blue500,
+  dusk50,
+  yellow500,
+  blue700,
+  blue100,
+  teal500,
 } = require('./colors');
 const {coursera, strawberry} = require('./gradients');
 const transition = require('./transition');
@@ -28,8 +39,7 @@ module.exports = {
   css: cssWith,
   cssWithClass,
   spacing: {
-    minWidth: 320,
-    xs: '0.3rem',
+    minWidth: 360, // Smallest screen we want to support
     sm: '0.5rem',
     md: '1rem',
     lg: '1.5rem',
@@ -62,14 +72,15 @@ module.exports = {
     primary: blue500,
     darkPrimary: blue700,
     lightPrimary: blue100,
-    accent: yellow600,
+    accent: teal500,
     textIcon: dawn200,
     primaryText: midnight600,
     secondaryText: midnight300,
     divider: dusk200,
 
+
     // Need further discuss with design
-    bgGray: dawn400,
+    bgGray: dusk50,
     disabled: dawn400,
     disabledText: dusk200,
     disabledTextThemeDark: dusk200,
