@@ -47,8 +47,8 @@ const Button = ({
   disabled,
   onClick,
   size = 'md',
-  style,
   type: typeAlt,
+  style,
   tag = 'button',
   ref,
 }) => {
@@ -68,6 +68,7 @@ const Button = ({
         styles[size],
         isThemeDark && styles[`${type}ThemeDark`],
         isThemeDark && styles[`${size}ThemeDark`],
+        tag !== 'button' && (isThemeDark ? styles[`${type}LinkThemeDark`] : styles[`${type}Link`]),
       )}
       style={mergedStyles}
     >
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     },
   },
   primary: {
-    color: `${color.textIcon} !important `,
+    color: color.textIcon,
     backgroundColor: color.primary,
     border: `1px solid ${color.primary}`,
     ':hover': {
@@ -157,12 +158,18 @@ const styles = StyleSheet.create({
     },
   },
   primaryThemeDark: {
-    color: `${color.primary} !important`,
+    color: color.primary,
     backgroundColor: color.white,
     border: `1px solid ${color.white}`,
     ':hover': {
       backgroundColor: color.lightPrimary,
     },
+  },
+  primaryLink: {
+    color: `${color.textIcon} !important `,
+  },
+  primaryLinkThemeDark: {
+    color: `${color.primary} !important`,
   },
   secondary: {
     color: color.primary,
@@ -183,6 +190,18 @@ const styles = StyleSheet.create({
       backgroundColor: 'transparent',
     },
   },
+  secondaryLink: {
+    color: `${color.primary} !important `,
+    ':hover': {
+      color: `${color.textIcon} !important `,
+    },
+  },
+  secondaryLinkThemeDark: {
+    color: `${color.white} !important`,
+    ':hover': {
+      color: `${color.primary} !important `,
+    },
+  },
   default: {
     color: color.primaryText,
     backgroundColor: color.textIcon,
@@ -201,17 +220,11 @@ const styles = StyleSheet.create({
       borderColor: 'transparent',
     },
   },
-  disabled: {
-    backgroundColor: color.disabled,
-    border: `1px solid ${color.disabled}`,
-    color: color.disabledText,
-    cursor: 'not-allowed',
-    pointerEvents: 'none',
+  dafaultLink: {
+    color: `${color.primaryText} !important `,
   },
-  disabledThemeDark: {
-    backgroundColor: 'transparent',
-    border: `1px solid ${color.disabledTextThemeDark}`,
-    color: color.disabledTextThemeDark,
+  dafaultLinkThemeDark: {
+    color: `${color.primaryText} !important`,
   },
   noStyle: {
     backgroundColor: 'transparent',
@@ -223,6 +236,30 @@ const styles = StyleSheet.create({
   },
   noStyleThemeDark: {
     color: color.white,
+  },
+  noStyleLink: {
+    color: `${color.primaryText} !important `,
+    ':hover': {
+      color: `${color.primary} !important `,
+    },
+  },
+  noStyleLinkThemeDark: {
+    color: `${color.white} !important`,
+    ':hover': {
+      color: `${color.primary} !important `,
+    },
+  },
+  disabled: {
+    backgroundColor: color.disabled,
+    border: `1px solid ${color.disabled}`,
+    color: color.disabledText,
+    cursor: 'not-allowed',
+    pointerEvents: 'none',
+  },
+  disabledThemeDark: {
+    backgroundColor: 'transparent',
+    border: `1px solid ${color.disabledTextThemeDark}`,
+    color: color.disabledTextThemeDark,
   },
   sm: {
     padding: CONFIG.size.sm.padding,

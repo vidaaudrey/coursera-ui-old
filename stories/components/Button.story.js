@@ -34,7 +34,13 @@ const ButtonDemo =({ isThemeDark }) => {
         <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
           <Button isThemeDark={isThemeDark} type="primary" label={'button(default)'} tag={'button'} />
           <Button isThemeDark={isThemeDark} type="primary" label={'a(link)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} />
+          <Button isThemeDark={isThemeDark} type="secondary" label={'a(link)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} />
           <Button isThemeDark={isThemeDark} type="secondary" label={'tag func'} htmlAttributes={{href: GIT_LINK}} tag={Link} />
+        </div>
+        <h4>misc: htmlAttributes, style overwrites (not recommended unless absolutely needed)</h4>
+        <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
+          <Button isThemeDark={isThemeDark} type="primary" label={'htmlAttributes'} htmlAttributes={{'data-courselenium': 'Button', 'aria-label': 'Close'}} />
+          <Button isThemeDark={isThemeDark} type="primary" label={'style overwrites'} style={{backgroundColor: 'red', color: 'white', border: 'none'}} />
         </div>
         <h3>Vertical Layout</h3>
         <div className="m-b-2 vertical-box">
