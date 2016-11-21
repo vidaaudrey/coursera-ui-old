@@ -24,8 +24,8 @@ const BUTTON_TYPES = {
   primary: 'primary',
   secondary: 'secondary',
   default: 'default',
-  disabled: 'disabled',
   noStyle: 'noStyle',
+  disabled: 'disabled',
 };
 
 const BUTTON_SIZES = {
@@ -220,10 +220,13 @@ const styles = StyleSheet.create({
       borderColor: 'transparent',
     },
   },
-  dafaultLink: {
-    color: `${color.primaryText} !important `,
+  defaultLink: {
+    color: `${color.primaryText} !important`,
+    ':hover': {
+      color: `${color.textIcon} !important`,
+    },
   },
-  dafaultLinkThemeDark: {
+  defaultLinkThemeDark: {
     color: `${color.primaryText} !important`,
   },
   noStyle: {
