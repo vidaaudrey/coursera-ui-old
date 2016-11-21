@@ -11,11 +11,11 @@ const CONFIG = {
     },
     md: {
       fontSize: '1rem',
-      padding: '0.6rem 1rem',
+      padding: '0.4rem 2rem',
     },
     lg: {
       fontSize: '1.2rem',
-      padding: '1rem 1.6rem',
+      padding: '1rem 2.6rem',
     },
   },
 };
@@ -44,16 +44,18 @@ const Button = ({
   htmlAttributes = {},
   isThemeDark,
   label,
+  disabled,
   onClick,
   size = 'md',
   style,
-  type = BUTTON_TYPES.default,
+  type: typeAlt,
   tag = 'button',
   ref,
 }) => {
   const dynamicStyles = getStyles({size});
   const mergedStyles = {...dynamicStyles.Button, ...style};
   const Tag = tag;
+  const type = (disabled || htmlAttributes.disabled) ? BUTTON_TYPES.disabled : typeAlt;
 
   return (
     <Tag
@@ -96,13 +98,15 @@ Button.propTypes = {
   // click event.
   onClick: PropTypes.func,
 
+  disabled: PropTypes.bool,
+
   size: PropTypes.oneOf(Object.keys(BUTTON_SIZES)),
   // Override the inline-styles of the root element.
   style: PropTypes.object,
   // Button types.
   type: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
-  // Allow rendering of different tags, e.g. a link button
-  tag: PropTypes.oneOf(['button', 'a', 'Link']),
+  // Allow rendering of different tags, e.g. 'a', 'button', Link
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   // Dom ref
   ref: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
@@ -122,6 +126,7 @@ module.exports = Button;
 
 const styles = StyleSheet.create({
   Button: {
+    borderRadius: 2,
     transition: transition.easeOut(),
     userSelect: 'none',
     position: 'relative',
@@ -133,7 +138,6 @@ const styles = StyleSheet.create({
     whiteSpace: 'nowrap',
     backgroundImage: 'none',
     cursor: 'pointer',
-    borderRadius: 0,
     filter: 'none',
     textDecoration: 'none',
     minWidth: CONFIG.minWidth,
@@ -145,7 +149,7 @@ const styles = StyleSheet.create({
     },
   },
   primary: {
-    color: color.textIcon,
+    color: `${color.textIcon} !important `,
     backgroundColor: color.primary,
     border: `1px solid ${color.primary}`,
     ':hover': {
@@ -153,7 +157,7 @@ const styles = StyleSheet.create({
     },
   },
   primaryThemeDark: {
-    color: color.primary,
+    color: `${color.primary} !important`,
     backgroundColor: color.white,
     border: `1px solid ${color.white}`,
     ':hover': {

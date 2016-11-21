@@ -4,12 +4,12 @@ import ScrollDemo from '../support/ScrollDemo';
 import InfiniteScrollDemoWrapper from '../support/InfiniteScrollDemoWrapper';
 import withBreakPoint from 'src/components/hocs/withBreakPoint';
 
-const BreakPointDemo = ({ breakPoint }) => {
+const BreakPointDemo = ({ breakPoint, breakPointNumber }) => {
   return (
     <div className="rc-App">
       <h1>withBreakPoint Demo</h1>
       <p>Resize the window to see the break point change</p>
-      <h2>Current breakPoint: {breakPoint}</h2>
+      <h2>Current breakPoint: {breakPoint} / {breakPointNumber}</h2>
     </div>
   );
 };
@@ -59,20 +59,22 @@ storiesOf('Demos', module)
       Usage
 
       ~~~js
-      import { Chip } from 'coursera-ui';
+      import {withBreakPoint} from 'coursera-ui';
 
-      <ChipList
-        listData={listData}
-        showSelectAll={true}
-        selectAllLabel={'All Topics'}
-        alignCenter={true}
-        onSelectChange={action('select changed')}
-      />
+      const BreakPointDemo = ({ breakPoint, breakPointNumber }) => {
+        return (
+          <div className="rc-App">
+            <h1>withBreakPoint Demo</h1>
+            <p>Resize the window to see the break point change</p>
+            <h2>Current breakPoint: {breakPoint} / {breakPointNumber}</h2>
+          </div>
+        );
+      };
       ~~~
     `,
     () => (
       <div className="container">
-        <BreakPointDemoWithBreakPoint />
+        <BreakPointDemoWithBreakPoint showBreakPointNumber/>
       </div>
     ),
   );
