@@ -29,7 +29,7 @@ export const purple500 = '#967adc';
 export const purple600 = '#8e78d1';
 export const purple700 = '#7e6fc1';
 export const purple800 = '#7168b5';
-export const purple900 = '#62fea5';
+export const purple900 = '#625ea5';
 
 export const pink50 = '#f9dcf3';
 export const pink100 = '#efc2e4';

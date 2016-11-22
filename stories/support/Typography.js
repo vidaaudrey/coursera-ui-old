@@ -5,7 +5,7 @@ const Typography = () => {
     <div className="container">
       <div className="m-b-3">
         <h1>Headings</h1>
-        <p className="m-b-2"><i>Basic headings</i></p>
+        <p className="m-b-2"><i>OpenSans-light</i></p>
         <h1>h1.Coursera-UI</h1>
         <h2>h2.Coursera-UI</h2>
         <h3>h3.Coursera-UI</h3>

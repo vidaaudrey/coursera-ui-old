@@ -61,6 +61,7 @@ module.exports = {
     xxl: 1440,
   },
   containerMaxWidth: {
+    xxs: 0,
     xs: 288,
     sm: 540,
     md: 720,
