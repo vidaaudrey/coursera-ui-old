@@ -205,8 +205,6 @@ module.exports = BoxLayout;
 const styles = StyleSheet.create({
   BoxLayout: {
     minHeight: 300,
-    height: '100vh',
-    position: 'relative',
   },
   contentInner: {
     height: '100%',

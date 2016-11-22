@@ -8,7 +8,7 @@ function getNumberFromString(str) {
   return parseInt(str.replace(/^[^0-9]+/, ''), 10);
 }
 
-const ColorRow = ({colorName, colorCode}) => {
+const ColorRow = ({name, colorName, colorCode, isThemeFile}) => {
   return (
     <div
       {...cssWithClass('horizontal-box align-items-spacebetween p-a-1',
@@ -18,8 +18,23 @@ const ColorRow = ({colorName, colorCode}) => {
       )}
       style={{backgroundColor: colorCode}}
     >
-      <span>{colorName}</span>
-      <span className="text-uppercase">{colorCode}</span>
+      {name && <span>{name}</span>}
+      {isThemeFile &&
+        <span>
+          <span className="text-uppercase">
+            {colorCode}
+          </span>
+          {colorName &&
+            <span className="font-sm"> ({colorName})</span>
+          }
+        </span>
+      }
+      {!isThemeFile &&
+        <span>{colorName}</span>
+      }
+      {!isThemeFile &&
+        <span className="text-uppercase">{colorCode}</span>
+      }
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Gradient from '../support/Gradient';
 import Typography from '../support/Typography';
 import Grid from '../support/Grid';
 import BoxLayout from '../support/BoxLayout';
+import Theme from '../support/Theme';
 
 storiesOf('UI.all', module)
   .add('Colors', () => (
@@ -26,4 +27,7 @@ storiesOf('UI.all', module)
   ))
   .add('BoxLayout', () => (
     <BoxLayout />
+  ))
+  .add('Theme', () => (
+    <Theme />
   ))

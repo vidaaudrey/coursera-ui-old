@@ -7,7 +7,7 @@ const CONFIG = {
   color: color.primaryText,
   backgroundColor: color.white,
   darkThemeColor: color.white,
-  darkThemeBackground: color.darkThemeBg,
+  darkThemeBackground: color.bgGrayThemeDark,
   zDepthShadows: [
     [1, 6, 0.12, 1, 4, 0.12],
     [3, 10, 0.16, 3, 10, 0.23],
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   Paper: {
     boxSizing: 'border-box',
     transition: transition.easeOut(),
+    position: 'relative',
   },
   lightTheme: {
     color: CONFIG.color,

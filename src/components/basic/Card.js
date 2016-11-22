@@ -67,10 +67,10 @@ Card.propTypes = {
   isCardBlock: PropTypes.bool,
 };
 
-export const CardBlock = ({ isThemeDark, children }) => {
+export const CardBlock = ({ isThemeDark, children, isFullBleed }) => {
   return (
     <div
-      {...css(styles.CardBlock, isThemeDark && styles.darkThemePrimaryText)}
+      {...css(styles.CardBlock, isFullBleed && styles.fullBleed, isThemeDark && styles.darkThemePrimaryText)}
     >
       {children}
     </div>
@@ -78,6 +78,7 @@ export const CardBlock = ({ isThemeDark, children }) => {
 };
 
 CardBlock.propTypes = {
+  isFullBleed: PropTypes.bool,
   children: PropTypes.node,
   isThemeDark: PropTypes.bool,
 };
@@ -273,6 +274,7 @@ const styles = StyleSheet.create({
   Card: {
     width: '100%',
     transition: transition.easeOut(),
+    position: 'relative',
   },
   cardDarkTheme: {
     color: color.white,
@@ -292,6 +294,10 @@ const styles = StyleSheet.create({
   },
   CardBlock: {
     padding: CONFIG.cardPadding,
+  },
+  fullBleed: {
+    padding: 0,
+    margin: 0,
   },
   clearFix: {
     ':after': {
