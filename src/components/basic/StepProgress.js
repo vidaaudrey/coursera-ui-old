@@ -8,12 +8,12 @@ const _ = require('underscore');
 /**
  *  A static progress bar
  */
-const DEFAULT_HEIGHT = 8;
+const DEFAULT_HEIGHT = 4;
 const DEFAULT_BAR_MARGIN = 2;
 const StepProgress = ({
   style,
   backgroundColor,
-  progressColor = color.primary,
+  progressColor = color.accent,
   barMargin = DEFAULT_BAR_MARGIN,
   height = DEFAULT_HEIGHT,
   totalSteps = 1,

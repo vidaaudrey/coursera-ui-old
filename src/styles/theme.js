@@ -63,11 +63,11 @@ module.exports = {
   containerMaxWidth: {
     xxs: 0,
     xs: 288,
-    sm: 540,
-    md: 720,
+    sm: 544,
+    md: 736,
     lg: 960,
-    xl: 1140,
-    xxl: 1380,
+    xl: 1168,
+    xxl: 1408,
   },
   color: {
     primary: blue500,

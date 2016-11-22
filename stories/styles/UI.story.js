@@ -6,6 +6,7 @@ import ColorAll from '../support/ColorAll';
 import Gradient from '../support/Gradient';
 import Typography from '../support/Typography';
 import Grid from '../support/Grid';
+import BoxLayout from '../support/BoxLayout';
 
 storiesOf('UI.all', module)
   .add('Colors', () => (
@@ -22,4 +23,7 @@ storiesOf('UI.all', module)
   ))
   .add('Grid', () => (
     <Grid showBreakPointNumber />
+  ))
+  .add('BoxLayout', () => (
+    <BoxLayout />
   ))
