@@ -15,7 +15,7 @@ const Typography = () => {
       </div>
       <div className="m-b-3">
         <h1>Display Text</h1>
-        <p className="m-b-2"><i>Merriweather Light</i></p>
+        <p className="m-b-2"><i>Merriweather Light, .display</i></p>
         <h1 className="display">h1.Coursera-UI</h1>
         <h2 className="display">h2.Coursera-UI</h2>
         <h3 className="display">h3.Coursera-UI</h3>
