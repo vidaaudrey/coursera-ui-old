@@ -74,93 +74,115 @@ const ButtonDemo =({ isThemeDark }) => {
 const stories = storiesOf('basic.Button', module);
 stories.addDecorator(withKnobs);
 
-stories.add('playground', () => {
-  const isThemeDark = boolean('isThemeDark', false);
+stories.addWithInfo(
+  'playground',
+  `
+  Button playground. Change the knobs setting to see the results.
+  ~~~js
+  import { Button } from 'coursera-ui';
 
-  const sizeOptions = {
-    sm: 'sm',
-    md: 'md',
-    lg: 'lg',
-  };
-  const size1 = select('size1', sizeOptions, 'sm');
-  const size2 = select('size2', sizeOptions, 'md');
-  const size3 = select('size3', sizeOptions, 'lg');
-  const size4 = select('size4', sizeOptions, 'md');
+  <Button type="primary" label={'primary'} disabled />
+  ~~~
+  `,
+  () => {
+    const isThemeDark = boolean('isThemeDark', false);
 
-  const typeOptions = {
-    primary: 'primary',
-    secondary: 'secondary',
-    default: 'default',
-    noStyle: 'noStyle',
-  };
-  const type1 = select('type1', typeOptions, 'primary');
-  const type2 = select('type2', typeOptions, 'secondary');
-  const type3 = select('type3', typeOptions, 'default');
-  const type4 = select('type4', typeOptions, 'noStyle');
+    const sizeOptions = {
+      sm: 'sm',
+      md: 'md',
+      lg: 'lg',
+    };
+    const size1 = select('size1', sizeOptions, 'sm');
+    const size2 = select('size2', sizeOptions, 'md');
+    const size3 = select('size3', sizeOptions, 'lg');
+    const size4 = select('size4', sizeOptions, 'md');
 
-  const disabled1 = boolean('disabled1', false);
-  const disabled2 = boolean('disabled2', false);
-  const disabled3 = boolean('disabled3', false);
-  const disabled4 = boolean('disabled4', false);
+    const typeOptions = {
+      primary: 'primary',
+      secondary: 'secondary',
+      default: 'default',
+      noStyle: 'noStyle',
+    };
+    const type1 = select('type1', typeOptions, 'primary');
+    const type2 = select('type2', typeOptions, 'secondary');
+    const type3 = select('type3', typeOptions, 'default');
+    const type4 = select('type4', typeOptions, 'noStyle');
 
-  const label1 = text('label1', 'Hello, Coursera');
-  const label2 = text('label2', 'Hello, Coursera');
-  const label3 = text('label3', 'Hello, Coursera');
-  const label4 = text('label4', 'Hello, Coursera');
+    const disabled1 = boolean('disabled1', false);
+    const disabled2 = boolean('disabled2', false);
+    const disabled3 = boolean('disabled3', false);
+    const disabled4 = boolean('disabled4', false);
+
+    const label1 = text('label1', 'Hello, Coursera');
+    const label2 = text('label2', 'Hello, Coursera');
+    const label3 = text('label3', 'Hello, Coursera');
+    const label4 = text('label4', 'Hello, Coursera');
 
 
-  const style1 = object('style1(sm)', {padding: '0.3rem 0.8rem', fontSize: '0.8rem'});
-  const style2 = object('style2(md)', {padding: '0.4rem 2rem', fontSize: '1rem'});
-  const style3 = object('style3(lg)', {padding: '1rem 2.6rem', fontSize: '1.2rem'});
-  const style4 = object('style4(custom)', {color: '#3bafda'});
+    const style1 = object('style1(sm)', {padding: '0.3rem 0.8rem', fontSize: '0.8rem'});
+    const style2 = object('style2(md)', {padding: '0.4rem 2rem', fontSize: '1rem'});
+    const style3 = object('style3(lg)', {padding: '1rem 2.6rem', fontSize: '1.2rem'});
+    const style4 = object('style4(custom)', {color: '#3bafda'});
 
-  const containerStyle = isThemeDark ? {color: 'white', backgroundColor: '#363b42'} : {};
+    const htmlAttributes = object('htmlAttributes', {
+      'aria-label': 'Enroll Button',
+      'data-courselenium': 'EnrollButton',
+      onClick: action('you clicked button'),
+    });
 
-  return (
-    <div className="container p-a-1 border-a" style={containerStyle}>
-      <h2>Playground</h2>
-      <p className="text-muted">
-        <i>
-          {`If you want to see the size1, replace the style1 with empty object: {}`}
-        </i>
-      </p>
-      <div className="m-b-2 p-t-3 horizontal-box align-items-spacebetween wrap">
-        <Button
-          isThemeDark={isThemeDark}
-          label={label1}
-          disabled={disabled1}
-          size={size1}
-          type={type1}
-          style={style1}
-        />
-        <Button
-          isThemeDark={isThemeDark}
-          label={label2}
-          disabled={disabled2}
-          size={size2}
-          type={type2}
-          style={style2}
-        />
-        <Button
-          isThemeDark={isThemeDark}
-          label={label3}
-          disabled={disabled3}
-          size={size3}
-          type={type3}
-          style={style3}
-        />
-        <Button
-          isThemeDark={isThemeDark}
-          label={label4}
-          disabled={disabled4}
-          size={size4}
-          type={type4}
-          style={style4}
-        />
+    const containerStyle = isThemeDark ? {color: 'white', backgroundColor: '#363b42'} : {};
+
+    return (
+      <div className="container p-a-1 border-a" style={containerStyle}>
+        <h2>Playground</h2>
+        <p className="text-muted">
+          <i>
+            {'If you want to see the size1, replace the style1 with empty object: {}'}
+          </i>
+        </p>
+        <div className="m-b-2 p-t-3 horizontal-box align-items-spacebetween wrap">
+          <Button
+            isThemeDark={isThemeDark}
+            label={label1}
+            disabled={disabled1}
+            size={size1}
+            type={type1}
+            style={style1}
+            htmlAttributes={htmlAttributes}
+          />
+          <Button
+            isThemeDark={isThemeDark}
+            label={label2}
+            disabled={disabled2}
+            size={size2}
+            type={type2}
+            style={style2}
+            htmlAttributes={htmlAttributes}
+          />
+          <Button
+            isThemeDark={isThemeDark}
+            label={label3}
+            disabled={disabled3}
+            size={size3}
+            type={type3}
+            style={style3}
+            htmlAttributes={htmlAttributes}
+          />
+          <Button
+            isThemeDark={isThemeDark}
+            label={label4}
+            disabled={disabled4}
+            size={size4}
+            type={type4}
+            style={style4}
+            htmlAttributes={htmlAttributes}
+          />
+        </div>
       </div>
-    </div>
-  )
-});
+    );
+  },
+  { inline: false, source: true, propTables: [Button]},
+);
 
 stories.addWithInfo(
   'simple usage',
