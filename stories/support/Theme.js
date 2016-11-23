@@ -42,7 +42,7 @@ const colors = {
   gray: {textColor: color.primaryText, name: 'gray', colorName: 'dusk100', colorCode: color.gray},
   darkGray: {textColor: color.primaryText, name: 'darkGray', colorName: 'dusk400', colorCode: color.darkGray},
 
-  white: {textColor: color.primaryText, name: 'dawn200', colorName: 'dawn200', colorCode: color.white},
+  white: {textColor: color.primaryText, name: 'white', colorName: 'dawn200', colorCode: color.white},
   white50: {textColor: color.primaryText, name: 'white50', colorName: '', colorCode: color.white50},
   black: {textColor: color.primaryText, name: 'black', colorName: 'midnight900', colorCode: color.black},
 
@@ -62,7 +62,6 @@ const Theme = ({isThemeDark }) => {
           <h1>Theme</h1>
           <p className="text-muted font-italic">
             Visual presentation of our theme settings.
-            <span>name</span>
           </p>
           <div {...css(styles.linkContainer)}>
             {_(exisitingUIStories).map(item =>
