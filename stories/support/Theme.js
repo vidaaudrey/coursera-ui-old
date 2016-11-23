@@ -1,11 +1,15 @@
 /* eslint-disable no-use-before-define, max-len */
 import React, {PropTypes} from 'react';
-import {css, StyleSheet, cssWithClass, font, color, spacing, transition, containerMaxWidth} from 'src/styles/theme';
+import {
+  css, StyleSheet, cssWithClass, font, color, spacing, transition, containerMaxWidth, gradient, iconSize
+} from 'src/styles/theme';
 import _ from 'underscore';
 import {linkTo } from '@kadira/storybook';
 import {Button} from 'src';
 import ColorRow from './ColorRow';
 import ThemeCard from './ThemeCard';
+import GradientCell from './GradientCell';
+import SvgInvitations from 'src/components/svg/coursera/common/SvgInvitations';
 
 const exisitingUIStories = ['Grid', 'Color', 'Palette', 'Typography', 'BoxLayout'];
 const basicSpacing = {
@@ -70,13 +74,13 @@ const Theme = ({isThemeDark }) => {
       <div className="row m-b-2">
         <div className="col-xs-12">
           <h3>Color</h3>
-          <p className="text-muted font-italic">
+          <div className="text-muted font-italic">
             <ul>
               <li>basic colors (primary, accent, text, icon, divider,shadow)</li>
               <li>auxiliary colors (disabled, warning, danger, success, info, black, white, gray...)</li>
               <li>darkTheme color variations (primaryTextThemeDark, disabledThemeDark...)</li>
             </ul>
-          </p>
+          </div>
         </div>
         <div {...cssWithClass('col-xs-12 col-md-6 m-b-2', styles.colorContainer)}>
           {_(colors).map(({colorName, textColor, name, colorCode}, key) =>
@@ -108,6 +112,18 @@ const Theme = ({isThemeDark }) => {
       </div>
       <div className="row m-b-2">
         <div className="col-xs-12">
+          <h3>Gradients</h3>
+          <p className="text-muted font-italic">
+            Primary gradient: coursera, secondary gradient: strawberry
+          </p>
+        </div>
+        <div {...cssWithClass('col-xs-12 w-100', styles.blockContainer)}>
+            <GradientCell name={'primary'} gradient={gradient.primary}/>
+            <GradientCell name={'secondary'} gradient={gradient.secondary}/>
+        </div>
+      </div>
+      <div className="row m-b-2">
+        <div className="col-xs-12">
           <h3>Spacing</h3>
           <p className="text-muted font-italic"> sm: 0.5rem md: 1rem, lg: 1.5rem </p>
         </div>
@@ -120,6 +136,32 @@ const Theme = ({isThemeDark }) => {
             </div>
           )}
         </div>
+      </div>
+
+      <div className="col-xs-12">
+        <h3>zIndex</h3>
+        <p className="text-muted font-italic">
+          TODO:
+          none(0), xs(1000), sm(2000), md(3000), lg(4000), xlg(10000),
+        </p>
+      </div>
+      <div {...cssWithClass('col-xs-12 m-b-2', styles.blockContainer)}>
+
+      </div>
+      <div className="col-xs-12">
+        <h3>iconSize</h3>
+        <p className="text-muted font-italic">
+          Default iconSize: 32
+        </p>
+      </div>
+      <div {...cssWithClass('col-xs-12 m-b-2 horizontal-box align-items-spacebetween wrap', styles.blockContainer)}>
+        {_(iconSize).map((value, key) =>
+          <div key={`iconSize~${key}`} {...cssWithClass('p-a-0 m-a-1 p-a-1 vertical-box align-items-absolute-center')}>
+            <SvgInvitations color={color.icon} size={value} />
+            {key}: <span className="display">{value}</span>
+          </div>
+        )}
+
       </div>
     </div>
   );

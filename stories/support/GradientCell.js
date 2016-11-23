@@ -15,10 +15,8 @@ function getGradientStyle({start, end}, deg = 90){
 
 function GradientCell({gradient, name, deg}) {
   return (
-    <div className="GradientCell col-xs col-lg-3">
-      <div
-        className="vertical-box h-100 m-a-1"
-      >
+    <div className="GradientCell col-xs-6 col-lg-3">
+      <div {...cssWithClass('vertical-box h-100 m-a-1', styles.cellContainer)}>
         <div
           {...cssWithClass('m-b-1 w-100', styles.GradientCell)}
           style={{...getGradientStyle(gradient, deg)}}
@@ -43,6 +41,9 @@ const styles = StyleSheet.create({
     height: 240,
     minWidth: 300,
     transition: transition.easeOut(),
+  },
+  cellContainer: {
+    minWidth: 300,
   },
   textBox: {
     minHeight: 60,

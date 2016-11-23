@@ -47,10 +47,12 @@ module.exports = {
     lg: '1.5rem',
   },
   iconSize: {
+    xs: 16,
     sm: 24,
     md: 32,
     lg: 48,
     xlg: 64,
+    xxl: 128,
   },
   font: {
     xs: '0.8rem',
