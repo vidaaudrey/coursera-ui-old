@@ -60,6 +60,7 @@ module.exports = {
     md: '1rem',
     lg: '1.5rem',
     xlg: '2.5rem',
+    xxl: '4rem',
   },
   breakPoints: {
     xxs: 0,

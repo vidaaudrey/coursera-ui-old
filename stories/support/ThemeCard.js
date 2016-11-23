@@ -11,13 +11,14 @@ import {
 } from 'src/components/basic/Card';
 import NavigationMoreVert from 'src/components/svg/material/navigation/more-vert';
 import NavigationExpandLess from 'src/components/svg/material/navigation/expand-less';
+import ContentRemoveCircle from 'src/components/svg/material/content/remove-circle';
 import ActionInfoOutline from 'src/components/svg/material/action/info-outline';
 import SvgHamburger from 'src/components/svg/coursera/common/SvgHamburger';
 import SvgInvitations from 'src/components/svg/coursera/common/SvgInvitations';
 import SvgCurriculum from 'src/components/svg/coursera/common/SvgCurriculum';
 import SvgLineChart from 'src/components/svg/coursera/common/SvgLineChart';
 import SvgCircleWarning from 'src/components/svg/coursera/common/SvgCircleWarning';
-import SvgCheckOutline from 'src/components/svg/coursera/common/SvgCheckOutline';
+import SvgCheckSolid from 'src/components/svg/coursera/common/SvgCheckSolid';
 import SvgPlus from 'src/components/svg/coursera/common/SvgPlus';
 import SvgEmail from 'src/components/svg/coursera/common/SvgEmail';
 
@@ -70,6 +71,20 @@ const ThemeCard = ({isThemeDark}) => {
             <ActionInfoOutline color={color.info} hoverColor={color.info} size={iconSize.md} />
           </div>
         </div>
+
+        <div {...cssWithClass('horizontal-box align-items-vertical-center p-a-1', styles.bodyRow, styles[`divider${isThemeDark ? 'ThemeDark' : ''}`])}>
+          <div className="m-t-1 m-b-1">
+            <SvgCurriculum color={isThemeDark ? color.iconThemeDark : color.icon} size={iconSize.sm} />
+          </div>
+          <div className="m-l-2">
+            <h3 {...cssWithClass('m-a-0', styles[`bodyRowTitle${isThemeDark ? 'ThemeDark' : ''}`])}>Learning Program</h3>
+            <p {...cssWithClass('m-a-0', styles[`bodyRowSubtitle${isThemeDark ? 'ThemeDark' : ''}`])}>Overview of the coursers and specialization</p>
+          </div>
+          <div className="flex-1 m-t-1 m-b-1 text-xs-right">
+            <ContentRemoveCircle color={color.danger} hoverColor={color.danger} size={iconSize.md} />
+          </div>
+        </div>
+
         <div {...cssWithClass('horizontal-box align-items-vertical-center p-a-1', styles.bodyRow, styles[`divider${isThemeDark ? 'ThemeDark' : ''}`])}>
           <div className="m-t-1 m-b-1">
             <SvgLineChart color={isThemeDark ? color.iconThemeDark : color.icon} size={iconSize.sm} />
@@ -79,7 +94,7 @@ const ThemeCard = ({isThemeDark}) => {
             <p {...cssWithClass('m-a-0', styles[`bodyRowSubtitle${isThemeDark ? 'ThemeDark' : ''}`])}>Program members, enrollment, and accomplishments</p>
           </div>
           <div className="flex-1 m-t-1 m-b-1 text-xs-right">
-            <SvgCheckOutline color={color.success} hoverColor={color.success} size={iconSize.sm} />
+            <SvgCheckSolid color={color.success} hoverColor={color.success} size={iconSize.sm} />
           </div>
         </div>
         <div {...cssWithClass('p-a-1', styles.bodyRow, styles[`divider${isThemeDark ? 'ThemeDark' : ''}`])}>

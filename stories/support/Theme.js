@@ -15,7 +15,7 @@ const exisitingUIStories = ['Grid', 'Color', 'Palette', 'Typography', 'BoxLayout
 const basicSpacing = {
   sm: '0.5rem',
   md: '1rem',
-  lg: '1.5rem'
+  lg: '1.5rem',
 };
 const colors = {
   primary: {textColor: color.primaryText, name: 'primary', colorName: 'blue500', colorCode: color.primary},
@@ -99,13 +99,14 @@ const Theme = ({isThemeDark }) => {
       <div className="row m-b-2">
         <div className="col-xs-12">
           <h3>Font Size</h3>
-          <p className="text-muted font-italic"> All font size is based on rem. 1rem equals 16px. <br />
-            xs (0.8rem, ~12px), sm (0.9rem, ~14px), md(1rem, 16px), lg(1.5rem, 24px), xlg(2.5rem, 40px)</p>
+          <p className="text-muted font-italic"> All font sizes are based on rem. 1rem equals 16px. <br />
+            xs (0.8rem, ~12px), sm (0.9rem, ~14px), md(1rem, 16px), lg(1.5rem, 24px), xlg(2.5rem, 40px), xxlg(4rem, 64px)
+          </p>
         </div>
         <div {...cssWithClass('col-xs-12 m-b-2', styles.blockContainer)}>
           {_(font).map((value, key) =>
             <span key={`font~${key}`} {...cssWithClass('p-a-0 m-a-1 p-a-1 d-inline-block', styles[`${key}Font`], styles.fontP)}>
-              font {key}: <span className="display">{value}</span>
+              {key}: <span className="display">{value}</span>
             </span>
           )}
         </div>
@@ -204,6 +205,9 @@ const styles = StyleSheet.create({
   },
   xlgFont: {
     fontSize: font.xlg,
+  },
+  xxlFont: {
+    fontSize: font.xxl,
   },
 
   fontP: {
