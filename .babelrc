@@ -1,6 +1,7 @@
 {
   "presets": ["airbnb"],
   "plugins": [
+    "transform-decorators-legacy",
     "transform-class-properties",
     [ "babel-plugin-webpack-alias", { "config": "./.storybook/webpack.config.js" } ]
   ]

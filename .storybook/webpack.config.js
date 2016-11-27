@@ -5,6 +5,7 @@ module.exports = {
     alias: {
       src: path.join(__dirname, '../src'),
       lib: path.join(__dirname, '../lib'),
+      stories: path.join(__dirname, '../stories'),
       root: path.join(__dirname, '../'),
     },
     extensions: ['', '.js', '.jsx']

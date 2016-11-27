@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
       outline: 'none',
     },
     ':hover': {
-      textDecoration: 'none',
+      textDecoration: 'none !important',
     },
   },
   primary: {
@@ -263,6 +263,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     border: `1px solid ${color.disabledTextThemeDark}`,
     color: color.disabledTextThemeDark,
+  },
+  disabledLink: {
+    color: `${color.disabledText} !important `,
+  },
+  disabledLinkThemeDark: {
+    color: `${color.disabledText} !important `,
   },
   sm: {
     padding: CONFIG.size.sm.padding,
