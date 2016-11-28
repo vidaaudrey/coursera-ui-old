@@ -16,46 +16,38 @@ import {
 const DragHandle = sortableHandle(() =>
   <NavigationMenu color={color.divider} hoverColor={color.divider} />);
 
-const text = 'Leadership Communication for Maximum Impact: Storytelling Storytelling Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, minima.';
-
-const SortableListItem = sortableElement(({
+const SortableListItemVertical = sortableElement(({
   value, index, useDragHandle, isHorizontal
 }) => {
   return (
-    <li {...cssWithClass('horizontal-box align-items-vertical-center', styles.SortableListItem)}>
-      {!useDragHandle &&
-        <div {...cssWithClass('horizontal-box align-items-absolute-center', styles.dragHandleContainer)}>
-          <DragHandle />
-        </div>
-      }
-      <span {...css(styles.indexNum)}>{index + 1}</span>
-      <div {...cssWithClass('horizontal-box align-items-vertical-center flex-1', styles.itemMain)}>
-        <img {...css(styles.image)} src="//placehold.it/100x100/A66506/FFFFFF" alt="CourseraAlt" />
-        <div {...cssWithClass('flex-1', styles.titleContainer)}>
-          <TextTruncate
-            text={text}
-            line={index % 2 === 0 ? 1 : 4}
-            truncateText={'...'}
-          />
-        </div>
-        <span className="text-muted font-xs">{value}</span>
+    <li {...cssWithClass('vertical-box', styles.SortableListItemVertical)}>
+      <img {...css(styles.image)} src="//placehold.it/100x100/A66506/FFFFFF" alt="CourseraAlt" />
+      <div {...cssWithClass('flex-1', styles.titleContainer)}>
+        <TextTruncate
+          text="Leadership Communication for Maximum Impact: Storytelling Storytelling Lorem ipsum dolor Lorem ipsum dolor"
+          line={3}
+          truncateText={'...'}
+        />
+      </div>
+      <div {...cssWithClass('horizontal-box align-items-bottom-right flex-1', styles.itemMain)}>
         <span {...cssWithClass('text-muted font-sm', styles.courseNumberSpan)}>1 Course</span>
+        <span {...css(styles.indexNum)}>{index + 1} ({value})</span>
       </div>
     </li>
   );
 });
 
-module.exports = SortableListItem;
+module.exports = SortableListItemVertical;
 
 
 const styles = StyleSheet.create({
-  SortableListItem: {
+  SortableListItemVertical: {
     padding: spacing.md,
     position: 'relative',
     backgroundColor: color.white,
     outline: `1px solid ${color.divider}`,
     userSelect: 'none',
-    minHeight: '2rem',
+    minWidth: 300,
   },
   dragHandleContainer: {
     [`@media (max-width: ${breakPoints.sm}px)`]: {
@@ -71,18 +63,20 @@ const styles = StyleSheet.create({
     },
   },
   titleContainer: {
-    maxHeight: '6rem',
+    maxHeight: '4.5rem',
     lineHeight: '1.5rem',
     fontSize: font.md,
-    paddingLeft: spacing.md,
-    paddingRight: spacing.md,
   },
   image: {
-    width: 44,
-    height: 44,
+    width: '100%',
+    height: 'auto',
+    maxHeight: '150',
   },
   courseNumberSpan: {
     minWidth: 56,
     textAlign: 'right',
+  },
+  itemMain: {
+    minHeight: 100,
   },
 });
