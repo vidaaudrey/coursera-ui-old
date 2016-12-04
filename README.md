@@ -29,51 +29,33 @@ An experiment to create reusable component library using the latest front-end te
 
 ## Feature List
 ### Utilities
-- [ ] Reset [Reboot](http://v4-alpha.getbootstrap.com/content/reboot/)
-- [ ] Colors
-- [ ] Breakpoints
-- [ ] Spacing
-- [ ] Theme
-  - [ ] Palette
-  - [ ] Gradient
-  - [ ] Shadow?
-- [ ] Fonts
-- [ ] zIndex
-- [ ] Other Common Utils
-    - [ ] w-100
-    - [ ] floating
-    - [ ] centering
-    - [ ] text-alignment
-    - [ ] text-transform
-    - [ ] font-weight
-    - [ ] contextual-color
-    - [ ] display
-    - [ ] clearfix
-    - [ ] fixed-positioning
-    - [ ] invisible (!== display:none)
-    - [ ] text-hide?
-    - [ ] screen readers: sr-only, sr-only-focusable
+- [x] Reset [Reboot](http://v4-alpha.getbootstrap.com/content/reboot/)
 
 ### Components
 
 #### Basic
-- [ ] Grid, Layout
-- [ ] Typography (remove all margin tops, have 0.5rem margin bottom)
-- [ ] List
+- [x] Avatar
+- [x] Chip / ChipList
+- [ ] Progress
+  - [x] StaticLinearProgress
+  - [x] StepProgress
 - [ ] Table
 - [ ] Form
-  - [x] Input
+  - [x] TextField
+  - [x] SearchInput
+  - [x] Toggle
   - [ ] Checkbox
   - [ ] Radio
-  - [ ] Toggle
   - [ ] Select / Dropdown
-  - [ ] Button
-  - [ ] ButtonLink
+  - [x] Button
+  - [x] ButtonLink
   - [ ] Label
-  - [ ] Form
 - [ ] Link
 - [ ] Icon
 - [ ] Card
+- [ ] Grid, Layout
+- [ ] TextBox, Typography (remove all margin tops, have 0.5rem margin bottom)
+- [ ] List
 - [ ] Divider
 - [ ] Dialog/Modal
 - [ ] Blockquote
@@ -81,6 +63,9 @@ An experiment to create reusable component library using the latest front-end te
 - [ ] Tag
 
 #### Extended
+- [x] FixedContainer
+- [x] SmartScrollWrapper
+- [x] TextTruncate
 - [ ] Notification
 - [ ] Jumbotron
 - [ ] Alert
@@ -142,11 +127,16 @@ An experiment to create reusable component library using the latest front-end te
 - [ ] Imgix
 
 #### Composables (align with recompose)
+- [x] withApiHandler
+- [x] withBranches
+- [x] withBreakPoint
+- [x] withIsMounted
+- [x] withResponsiveConfig
+- [x] withScrollInfo
+- [x] withScrollTo
 - [ ] withTheme
 - [ ] withRoute
-- [x] withApiHandler
-- [x] withHover (add mouse over and leave to existing component)
-- [ ] mapStateToProps
+- [ ] withHover (add mouse over and leave to existing component)
 - [ ] ....
 
 #### Common States and Behaviors

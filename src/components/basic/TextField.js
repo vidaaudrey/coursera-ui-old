@@ -4,6 +4,11 @@ const {
 } = require('src/styles/theme');
 import {getMiddleValueFromArray} from 'src/utils/common';
 
+const CONFIG = {
+  inputBorderWidth: 2,
+  inputPaddingLeft: 4,
+};
+
 // TODO[Audrey]: still work in progress
 const TextField = ({
   style,
@@ -13,7 +18,6 @@ const TextField = ({
     defaultValue: '',
   },
   fieldName,
-  className,
   isTouched = false,
   isDirty = false,
   extendedInfoHeight = 24,
@@ -110,7 +114,6 @@ TextField.propTypes = {
   // Default to fieldName if labelText is not provided
   labelText: PropTypes.string,
   hideLabelText: PropTypes.bool,
-  // can still use error if no validator is providated
   isTouched: PropTypes.bool,
   isDirty: PropTypes.bool,
   className: PropTypes.string,
@@ -146,15 +149,17 @@ const styles = StyleSheet.create({
   labelText: {
     display: 'inline-block',
     padding: 0,
+    paddingLeft: CONFIG.inputBorderWidth + CONFIG.inputPaddingLeft,
   },
   formControl: {
     borderRadius: 0,
     lineHeight: '1.2rem',
     minHeight: 36,
-    border: `2px solid ${color.divider}`,
+    paddingLeft: CONFIG.inputPaddingLeft,
+    border: `${CONFIG.inputBorderWidth}px solid ${color.divider}`,
     ':focus': {
       outline: 'none',
-    }
+    },
   },
   formControlFeedback: {
     lineHeight: '1.1em',
@@ -169,13 +174,13 @@ const styles = StyleSheet.create({
     borderColor: color.danger,
     ':focus': {
       borderColor: color.danger,
-    }
+    },
   },
   formControlHasSuccess: {
     borderColor: color.success,
     ':focus': {
       borderColor: color.success,
-    }
+    },
   },
   dangerTextColor: {
     color: color.danger,
@@ -218,7 +223,7 @@ const styles = StyleSheet.create({
       margin: 0,
       overflow: 'visible',
       clip: 'auto',
-    }
+    },
   },
   w100: {
     width: '100%',
