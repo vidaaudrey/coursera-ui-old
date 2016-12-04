@@ -36,14 +36,20 @@ An experiment to create reusable component library using the latest front-end te
 #### Basic
 - [x] Avatar
 - [x] Chip / ChipList
-- [ ] Progress
+- Progress
   - [x] StaticLinearProgress
   - [x] StepProgress
+- [ ] Modal
+- [ ] ProgressButton
+- [ ] ButtonGroup
+- [ ] IconButton
 - [ ] Table
-- [ ] Form
+- [ ] Rating
+- Form
   - [x] TextField
   - [x] SearchInput
   - [x] Toggle
+  - [ ] Input [ref](https://ant.design/components/input/)
   - [ ] Checkbox
   - [ ] Radio
   - [ ] Select / Dropdown
@@ -61,18 +67,24 @@ An experiment to create reusable component library using the latest front-end te
 - [ ] Blockquote
 - [ ] Nav
 - [ ] Tag
+- [ ] Affix ?
 
 #### Extended
 - [x] FixedContainer
 - [x] SmartScrollWrapper
 - [x] TextTruncate
+- [ ] Slider
+- [ ] Select
+- [ ] Step
+- [ ] BackTop
+- [ ] Collapse
+- [ ] Pagination
 - [ ] Notification
 - [ ] Jumbotron
 - [ ] Alert
 - [ ] Tooltip
 - [ ] Popover
-- [ ] Pagination
-- [ ] Tab
+- [ ] Tabs
 - [ ] Badge
 - [ ] Loader
 - [ ] Drawer
@@ -105,6 +117,9 @@ An experiment to create reusable component library using the latest front-end te
 - [ ] Menu
 - [ ] AutoComplete
 - [ ] Ellipsis
+- [ ] Carousel
+- [ ] PopConfirm [ref](https://ant.design/components/popconfirm/)
+- [ ] Timeline [ref](https://ant.design/components/timeline/)
 - [ ] CopyToClipboard
 
 #### Animation & Transition
