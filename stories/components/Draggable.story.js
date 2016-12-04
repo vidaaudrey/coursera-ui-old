@@ -1,25 +1,23 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-const {
+import {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
-} = require('src/styles/theme');
+}from 'src/styles/theme';
+
 import DraggableContainer from 'stories/support/DraggableContainer';
-import style from './Storybook.scss';
 import { range, random } from 'underscore';
-// import ChessApp from 'stories/support/chess/ChessApp';
-// import ReverseListDemo from 'stories/support/largeList/ReverseListDemo';
 import SortableListWrapper from 'stories/support/largeList/SortableListWrapper';
 import SortableList from 'stories/support/largeList/SortableList';
 import SortableListDemo from 'stories/support/largeList/SortableListDemo';
 
 function getItems(count, height) {
-	const heights = [65, 110, 140, 65, 90, 65];
-	return range(count).map((value) => {
-		return {
-			value,
-			height: height || heights[random(0, heights.length - 1)]
-		};
-	});
+  const heights = [65, 110, 140, 65, 90, 65];
+  return range(count).map((value) => {
+    return {
+      value,
+      height: height || heights[random(0, heights.length - 1)],
+    };
+  });
 }
 
 storiesOf('extended.Draggable', module)
@@ -75,11 +73,11 @@ storiesOf('extended.Draggable', module)
     );
   })
 //   .add('Grid', () => {
-// 	return (
-// 		<div className={style.root}>
-// 			<ListWrapper component={SortableList} axis={'xy'} items={getItems(10, 110)} helperClass={style.stylizedHelper} className={classNames(style.list, style.stylizedList, style.grid)} itemClass={classNames(style.stylizedItem, style.gridItem)}/>
-// 		</div>
-// 	);
+//   return (
+//     <div className={style.root}>
+//       <ListWrapper component={SortableList} axis={'xy'} items={getItems(10, 110)} helperClass={style.stylizedHelper} className={classNames(style.list, style.stylizedList, style.grid)} itemClass={classNames(style.stylizedItem, style.gridItem)}/>
+//     </div>
+//   );
 // })
 
   //  helperClass={style.stylizedHelper} className={classNames(style.list, style.stylizedList, style.horizontalList)} itemClass={classNames(style.stylizedItem, style.horizontalItem)}

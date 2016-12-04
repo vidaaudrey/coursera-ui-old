@@ -3,7 +3,6 @@ import {
   css, StyleSheet, cssWithClass, color, spacing, transition, breakPoints, font,
 } from 'src/styles/theme';
 import classNames from 'classnames';
-import style from '../../components/Storybook.scss';
 import {
   SortableContainer as sortableContainer,
   SortableElement as sortableElement,
@@ -24,8 +23,6 @@ class SortableListWrapper extends React.Component {
   }
 
   static defaultProps = {
-    className: classNames(style.list, style.stylizedList),
-    itemClass: classNames(style.item, style.stylizedItem),
     width: 400,
     height: 600,
   };

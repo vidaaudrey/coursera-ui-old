@@ -129,11 +129,10 @@ const styles = StyleSheet.create({
   Button: {
     borderRadius: 2,
     transition: transition.easeOut(),
+    lineHeight: '1rem',
     userSelect: 'none',
     position: 'relative',
     textAlign: 'center',
-    fontSize: CONFIG.fontSize,
-    lineHeight: CONFIG.fontSize,
     display: 'inline-block',
     verticalAlign: 'middle',
     whiteSpace: 'nowrap',

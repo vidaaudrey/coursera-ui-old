@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
 }
-
 // Base styles
 .list {
     width: 400px;
@@ -149,17 +148,4 @@
 
 .shrinkedHelper {
     height: 20px !important;
-}
-
-:global {
-    body {
-        font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        background-color: rgba(#F4F5F9, 0.7);
-    }
-    html, body, #root {
-        height: 100%;
-        margin: 0;
-    }
 }

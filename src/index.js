@@ -3,6 +3,7 @@
 // Only use when we have components open sourced
 import App from './containers/App';
 import Button from './components/basic/Button';
+import Toggle from './components/basic/Toggle';
 import Card from './components/basic/Card';
 import Paper from './components/basic/Paper';
 import SearchInput from './components/basic/SearchInput';
@@ -52,6 +53,7 @@ export {
 
   App,
   Button,
+  Toggle,
   Card,
   Paper,
   TextField,
