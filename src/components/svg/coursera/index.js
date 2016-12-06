@@ -13,3 +13,4 @@ export { default as SvgResend } from './common/SvgResend';
 export { default as SvgSearch } from './common/SvgSearch';
 export { default as SvgSettings } from './common/SvgSettings';
 export { default as SvgTrash } from './common/SvgTrash';
+export { default as SvgTips } from './common/SvgTips';

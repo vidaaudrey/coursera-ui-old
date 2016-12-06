@@ -11,8 +11,12 @@ const _t = c => c;
  */
 class Toggle extends Component {
   static propTypes = {
+    // Determine whether toggle is on by default
     isOn: PropTypes.bool,
-    onToggle: PropTypes.func.isRequired,
+    // Callback when toggle state changes
+    onToggle: PropTypes.func,
+    // Will disable the toggle is true
+    disabled: PropTypes.bool,
     // Can use to letters inside the avatar.
     children: PropTypes.node,
 
@@ -25,8 +29,8 @@ class Toggle extends Component {
     label: PropTypes.string,
     onLabel: PropTypes.string,
     offLabel: PropTypes.string,
+    isLabelOnLeft: PropTypes.bool,
 
-    disabled: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -52,11 +56,13 @@ class Toggle extends Component {
   onClick = () => {
     const isOn = !this.state.isOn;
     this.setState({ isOn });
-    this.props.onToggle(isOn);
+    if (this.props.onToggle) {
+      this.props.onToggle(isOn);
+    }
   }
 
   render() {
-    const { onLabel, offLabel, label, children, style } = this.props;
+    const { onLabel, offLabel, label, children, style, ...rest } = this.props;
     const { isOn } = this.state;
 
     return (

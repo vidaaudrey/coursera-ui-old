@@ -41,7 +41,6 @@ class SvgIcon extends React.Component {
     size: 24,
     color: color.icon,
     hoverColor: color.darkPrimary,
-    styles: {},
     style: {},
     htmlAttributes: {},
   };
@@ -66,19 +65,16 @@ class SvgIcon extends React.Component {
 
   render() {
     const {
-      styles,
       style,
       children,
-      color,
+      color: propColor,
       size,
       hoverColor,
-      onMouseEnter,
-      onMouseLeave,
       viewBox,
       htmlAttributes,
     } = this.props;
 
-    const dynamicStyles = getStyles({color, hoverColor, size}, this.state);
+    const dynamicStyles = getStyles({propColor, hoverColor, size}, this.state);
     const mergedStyles = {...dynamicStyles.SvgIcon, ...style};
 
     return (
@@ -98,11 +94,11 @@ class SvgIcon extends React.Component {
 
 // Dynamic styles
 function getStyles(props, state) {
-  const {color, hoverColor, size} = props;
+  const {propColor, hoverColor, size} = props;
   const {hovered} = state;
   return {
     SvgIcon: {
-      fill: hovered ? hoverColor : color,
+      fill: (hovered && hoverColor) ? hoverColor : propColor,
       height: size,
       width: size,
     },
@@ -117,5 +113,5 @@ const styles = StyleSheet.create({
     color: color.icon,
     transition: transition.easeOut(),
     userSelect: 'none',
-  }
+  },
 });

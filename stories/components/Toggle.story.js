@@ -4,74 +4,34 @@ import { withKnobs, text, select, object, boolean, number } from '@kadira/storyb
 import {css, StyleSheet, color, spacing, transition} from 'src/styles/theme';
 
 import {Toggle} from 'src';
+import EnhancedSwitch from 'src/components/basic/EnhancedSwitch';
+import Switch from 'src/components/basic/Switch';
 
 const Link = ({ href, children, ...rest}) => <a href={href} {...rest}>{children}</a>;
 const GIT_LINK = 'https://github.com/vidaaudrey/coursera-ui';
 
-const BUTTON_STYLE = {marginRight: '1rem', marginBottom: '1rem'};
-const ToggleDemo =({ isThemeDark }) => {
-  const containerStyle = isThemeDark ? {color: 'white', backgroundColor: '#363b42'} : {};
-  return (
-    <div className="m-b-2">
-      <h2>{isThemeDark ? 'Dark Theme' : 'Light Theme'}</h2>
-      <div className="p-a-1" style={containerStyle}>
-        <h3>Horizontal Layout</h3>
-        <h4>type</h4>
-        <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
-          <Toggle isThemeDark={isThemeDark} type="primary" label={'primary'} />
-          <Toggle isThemeDark={isThemeDark} type="secondary" label={'secondary'} />
-          <Toggle isThemeDark={isThemeDark} type="default" label={'default'} />
-          <Toggle isThemeDark={isThemeDark} type="noStyle" label={'noStyle'} />
-        </div>
-        <h4>size</h4>
-        <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
-          <Toggle isThemeDark={isThemeDark} type="primary" size="sm" label={'sm'} />
-          <Toggle isThemeDark={isThemeDark} type="secondary" size="md" label={'md'} />
-          <Toggle isThemeDark={isThemeDark} type="default" size="lg" label={'lg'} />
-        </div>
-        <h4>disabled</h4>
-        <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
-          <Toggle isThemeDark={isThemeDark} type="primary" label={'by prop'} disabled />
-          <Toggle isThemeDark={isThemeDark} type="primary" label={'by htmlAttributes'} htmlAttributes={{disabled: true}} />
-        </div>
-        <h4>tag</h4>
-        <p className="text-muted font-italic">
-          button can be used as link(a) or accept function that generates a Link
-        </p>
-        <div className="m-b-2 vertical-box">
-          <div className="horizontal-box align-items-spacebetween wrap">
-            <Toggle isThemeDark={isThemeDark} type="primary" label={'a(primary)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} style={BUTTON_STYLE} />
-            <Toggle isThemeDark={isThemeDark} type="secondary" label={'a(secondary)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} style={BUTTON_STYLE} />
-            <Toggle isThemeDark={isThemeDark} type="default" label={'a(default)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} style={BUTTON_STYLE} />
-            <Toggle isThemeDark={isThemeDark} type="secondary" label={'a(noStyle)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} style={BUTTON_STYLE} />
-          </div>
-          <div className="horizontal-box align-items-spacebetween wrap">
-            <Toggle isThemeDark={isThemeDark} type="primary" label={'button(default)'} tag={'button'} style={BUTTON_STYLE} />
-            <Toggle isThemeDark={isThemeDark} type="secondary" label={'tag func'} htmlAttributes={{href: GIT_LINK}} tag={Link} style={BUTTON_STYLE} />
-          </div>
-        </div>
-        <h4>misc</h4>
-        <p className="text-muted font-italic">
-          htmlAttributes, style overwrites (not recommended unless absolutely needed)
-        </p>
-        <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
-          <Toggle isThemeDark={isThemeDark} type="primary" label={'htmlAttributes'} htmlAttributes={{'data-courselenium': 'Toggle', 'aria-label': 'Close'}} />
-          <Toggle isThemeDark={isThemeDark} type="primary" label={'style overwrites'} style={{backgroundColor: 'red', color: 'white', border: 'none'}} />
-        </div>
-        <h3>Vertical Layout</h3>
-        <div className="m-b-2 vertical-box">
-          <Toggle isThemeDark={isThemeDark} type="primary" label={'primary'} />
-          <Toggle isThemeDark={isThemeDark} type="secondary" label={'secondary'} />
-          <Toggle isThemeDark={isThemeDark} type="default" label={'default'} />
-          <Toggle isThemeDark={isThemeDark} type="disabled" label={'disabled'} />
-          <Toggle isThemeDark={isThemeDark} type="primary" size="sm" label={'sm'} />
-          <Toggle isThemeDark={isThemeDark} type="secondary" size="md" label={'md'} />
-          <Toggle isThemeDark={isThemeDark} type="default" size="lg" label={'lg'} />
-        </div>
-      </div>
-    </div>
-  );
-};
+// class Test extends React.Component{
+//   state = { disabled: false}
+//   toggle = () => {
+//     this.setState({
+//       disabled: !this.state.disabled,
+//     });
+//   }
+//
+//   render() {
+//     return (<div style={{margin: 20}}>
+//       <Switch onChange={this.toggle}
+//         disabled={this.state.disabled}
+//         checkedChildren={'开'}
+//         unCheckedChildren={'关'}
+//       />
+//       <div>
+//         <button onClick={this.toggle}>toggle disabled</button>
+//       </div>
+//     </div>);
+//   }
+// }
+
 const stories = storiesOf('basic.Toggle', module);
 stories.addDecorator(withKnobs);
 //
@@ -204,12 +164,25 @@ stories.addWithInfo(
   `,
   () => (
     <div className="container p-t-1">
-      <Toggle
-        onToggle={action('onToggleDeletedMembers')}
-        onLabel={'Show Active Members'}
-        offLabel={'Show Deleted Members'}
-        style={{padding: 0, color: color.primary}}
-      />
+      <div className="row">
+        <Toggle
+          onToggle={action('onToggleDeletedMembers')}
+          onLabel={'Show Active Members'}
+          offLabel={'Show Deleted Members'}
+          style={{padding: 0, color: color.primary}}
+        />
+      </div>
+      <div className="row">
+        <EnhancedSwitch
+          onToggle={action('onToggleDeletedMembers')}
+          onLabel={'Show Active'}
+          offLabel={'Show Deleted'}
+          style={{padding: 0, color: color.primary}}
+        />
+      </div>
+      <div className="row">
+
+      </div>
     </div>
   ),
   { inline: false, source: false, propTables: [Toggle]},

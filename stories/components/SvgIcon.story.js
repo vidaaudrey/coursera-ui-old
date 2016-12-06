@@ -1,9 +1,16 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
+import {
+  color
+} from 'src/styles/theme';
 import { SvgIcon } from 'src';
 import IconLibrary from '../support/IconLibrary';
 import { courseraIcons } from 'src';
+import withSvgStack from 'src/components/hocs/withSvgStack';
+
 const {SvgEmail} = courseraIcons;
+
+const SvgEmailWithStack = withSvgStack(SvgEmail);
 
 storiesOf('basic.SvgIcon', module)
   .addWithInfo(
@@ -53,6 +60,32 @@ storiesOf('basic.SvgIcon', module)
           <small className="font-sm"> with custom svg as children </small>
         </div>
 
+        <div className="vertical-box m-b-1">
+          <SvgEmailWithStack
+            size={128}
+            color={color.white}
+            hoverColor={color.accent}
+            onMouseEnter={action('mouse enter')}
+            onMouseLeave={action('mouse leave')}
+          />
+          <small className="font-sm"> withSvgStack default </small>
+        </div>
+        <div className="vertical-box m-b-1">
+          <SvgEmailWithStack
+            size={64}
+            color={color.white}
+            hoverColor={color.accent}
+            onMouseEnter={action('mouse enter')}
+            onMouseLeave={action('mouse leave')}
+            stackColor={color.lightPrimary}
+            stackHoverColor={color.primary}
+            stackBorderWidth={4}
+            stackBorderRadius={'10px'}
+            stackBorderColor={color.divider}
+            stackToIconRatio={0.8}
+          />
+          <small className="font-sm">withSvgStack with customization</small>
+        </div>
       </div>
     ),
     // { source: true, inline: true , propTables: [SvgIcon]},
