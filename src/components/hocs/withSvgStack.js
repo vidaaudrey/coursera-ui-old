@@ -34,6 +34,7 @@ const withSvgStack = (Component) => {
     }
 
     static defaultProps = {
+      stackTag: 'span',
       size: 24,
       stackBorderRadius: '50%',
       stackBorderWidth: 0,
