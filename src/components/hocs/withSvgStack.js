@@ -7,7 +7,6 @@ import {
 
 const styles = StyleSheet.create({
   withSvgStack: {
-    display: 'inline-block',
   },
 });
 
