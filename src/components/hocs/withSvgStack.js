@@ -7,6 +7,7 @@ import {
 
 const styles = StyleSheet.create({
   withSvgStack: {
+    display: 'inline-block',
   },
 });
 
@@ -21,6 +22,8 @@ const withSvgStack = (Component) => {
 
     static propTypes = {
       size: PropTypes.number,
+      // Allow rendering of different tags, e.g. 'span', 'div'
+      stackTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
       stackBorderRadius: PropTypes.string,
       stackBorderColor: PropTypes.string,
       stackBorderWidth: PropTypes.number,
@@ -62,6 +65,7 @@ const withSvgStack = (Component) => {
         stackHoverColor,
         stackStyle,
         stackToIconRatio,
+        stackTag: Tag,
         size,
         ...rest,
       } = this.props;
@@ -76,19 +80,19 @@ const withSvgStack = (Component) => {
       const backgroundColor = isHovered ? stackHoverColor : stackColor;
 
       return (
-        <div
+        <Tag
           {...cssWithClass('horizontal-box align-items-absolute-center', styles.withSvgStack)}
           style={{...dynamicStyles.withSvgStack, backgroundColor, ...stackStyle}}
           onMouseOver={this.handleMouseOver}
           onMouseOut={this.handleMouseOut}
         >
           <Component {...rest} size={size} isHovered={isHovered} />
-        </div>
+        </Tag>
       );
     }
   }
 
-  // hoistStatics(Component, HOC);
+  hoistStatics(Component, HOC);
   return pure(HOC);
 };
 
