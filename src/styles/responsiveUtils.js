@@ -42,17 +42,16 @@ export const containerXLg = {
 };
 
 export const small = {
-    '@media (min-width: 1200px)': {
-      maxWidth: 1140,
-      backgroundColor: 'red',
-    },
-  };
+  '@media (min-width: 1200px)': {
+    maxWidth: 1140,
+    backgroundColor: 'red',
+  },
+};
 
 
 export const containerAll = {
-  container, containerSm, containerMd, containerLg, containerXLg, small
+  container, containerSm, containerMd, containerLg, containerXLg, small,
 };
-
 
 
 export const containerFluid = {

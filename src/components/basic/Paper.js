@@ -82,7 +82,7 @@ Paper.propTypes = {
 
 // Dynamic styles
 function getStyles({ isCircle, isRounded }) {
-  const borderRadiusByIsRounded = isRounded ? CONFIG.roundedBorderRadius : 0
+  const borderRadiusByIsRounded = isRounded ? CONFIG.roundedBorderRadius : 0;
   return {
     Paper: {
       borderRadius: isCircle ? '50%' : borderRadiusByIsRounded,

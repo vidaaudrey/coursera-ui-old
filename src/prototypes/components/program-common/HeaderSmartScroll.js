@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes, Component} from 'react';
 import {
-  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex,
 } from 'src/styles/theme';
 import _ from 'underscore';
 import { Avatar, Button, SmartScrollWrapper } from 'src';

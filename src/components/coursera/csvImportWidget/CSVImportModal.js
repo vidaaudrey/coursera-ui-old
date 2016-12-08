@@ -8,7 +8,7 @@ class CSVImportModal extends React.Component {
     const {handleClose} = this.props;
     return (
       <Modal
-        isOpen={true}
+        isOpen
         onAfterOpen={() => {}}
         onRequestClose={handleClose}
         closeTimeoutMS={3000}

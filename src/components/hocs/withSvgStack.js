@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
 /**
  * A HOC to add stack to svg icons
  * Can also be used to add stack to any other elements
+ * When hovered, the HOC will pass the hovered state to svgIcon
  */
 const withSvgStack = (Component) => {
   const componentName = Component.displayName || Component.name;
@@ -25,6 +26,7 @@ const withSvgStack = (Component) => {
       color: PropTypes.string,
       hoverColor: PropTypes.string,
       // Allow rendering of different tags, e.g. 'span', 'div'
+      // Default to 'span' so as it's easy to use inside button
       stackTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
       stackBorderRadius: PropTypes.string,
       stackBorderColor: PropTypes.string,
@@ -44,7 +46,7 @@ const withSvgStack = (Component) => {
       stackColor: color.primary,
       stackHoverColor: color.darkPrimary,
       stackStyle: {},
-      stackToIconRatio: 0.5,
+      stackToIconRatio: 0.6,
     }
 
     state = {

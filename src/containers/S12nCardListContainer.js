@@ -3,7 +3,7 @@ import withApiMockData from 'src/components/hocs/withApiMockData';
 import S12nCardWithLayer from 'src/components/rich/S12nCardWithLayer';
 
 const S12nCardListContainer = ({
-  onLoadedData, shouldNotRender, ...rest
+  onLoadedData, shouldNotRender, ...rest,
 }) => {
   if (onLoadedData) {
     onLoadedData(rest.s12n);

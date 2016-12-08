@@ -70,7 +70,7 @@ class DomainSectionS12nList extends Component {
     return {
       s12nIds: [],
       start: 0,
-    }
+    };
   }
 
   componentWillReceiveProps({initialS12nCount, isExpanded}) {
@@ -138,7 +138,7 @@ class DomainSectionS12nList extends Component {
         {isLoading &&
           <S12nCardListContainer
             onLoadedData={this.onLoadedNextS12nBatch}
-            shouldNotRender={true}
+            shouldNotRender
             start={start}
             limit={limit}
           />

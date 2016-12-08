@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React, {PropTypes, Component} from 'react';
-import {cssWithClass, StyleSheet, css, color, spacing, gradient, transition,} from 'src/styles/theme';
+import {cssWithClass, StyleSheet, css, color, spacing, gradient, transition } from 'src/styles/theme';
 import { domainPropType } from 'src/constants/propTypes';
 import _ from 'underscore';
 import {compose, pure} from 'recompose';
@@ -257,5 +257,5 @@ const styles = StyleSheet.create({
   },
   domainSectionCardListContainer: {
 
-  }
+  },
 });

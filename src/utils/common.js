@@ -70,7 +70,7 @@ const getAbsoluteBoundingRect = (el) => {
 /**
  * Get the absolute coordiates of an element
  */
-const getScreenCordinates = (elemArg, document)  => {
+const getScreenCordinates = (elemArg, document) => {
   let elem = elemArg;
   const pos = {};
   pos.x = elem.offsetLeft;

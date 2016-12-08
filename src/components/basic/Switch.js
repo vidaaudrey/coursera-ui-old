@@ -94,7 +94,8 @@ const Switch = React.createClass({
         ref="node"
         onKeyDown={this.handleKeyDown}
         onClick={disabled ? noop : this.toggle}
-        onMouseUp={this.handleMouseUp}>
+        onMouseUp={this.handleMouseUp}
+      >
         <span className={`${prefixCls}-inner`}>
           {checked ? checkedChildren : unCheckedChildren}
         </span>

@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
-import React, { PropTypes }from 'react';
+import React, { PropTypes } from 'react';
 import {
   cssWithClass, StyleSheet, css, color, spacing, gradient, transition, font,
 } from 'src/styles/theme';

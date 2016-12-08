@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign, no-use-before-define, max-len */
 import React from 'react';
 const {
-  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex
+  cssWithClass, StyleSheet, css, color, spacing, gradient, transition, zIndex,
 } = require('src/styles/theme');
 
 const _ = require('underscore');
@@ -23,7 +23,7 @@ class HeaderScrollCourseSelectPage extends React.Component {
   }
 
   static defaultProps = {
-    headerHeight: 100
+    headerHeight: 100,
   }
 
   componentDidMount() {
@@ -45,7 +45,7 @@ class HeaderScrollCourseSelectPage extends React.Component {
       isLoggedIn,
       alwaysHide,
       headerHeight,
-      domains, onSetSelectedDomainIds, onSetSearchKeyword, searchKeyWord, selectedDomainIds
+      domains, onSetSelectedDomainIds, onSetSearchKeyword, searchKeyWord, selectedDomainIds,
     } = this.props;
 
     const hideContainer = alwaysHide;

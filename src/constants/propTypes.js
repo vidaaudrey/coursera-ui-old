@@ -1,6 +1,6 @@
 import React from 'react';
 const {
-  number, string, shape, objectOf, bool, arrayOf
+  number, string, shape, objectOf, bool, arrayOf,
 } = React.PropTypes;
 
 /**

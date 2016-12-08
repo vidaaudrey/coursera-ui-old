@@ -42,7 +42,6 @@ const ICON_SIZE = 44;
 const SubdomainChipList = ({
   listData = mockListData, onSelectChange, isInfiniteMode, onCollapse, domainId, domainName,
 }) => {
-
   return (
     <div {...cssWithClass('vertical-box p-a-1', styles.SubdomainChipList)}>
       <div {...cssWithClass('horizontal-box', styles.navRow)}>

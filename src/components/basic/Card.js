@@ -1,7 +1,7 @@
-/* eslint-disable no-param-reassign, no-use-before-define, arrow-body-style */
+/* eslint-disable max-len, no-param-reassign, no-use-before-define, arrow-body-style */
 import React, {PropTypes } from 'react';
 import {
-  css, StyleSheet, font, color, spacing, transition
+  css, StyleSheet, font, color, spacing, transition,
 } from 'src/styles/theme';
 import Paper from 'src/components/basic/Paper';
 

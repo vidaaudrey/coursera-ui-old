@@ -99,7 +99,7 @@ function getStyles({coursePhotoSize}) {
 
 const styles = StyleSheet.create({
   CourseMiniCard: {
-    minWidth: 320
+    minWidth: 320,
   },
 
   StaticLinearProgress: {

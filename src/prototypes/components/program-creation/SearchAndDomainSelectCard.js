@@ -29,7 +29,7 @@ class SearchAndDomainSelectCard extends React.Component {
 
   render() {
     const {
-      domains, selectedDomainIds, onSetSearchKeyword, searchKeyWord, onSetSelectedDomainIds
+      domains, selectedDomainIds, onSetSearchKeyword, searchKeyWord, onSetSelectedDomainIds,
     } = this.props;
     return (
       <div {...cssWithClass('p-b-1', styles.SearchAndDomainSelectCard)}>

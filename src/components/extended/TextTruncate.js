@@ -62,7 +62,7 @@ class TextTruncate extends Component {
       truncateText,
       textAttributes,
       htmlAttributes,
-      ...rest
+      ...rest,
     } = this.props;
 
     const scopeWidth = this.scopeRef.getBoundingClientRect().width;
@@ -146,7 +146,7 @@ class TextTruncate extends Component {
 
     return (
       <div {...textAttributes} {...rest}>
-        {text.substr(0, startPos) + truncateText + ' '}
+        {`${text.substr(0, startPos) + truncateText} `}
         {textTruncateChild}
       </div>
     );

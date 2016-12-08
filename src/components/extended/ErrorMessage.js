@@ -54,7 +54,7 @@ ErrorMessage.propTypes = {
     PropTypes.shape({
       msg: PropTypes.string, // preferred error format
       message: PropTypes.string,
-    })
+    }),
   ]),
   defaultErrorMsg: PropTypes.string,
   // Option content to display after the error msg.

@@ -51,7 +51,7 @@ class ProgramSelectCoursePageInfiniteMode extends React.Component {
       onLoadSubdomainContainer,
       activeDomainSectionIndex,
       isCourseExpanded,
-      isInfiniteMode
+      isInfiniteMode,
     } = this.props;
 
     const domainListData = domains.map(item => ({...item, isSelected: _(selectedDomainIds).contains(item.id)}));
@@ -60,7 +60,7 @@ class ProgramSelectCoursePageInfiniteMode extends React.Component {
       <div {...css(styles.ProgramSelectCoursePageInfiniteMode)} style={{marginTop: headerHeight}}>
         {_(selectedDomainIds).size() === 0 && <NoDomainSelected />}
         {_(domainListData).map((item, index) => (
-          <div key={`domain-container~${item.id}`} style={ item.isSelected ? {} : {maxHeight: 0}}>
+          <div key={`domain-container~${item.id}`} style={item.isSelected ? {} : {maxHeight: 0}}>
             <DomainSectionCardList
               activeDomainSectionIndex={activeDomainSectionIndex}
               domainId={item.id}
@@ -100,5 +100,5 @@ const styles = StyleSheet.create({
   },
   domainSectionCardListContainer: {
 
-  }
+  },
 });

@@ -88,5 +88,5 @@ const styles = StyleSheet.create({
     userSelect: 'none',
     position: 'relative',
     textAlign: 'center',
-  }
+  },
 });

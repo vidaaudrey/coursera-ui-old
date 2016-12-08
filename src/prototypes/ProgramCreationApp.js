@@ -14,7 +14,7 @@ import ProgramSelectDomainPage from 'src/prototypes/components/program-creation/
 import ProgramSelectCoursePage from 'src/prototypes/components/program-creation/ProgramSelectCoursePage';
 import ProgramPreviewPage from 'src/prototypes/components/program-creation/ProgramPreviewPage';
 import ProgramFixedFooter from 'src/prototypes/components/program-creation/ProgramFixedFooter';
-const Scroll  = require('react-scroll');
+const Scroll = require('react-scroll');
 const scroll = Scroll.animateScroll;
 
 const { getScreenCordinates } = require('src/utils/common');

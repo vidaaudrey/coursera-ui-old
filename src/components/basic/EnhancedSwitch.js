@@ -179,7 +179,7 @@ class EnhancedSwitch extends Component {
     const { onLabel, offLabel, label, children, style, isLabelOnLeft,
       inputType, value, disabled, showTouchRipple, thumbStyle, disableTouchRipple, disableFocusRipple,
       switchElement,
-      ...rest
+      ...rest,
     } = this.props;
     const { checked } = this.state;
     const labelElement = label && (
@@ -209,10 +209,10 @@ class EnhancedSwitch extends Component {
       />
     );
 
-   const ripples = [
-     showTouchRipple ? touchRipple : null,
-     showFocusRipple ? focusRipple : null,
-   ];
+    const ripples = [
+      showTouchRipple ? touchRipple : null,
+      showFocusRipple ? focusRipple : null,
+    ];
 
     // If toggle component (indicated by whether the style includes thumb) manually lay out
     // elements in order to nest ripple elements
@@ -229,7 +229,7 @@ class EnhancedSwitch extends Component {
     );
 
 
-   const elementsInOrder = isLabelOnLeft ? (
+    const elementsInOrder = isLabelOnLeft ? (
        <div style={styles.controls}>
          {labelElement}
          {switchOrThumbElement}

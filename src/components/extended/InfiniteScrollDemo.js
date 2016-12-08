@@ -16,11 +16,11 @@ const generateItem = () => {
   const chooseCat = Math.floor(Math.random() * 2);
   const ind = (currentIndex % 10) + 1;
   const newImage = (chooseCat) ?
-  'http://lorempixel.com/output/cats-q-c-640-480-' + ind + '.jpg':
-  'http://lorempixel.com/output/technics-q-c-640-480-' + ind + '.jpg';
+  `http://lorempixel.com/output/cats-q-c-640-480-${ind}.jpg`:
+  `http://lorempixel.com/output/technics-q-c-640-480-${ind}.jpg`;
   currentIndex++;
   return newImage;
-}
+};
 
 const initialItems = [
   'http://lorempixel.com/output/cats-q-c-640-480-9.jpg',
@@ -83,7 +83,7 @@ class InfiniteScrollDemo extends React.Component {
     console.warn('-handleExpand--');
     this.setState({
       isInfiniteMode: true,
-    })
+    });
   }
 
   handleCollapse = () => {
@@ -109,11 +109,11 @@ class InfiniteScrollDemo extends React.Component {
     return (
       <div onScroll={this.handleScroll}>
         <h1>Header Coursera Logo</h1>
-        <div className="p-a-3 m-a-3 border-a" ref={(r) => (this.domainListRef = r)}>
+        <div className="p-a-3 m-a-3 border-a" ref={r => (this.domainListRef = r)}>
           <h3>hello world</h3>
           <h3>Domain List</h3>
         </div>
-        {isInfiniteMode  &&
+        {isInfiniteMode &&
           <button onClick={this.handleCollapse} {...css(styles.collapseButton)}> Collapse </button>
         }
         {!isInfiniteMode &&
