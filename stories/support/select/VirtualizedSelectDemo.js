@@ -4,6 +4,7 @@ import {
   cssWithClass, StyleSheet, css, color, spacing,
 } from 'src/styles/theme';
 
+import 'whatwg-fetch'
 import { Creatable } from 'react-select'
 import Select from 'src/components/basic/Select';
 
