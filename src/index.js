@@ -6,6 +6,7 @@ import Button from './components/basic/Button';
 import Select from './components/basic/Select';
 import Toggle from './components/basic/Toggle';
 import Expandable from './components/basic/Expandable';
+import Accordion from './components/basic/Accordion';
 import Card from './components/basic/Card';
 import Paper from './components/basic/Paper';
 import SearchInput from './components/basic/SearchInput';
@@ -58,6 +59,7 @@ export {
   Select,
   Toggle,
   Expandable,
+  Accordion,
   Card,
   Paper,
   TextField,

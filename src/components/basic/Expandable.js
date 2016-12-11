@@ -24,7 +24,7 @@ class Expandable extends Component {
     style: PropTypes.object,
     isThemeDark: PropTypes.bool,
     // click event
-    toggleOpen: PropTypes.func,
+    onToggle: PropTypes.func,
     header: PropTypes.node,
     isOpened: React.PropTypes.bool,
     hideArrow: React.PropTypes.bool,
@@ -51,17 +51,17 @@ class Expandable extends Component {
     };
   }
 
-  componentWillReceiveProps({ isOpened }) {
-    if (typeof isOpened !== 'undefined' && isOpened !== this.props.isOpened) {
-      this.setState({ isOpened });
+  componentWillReceiveProps(nextProps) {
+    if ('isOpened' in nextProps && nextProps.isOpened !== this.props.isOpened) {
+      this.setState({ isOpened: nextProps.isOpened });
     }
   }
 
-  toggleOpen = () => {
+  onToggle = () => {
     const isOpened = !this.state.isOpened;
     this.setState({ isOpened });
-    if (this.props.toggleOpen) {
-      this.props.toggleOpen(isOpened);
+    if (this.props.onToggle) {
+      this.props.onToggle(isOpened);
     }
   }
 
@@ -99,7 +99,7 @@ class Expandable extends Component {
           {...css(
             styles.header,
           )}
-          onClick={this.toggleOpen}
+          onClick={this.onToggle}
         >
           {header}
           {!hideArrow &&
