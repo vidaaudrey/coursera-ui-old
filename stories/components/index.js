@@ -1,5 +1,5 @@
 import './Button.story';
-// import './Toggle.story';
+import './Toggle.story';
 import './Select.story';
 import './Paper.story';
 import './Card.story';

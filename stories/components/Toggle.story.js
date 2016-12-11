@@ -4,11 +4,33 @@ import { withKnobs, text, select, object, boolean, number } from '@kadira/storyb
 import {css, StyleSheet, color, spacing, transition} from 'src/styles/theme';
 
 import {Toggle} from 'src';
-import EnhancedSwitch from 'src/components/basic/EnhancedSwitch';
-import Switch from 'src/components/basic/Switch';
+// import EnhancedSwitch from 'src/components/basic/EnhancedSwitch';
+// import Switch from 'src/components/basic/Switch';
 
 const Link = ({ href, children, ...rest}) => <a href={href} {...rest}>{children}</a>;
 const GIT_LINK = 'https://github.com/vidaaudrey/coursera-ui';
+
+class ToggleDemo extends React.Component {
+  state = {
+    checked: false,
+  }
+
+  render() {
+    return (
+      <div className="rc-ToggleDemo">
+        <label>
+          <Toggle
+            checked
+            onChange={() => (this.setState({checked: !this.state.checked}))}
+          />
+          <span>Wrapper label tag</span>
+        </label>
+      </div>
+    );
+  }
+}
+
+module.exports = ToggleDemo;
 
 // class Test extends React.Component{
 //   state = { disabled: false}
@@ -34,6 +56,11 @@ const GIT_LINK = 'https://github.com/vidaaudrey/coursera-ui';
 
 const stories = storiesOf('basic.Toggle', module);
 stories.addDecorator(withKnobs);
+
+stories.add('Toggle simple', () => (
+  <ToggleDemo />
+));
+
 //
 // stories.addWithInfo(
 //   'playground',
@@ -146,44 +173,44 @@ stories.addDecorator(withKnobs);
 // );
 
 
-stories.addWithInfo(
-  'simple usage',
-  `
-  Toggle with size, type, label and children
-  ~~~js
-  import { Toggle } from 'coursera-ui';
-
-  <Toggle type="primary" label={'primary'} disabled />
-  <Toggle type="secondary" label={'secondary'} />
-  <Toggle type="default" label={'default'} />
-  <Toggle type="primary" size="sm" label={'sm'} />
-  <Toggle type="secondary" size="md" label={'md'} />
-  <Toggle type="default" size="lg" label={'lg'} />
-  <Toggle isThemeDark={isThemeDark} type="primary" label={'a(link)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} />
-  ~~~
-  `,
-  () => (
-    <div className="container p-t-1">
-      <div className="row">
-        <Toggle
-          onToggle={action('onToggleDeletedMembers')}
-          onLabel={'Show Active Members'}
-          offLabel={'Show Deleted Members'}
-          style={{padding: 0, color: color.primary}}
-        />
-      </div>
-      <div className="row">
-        <EnhancedSwitch
-          onToggle={action('onToggleDeletedMembers')}
-          onLabel={'Show Active'}
-          offLabel={'Show Deleted'}
-          style={{padding: 0, color: color.primary}}
-        />
-      </div>
-      <div className="row">
-
-      </div>
-    </div>
-  ),
-  { inline: false, source: false, propTables: [Toggle]},
-);
+// stories.addWithInfo(
+//   'simple usage',
+//   `
+//   Toggle with size, type, label and children
+//   ~~~js
+//   import { Toggle } from 'coursera-ui';
+//
+//   <Toggle type="primary" label={'primary'} disabled />
+//   <Toggle type="secondary" label={'secondary'} />
+//   <Toggle type="default" label={'default'} />
+//   <Toggle type="primary" size="sm" label={'sm'} />
+//   <Toggle type="secondary" size="md" label={'md'} />
+//   <Toggle type="default" size="lg" label={'lg'} />
+//   <Toggle isThemeDark={isThemeDark} type="primary" label={'a(link)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} />
+//   ~~~
+//   `,
+//   () => (
+//     <div className="container p-t-1">
+//       <div className="row">
+//         <Toggle
+//           onToggle={action('onToggleDeletedMembers')}
+//           onLabel={'Show Active Members'}
+//           offLabel={'Show Deleted Members'}
+//           style={{padding: 0, color: color.primary}}
+//         />
+//       </div>
+//       <div className="row">
+//         <EnhancedSwitch
+//           onToggle={action('onToggleDeletedMembers')}
+//           onLabel={'Show Active'}
+//           offLabel={'Show Deleted'}
+//           style={{padding: 0, color: color.primary}}
+//         />
+//       </div>
+//       <div className="row">
+//
+//       </div>
+//     </div>
+//   ),
+//   { inline: false, source: false, propTables: [Toggle]},
+// );
