@@ -2,7 +2,8 @@ import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import { withKnobs, text, select, object, boolean, number } from '@kadira/storybook-addon-knobs';
 import {css, StyleSheet, color, spacing, transition} from 'src/styles/theme';
-
+import ActionFavorite from 'src/components/svg/material/action/favorite';
+import SocialSentimentDissatisfied from 'src/components/svg/material/social/sentiment-dissatisfied';
 import {Toggle} from 'src';
 // import EnhancedSwitch from 'src/components/basic/EnhancedSwitch';
 // import Switch from 'src/components/basic/Switch';
@@ -10,21 +11,97 @@ import {Toggle} from 'src';
 const Link = ({ href, children, ...rest}) => <a href={href} {...rest}>{children}</a>;
 const GIT_LINK = 'https://github.com/vidaaudrey/coursera-ui';
 
+const Wrapper = ({ children }) =>
+  <div className="col-xs-6 col-sm-3 col-md-2 vertical-box align-items-absolute-center p-a-1">
+    {children}
+  </div>;
+
 class ToggleDemo extends React.Component {
   state = {
     checked: false,
   }
 
+  onChange = () => {
+    this.setState({checked: !this.state.checked});
+  }
+
   render() {
+    const { isThemeDark } = this.props;
+    const containerStyle = isThemeDark ? {color: 'white', backgroundColor: '#363b42'} : {};
+
     return (
-      <div className="rc-ToggleDemo">
-        <label>
-          <Toggle
-            checked
-            onChange={() => (this.setState({checked: !this.state.checked}))}
-          />
-          <span>Wrapper label tag</span>
-        </label>
+      <div className="container-fluid p-a-1 m-b-3 text-xs-center" style={containerStyle}>
+        <h2>{isThemeDark ? 'Dark Theme' : 'Light Theme'}</h2>
+        <div className="row">
+          <Wrapper>
+            <Toggle checked onChange={this.onChange} />
+            <span>Default</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle checked disabled onChange={this.onChange} />
+            <span>checked and disabled</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle disabled onChange={this.onChange} />
+            <span>unchecked and disabled</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle checked useLabel onChange={this.onChange} />
+            <span>useLabel</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle checked useLabel onLabel="Yes" offLabel="no" onChange={this.onChange} />
+            <span>customize label</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle
+              checked
+              onChange={this.onChange}
+              icons={{
+                checked: <ActionFavorite size={16} color={color.white} />,
+                unchecked: <SocialSentimentDissatisfied size={16} color={color.white} />,
+              }}
+            />
+            <span>customize icon</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle
+              checked
+              trackColor="#ff0000"
+              onChange={this.onChange}
+              icons={{
+                checked: <ActionFavorite size={16} color={color.white} />,
+                unchecked: <SocialSentimentDissatisfied size={16} color={color.white} />,
+              }}
+            />
+            <span>trackColor</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle
+              checked
+              trackColor="#ff0000"
+              disabled
+              onChange={this.onChange}
+              icons={{
+                checked: <ActionFavorite size={16} color={color.white} />,
+                unchecked: <SocialSentimentDissatisfied size={16} color={color.white} />,
+              }}
+            />
+            <span>trackColor disabled</span>
+          </Wrapper>
+          <Wrapper>
+            <Toggle
+              trackColor="#ff0000"
+              disabled
+              onChange={this.onChange}
+              icons={{
+                checked: <ActionFavorite size={16} color={color.white} />,
+                unchecked: <SocialSentimentDissatisfied size={16} color={color.white} />,
+              }}
+            />
+            <span>trackColor disabled unchecked</span>
+          </Wrapper>
+        </div>
       </div>
     );
   }
@@ -57,9 +134,38 @@ module.exports = ToggleDemo;
 const stories = storiesOf('basic.Toggle', module);
 stories.addDecorator(withKnobs);
 
-stories.add('Toggle simple', () => (
-  <ToggleDemo />
-));
+stories.addWithInfo(
+  'simple usage',
+  `
+  A simple toggle input
+  ~~~js
+  import { Toggle } from 'coursera-ui';
+
+  <Toggle checked onChange={this.onChange} />
+  <Toggle checked useLabel onChange={this.onChange} />
+  <Toggle checked useLabel onLabel="Yes" offLabel="no" onChange={this.onChange} />
+
+  <Toggle
+    checked
+    trackColor="#ff0000"
+    onChange={this.onChange}
+    icons={{
+      checked: <ActionFavorite size={16} color={color.white} />,
+      unchecked: <SocialSentimentDissatisfied size={16} color={color.white} />,
+    }}
+  />
+
+  ~~~
+  `,
+  () => (
+    <div className="vertical-box">
+      <ToggleDemo />
+      <ToggleDemo isThemeDark />
+    </div>
+  ),
+  { inline: false, source: false, propTables: [Toggle]},
+);
+
 
 //
 // stories.addWithInfo(

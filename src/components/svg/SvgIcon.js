@@ -40,7 +40,6 @@ class SvgIcon extends React.Component {
     viewBox: '0 0 24 24',
     size: 24,
     color: color.icon,
-    hoverColor: color.darkPrimary,
     style: {},
     htmlAttributes: {},
   };

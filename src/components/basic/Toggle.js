@@ -1,27 +1,14 @@
 /* eslint-disable no-use-before-define, quote-props, react/forbid-prop-types, jsx-a11y/no-static-element-interactions*/
 import React, { PropTypes, Component } from 'react';
-import {css, StyleSheet, color, spacing, transition} from 'src/styles/theme';
-import { darken } from 'src/utils/colorUtils';
+import {
+  css, StyleSheet, color, spacing, transition, font
+} from 'src/styles/theme';
+import { darken, lighten } from 'src/utils/colorUtils';
 import { pointerCoord } from 'src/utils/domUtils';
-import { pure } from 'recompose';
+import NavigationClose from 'src/components/svg/material/navigation/close';
+import NavigationCheck from 'src/components/svg/material/navigation/check';
 
 const _t = c => c;
-
-const X = () =>
-  <svg width="10" height="10" viewBox="0 0 10 10">
-    <title>
-      switch-x
-    </title>
-    <path d="M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12" fill="#fff" fillRule="evenodd" />
-  </svg>;
-
-const Check = () =>
-  <svg width="14" height="11" viewBox="0 0 14 11">
-    <title>
-      switch-check
-    </title>
-    <path d="M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0" fill="#fff" fillRule="evenodd" />
-  </svg>;
 
 /**
  * Work in progress
@@ -33,8 +20,8 @@ class Toggle extends Component {
     // Callback when toggle state changes
     onToggle: PropTypes.func,
 
-    // Can render label or other elements as children
-    children: PropTypes.node,
+    // Customize the main trackColor
+    trackColor: PropTypes.string,
 
     htmlAttributes: PropTypes.object,
     inputHtmlAttributes: PropTypes.object,
@@ -43,10 +30,9 @@ class Toggle extends Component {
     // Override the inline-styles of the root element.
     style: PropTypes.object,
 
-    label: PropTypes.string,
     onLabel: PropTypes.string,
     offLabel: PropTypes.string,
-    isLabelOnLeft: PropTypes.bool,
+    useLabel: PropTypes.bool,
 
     defaultChecked: PropTypes.bool,
     icons: PropTypes.oneOfType([
@@ -72,10 +58,6 @@ class Toggle extends Component {
     style: {},
     onLabel: _t('On'),
     offLabel: _t('Off'),
-    icons: {
-      checked: <Check />,
-      unchecked: <X />,
-    },
   }
 
   constructor(props, context) {
@@ -102,6 +84,7 @@ class Toggle extends Component {
   }
 
   onClick = (e) => {
+    if (this.props.disabled) return;
     const checkbox = this.input;
     if (e.target !== checkbox && !this.moved) {
       this.previouslyChecked = checkbox.checked;
@@ -118,6 +101,7 @@ class Toggle extends Component {
   }
 
   onTouchStart = (e) => {
+    if (this.props.disabled) return;
     this.startX = pointerCoord(e).x;
     this.activated = true;
   }
@@ -167,22 +151,22 @@ class Toggle extends Component {
     }
   }
 
-  getIcon = (type) => {
-    const { icons } = this.props;
-    if (!icons) {
-      return null;
-    }
-    return icons[type] === undefined
-      ? Toggle.defaultProps.icons[type]
-      : icons[type];
-  }
-
   render() {
     const {
-      onLabel, disabled, offLabel, label,
-      children, style, icons, htmlAttributes, inputHtmlAttributes,
+      onLabel, disabled, offLabel, useLabel, trackColor,
+      style, icons, htmlAttributes, inputHtmlAttributes,
     } = this.props;
     const { checked, hasFocus } = this.state;
+    const trackStyle = {};
+    const thumbStyle = {};
+    if (trackColor) {
+      const lightenedColor = lighten(trackColor, 0.2);
+      if (checked) {
+        console.warn('--checked-', lightenedColor, disabled);
+        trackStyle.backgroundColor = disabled ? lightenedColor : trackColor;
+        thumbStyle.borderColor = disabled ? lightenedColor : trackColor;
+      }
+    }
 
     return (
       <div
@@ -204,7 +188,10 @@ class Toggle extends Component {
             styles.track,
             checked && !disabled && styles.trackChecked,
             !checked && !disabled && styles.trackUnchecked,
+            checked && disabled && styles.trackCheckDisabled,
+            !checked && disabled && styles.trackUnCheckDisabled,
           )}
+          style={trackStyle}
         >
           <div
             {...css(
@@ -212,7 +199,10 @@ class Toggle extends Component {
               checked && !disabled && styles.checkedTrackCheck,
             )}
           >
-            {this.getIcon('checked')}
+            {useLabel && <span {...css(styles.label)}>{onLabel}</span>}
+            {!useLabel &&
+              ((icons && icons.checked) || <NavigationCheck size={16} color={color.white} />)
+            }
           </div>
           <div
             {...css(
@@ -220,16 +210,21 @@ class Toggle extends Component {
               checked && !disabled && styles.checkedTrackX,
             )}
           >
-            {this.getIcon('unchecked')}
+            {useLabel && <span {...css(styles.label, styles.labelRight)}>{offLabel}</span>}
+            {!useLabel &&
+              ((icons && icons.unchecked) || <NavigationClose size={16} color={color.white} />)
+            }
           </div>
         </div>
         <div
           {...css(
             styles.thumb,
             checked && styles.checkedThumb,
+            checked && !disabled && styles.checkedThumbNotDisabled,
             hasFocus && !disabled && styles.focusedThumb,
             !disabled && styles.activeThumb,
           )}
+          style={thumbStyle}
         />
         <input
           {...inputHtmlAttributes}
@@ -245,7 +240,7 @@ class Toggle extends Component {
 }
 
 
-module.exports = pure(Toggle);
+module.exports = Toggle;
 
 const styles = StyleSheet.create({
   Toggle: {
@@ -258,13 +253,24 @@ const styles = StyleSheet.create({
     padding: 0,
     tapHighlightColor: 'transparent',
   },
+  label: {
+    color: color.white,
+    fontSize: font.xs,
+    display: 'inline-block',
+    lineHeight: '100%',
+    marginLeft: -4,
+    marginTop: 2,
+  },
+  labelRight: {
+    marginLeft: -2,
+  },
   disabled: {
     cursor: 'not-allowed',
     opacity: 0.5,
     transition: 'opacity 0.25s',
   },
   track: {
-    width: 50,
+    width: 48,
     height: 24,
     padding: 0,
     borderRadius: 30,
@@ -283,10 +289,16 @@ const styles = StyleSheet.create({
       backgroundColor: darken(color.gray, 0.2),
     },
   },
+  trackCheckDisabled: {
+    backgroundColor: lighten(color.success, 0.2),
+  },
+  trackUnCheckDisabled: {
+    backgroundColor: darken(color.disabled, 0.2),
+  },
   trackCheck: {
     position: 'absolute',
-    width: 14,
-    height: 10,
+    width: 16,
+    height: 16,
     top: 0,
     bottom: 0,
     marginTop: 'auto',
@@ -302,14 +314,14 @@ const styles = StyleSheet.create({
   },
   trackX: {
     position: 'absolute',
-    width: 10,
-    height: 10,
+    width: 16,
+    height: 16,
     top: 0,
     bottom: 0,
     marginTop: 'auto',
     marginBottom: 'auto',
     lineHeight: 0,
-    right: 10,
+    right: 6,
     opacity: 1,
     transition: 'opacity 0.25s ease',
   },
@@ -329,7 +341,9 @@ const styles = StyleSheet.create({
     transition: 'all 0.25s ease',
   },
   checkedThumb: {
-    left: 27,
+    left: 26,
+  },
+  checkedThumbNotDisabled: {
     borderColor: color.success,
   },
   focusedThumb: {
