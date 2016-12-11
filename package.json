@@ -19,7 +19,7 @@
     "test:w": "mocha --require .scripts/mocha_runner --recursive tests/**/*.js -w",
     "test-only": "npm run mocha --silent tests/**/*.js",
     "test": "npm run test-only && npm run lint",
-    "test:cover": "istanbul cover  _mocha -- --require .scripts/mocha_runner -R spec tests/**/*.js",
+    "test:cover": "istanbul cover  _mocha -- --require node_modules/ignore-styles --require .scripts/mocha_runner -R spec tests/**/*.js",
     "check-coverage": "istanbul check-coverage --statements 20 --branches 20 --functions 20 --lines 20",
     "report-coverage": "codecov -t 1dcea176-5252-4911-8621-060ab84e9c1e"
   },
@@ -50,6 +50,7 @@
     "eslint-plugin-react": "^6.3.0",
     "file-loader": "^0.9.0",
     "git-url-parse": "^6.0.5",
+    "ignore-styles": "^5.0.1",
     "istanbul": "^1.0.0-alpha",
     "jsdom": "^9.6.0",
     "json-loader": "^0.5.4",

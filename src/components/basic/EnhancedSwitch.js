@@ -177,7 +177,7 @@ class EnhancedSwitch extends Component {
 
   render() {
     const { onLabel, offLabel, label, children, style, isLabelOnLeft,
-      inputType, value, disabled, showTouchRipple, thumbStyle, disableTouchRipple, disableFocusRipple,
+      inputType, value, disabled, thumbStyle, disableTouchRipple, disableFocusRipple,
       switchElement,
       ...rest,
     } = this.props;
