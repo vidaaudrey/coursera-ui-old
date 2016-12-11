@@ -5,6 +5,7 @@ import App from './containers/App';
 import Button from './components/basic/Button';
 import Select from './components/basic/Select';
 import Toggle from './components/basic/Toggle';
+import Expandable from './components/basic/Expandable';
 import Card from './components/basic/Card';
 import Paper from './components/basic/Paper';
 import SearchInput from './components/basic/SearchInput';
@@ -56,6 +57,7 @@ export {
   Button,
   Select,
   Toggle,
+  Expandable,
   Card,
   Paper,
   TextField,

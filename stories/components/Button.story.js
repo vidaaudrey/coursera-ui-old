@@ -75,6 +75,31 @@ const stories = storiesOf('basic.Button', module);
 stories.addDecorator(withKnobs);
 
 stories.addWithInfo(
+  'simple usage',
+  `
+  Button with size, type, label and children
+  ~~~js
+  import { Button } from 'coursera-ui';
+
+  <Button type="primary" label={'primary'} disabled />
+  <Button type="secondary" label={'secondary'} />
+  <Button type="default" label={'default'} />
+  <Button type="primary" size="sm" label={'sm'} />
+  <Button type="secondary" size="md" label={'md'} />
+  <Button type="default" size="lg" label={'lg'} />
+  <Button isThemeDark={isThemeDark} type="primary" label={'a(link)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} />
+  ~~~
+  `,
+  () => (
+    <div className="container p-t-1">
+      <ButtonDemo isThemeDark={false} />
+      <ButtonDemo isThemeDark />
+    </div>
+  ),
+  { inline: false, source: false, propTables: [Button]},
+);
+
+stories.addWithInfo(
   'playground',
   `
   Button playground. Change the knobs setting to see the results.
@@ -182,29 +207,4 @@ stories.addWithInfo(
     );
   },
   { inline: false, source: true, propTables: [Button]},
-);
-
-stories.addWithInfo(
-  'simple usage',
-  `
-  Button with size, type, label and children
-  ~~~js
-  import { Button } from 'coursera-ui';
-
-  <Button type="primary" label={'primary'} disabled />
-  <Button type="secondary" label={'secondary'} />
-  <Button type="default" label={'default'} />
-  <Button type="primary" size="sm" label={'sm'} />
-  <Button type="secondary" size="md" label={'md'} />
-  <Button type="default" size="lg" label={'lg'} />
-  <Button isThemeDark={isThemeDark} type="primary" label={'a(link)'} tag={'a'} htmlAttributes={{href: GIT_LINK}} />
-  ~~~
-  `,
-  () => (
-    <div className="container p-t-1">
-      <ButtonDemo isThemeDark={false} />
-      <ButtonDemo isThemeDark />
-    </div>
-  ),
-  { inline: false, source: false, propTables: [Button]},
 );

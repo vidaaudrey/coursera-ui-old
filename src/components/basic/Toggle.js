@@ -9,7 +9,9 @@ import NavigationClose from 'src/components/svg/material/navigation/close';
 import NavigationCheck from 'src/components/svg/material/navigation/check';
 
 const _t = c => c;
-
+const CONFIG = {
+  duration: 0.25,
+};
 /**
  * Work in progress
  */
@@ -162,7 +164,6 @@ class Toggle extends Component {
     if (trackColor) {
       const lightenedColor = lighten(trackColor, 0.2);
       if (checked) {
-        console.warn('--checked-', lightenedColor, disabled);
         trackStyle.backgroundColor = disabled ? lightenedColor : trackColor;
         thumbStyle.borderColor = disabled ? lightenedColor : trackColor;
       }
@@ -267,7 +268,7 @@ const styles = StyleSheet.create({
   disabled: {
     cursor: 'not-allowed',
     opacity: 0.5,
-    transition: 'opacity 0.25s',
+    transition: `opacity ${CONFIG.duration}s ease`,
   },
   track: {
     width: 48,
@@ -306,11 +307,11 @@ const styles = StyleSheet.create({
     lineHeight: 0,
     left: 8,
     opacity: 0,
-    transition: 'opacity 0.25s ease',
+    transition: `opacity ${CONFIG.duration}s ease`,
   },
   checkedTrackCheck: {
     opacity: 1,
-    transition: 'opacity 0.25s ease',
+    transition: `opacity ${CONFIG.duration}s ease`,
   },
   trackX: {
     position: 'absolute',
@@ -323,7 +324,7 @@ const styles = StyleSheet.create({
     lineHeight: 0,
     right: 6,
     opacity: 1,
-    transition: 'opacity 0.25s ease',
+    transition: `opacity ${CONFIG.duration}s ease`,
   },
   checkedTrackX: {
     opacity: 0,
@@ -338,7 +339,7 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: color.bgGray,
     boxSizing: 'border-box',
-    transition: 'all 0.25s ease',
+    transition: `all ${CONFIG.duration}s ease`,
   },
   checkedThumb: {
     left: 26,

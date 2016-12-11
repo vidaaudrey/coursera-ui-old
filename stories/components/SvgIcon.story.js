@@ -42,6 +42,10 @@ storiesOf('basic.SvgIcon', module)
           <small className="font-sm">No props</small>
         </div>
         <div className="vertical-box m-b-1">
+          <SvgEmail isThemeDark />
+          <small className="font-sm">isThemeDark</small>
+        </div>
+        <div className="vertical-box m-b-1">
           <SvgEmail size={128} color="red" hoverColor="blue" />
           <small className="font-sm"> with size, color, hoverColor props</small>
         </div>

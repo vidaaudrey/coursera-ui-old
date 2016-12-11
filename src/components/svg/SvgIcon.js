@@ -20,6 +20,8 @@ class SvgIcon extends React.Component {
     // Fill color of the svg, default to color.icon.
     color: PropTypes.string,
 
+    isThemeDark: PropTypes.bool,
+
     // Width and height of the svg, should be equal, so only use size.
     size: PropTypes.number,
 
@@ -39,14 +41,19 @@ class SvgIcon extends React.Component {
     onMouseLeave: () => {},
     viewBox: '0 0 24 24',
     size: 24,
-    color: color.icon,
     style: {},
     htmlAttributes: {},
   };
 
-  state = {
-    hovered: false,
-  };
+  constructor(props, context) {
+    super(props, context);
+    const { color: colorAlt, hoverColor, isThemeDark } = props;
+    this._color = colorAlt || (isThemeDark ? color.iconThemeDark : color.icon);
+    this._hoverColor = hoverColor || this._color;
+    this.state = {
+      hovered: false,
+    };
+  }
 
   handleMouseLeave = (e) => {
     this.setState({hovered: false});
@@ -66,14 +73,14 @@ class SvgIcon extends React.Component {
     const {
       style,
       children,
-      color: propColor,
       size,
-      hoverColor,
       viewBox,
       htmlAttributes,
     } = this.props;
 
-    const dynamicStyles = getStyles({propColor, hoverColor, size}, this.state);
+    const dynamicStyles = getStyles({
+      propColor: this._color, hoverColor: this._hoverColor, size,
+    }, this.state);
     const mergedStyles = {...dynamicStyles.SvgIcon, ...style};
 
     return (

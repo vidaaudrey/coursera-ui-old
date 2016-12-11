@@ -107,8 +107,6 @@ class ToggleDemo extends React.Component {
   }
 }
 
-module.exports = ToggleDemo;
-
 // class Test extends React.Component{
 //   state = { disabled: false}
 //   toggle = () => {
