@@ -956,14 +956,29 @@ module.exports = {
   }],
   instructorsNaptime: [{
     id: 'i1',
-    fullName: 'Scott DeRue, Ph.D.',
-    title: 'Associate Dean and Professor of Management',
-    department: 'Management and Organizations, Ross School of Business',
+    "lastName": "Sergei Savin",
+    "photo": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/81/ced0b0356211e599bfed1b245cbf97/Savin.jpg",
+    "fullName": "Sergei Savin",
+    "title": "Associate Professor of Operations, Information and Decisions",
+    "firstName": "",
+    "profileId": "4602",
+    "department": "The Wharton School",
+    "shortName": "sergei-savin"
   }, {
     id: 'i2',
-    fullName: 'Scott DeRue, Ph.D.1',
-    title: 'Associate Dean and Professor of Management1',
-    department: 'Management and Organizations, Ross School of Business1',
+    "lastName": "Richard Lambert",
+    "photo": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/2d/3e30f09dda11e58d629b2b054fc60f/Lambert.jpg",
+    "fullName": "Richard Lambert",
+    "title": "Professor of Accounting",
+    "firstName": "",
+    "profileId": "5293",
+    "department": "Accounting- Wharton School"
+  }],
+  partnersNaptime: [{
+    id: 1,
+    name: 'University of Virginia',
+    id: '18',
+    shortName: 'uva',
   }],
   courseDerivativesNatpime: [{
     id: 'c1',

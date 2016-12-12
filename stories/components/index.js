@@ -16,3 +16,4 @@ import './Draggable.story';
 import './ChipList.story';
 import './S12nCard.story';
 import './SmartScrollWrapper.story';
+import './MiniSDP.story';

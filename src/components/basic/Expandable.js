@@ -111,7 +111,7 @@ class Expandable extends Component {
         </div>
         {fixedContentHeight &&
           <div
-            {...css(styles.mainContainer)}
+            {...css(styles.transitionContainer)}
             style={{height: isOpened ? fixedContentHeight : 0 }}
           >
             {children}
@@ -120,7 +120,7 @@ class Expandable extends Component {
         {!fixedContentHeight &&
           <div
             {...css(
-              styles.mainContainer,
+              styles.transitionContainer,
             )}
             style={{height: isOpened ? contentContainerHeight : 0 }}
           >
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     top: 12,
     right: 16,
   },
-  mainContainer: {
+  transitionContainer: {
     overflow: 'hidden',
     transition: `height ${CONFIG.duration}s ${transition.easeOutFunction}`,
   },
