@@ -1,3 +1,7 @@
+export { default as SvgCalendar } from './common/SvgCalendar';
+export { default as SvgCertificate } from './common/SvgCertificate';
+export { default as SvgStack } from './common/SvgStack';
+export { default as SvgClock } from './common/SvgClock';
 export { default as SvgCheckOutline } from './common/SvgCheckOutline';
 export { default as SvgCheckSolid } from './common/SvgCheckSolid';
 export { default as SvgCircleWarning } from './common/SvgCircleWarning';

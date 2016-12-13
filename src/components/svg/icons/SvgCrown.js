@@ -3,13 +3,13 @@ const React = require('react');
 const SvgCrown = ({name = 'SvgCrown', size = 44, fill = '#e6e9ed', htmlAttributes}) => {
   return (
 		<svg
-  xmlns="http://www.w3.org/2000/svg"
-  x="0px"
-  y="0px"
-  width={40}
-  height={40}
-  viewBox="0 0 159.431 159.431"
-  fill={fill}
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      width={40}
+      height={40}
+      viewBox="0 0 159.431 159.431"
+      fill={fill}
   {...htmlAttributes}
 		>
 			<title>Crown</title>

@@ -21,7 +21,7 @@ const expandablePropTypes = PropTypes.shape({
 
  /**
   * A highly customizable Accordion container that accepts header node and children
-  * Useful for creating simple expandable/collapsable components or accordions
+  * Useful for creating simple expandable/collapsible components or accordions
   * If you know the content height, pass the fixedContentHeight to increas performance
   * Otherwise we'll measure the children's content height and use it to animiate
   */
@@ -100,7 +100,7 @@ class Accordion extends Component {
 
   getItems = () => {
     const {
-      children, propsForExpandable, propsForActiveExpandable, allowMultipleActive,
+      children, propsForExpandable, propsForActiveExpandable, allowMultipleActive, isThemeDark,
     } = this.props;
     const { activeIndex, activeIndexes } = this.state;
     const newChildren = [];
@@ -116,6 +116,10 @@ class Accordion extends Component {
         isOpened,
         onToggle: () => (this.onExpandableToggle(index)),
       };
+      if (!('isThemeDark' in propsForExpandable)) {
+        propsForExpandable.isThemeDark = isThemeDark;
+      }
+
       if (isOpened && propsForActiveExpandable) {
         _(props).extend(propsForActiveExpandable);
       }
