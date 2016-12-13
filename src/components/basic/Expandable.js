@@ -3,9 +3,10 @@ import React, { PropTypes, Component } from 'react';
 import {
   css, StyleSheet, color, spacing, transition, font
 } from 'src/styles/theme';
+
+import Measure from 'react-measure';
 import NavigationExpandLess from 'src/components/svg/material/navigation/expand-less';
 import NavigationExpandMore from 'src/components/svg/material/navigation/expand-more';
-import Measure from 'react-measure';
 
 const CONFIG = {
   duration: 0.4,

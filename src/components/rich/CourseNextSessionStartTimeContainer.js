@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 
 const CourseNextSessionStartTimeContainer = ({ course }) => {
-  console.warn('---', course);
   if (!course || !course.upcomingSessionStartDateString) {
     return null;
   }

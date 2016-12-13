@@ -68,14 +68,23 @@ class Accordion extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if ('isOpened' in nextProps && nextProps.isOpened !== this.props.isOpened) {
-    //   this.setState({ isOpened: nextProps.isOpened });
-    // }
+    if ('activeIndex' in nextProps && nextProps.activeIndex !== this.props.activeIndex) {
+      this.setState({ activeIndex: nextProps.activeIndex });
+    } else if ('activeIndexes' in nextProps && _(nextProps.activeIndexes).isEqual(this.props.activeIndexes)) {
+      this.setState({ activeIndexes: nextProps.activeIndexes });
+    }
+  }
+
+  handleChangeCallBack = (activeIndexOrIndexes) => {
+    if (this.props.onChange) {
+      this.props.onChange(activeIndexOrIndexes);
+    }
   }
 
   onExpandableToggle = (activeIndex) => {
     if (!this.props.allowMultipleActive) {
       this.setState({ activeIndex });
+      this.handleChangeCallBack(activeIndex);
     } else {
       // Remove activeIndex if already exist, otherwise add new
       const activeIndexes = [...this.state.activeIndexes];
@@ -85,6 +94,7 @@ class Accordion extends Component {
         activeIndexes.push(activeIndex);
       }
       this.setState({ activeIndexes });
+      this.handleChangeCallBack(activeIndexes);
     }
   }
 
@@ -99,7 +109,7 @@ class Accordion extends Component {
       const isOpened = allowMultipleActive ?
         _(activeIndexes).contains(index) :
         index === activeIndex;
-      let props = {
+      const props = {
         ...propsForExpandable,
         // If no key is provided, use index as default key
         key: child.key || String(index),

@@ -21,8 +21,6 @@ import { Accordion, Expandable } from 'src';
 import Measure from 'react-measure';
 import SvgCurriculum from 'src/components/svg/coursera/common/SvgCurriculum';
 
-// import S12nInfoRows from 'bundles/coursera-ui/components/rich/S12nInfoRows';
-
 const MODAL_PADDING = 28; // Set by Modal component
 const _t = c => c;
 const CONFIG = {
