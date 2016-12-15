@@ -29,10 +29,20 @@ storiesOf('basic.Paper', module)
         <h3>zDepth</h3>
         <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
           <Paper zDepth={0}> <h4 className="m-a-2">zDepth 0 </h4> </Paper>
-          <Paper zDepth={1}> <h4 className="m-a-2">zDepth 1</h4> </Paper>
+          <Paper zDepth={1}> <h4 className="m-a-2">zDepth 1 (default)</h4> </Paper>
           <Paper zDepth={2}> <h4 className="m-a-2">zDepth 2</h4> </Paper>
           <Paper zDepth={3}> <h4 className="m-a-2">zDepth 3</h4> </Paper>
           <Paper zDepth={4}> <h4 className="m-a-2">zDepth 4</h4> </Paper>
+          <Paper zDepth={5}> <h4 className="m-a-2">zDepth 5</h4> </Paper>
+        </div>
+        <h3>isInteractive (with rollover state)</h3>
+        <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
+          <Paper isInteractive zDepth={0}> <h4 className="m-a-2">zDepth 0</h4> </Paper>
+          <Paper isInteractive zDepth={1}> <h4 className="m-a-2">zDepth 1 (default)</h4> </Paper>
+          <Paper isInteractive zDepth={2}> <h4 className="m-a-2">zDepth 2</h4> </Paper>
+          <Paper isInteractive zDepth={3}> <h4 className="m-a-2">zDepth 3</h4> </Paper>
+          <Paper isInteractive zDepth={4}> <h4 className="m-a-2">zDepth 4</h4> </Paper>
+          <Paper isInteractive zDepth={5}> <h4 className="m-a-2">zDepth 5</h4> </Paper>
         </div>
       </div>
       <div className="p-a-2">

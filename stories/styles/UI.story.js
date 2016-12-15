@@ -30,4 +30,4 @@ storiesOf('UI.all', module)
   ))
   .add('Theme', () => (
     <Theme />
-  ))
+  ));

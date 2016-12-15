@@ -1,12 +1,9 @@
-const React = require('react');
-const {PropTypes} = React;
-const {
-  cssWithClass, StyleSheet, css, color, spacing, gradient, transition,
-} = require('src/styles/theme');
+import React, { PropTypes, Component } from 'react';
+import {
+  StyleSheet, css, color, transition, iconSize,
+} from 'src/styles/theme';
 
-
-class SvgIcon extends React.Component {
-
+class SvgIcon extends Component {
   static propTypes = {
     // Override the inline-styles of the root element
     style: PropTypes.object,
@@ -40,7 +37,7 @@ class SvgIcon extends React.Component {
     onMouseEnter: () => {},
     onMouseLeave: () => {},
     viewBox: '0 0 24 24',
-    size: 24,
+    size: iconSize.sm, // 24
     style: {},
     htmlAttributes: {},
   };
@@ -79,8 +76,11 @@ class SvgIcon extends React.Component {
     } = this.props;
 
     const dynamicStyles = getStyles({
-      propColor: this._color, hoverColor: this._hoverColor, size,
-    }, this.state);
+      propColor: this._color,
+      hoverColor: this._hoverColor,
+      size,
+      hovered: this.state.hovered,
+    });
     const mergedStyles = {...dynamicStyles.SvgIcon, ...style};
 
     return (
@@ -99,9 +99,7 @@ class SvgIcon extends React.Component {
 }
 
 // Dynamic styles
-function getStyles(props, state) {
-  const {propColor, hoverColor, size} = props;
-  const {hovered} = state;
+function getStyles({ propColor, hoverColor, size, hovered }) {
   return {
     SvgIcon: {
       fill: (hovered && hoverColor) ? hoverColor : propColor,

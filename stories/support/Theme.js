@@ -99,12 +99,12 @@ const Theme = ({isThemeDark }) => {
         <div className="col-xs-12">
           <h3>Font Size</h3>
           <p className="text-muted font-italic"> All font sizes are based on rem. 1rem equals 16px. <br />
-            xs (0.8rem, ~12px), sm (0.9rem, ~14px), md(1rem, 16px), lg(1.5rem, 24px), xlg(2.5rem, 40px), xxlg(4rem, 64px)
+            xs (0.8rem, ~12px), sm (0.9rem, ~14px), md(1rem, 16px), lg(1.5rem, 24px), xl(2.5rem, 40px), xxl(4rem, 64px)
           </p>
         </div>
         <div {...cssWithClass('col-xs-12 m-b-2', styles.blockContainer)}>
           {_(font).map((value, key) =>
-            <span key={`font~${key}`} {...cssWithClass('p-a-0 m-a-1 p-a-1 d-inline-block', styles[`${key}Font`], styles.fontP)}>
+            <span key={`font~${key}`} {...cssWithClass('p-a-0 m-a-1 p-a-1 d-inline-block', styles[`${key}Font`])}>
               {key}: <span className="display">{value}</span>
             </span>
           )}
@@ -118,8 +118,8 @@ const Theme = ({isThemeDark }) => {
           </p>
         </div>
         <div {...cssWithClass('col-xs-12 w-100', styles.blockContainer)}>
-            <GradientCell name={'primary'} gradient={gradient.primary}/>
-            <GradientCell name={'secondary'} gradient={gradient.secondary}/>
+          <GradientCell name={'primary'} gradient={gradient.primary}/>
+          <GradientCell name={'secondary'} gradient={gradient.secondary}/>
         </div>
       </div>
       <div className="row m-b-2">
@@ -144,9 +144,6 @@ const Theme = ({isThemeDark }) => {
           TODO:
           none(0), xs(1000), sm(2000), md(3000), lg(4000), xlg(10000),
         </p>
-      </div>
-      <div {...cssWithClass('col-xs-12 m-b-2', styles.blockContainer)}>
-
       </div>
       <div className="col-xs-12">
         <h3>iconSize</h3>
@@ -202,15 +199,11 @@ const styles = StyleSheet.create({
   lgFont: {
     fontSize: font.lg,
   },
-  xlgFont: {
-    fontSize: font.xlg,
+  xlFont: {
+    fontSize: font.lg,
   },
   xxlFont: {
     fontSize: font.xxl,
-  },
-
-  fontP: {
-
   },
   blockContainer: {
     background: color.bgGray,
