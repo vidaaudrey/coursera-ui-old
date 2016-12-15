@@ -13,6 +13,7 @@ const idType = [
 
 class ChipList extends Component {
   static propTypes = {
+    htmlAttributes: PropTypes.object,
     alignCenter: PropTypes.bool,
     listData: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.oneOfType(idType).isRequired,
@@ -33,6 +34,7 @@ class ChipList extends Component {
   };
 
   static defaultProps = {
+    htmlAttributes: {},
     listData: [],
     selectAllId: SELECT_ALL_ID,
     selectAllLabel: 'Select All',
@@ -58,6 +60,18 @@ class ChipList extends Component {
       isAllSelected,
     };
   }
+
+  static getChipsHTML = (listData, chipAttributes) =>
+    _(listData).map(({ id, label, isSelected }) =>
+      <Chip
+        {...chipAttributes}
+        key={`Chip~${id}`}
+        label={label}
+        isSelected={isSelected}
+        onClick={() => (this.toggleSelect(id))}
+        style={{margin: 8}}
+      />
+    );
 
   constructor(props, context) {
     super(props, context);
@@ -123,13 +137,14 @@ class ChipList extends Component {
 
   render() {
     const {
+      htmlAttributes,
+      style,
       alignCenter,
       chipAttributes,
       isThemeDark,
       selectAllId,
       selectAllLabel,
       showSelectAll,
-      style,
     } = this.props;
 
     const dynamicStyles = getStyles({alignCenter});
@@ -139,7 +154,7 @@ class ChipList extends Component {
     }
 
     return (
-      <div {...css(styles.ChipList)} style={{...dynamicStyles, ...style}}>
+      <div {...htmlAttributes} {...css(styles.ChipList)} style={{...dynamicStyles, ...style}}>
         {showSelectAll &&
           <Chip
             {...chipAttributes}
@@ -149,18 +164,12 @@ class ChipList extends Component {
             style={{marginBottom: 32}}
           />
         }
-        <div>
-          {_(listData).map(item =>
-            <Chip
-              {...chipAttributes}
-              key={`Chip~${item.id}`}
-              label={item.label}
-              isSelected={item.isSelected}
-              onClick={() => (this.toggleSelect(item.id))}
-              style={{margin: 8}}
-            />
-          )}
-        </div>
+        {!showSelectAll && ChipList.getChipsHTML(listData, chipAttributes)}
+        {showSelectAll &&
+          <div>
+            {ChipList.getChipsHTML(listData, chipAttributes)}
+          </div>
+        }
       </div>
     );
   }
