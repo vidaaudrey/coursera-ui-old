@@ -21,6 +21,7 @@ const ButtonDemo =({ isThemeDark }) => {
           <Button isThemeDark={isThemeDark} type="secondary" label={'secondary'} />
           <Button isThemeDark={isThemeDark} type="default" label={'default'} />
           <Button isThemeDark={isThemeDark} type="noStyle" label={'noStyle'} />
+          <Button isThemeDark={isThemeDark} type="link" label={'link'} />
         </div>
         <h4>size</h4>
         <div className="m-b-2 horizontal-box align-items-spacebetween wrap">
@@ -91,7 +92,7 @@ stories.addWithInfo(
   ~~~
   `,
   () => (
-    <div className="container p-t-1">
+    <div className="container-fluid p-t-1">
       <ButtonDemo isThemeDark={false} />
       <ButtonDemo isThemeDark />
     </div>
@@ -158,7 +159,7 @@ stories.addWithInfo(
     const containerStyle = isThemeDark ? {color: 'white', backgroundColor: '#363b42'} : {};
 
     return (
-      <div className="container p-a-1 border-a" style={containerStyle}>
+      <div className="container-fluid p-a-1 border-a" style={containerStyle}>
         <h2>Playground</h2>
         <p className="text-muted">
           <i>

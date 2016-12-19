@@ -18,7 +18,7 @@ storiesOf('basic.Card', module)
   <Card tag="div" isCardBlock>
     <h1>tag: div</h1>
   </Card>
-  
+
   <Card tagAttrributes={{zDepth: 2, isCircle: true}}>
     <div style={{width: 100, height: 100, borderRadius: '50%'}} className="horizontal-box align-items-absolute-center bg-primary text-xs-center">
       <p className="font-sm color-white">with tagAttrributes</p>
@@ -45,7 +45,7 @@ storiesOf('basic.Card', module)
   ~~~
   `,
   () => (
-    <div className="container p-t-1">
+    <div className="container-fluid p-t-1">
       <h2>Light Theme</h2>
       <div className="p-a-2">
         <h3>CardBlock, CardTitle, CardSubtitle</h3>

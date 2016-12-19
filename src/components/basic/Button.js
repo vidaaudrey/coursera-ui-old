@@ -7,11 +7,11 @@ const CONFIG = {
   size: {
     sm: {
       fontSize: '0.8rem',
-      padding: '0.3rem 0.8rem',
+      padding: '0.5rem 0.9rem',
     },
     md: {
       fontSize: '1rem',
-      padding: '0.4rem 2rem',
+      padding: '0.7rem 2rem',
     },
     lg: {
       fontSize: '1.2rem',
@@ -26,6 +26,7 @@ const BUTTON_TYPES = {
   default: 'default',
   noStyle: 'noStyle',
   disabled: 'disabled',
+  link: 'link',
 };
 
 const BUTTON_SIZES = {
@@ -246,6 +247,29 @@ const styles = StyleSheet.create({
     },
   },
   noStyleLinkThemeDark: {
+    color: `${color.white} !important`,
+    ':hover': {
+      color: `${color.primary} !important `,
+    },
+  },
+  link: {
+    backgroundColor: 'transparent',
+    color: color.primary,
+    border: 'none',
+    ':hover': {
+      color: color.darkPrimary,
+    },
+  },
+  linkThemeDark: {
+    color: color.lightPrimary,
+  },
+  linkLink: {
+    color: `${color.primaryText} !important `,
+    ':hover': {
+      color: `${color.primary} !important `,
+    },
+  },
+  linkLinkThemeDark: {
     color: `${color.white} !important`,
     ':hover': {
       color: `${color.primary} !important `,

@@ -2,25 +2,25 @@
 const {StyleSheet, css} = require('aphrodite/no-important');
 const classNames = require('classnames');
 const {
+  blue100,
+  blue500,
+  blue700,
   dawn200,
-  dawn400,
   dawn300,
+  dawn400,
   dawn500,
   dusk100,
+  dusk200,
   dusk400,
+  dusk50,
   midnight300,
   midnight500,
   midnight600,
   midnight900,
-  dusk200,
   red300,
-  turquoise500,
-  blue500,
-  dusk50,
-  yellow500,
-  blue700,
-  blue100,
   teal500,
+  turquoise500,
+  yellow500,
 } = require('./colors');
 const {coursera, strawberry} = require('./gradients');
 const transition = require('./transition');

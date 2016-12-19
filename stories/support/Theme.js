@@ -56,7 +56,7 @@ const colors = {
 };
 const Theme = ({isThemeDark }) => {
   return (
-    <div {...cssWithClass('container', styles.Theme)}>
+    <div {...cssWithClass('container-fluid', styles.Theme)}>
       <div className="row m-b-2">
         <div className="col-xs-12">
           <h1>Theme</h1>

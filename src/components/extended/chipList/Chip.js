@@ -26,6 +26,7 @@ const Chip = ({
 
   return (
     <button
+      {...htmlAttributes}
       {...css(
         styles.Chip,
         styles[`chip${styleNamePartials}`],
@@ -33,7 +34,6 @@ const Chip = ({
       )}
       style={mergedStyles}
       onClick={onClick}
-      {...htmlAttributes}
     >
       <span className="horizontal-box align-items-vertical-center">
         <span {...css(styles.label, styles[`label${styleNamePartials}`])}>{label}</span>

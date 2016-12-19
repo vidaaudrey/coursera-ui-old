@@ -14,5 +14,6 @@ import './Progress.story';
 import './SvgIcon.story';
 import './Draggable.story';
 import './ChipList.story';
+import './StarRating.story';
 import './S12nCard.story';
 import './SmartScrollWrapper.story';

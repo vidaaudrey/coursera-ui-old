@@ -24,6 +24,7 @@ import S12nCard from './components/rich/S12nCard';
 import SvgIcon from './components/svg/SvgIcon';
 import Chip from './components/extended/chipList/Chip';
 import ChipList from './components/extended/chipList/ChipList';
+import StarRating from './components/extended/StarRating';
 import * as materialIcons from './components/svg/material';
 import * as courseraIcons from './components/svg/coursera';
 // Hoc
@@ -74,6 +75,8 @@ export {
   SvgIcon,
   Chip,
   ChipList,
+  StarRating,
+
   Avatar,
   StaticLinearProgress,
   StepProgress,

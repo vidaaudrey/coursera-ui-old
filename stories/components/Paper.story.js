@@ -23,7 +23,7 @@ storiesOf('basic.Paper', module)
   ~~~
   `,
   () => (
-    <div className="container p-t-1">
+    <div className="container-fluid p-t-1">
       <h2>Light Theme</h2>
       <div className="p-a-2">
         <h3>zDepth</h3>

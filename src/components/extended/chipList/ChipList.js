@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define, react/no-unused-prop-types */
+/* eslint-disable no-use-before-define, no-param-reassign, react/no-unused-prop-types */
 import React, {PropTypes, Component} from 'react';
 import {css, StyleSheet, color, spacing, transition} from 'src/styles/theme';
 import _ from 'underscore';
@@ -22,7 +22,7 @@ class ChipList extends Component {
     }).isRequired).isRequired,
     chipAttributes: PropTypes.shape({
       isThemeDark: PropTypes.bool,
-      height: PropTypes.nubmer,
+      height: PropTypes.number,
       fontSize: PropTypes.string,
     }),
     isThemeDark: PropTypes.bool,
@@ -61,18 +61,6 @@ class ChipList extends Component {
     };
   }
 
-  static getChipsHTML = (listData, chipAttributes) =>
-    _(listData).map(({ id, label, isSelected }) =>
-      <Chip
-        {...chipAttributes}
-        key={`Chip~${id}`}
-        label={label}
-        isSelected={isSelected}
-        onClick={() => (this.toggleSelect(id))}
-        style={{margin: 8}}
-      />
-    );
-
   constructor(props, context) {
     super(props, context);
     const {listData, showSelectAll} = props;
@@ -95,7 +83,6 @@ class ChipList extends Component {
       });
       // If every item is selected or not selected, change the all state
       const isAllSelected = _.every(newListData, ({isSelected}) => isSelected);
-      // const isAllNotSelected = _.every(newListData, ({isSelected}) => !isSelected);
       if (isAllSelected) {
         this.setState({ listData: newListData, isAllSelected: true});
       } else {
@@ -108,14 +95,13 @@ class ChipList extends Component {
           .filter(item => !!item.isSelected)
           .pluck('id')
           .value();
-        this.props.onSelectChange(id, allSelectedIds, newIsSelect, newListData);
+        this.props.onSelectChange(id, allSelectedIds, newIsSelect, newListData, isAllSelected);
       }
     }
   }
 
   toggleSelectAll = () => {
     const newIsAllSelected = !this.state.isAllSelected;
-    /* eslint-disable no-param-reassign */
     const newListData = this.state.listData.map((item) => {
       item.isSelected = newIsAllSelected;
       return item;
@@ -134,6 +120,18 @@ class ChipList extends Component {
       this.props.onSelectChange(defaultId, allSelectedIds, newIsAllSelected, newListData);
     }
   }
+
+  getChipsHTML = (listData, chipAttributes) =>
+    _(listData).map(({ id, label, isSelected }) =>
+      <Chip
+        {...chipAttributes}
+        key={`Chip~${id}`}
+        label={label}
+        isSelected={isSelected}
+        onClick={() => (this.toggleSelect(id))}
+        style={{margin: 8}}
+      />
+    );
 
   render() {
     const {
@@ -164,10 +162,10 @@ class ChipList extends Component {
             style={{marginBottom: 32}}
           />
         }
-        {!showSelectAll && ChipList.getChipsHTML(listData, chipAttributes)}
+        {!showSelectAll && this.getChipsHTML(listData, chipAttributes)}
         {showSelectAll &&
           <div>
-            {ChipList.getChipsHTML(listData, chipAttributes)}
+            {this.getChipsHTML(listData, chipAttributes)}
           </div>
         }
       </div>
