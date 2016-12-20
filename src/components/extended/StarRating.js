@@ -1,36 +1,9 @@
 // Based on https://github.com/voronianski/react-star-rating-component
 /* eslint-disable react/forbid-prop-types, no-plusplus, jsx-a11y/no-static-element-interactions, react/no-unused-prop-types, no-param-reassign */
 import React, { PropTypes, Component } from 'react';
-import ReactDOM from 'react-dom';
-import cx from 'classnames';
 import { css, StyleSheet, color } from 'src/styles/theme';
 import { pure } from 'recompose';
 import _ from 'underscore';
-
-const Star = (props) => {
-  const nameMap = {
-    isDisabled: 'is-disabled',
-    isActive: 'is-active',
-    isActiveHalf: 'is-active-half',
-    willBeActive: 'will-be-active',
-  };
-
-  const className = Object.keys(nameMap)
-    .filter(prop => props[prop])
-    .map(prop => nameMap[prop])
-    .join(' ');
-
-  return (
-    <a className={className}>★</a>
-  );
-};
-
-Star.propTypes = {
-  isActive: PropTypes.bool,
-  isActiveHalf: PropTypes.bool,
-  willBeActive: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-};
 
 
 class StarRating extends Component {
@@ -182,4 +155,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = StarRating;
+module.exports = pure(StarRating);

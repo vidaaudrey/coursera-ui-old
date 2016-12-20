@@ -12,6 +12,7 @@ import Paper from './components/basic/Paper';
 import SearchInput from './components/basic/SearchInput';
 import TextField from './components/basic/TextField';
 import TextFit from './components/basic/TextFit';
+import TextTruncate from './components/extended/TextTruncate';
 import CourseCard from './components/rich/CourseCard';
 import StaticLinearProgress from './components/basic/StaticLinearProgress';
 import StepProgress from './components/basic/StepProgress';
@@ -76,6 +77,7 @@ export {
   Chip,
   ChipList,
   StarRating,
+  TextTruncate,
 
   Avatar,
   StaticLinearProgress,

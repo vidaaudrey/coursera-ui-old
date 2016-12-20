@@ -13,7 +13,7 @@ import { FormattedHTMLMessage } from 'react-intl';
 import Button from 'src/components/basic/Button';
 import { Card, CardBlock } from 'src/components/basic/Card';
 import InstructorInfo from 'src/components/rich/InstructorInfo';
-import TogglableText from 'src/components/basic/TogglableText';
+import TogglableContent from 'src/components/basic/TogglableContent';
 import PartnerName from 'src/components/rich/PartnerName';
 import CourseNextSessionStartTimeContainer from 'src/components/rich/CourseNextSessionStartTimeContainer';
 import CourseInfoRow from 'src/components/rich/CourseInfoRow';
@@ -80,12 +80,12 @@ class MiniSDP extends Component {
                     <h3 {...css(styles.title)}>{name}</h3>
                     {!!firstPartnerId && <PartnerName partner={partner} />}
                     <div {...css(styles.actionElementContainer)}>{this.props.actionElement}</div>
-                    <TogglableText>
+                    <TogglableContent>
                       <p className="body-1-text course-description">
                         <strong className="body-2-text">{_t('About this course: ')}</strong>
                         {description}
                       </p>
-                    </TogglableText>
+                    </TogglableContent>
                   </div>
                   <div {...css(styles.instructorInfoContainer)}>
                     {!_(instructorIds).isEmpty() &&
